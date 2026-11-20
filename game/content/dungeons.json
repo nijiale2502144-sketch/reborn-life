@@ -401,7 +401,8 @@
       "exp+60",
       "log:沉船里的旧货，让港口的人对你多看了一眼。",
       "flag+:wreck_cleared",
-      "flag+:fragment_3"
+      "flag+:fragment_3",
+      "goto:v_fragment_3"
     ],
     "tag": "undead"
   },

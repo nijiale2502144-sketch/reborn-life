@@ -393,5 +393,83 @@
     ],
     "parent": "deliver_cargo",
     "weight": 7
+  },
+  {
+    "id": "v_dv_lux_1",
+    "kind": "derived",
+    "title": "买家的暗示",
+    "text": "在最奢华的港口，一位穿着绸缎的买家，一边验货，一边用手指，轻轻敲着桌子：“船长，我听说，你对‘门’的事，也有兴趣？”",
+    "options": [
+      {
+        "label": "装作不知道，谈生意",
+        "text": "买家笑了笑，没再追问。但临走时，他递给你一张名片：“潮汐之门的事，我想，我们还会再见。”",
+        "fx": [
+          "count:intel+1",
+          "cha_exp+3"
+        ]
+      },
+      {
+        "label": "反过来，探探他的底",
+        "check": {
+          "attr": "cha",
+          "diff": 14
+        },
+        "ok": {
+          "text": "你一边谈价钱，一边悄悄套话。他说漏了嘴：北边的某个港口，有人，在收购星图的残片。",
+          "fx": [
+            "count:intel+1",
+            "count:charts+1",
+            "cha_exp+4"
+          ]
+        },
+        "fail": {
+          "text": "他笑而不语，把话题，转向了天气。",
+          "fx": [
+            "cha_exp+1"
+          ]
+        }
+      }
+    ],
+    "parent": "trade_luxury",
+    "weight": 8
+  },
+  {
+    "id": "v_dv_lux_2",
+    "kind": "derived",
+    "title": "丝绸里的信",
+    "text": "拆开那箱丝绸的时候，你在一匹绸缎的夹层里，摸到了一封信。信封上，写着一个你不认识的名字。",
+    "options": [
+      {
+        "label": "把信送回去，原样交给收件人",
+        "text": "收信人是个老太太。她捧着信，一个字没读，眼泪就掉了下来。",
+        "fx": [
+          "hometown+3",
+          "rep:harbor+2",
+          "wil_exp+1"
+        ]
+      },
+      {
+        "label": "偷偷拆开读一读",
+        "check": {
+          "attr": "int",
+          "diff": 12
+        },
+        "ok": {
+          "text": "信里，是一个人对远方亲人的思念。字字平实，却读得你，心里沉甸甸的。",
+          "fx": [
+            "int_exp+2",
+            "wil_exp+2"
+          ]
+        },
+        "fail": {
+          "text": "信里的字，你一个也不认识。",
+          "fx": [
+            "int_exp+1"
+          ]
+        }
+      }
+    ],
+    "parent": "trade_luxury",
+    "weight": 7
   }
 ]

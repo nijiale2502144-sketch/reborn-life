@@ -437,5 +437,197 @@
     ],
     "parent": "recruit",
     "weight": 7
+  },
+  {
+    "id": "t_dv_bribe_1",
+    "kind": "derived",
+    "title": "熟悉的面孔",
+    "text": "你把钱袋递给巡逻队长的时候，他看了你一眼，目光里，有一点你说不清的东西。\n“这条街，我也是在这里长大的，”他低声说，“有些路，一旦走了，就回不了头。”",
+    "options": [
+      {
+        "label": "点点头，没说话",
+        "text": "他把钱袋收进怀里，转身走了。背影，有点驼。",
+        "fx": [
+          "wil_exp+2",
+          "cha_exp+1"
+        ]
+      },
+      {
+        "label": "问他：那你为什么还在这条路上？",
+        "text": "他愣了很久，最后只说了一句：“因为，我还有个女儿。”",
+        "fx": [
+          "cha_exp+2",
+          "count:intel+1"
+        ]
+      }
+    ],
+    "parent": "bribe_guard",
+    "weight": 8
+  },
+  {
+    "id": "t_dv_bribe_2",
+    "kind": "derived",
+    "title": "多收的一枚金币",
+    "text": "巡逻队长数了数钱，忽然抬头，笑了：“多了一枚。”\n“给您添茶的。”你说。\n他把那枚金币，又弹了回来：“记着，我今天没收你的钱。”",
+    "options": [
+      {
+        "label": "收好，笑着退下",
+        "text": "你把金币握在手心，心里，对这个人，有了一点新的看法。",
+        "fx": [
+          "rel:cass+0",
+          "cha_exp+2",
+          "count:heat-2"
+        ]
+      }
+    ],
+    "parent": "bribe_guard",
+    "weight": 7
+  },
+  {
+    "id": "t_dv_dock_1",
+    "kind": "derived",
+    "title": "码头上的老乡",
+    "text": "扛包的间隙，一个同样从鼠街出来的汉子，凑过来，递给你半壶酒：“听说，你在公会里混？”\n你没答话。他笑了：“都一样。咱们这样的人，不就是靠这条命，换口饭吃。”",
+    "options": [
+      {
+        "label": "跟他喝一口，聊聊",
+        "text": "你们聊了半个钟头，聊到最后，他才低声说了一件码头上的怪事。",
+        "fx": [
+          "count:intel+1",
+          "hometown+1",
+          "cha_exp+1"
+        ]
+      },
+      {
+        "label": "摇头，继续干活",
+        "text": "他耸耸肩，把酒收回去了。",
+        "fx": [
+          "str_exp+2"
+        ]
+      }
+    ],
+    "parent": "dock_work",
+    "weight": 8
+  },
+  {
+    "id": "t_dv_recruit_1",
+    "kind": "derived",
+    "title": "不一样的同伙",
+    "text": "新来的同伙，在夜里，悄悄把你叫到一边：“头儿，我有个不情之请。”\n他想拿出一半的分成，交给孤儿院。",
+    "options": [
+      {
+        "label": "答应，再多添一份",
+        "text": "他红着眼，朝你鞠了个躬。从这一天起，他对你，格外尽心。",
+        "fx": [
+          "gold-20",
+          "hometown+3",
+          "cha_exp+2"
+        ]
+      },
+      {
+        "label": "笑他傻，但随他去",
+        "text": "你拍拍他的肩，什么也没说。",
+        "fx": [
+          "hometown+1"
+        ]
+      }
+    ],
+    "parent": "recruit",
+    "weight": 7
+  },
+  {
+    "id": "t_dv_rat_late",
+    "kind": "derived",
+    "title": "灰鼠的手",
+    "text": "灰鼠给你示范一个手法的时候，你忽然发现，他的手，在微微发抖。\n“老了，”他自己先笑了，“再过几年，我就要把这一手，传给别人了。”",
+    "options": [
+      {
+        "label": "认真看完整个手法",
+        "text": "你记住了每一个细节。这一课，比之前的每一堂，都更沉。",
+        "fx": [
+          "agi_exp+4",
+          "rel:rat+1",
+          "wil_exp+1"
+        ]
+      },
+      {
+        "label": "扶他坐下，给他倒杯水",
+        "text": "灰鼠愣了一下，接过水，笑得很淡：“你这孩子……”",
+        "fx": [
+          "rel:rat+2",
+          "hometown+1"
+        ]
+      }
+    ],
+    "parent": "learn_rat",
+    "weight": 8,
+    "cond": "flag:met_rat&&!flag:rat_dead&&age>=20"
+  },
+  {
+    "id": "t_dv_orphans_late",
+    "kind": "derived",
+    "title": "孩子们的新游戏",
+    "text": "孤儿院的院子里，几个孩子，在玩一种新游戏：一个人扮贼，一个人扮捕快。\n“抓到你啦！”扮捕快的小女孩，拽住了你的衣角。",
+    "options": [
+      {
+        "label": "假装被“抓”，投降",
+        "text": "孩子们哄笑着，把你围在中间。你被“判”了三个月的“苦役”：给每人讲一个故事。",
+        "fx": [
+          "hometown+3",
+          "cha_exp+2",
+          "rel:lila+1"
+        ]
+      },
+      {
+        "label": "悄悄地，给他们讲个别的游戏",
+        "text": "你教他们一个“捉迷藏”的新玩法。后来，整个孤儿院的孩子，都变成了躲藏的高手。",
+        "fx": [
+          "hometown+2",
+          "agi_exp+1"
+        ]
+      }
+    ],
+    "parent": "help_orphans",
+    "weight": 8,
+    "cond": "count.donate>=2"
+  },
+  {
+    "id": "t_dv_burgle_study",
+    "kind": "derived",
+    "title": "书房里的信",
+    "text": "你在一间书房里，翻到了一叠没寄出的信。字写得很好，一笔一划，都带着一种藏不住的、小心翼翼的难过。",
+    "options": [
+      {
+        "label": "读完，原样放回去",
+        "text": "你悄悄离开了那间屋子，带走了一点比金币更沉的东西。",
+        "fx": [
+          "wil_exp+2",
+          "hometown+1"
+        ]
+      },
+      {
+        "label": "把信带走，当作情报",
+        "check": {
+          "attr": "int",
+          "diff": 12
+        },
+        "ok": {
+          "text": "信里有几个熟悉的人名，和一桩你不知道的旧事。",
+          "fx": [
+            "count:intel+1",
+            "int_exp+3",
+            "count:heat+2"
+          ]
+        },
+        "fail": {
+          "text": "信里只有琐碎的家常。你有点后悔。",
+          "fx": [
+            "int_exp+1"
+          ]
+        }
+      }
+    ],
+    "parent": "burgle",
+    "weight": 7
   }
 ]

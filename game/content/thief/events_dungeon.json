@@ -258,5 +258,312 @@
       "vault_outer"
     ],
     "weight": 8
+  },
+  {
+    "id": "t_de_sewer_kid",
+    "kind": "dungeon",
+    "title": "水里的孩子",
+    "text": "下水道的拐角，有一个比你小很多的孩子，缩在一个破木桶里。\n他抬起头，眼睛亮得让人心疼：“你……是来抓我的吗？”",
+    "options": [
+      {
+        "label": "蹲下来，给他一块干饼",
+        "text": "孩子狼吞虎咽，一边吃，一边含糊地，告诉你了一条通往上层的捷径。",
+        "fx": [
+          "count:intel+1",
+          "hometown+2",
+          "wil_exp+1"
+        ]
+      },
+      {
+        "label": "让他带你找路",
+        "check": {
+          "attr": "cha",
+          "diff": 10
+        },
+        "ok": {
+          "text": "孩子很熟悉这里，七拐八绕，带你绕开了一整队巡逻的恶犬。",
+          "fx": [
+            "agi_exp+2",
+            "exp+14"
+          ]
+        },
+        "fail": {
+          "text": "他带你绕了半天，把你带进了一个死胡同。",
+          "fx": [
+            "hp-4"
+          ]
+        }
+      }
+    ],
+    "dungeons": [
+      "sewer"
+    ],
+    "weight": 8
+  },
+  {
+    "id": "t_de_sewer_old",
+    "kind": "dungeon",
+    "title": "下水道的石碑",
+    "text": "一块半沉在水里的石碑，上面刻着许多凌乱的名字，和日期。\n最近的一个日期，是三年前。",
+    "options": [
+      {
+        "label": "把名字一个个看完",
+        "text": "你读了很久。其中有几个，你认识。",
+        "fx": [
+          "wil_exp+3",
+          "hometown+1"
+        ]
+      }
+    ],
+    "dungeons": [
+      "sewer"
+    ],
+    "weight": 8
+  },
+  {
+    "id": "t_de_ware_vat",
+    "kind": "dungeon",
+    "title": "藏着的酒桶",
+    "text": "仓库的角落里，整整齐齐地码着一排酒桶。有一只，盖子没盖紧，里面飘出的，不是酒香。",
+    "options": [
+      {
+        "label": "掀开看看",
+        "check": {
+          "attr": "int",
+          "diff": 11
+        },
+        "ok": {
+          "text": "桶里是一整桶的细盐和香料，走私货。红手帮的标记，印在桶底。",
+          "fx": [
+            "gold+40",
+            "count:intel+1",
+            "exp+14"
+          ]
+        },
+        "fail": {
+          "text": "你一不小心，碰翻了桶。香料呛得你大咳不止，引来了看守。",
+          "fx": [
+            "hp-6",
+            "count:heat+4"
+          ]
+        }
+      },
+      {
+        "label": "不碰，继续往前",
+        "text": "",
+        "fx": []
+      }
+    ],
+    "dungeons": [
+      "warehouse"
+    ],
+    "weight": 8
+  },
+  {
+    "id": "t_de_ware_cell",
+    "kind": "dungeon",
+    "title": "上锁的小房间",
+    "text": "仓库最深处，有一扇上了三道锁的小门。里面，隐隐传来低低的哭声。",
+    "options": [
+      {
+        "label": "撬开锁，看看里面",
+        "check": {
+          "attr": "agi",
+          "diff": 13
+        },
+        "ok": {
+          "text": "门后，是两个被捆着的孩子。他们是被红手帮拐来，要卖到城外的。你割断绳子，带着他们，从后窗悄悄溜了出去。",
+          "fx": [
+            "hometown+6",
+            "rep:shadow+3",
+            "exp+30",
+            "count:heat+5"
+          ]
+        },
+        "fail": {
+          "text": "锁芯里有一道机关，咔哒一声，整个仓库，都响起了警铃。",
+          "fx": [
+            "hp-8",
+            "count:heat+8"
+          ]
+        }
+      },
+      {
+        "label": "不管，转身走开",
+        "text": "你一路都没敢回头。那个哭声，一直追着你。",
+        "fx": [
+          "hometown-3",
+          "wil_exp+1"
+        ],
+        "avoid": true
+      }
+    ],
+    "dungeons": [
+      "warehouse"
+    ],
+    "weight": 8
+  },
+  {
+    "id": "t_de_manor_portrait",
+    "kind": "dungeon",
+    "title": "画像里的眼睛",
+    "text": "宅邸的走廊上，挂满了一幅一幅的肖像。每一双眼睛，都像在跟着你转。\n你走过其中一幅的时候，那双眼睛，忽然眨了一下。",
+    "options": [
+      {
+        "label": "举起匕首，对着画像",
+        "text": "画像里的人，缓缓开口：“年轻人，宅子的主人，不在这里。”它指了指书房的方向。",
+        "fx": [
+          "wil_exp+2",
+          "count:intel+1"
+        ]
+      },
+      {
+        "label": "当没看见，加快脚步",
+        "check": {
+          "attr": "wil",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你咬着牙，一口气走过了整条走廊。身后，传来一声悠长的叹息。",
+          "fx": [
+            "wil_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "走到一半，你整个人僵住了，直到画像里的眼睛，缓缓闭上。",
+          "fx": [
+            "hp-6",
+            "wil_exp+1"
+          ]
+        }
+      }
+    ],
+    "dungeons": [
+      "manor_heist"
+    ],
+    "weight": 8
+  },
+  {
+    "id": "t_de_manor_ledger",
+    "kind": "dungeon",
+    "title": "书房里的账本",
+    "text": "书房的桌上，摊着一本打开的账本。上面，是你熟悉的几个名字，和一串很大的数字。\n其中一行，用红笔，圈了出来。",
+    "options": [
+      {
+        "label": "把那一页撕下来",
+        "check": {
+          "attr": "agi",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你悄悄撕下那一页，折进怀里。那一行字，足以让某个体面的人，睡不着觉。",
+          "fx": [
+            "count:intel+1",
+            "count:mask_clue+1",
+            "exp+20"
+          ]
+        },
+        "fail": {
+          "text": "纸张撕裂的声音，在寂静里，格外刺耳。",
+          "fx": [
+            "hp-6",
+            "count:heat+5"
+          ]
+        }
+      },
+      {
+        "label": "只记下数字，不动账本",
+        "text": "你闭上眼，把那一串数字，默念了三遍。",
+        "fx": [
+          "int_exp+3",
+          "count:intel+1"
+        ]
+      }
+    ],
+    "dungeons": [
+      "manor_heist"
+    ],
+    "weight": 8
+  },
+  {
+    "id": "t_de_vault_rune",
+    "kind": "dungeon",
+    "title": "发光的符文",
+    "text": "水渠的拱顶上，刻着一圈淡蓝色的符文，一明一灭，像在呼吸。\n你想起了灰鼠说过的话：“魔晶库的每一道门，都有一个节拍。”",
+    "options": [
+      {
+        "label": "数着节拍，穿过去",
+        "check": {
+          "attr": "int",
+          "diff": 14
+        },
+        "ok": {
+          "text": "你闭着眼睛，默数着节拍，一步，两步，三步。符文在你身后，一圈圈熄灭。",
+          "fx": [
+            "int_exp+4",
+            "count:intel+1",
+            "exp+24"
+          ]
+        },
+        "fail": {
+          "text": "你数错了一拍，符文骤然大亮，把你狠狠地弹了回来。",
+          "fx": [
+            "hp-12"
+          ]
+        }
+      },
+      {
+        "label": "绕开，找别的路",
+        "text": "",
+        "fx": [
+          "agi_exp+2"
+        ]
+      }
+    ],
+    "dungeons": [
+      "vault_outer"
+    ],
+    "weight": 8
+  },
+  {
+    "id": "t_de_vault_guard",
+    "kind": "dungeon",
+    "title": "睡着的暗哨",
+    "text": "水渠的转角，坐着一个王室暗哨，靠着墙，打着盹。他的钥匙，挂在腰间，随着呼吸一起一伏。",
+    "options": [
+      {
+        "label": "悄悄偷走钥匙",
+        "check": {
+          "attr": "agi",
+          "diff": 15
+        },
+        "ok": {
+          "text": "钥匙到手的那一刻，你的手心全是汗。暗哨，咂了咂嘴，翻了个身，继续睡。",
+          "fx": [
+            "agi_exp+5",
+            "count:intel+1",
+            "exp+26"
+          ]
+        },
+        "fail": {
+          "text": "钥匙环发出一声清脆的“叮”。暗哨猛地睁开了眼睛。",
+          "fx": [
+            "hp-12",
+            "count:heat+8"
+          ]
+        }
+      },
+      {
+        "label": "绕过去，不惊动他",
+        "text": "你屏着呼吸，贴着对面的墙，一步一步地挪了过去。",
+        "fx": [
+          "agi_exp+3"
+        ]
+      }
+    ],
+    "dungeons": [
+      "vault_outer"
+    ],
+    "weight": 8
   }
 ]

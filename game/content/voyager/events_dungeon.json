@@ -279,5 +279,284 @@
       "abyss_gate"
     ],
     "weight": 8
+  },
+  {
+    "id": "v_de_reef_bell",
+    "kind": "dungeon",
+    "title": "礁石里的钟声",
+    "text": "雾里，传来一阵缓缓的钟声，一下，一下。不知是哪座礁石上的，也不知是谁在敲。",
+    "options": [
+      {
+        "label": "循着钟声，靠近",
+        "check": {
+          "attr": "wil",
+          "diff": 11
+        },
+        "ok": {
+          "text": "钟声越来越近，礁石的轮廓，渐渐出现。那是一口被浪冲得发绿的旧钟，挂在一根断桅上，随着风，自己在响。",
+          "fx": [
+            "gold+30",
+            "wil_exp+2",
+            "exp+10"
+          ]
+        },
+        "fail": {
+          "text": "钟声忽远忽近，你被引到了一片暗礁上。",
+          "fx": [
+            "hp-6"
+          ]
+        }
+      },
+      {
+        "label": "原地等，等雾散",
+        "text": "",
+        "fx": []
+      }
+    ],
+    "dungeons": [
+      "reef"
+    ],
+    "weight": 8
+  },
+  {
+    "id": "v_de_reef_nest",
+    "kind": "dungeon",
+    "title": "海鸥的巢",
+    "text": "礁石的高处，有一片白花花的海鸥巢，里面，卧着一颗颗灰白色的蛋，和一只，闪着光的东西。",
+    "options": [
+      {
+        "label": "爬上去，看看那闪光的东西",
+        "check": {
+          "attr": "agi",
+          "diff": 11
+        },
+        "ok": {
+          "text": "你小心翼翼，没有惊动鸟群。那是一枚被海鸥捡来的金戒指。",
+          "fx": [
+            "gold+40",
+            "agi_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "鸟群炸了。你被啄得抱头鼠窜。",
+          "fx": [
+            "hp-6",
+            "agi_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "绕开，不打扰它们",
+        "text": "",
+        "fx": []
+      }
+    ],
+    "dungeons": [
+      "reef"
+    ],
+    "weight": 8
+  },
+  {
+    "id": "v_de_wreck_chest",
+    "kind": "dungeon",
+    "title": "船长室里的箱子",
+    "text": "沉船的船长室里，一只带锁的铜箱，紧紧嵌在舱壁上。锁已经锈穿了，轻轻一碰，就掉了下来。",
+    "options": [
+      {
+        "label": "打开箱子",
+        "check": {
+          "attr": "luk",
+          "diff": 11
+        },
+        "ok": {
+          "text": "箱子里，是一整箱发黑的银币，和一封封了蜡的信。",
+          "fx": [
+            "gold+65",
+            "count:charts+1",
+            "luk_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "箱子里，只有一堆被水泡烂的纸。",
+          "fx": [
+            "luk_exp+1"
+          ]
+        }
+      }
+    ],
+    "dungeons": [
+      "wreck"
+    ],
+    "weight": 8
+  },
+  {
+    "id": "v_de_wreck_hammock",
+    "kind": "dungeon",
+    "title": "吊床上的水手",
+    "text": "货舱的角落里，一张吊床，轻轻摇晃。吊床上，躺着一个穿着旧式水手服的幽灵，一边打着呼噜，一边在梦里，喊着某个人的名字。",
+    "options": [
+      {
+        "label": "轻轻叫醒他",
+        "text": "幽灵缓缓睁开眼：“……船，靠岸了吗？”你不知道该怎么回答。",
+        "fx": [
+          "wil_exp+3",
+          "hometown+1"
+        ]
+      },
+      {
+        "label": "悄悄走开，不惊扰他的梦",
+        "text": "你踮着脚，一步一步退了出去。身后，鼾声没有停。",
+        "fx": [
+          "wil_exp+2"
+        ]
+      }
+    ],
+    "dungeons": [
+      "wreck"
+    ],
+    "weight": 8
+  },
+  {
+    "id": "v_de_kraken_eggs",
+    "kind": "dungeon",
+    "title": "发光的卵",
+    "text": "海妖巢穴的深处，一片发着微光的卵，排列得整整齐齐。每一颗，都有一个人头那么大。",
+    "options": [
+      {
+        "label": "小心取走一颗",
+        "check": {
+          "attr": "agi",
+          "diff": 13
+        },
+        "ok": {
+          "text": "你屏着呼吸，把其中一颗卵，慢慢放进了随身的布袋。它的温度，竟然是暖的。",
+          "fx": [
+            "gold+90",
+            "agi_exp+3",
+            "exp+20"
+          ]
+        },
+        "fail": {
+          "text": "卵，被你一碰，微微颤了一下。不远处，传来一声低沉的咆哮。",
+          "fx": [
+            "hp-9"
+          ]
+        }
+      },
+      {
+        "label": "不动它们，悄悄离开",
+        "text": "你没有回头，但一直，感觉背后，有无数双眼睛。",
+        "fx": [
+          "wil_exp+2"
+        ]
+      }
+    ],
+    "dungeons": [
+      "kraken_den"
+    ],
+    "weight": 8
+  },
+  {
+    "id": "v_de_kraken_scar",
+    "kind": "dungeon",
+    "title": "巨大的伤痕",
+    "text": "巢穴的岩壁上，有一道巨大的、深深的爪痕，像是什么东西，曾经想从这里，逃出去。",
+    "options": [
+      {
+        "label": "伸手，摸那道伤痕",
+        "text": "伤痕比你的手臂还深。你忽然觉得，这里的海妖，也曾经是某个更古老的东西的囚徒。",
+        "fx": [
+          "count:abyss_clue+1",
+          "wil_exp+2",
+          "int_exp+2"
+        ]
+      }
+    ],
+    "dungeons": [
+      "kraken_den"
+    ],
+    "weight": 8
+  },
+  {
+    "id": "v_de_abyss_stairs",
+    "kind": "dungeon",
+    "title": "没有尽头的阶梯",
+    "text": "深渊的入口，是一级一级的石阶，一直向下，看不见尽头。\n你走了一百级，两百级，回头看，上面的光，早就不见了。",
+    "options": [
+      {
+        "label": "继续往下走",
+        "check": {
+          "attr": "wil",
+          "diff": 15
+        },
+        "ok": {
+          "text": "你一级一级地数，数到第四百级，终于，脚下，踩到了平地。",
+          "fx": [
+            "wil_exp+5",
+            "exp+30"
+          ]
+        },
+        "fail": {
+          "text": "你走着走着，忽然分不清，自己是在向下，还是在向上。",
+          "fx": [
+            "hp-7",
+            "wil_exp+2"
+          ]
+        }
+      },
+      {
+        "label": "停下，回头",
+        "text": "你原路折返。上去的路，比下去的，更长。",
+        "fx": [
+          "wil_exp+2",
+          "hp-3"
+        ]
+      }
+    ],
+    "dungeons": [
+      "abyss_gate"
+    ],
+    "weight": 8
+  },
+  {
+    "id": "v_de_abyss_song",
+    "kind": "dungeon",
+    "title": "水底的歌",
+    "text": "深渊深处，传来一阵很轻很轻的歌声，是一个女人的声音，低低地哼着一首摇篮曲。\n你听着听着，竟然，有一点想睡。",
+    "options": [
+      {
+        "label": "捂住耳朵，咬牙前行",
+        "check": {
+          "attr": "wil",
+          "diff": 14
+        },
+        "ok": {
+          "text": "你一步一步，把歌声，抛在了身后。",
+          "fx": [
+            "wil_exp+4",
+            "exp+24"
+          ]
+        },
+        "fail": {
+          "text": "你听着听着，不知不觉，蹲了下来。醒过来的时候，已经过去了很久。",
+          "fx": [
+            "hp-6",
+            "wil_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "跟着哼，一边往前",
+        "text": "歌声，没有恶意。你一路哼着走了很远，身后，有什么东西，轻轻地笑了。",
+        "fx": [
+          "count:abyss_clue+1",
+          "wil_exp+3"
+        ]
+      }
+    ],
+    "dungeons": [
+      "abyss_gate"
+    ],
+    "weight": 8
   }
 ]

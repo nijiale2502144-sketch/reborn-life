@@ -1199,5 +1199,949 @@
     "cond": "count.intel>=4&&age>=22&&!flag:clue_3",
     "scene": "street",
     "once": true
+  },
+  {
+    "id": "t_e_baker",
+    "kind": "random",
+    "title": "面包铺的后门",
+    "text": "天还没亮，面包铺的后门虚掩着。热烘烘的香味，一阵阵地往外飘。\n门口的垃圾桶边，坐着一个比你更瘦的孩子，一直盯着那扇门。",
+    "options": [
+      {
+        "label": "悄悄溜进去，拿几个面包",
+        "check": {
+          "attr": "agi",
+          "diff": 10
+        },
+        "ok": {
+          "text": "面包在你怀里，还带着烤炉的温度。你分给那个孩子一半，他没说谢谢，但狼吞虎咽的样子，你记了很久。",
+          "fx": [
+            "gold+8",
+            "hometown+1",
+            "agi_exp+2",
+            "count:heat+3"
+          ]
+        },
+        "fail": {
+          "text": "面包师傅举着擀面杖冲了出来，你们两个都挨了一下。",
+          "fx": [
+            "hp-5",
+            "count:heat+5"
+          ]
+        }
+      },
+      {
+        "label": "帮面包师搬一早上的面粉，换几个面包",
+        "text": "师傅一边骂你们瘦得像猴，一边让每人多拿了一个。",
+        "fx": [
+          "str_exp+2",
+          "hometown+2",
+          "hp+0"
+        ],
+        "cond": "hp>0"
+      },
+      {
+        "label": "不去了，转身走开",
+        "text": "你饿着肚子走远了。有些底线，不到最后，你不想碰。",
+        "fx": [
+          "wil_exp+2"
+        ]
+      }
+    ],
+    "pool": "opportunity",
+    "weight": 9,
+    "cond": "age<=18",
+    "scene": "street"
+  },
+  {
+    "id": "t_e_dice",
+    "kind": "random",
+    "title": "巷口的骰子",
+    "text": "几个半大的孩子，围在巷口的石板上掷骰子，赌的是几块干面包。\n一个比你高半个头的男孩，看见你，招手：“来一把？”",
+    "options": [
+      {
+        "label": "押一块面包",
+        "check": {
+          "attr": "luk",
+          "diff": 10
+        },
+        "ok": {
+          "text": "骰子在石板上滚了几圈，停在了你想要的那一面。你赢了三块面包，分给了旁边饿着肚子的孩子。",
+          "fx": [
+            "gold+10",
+            "luk_exp+3",
+            "hometown+1"
+          ]
+        },
+        "fail": {
+          "text": "骰子冷冰冰地落在了另一面。你输得干干净净。",
+          "fx": [
+            "luk_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "看他们赌，顺便学几招",
+        "text": "你蹲在一旁，看了一下午。那个男孩的手法，其实藏着几个小花招。",
+        "fx": [
+          "agi_exp+2",
+          "int_exp+1"
+        ]
+      },
+      {
+        "label": "走开",
+        "text": "",
+        "fx": []
+      }
+    ],
+    "pool": "opportunity",
+    "weight": 8,
+    "cond": "age<=18",
+    "scene": "alley"
+  },
+  {
+    "id": "t_e_rain",
+    "kind": "random",
+    "title": "雨天的屋檐",
+    "text": "一场突如其来的大雨，把整条鼠街变成了河。你躲在一个窄窄的屋檐下，旁边是一个盖着破毯子的老乞丐。\n他咳嗽着，从毯子里，递给你半块干饼。",
+    "options": [
+      {
+        "label": "接过来，两个人分着吃",
+        "text": "饼很硬，但很暖。老乞丐讲起了很多年前的鼠街，那时候，路灯是亮的。",
+        "fx": [
+          "hometown+2",
+          "wil_exp+2",
+          "int_exp+1"
+        ]
+      },
+      {
+        "label": "把自己最后的铜币，放进他的碗里",
+        "text": "老乞丐没抬头，只是低低地说了声：“鼠街会记得你的。”",
+        "fx": [
+          "gold-5",
+          "hometown+3"
+        ],
+        "cond": "gold>=5"
+      },
+      {
+        "label": "摸一摸他毯子下面，有没有值钱的东西",
+        "text": "你的手刚伸过去，老乞丐忽然睁开眼，看了你一眼。你缩回了手，心里一阵发虚。",
+        "fx": [
+          "hometown-2",
+          "count:heat+1"
+        ],
+        "avoid": true
+      }
+    ],
+    "pool": "opportunity",
+    "weight": 8,
+    "cond": "age<=18",
+    "scene": "alley"
+  },
+  {
+    "id": "t_e_vendor",
+    "kind": "random",
+    "title": "被抢的小贩",
+    "text": "一个卖菜的小贩，被两个地痞按在墙上，篮子里的菜，滚了一地。\n没有人上去帮忙，巷子里的门，一扇接一扇地关上了。",
+    "options": [
+      {
+        "label": "冲上去，捣乱一把",
+        "check": {
+          "attr": "agi",
+          "diff": 11
+        },
+        "ok": {
+          "text": "你从背后撞倒了其中一个，趁乱拉着小贩就跑。地痞骂着追了两条街，最后放弃了。",
+          "fx": [
+            "hometown+3",
+            "agi_exp+3",
+            "rep:shadow+1",
+            "exp+10"
+          ]
+        },
+        "fail": {
+          "text": "你冲得太莽，被其中一个拎住了衣领。他们打了你一顿，把你扔进了垃圾堆。",
+          "fx": [
+            "hp-8",
+            "agi_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "躲在暗处，等他们走了再出来",
+        "text": "你屏着呼吸，等地痞走远，才从暗处出来，帮小贩把菜一颗颗捡回篮子里。",
+        "fx": [
+          "hometown+1",
+          "gold+4"
+        ]
+      },
+      {
+        "label": "关上自己的门",
+        "text": "你听见墙外，小贩一声低低的叹气。你把耳朵，捂得更紧了。",
+        "fx": [
+          "hometown-1"
+        ]
+      }
+    ],
+    "pool": "opportunity",
+    "weight": 8,
+    "cond": "age<=19",
+    "scene": "street"
+  },
+  {
+    "id": "t_e_watcher",
+    "kind": "random",
+    "title": "屋顶上的人",
+    "text": "夜里，你偶然抬头，看见对面屋顶上，坐着一个人影，一动不动。\n他像一团比夜更深的影子，却在朝你这边，轻轻地点了点头。",
+    "options": [
+      {
+        "label": "爬上去，看看是谁",
+        "check": {
+          "attr": "agi",
+          "diff": 12
+        },
+        "ok": {
+          "text": "屋顶上的人，是个陌生的年轻人。他递给你一根烤焦的玉米：“新来的？这条街的屋顶，是我的。”你们聊了一夜。",
+          "fx": [
+            "agi_exp+3",
+            "cha_exp+2",
+            "hometown+1"
+          ]
+        },
+        "fail": {
+          "text": "你一脚踩空了一块松瓦，差点摔下去。对方在屋顶上，低低地笑了一声。",
+          "fx": [
+            "hp-4",
+            "agi_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "装作没看见",
+        "text": "你把头缩回屋里。心里，却有点不踏实。",
+        "fx": []
+      }
+    ],
+    "pool": "opportunity",
+    "weight": 7,
+    "cond": "age<=18&&!flag:guild_member",
+    "scene": "rooftop"
+  },
+  {
+    "id": "t_e_chalk",
+    "kind": "random",
+    "title": "墙上的粉笔记号",
+    "text": "你注意到，鼠街的墙根下，到处画着奇怪的粉笔符号：一个圆里套着三角，一条斜线，一只小小的鼠。\n后来才知道，那是贼们之间的暗语。",
+    "options": [
+      {
+        "label": "把符号一个个记下来",
+        "check": {
+          "attr": "int",
+          "diff": 11
+        },
+        "ok": {
+          "text": "你花了一个下午，把每一个符号的位置和朝向，都画在了手心里。再看鼠街的墙，忽然就像一本翻开的书。",
+          "fx": [
+            "int_exp+3",
+            "count:intel+1",
+            "agi_exp+1"
+          ]
+        },
+        "fail": {
+          "text": "符号太多，你记了一半就乱了。",
+          "fx": [
+            "int_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "去问灰鼠这是什么意思",
+        "text": "灰鼠看了你一眼，笑了：“能看出来的人，总有一天，会用得上。”",
+        "fx": [
+          "rel:rat+1",
+          "int_exp+2"
+        ],
+        "cond": "flag:met_rat"
+      },
+      {
+        "label": "不管它们",
+        "text": "",
+        "fx": []
+      }
+    ],
+    "pool": "opportunity",
+    "weight": 7,
+    "cond": "age<=19",
+    "scene": "alley"
+  },
+  {
+    "id": "t_g_feud",
+    "kind": "random",
+    "title": "公会里的两派",
+    "text": "公会里，最近分成了两派：一派要“稳稳地发财”，一派要“干一票大的”。\n两边都来拉你。茶馆里，每个人的目光，都比往常多停留了一秒。",
+    "options": [
+      {
+        "label": "站在“稳”的一边",
+        "text": "你被分到了守仓库、管账本的那一队。日子无聊了些，却也安全。",
+        "fx": [
+          "rep:shadow+2",
+          "gold+20",
+          "count:heat-3"
+        ]
+      },
+      {
+        "label": "站在“干大的”一边",
+        "text": "你们商量了三个晚上，计划漂亮得让人心跳。可惜，有人先泄了密。",
+        "fx": [
+          "rep:shadow+3",
+          "count:heat+8",
+          "agi_exp+2"
+        ]
+      },
+      {
+        "label": "哪边都不靠",
+        "check": {
+          "attr": "cha",
+          "diff": 13
+        },
+        "ok": {
+          "text": "你笑着给每一方，都敬了一杯，又说了一堆模棱两可的好话。两边都把你当成了自己人。",
+          "fx": [
+            "rep:shadow+4",
+            "cha_exp+4"
+          ]
+        },
+        "fail": {
+          "text": "两边都觉得你在骑墙。接下来的几个月，你在公会里，没有一个人肯和你多说话。",
+          "fx": [
+            "rep:shadow-3",
+            "cha_exp+1"
+          ]
+        }
+      }
+    ],
+    "pool": "calamity",
+    "weight": 8,
+    "cond": "flag:guild_member&&age>=20",
+    "scene": "tavern"
+  },
+  {
+    "id": "t_g_assassin",
+    "kind": "random",
+    "title": "不该接的活",
+    "text": "一个蒙着脸的人，在黑市的暗摊前拦住你，塞来一个钱袋：“只要一个晚上。对象，是个商会的会计。”\n钱袋很沉。里面，大概够你付半年的房租。",
+    "options": [
+      {
+        "label": "拒绝，把钱袋推回去",
+        "text": "那人笑了一下：“清高。”但他转身走的时候，脚步，略微顿了一顿。",
+        "fx": [
+          "wil_exp+3",
+          "hometown+2",
+          "rep:shadow+1"
+        ]
+      },
+      {
+        "label": "假装答应，转身通知那个会计",
+        "check": {
+          "attr": "cha",
+          "diff": 13
+        },
+        "ok": {
+          "text": "会计吓得脸都白了，把半个月的积蓄，都塞进了你的手里。第二天，他全家都不见了。你看着那一袋钱，什么感觉都没有。",
+          "fx": [
+            "gold+60",
+            "hometown+2",
+            "count:heat+4",
+            "cha_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "你找到会计家的时候，已经晚了。屋里，什么也没有。",
+          "fx": [
+            "hometown-3",
+            "wil_exp+2"
+          ]
+        }
+      },
+      {
+        "label": "收下钱，然后不管",
+        "text": "那人，第二天又来了一次。这一次，他没有笑。",
+        "fx": [
+          "gold+80",
+          "hometown-4",
+          "count:heat+6"
+        ],
+        "avoid": true
+      }
+    ],
+    "pool": "social",
+    "weight": 7,
+    "cond": "flag:guild_member&&age>=21",
+    "scene": "black_market"
+  },
+  {
+    "id": "t_g_casino",
+    "kind": "random",
+    "title": "暗赌场的邀请",
+    "text": "一张画着骰子的黑色卡片，被人塞进了你的口袋。背面只有一行字：“今晚，三号巷，有一桌不限注的局。”",
+    "options": [
+      {
+        "label": "带着 100 金币，去碰碰运气",
+        "check": {
+          "attr": "luk",
+          "diff": 13
+        },
+        "ok": {
+          "text": "骰子在碗里转了很久。你赢了。赢得很大，大到桌对面的人，开始用不一样的眼神看你。",
+          "fx": [
+            "gold+190",
+            "luk_exp+4",
+            "count:heat+5",
+            "rep:shadow+1"
+          ]
+        },
+        "fail": {
+          "text": "你输光了带去的一百，还被人送出了门。",
+          "fx": [
+            "gold-100",
+            "luk_exp+1"
+          ]
+        },
+        "cond": "gold>=100",
+        "reason": "金币不足"
+      },
+      {
+        "label": "不赌，只是在门口，看看谁进谁出",
+        "check": {
+          "attr": "int",
+          "diff": 13
+        },
+        "ok": {
+          "text": "你在街对面蹲了一晚上，认出了好几张脸：有衙门的书吏，有商会的账房，还有一位，你绝对没想到。",
+          "fx": [
+            "count:intel+1",
+            "int_exp+3",
+            "exp+14"
+          ]
+        },
+        "fail": {
+          "text": "你什么也没看出来，只被冻得打了一晚上喷嚏。",
+          "fx": [
+            "int_exp+1",
+            "status+:fatigue:1"
+          ]
+        }
+      },
+      {
+        "label": "把卡片扔了",
+        "text": "",
+        "fx": []
+      }
+    ],
+    "pool": "opportunity",
+    "weight": 7,
+    "cond": "age>=20&&gold>=60",
+    "scene": "black_market"
+  },
+  {
+    "id": "t_g_smuggle",
+    "kind": "random",
+    "title": "码头的货",
+    "text": "码头上，有人在悄悄地卸一批没有标记的货箱。领头的人看见你，招了招手：“新手？帮我把这几个箱子，运到三号仓库，一个钟头，二十个金币。”",
+    "options": [
+      {
+        "label": "帮他搬",
+        "check": {
+          "attr": "str",
+          "diff": 10
+        },
+        "ok": {
+          "text": "箱子很沉，里面叮当作响。你一个钟头搬完，拿了钱，什么也没问。",
+          "fx": [
+            "gold+25",
+            "str_exp+3",
+            "count:heat+4"
+          ]
+        },
+        "fail": {
+          "text": "第三趟，你的肩膀被压得脱了臼。",
+          "fx": [
+            "hp-8",
+            "gold+10"
+          ]
+        }
+      },
+      {
+        "label": "打听里面是什么",
+        "check": {
+          "attr": "cha",
+          "diff": 12
+        },
+        "ok": {
+          "text": "领头人压低声音：“魔晶的碎片。上面查得紧，别说出去。”你记住了这个消息。",
+          "fx": [
+            "count:intel+1",
+            "cha_exp+2",
+            "gold+10"
+          ]
+        },
+        "fail": {
+          "text": "他脸色一沉：“不该问的别问。”你被晾在了原地。",
+          "fx": [
+            "cha_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "没兴趣，走开",
+        "text": "",
+        "fx": []
+      }
+    ],
+    "pool": "opportunity",
+    "weight": 7,
+    "cond": "age>=19",
+    "scene": "warehouse"
+  },
+  {
+    "id": "t_g_informer",
+    "kind": "random",
+    "title": "线人的消息",
+    "text": "一个断了半只耳朵的线人，在暗巷里拦住你，递给你一张折得很小的纸：“今晚，巡逻队会换班。换班的间隙，有半个钟头，三号街没有人。”",
+    "options": [
+      {
+        "label": "给他 20 金币，买下这个消息",
+        "text": "他数了数钱，笑着消失在了黑暗里。后来你才发现，这条消息，的确是真的。",
+        "fx": [
+          "gold-20",
+          "count:intel+1",
+          "count:heat-3"
+        ],
+        "cond": "gold>=20",
+        "reason": "金币不足"
+      },
+      {
+        "label": "不信他，问他的来路",
+        "check": {
+          "attr": "cha",
+          "diff": 13
+        },
+        "ok": {
+          "text": "三言两语，你就看出这个人在撒谎，也顺带从他的话里，听出了另一条有用的。",
+          "fx": [
+            "count:intel+1",
+            "cha_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "他一眼看穿了你的试探，笑了笑，转身走了。",
+          "fx": [
+            "cha_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "不理会",
+        "text": "",
+        "fx": []
+      }
+    ],
+    "pool": "social",
+    "weight": 7,
+    "cond": "age>=19&&count.intel<6",
+    "scene": "alley"
+  },
+  {
+    "id": "t_g_cursed",
+    "kind": "random",
+    "title": "带血的怀表",
+    "text": "你在一次“小活儿”里，顺走了一块金怀表。回到阁楼打开一看，表盖内侧，刻着一行小字：“赠吾儿，愿你一生平安。”\n怀表的背面，有一点已经发黑的血迹。",
+    "options": [
+      {
+        "label": "想办法物归原主",
+        "check": {
+          "attr": "int",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你顺着刻字，找到了那位失主的母亲。老妇人抱着怀表，坐在门槛上哭了很久。她没有问你是谁，只是给你泡了一杯茶。",
+          "fx": [
+            "hometown+4",
+            "wil_exp+3",
+            "count:heat+4",
+            "rep:shadow-1"
+          ]
+        },
+        "fail": {
+          "text": "你找了很久，没有找到失主。怀表，被你放在了阁楼最深的抽屉里。",
+          "fx": [
+            "wil_exp+1",
+            "hometown+0"
+          ]
+        }
+      },
+      {
+        "label": "拿去黑市卖了",
+        "text": "老鬼瞥了一眼，价钱压得很低。你拿着钱，却觉得，手心有点烫。",
+        "fx": [
+          "gold+45",
+          "count:heat+2",
+          "hometown-2"
+        ]
+      },
+      {
+        "label": "扔进河里",
+        "text": "怀表沉下去的时候，水面，连一点波纹都没有。",
+        "fx": [
+          "wil_exp+2"
+        ]
+      }
+    ],
+    "pool": "calamity",
+    "weight": 7,
+    "cond": "age>=18",
+    "scene": "alley"
+  },
+  {
+    "id": "t_g_fire",
+    "kind": "random",
+    "title": "下城起火",
+    "text": "半夜，鼠街最东边，忽然烧了起来。木头的房子一座接一座，火光把半个下城，照得通红。\n到处都是喊声。有孩子的哭声，从一座塌了一半的屋子里，传了出来。",
+    "options": [
+      {
+        "label": "冲进去救人",
+        "check": {
+          "attr": "str",
+          "diff": 11
+        },
+        "ok": {
+          "text": "你顶着浓烟，从塌了一半的屋梁下，拖出了一个小女孩。她的母亲跪在地上，抱着她哭，一句话也说不出来。",
+          "fx": [
+            "hometown+8",
+            "rep:shadow+2",
+            "str_exp+4",
+            "hp-6",
+            "exp+30"
+          ]
+        },
+        "fail": {
+          "text": "火势比你想的更猛。你只救出了一个，自己被烧伤了手臂。",
+          "fx": [
+            "hp-12",
+            "hometown+4",
+            "status+:injured:2"
+          ]
+        }
+      },
+      {
+        "label": "组织街坊传水",
+        "text": "你扯着嗓子，指挥人们排成一条长队，一桶一桶地把水传过去。火，在天亮前，被扑灭了。",
+        "fx": [
+          "hometown+5",
+          "cha_exp+3",
+          "rep:shadow+1"
+        ]
+      },
+      {
+        "label": "趁乱溜进被撤离的屋子",
+        "text": "",
+        "fx": [
+          "gold+60",
+          "hometown-6",
+          "count:heat+3"
+        ],
+        "avoid": true
+      }
+    ],
+    "pool": "calamity",
+    "weight": 6,
+    "cond": "age>=17",
+    "scene": "alley"
+  },
+  {
+    "id": "t_s_snow",
+    "kind": "random",
+    "title": "封街的大雪",
+    "text": "冬天最大的一场雪，把鼠街的每一条巷子，都封了起来。积雪厚得没过膝盖，连屋檐上，都垂着一尺长的冰凌。",
+    "options": [
+      {
+        "label": "帮邻居清理门口的积雪",
+        "text": "一上午，你把半条街的门口，都扫出了一条路。有人偷偷塞给你一块热饼。",
+        "fx": [
+          "hometown+3",
+          "str_exp+2",
+          "hp+0"
+        ]
+      },
+      {
+        "label": "趁雪天，没人巡逻，出去“工作”",
+        "check": {
+          "attr": "agi",
+          "diff": 13
+        },
+        "ok": {
+          "text": "脚印会暴露一切，但风雪，也盖住了一切。你走了一整夜，天亮前，把所有脚印，都踩进了新雪里。",
+          "fx": [
+            "gold+70",
+            "count:heat+6",
+            "agi_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "你在一座屋顶上滑了一跤，雪埋住了半个身子，被冻得几乎失去知觉。",
+          "fx": [
+            "hp-10",
+            "status+:fatigue:2"
+          ]
+        }
+      },
+      {
+        "label": "躲在阁楼里，烤火",
+        "text": "你和几个邻居，挤在一个火盆旁，聊了整整一个冬夜。",
+        "fx": [
+          "hometown+2",
+          "wil_exp+1",
+          "heal:0.3"
+        ]
+      }
+    ],
+    "pool": "calamity",
+    "weight": 9,
+    "cond": "season==winter",
+    "scene": "alley_snow"
+  },
+  {
+    "id": "t_s_flood",
+    "kind": "random",
+    "title": "春汛",
+    "text": "春天的水，漫过了下水道的井盖，鼠街的低洼处，一夜间变成了泽国。有人把床板拆下来，当船使。",
+    "options": [
+      {
+        "label": "帮邻居转移家当",
+        "text": "你和几个年轻人，趟着齐腰深的水，一趟一趟地背人搬东西。",
+        "fx": [
+          "hometown+4",
+          "str_exp+3",
+          "hp-3"
+        ]
+      },
+      {
+        "label": "去水里，摸那些漂出来的东西",
+        "check": {
+          "attr": "luk",
+          "diff": 11
+        },
+        "ok": {
+          "text": "你在齐腰深的水里，摸到了一只被泡得发胀的木匣，里面，竟是一小袋银币。",
+          "fx": [
+            "gold+55",
+            "luk_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "你什么也没摸到，只被一块漂浮的木板，撞了个正着。",
+          "fx": [
+            "hp-5"
+          ]
+        }
+      },
+      {
+        "label": "回阁楼，等水退",
+        "text": "",
+        "fx": []
+      }
+    ],
+    "pool": "calamity",
+    "weight": 8,
+    "cond": "season==spring",
+    "scene": "sewer"
+  },
+  {
+    "id": "t_s_heat",
+    "kind": "random",
+    "title": "夏夜的闷热",
+    "text": "夏天的夜，闷得让人睡不着。整条鼠街的人，都搬着凳子，坐到了巷子里。\n有人弹起了一把走了调的琴，有人唱起了一支很老的歌。",
+    "options": [
+      {
+        "label": "坐下来，听他们唱",
+        "text": "一首接一首，没人在意谁偷了谁，谁欠了谁。那一夜，鼠街，像一个真正的家。",
+        "fx": [
+          "hometown+3",
+          "wil_exp+2",
+          "cha_exp+1"
+        ]
+      },
+      {
+        "label": "趁人都在外面，进几间空屋",
+        "check": {
+          "attr": "agi",
+          "diff": 12
+        },
+        "ok": {
+          "text": "整条街的人都聚在巷子里，家家户户的门，都虚掩着。你很轻松地，拿到了几样小东西。",
+          "fx": [
+            "gold+50",
+            "count:heat+7",
+            "hometown-2"
+          ]
+        },
+        "fail": {
+          "text": "一个小孩，坐在窗台上，静静地看着你。你把东西放了回去。",
+          "fx": [
+            "hometown+1",
+            "wil_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "回去睡觉",
+        "text": "",
+        "fx": []
+      }
+    ],
+    "pool": "opportunity",
+    "weight": 8,
+    "cond": "season==summer",
+    "scene": "alley"
+  },
+  {
+    "id": "t_s_market",
+    "kind": "random",
+    "title": "秋天的集市",
+    "text": "秋天的集市，从城门口一直摆到了下城。香料、皮货、鱼干，各种味道混在一起。\n人多，口袋多，鼠街的手，也多了起来。",
+    "options": [
+      {
+        "label": "在人群里“采点秋”",
+        "check": {
+          "attr": "agi",
+          "diff": 11
+        },
+        "ok": {
+          "text": "你像一尾鱼，在人群里穿来穿去。一个上午，你的口袋，沉了一圈。",
+          "fx": [
+            "gold+60",
+            "agi_exp+3",
+            "count:heat+6"
+          ]
+        },
+        "fail": {
+          "text": "一个壮汉，一把抓住了你的手腕。你求了半天，才被放走。",
+          "fx": [
+            "hp-5",
+            "count:heat+8",
+            "gold-10"
+          ]
+        }
+      },
+      {
+        "label": "帮摊贩吆喝，赚点小钱",
+        "text": "你嗓子都喊哑了，赚到了半天的工钱，和几根烤得焦脆的鱼干。",
+        "fx": [
+          "gold+22",
+          "cha_exp+3",
+          "hometown+1"
+        ]
+      },
+      {
+        "label": "只是逛逛，听听传闻",
+        "text": "你在集市上走了一圈，带回了几条有用的消息。",
+        "fx": [
+          "count:intel+1",
+          "cha_exp+1"
+        ]
+      }
+    ],
+    "pool": "opportunity",
+    "weight": 8,
+    "cond": "season==autumn",
+    "scene": "street"
+  },
+  {
+    "id": "t_stranger",
+    "kind": "random",
+    "title": "问路的外乡人",
+    "text": "一个风尘仆仆的外乡人，在巷口拦住你：“请问，去王城的税务署，怎么走？”\n他的口音很重，手里，拎着一只鼓鼓囊囊的皮包。",
+    "options": [
+      {
+        "label": "老老实实指路",
+        "text": "他连声道谢，往你手里，塞了几枚铜币。",
+        "fx": [
+          "gold+8",
+          "hometown+1"
+        ]
+      },
+      {
+        "label": "故意指一条绕远的路，顺便跟上他",
+        "check": {
+          "attr": "agi",
+          "diff": 11
+        },
+        "ok": {
+          "text": "你一路尾随，趁着他在摊前问价，轻轻割开了皮包的一角。里面，是一叠账单，和一小袋金币。",
+          "fx": [
+            "gold+55",
+            "count:heat+6",
+            "agi_exp+2"
+          ]
+        },
+        "fail": {
+          "text": "他忽然停下，回过头，认真地看了你一眼：“小子，路，不是这么指的。”你尴尬地走开了。",
+          "fx": [
+            "count:heat+3"
+          ]
+        }
+      },
+      {
+        "label": "装作不懂，走开",
+        "text": "",
+        "fx": []
+      }
+    ],
+    "pool": "opportunity",
+    "weight": 8,
+    "cond": "age>=16",
+    "scene": "street"
+  },
+  {
+    "id": "t_refugees",
+    "kind": "random",
+    "title": "涌进下城的难民",
+    "text": "一队衣衫褴褛的人，从北门涌了进来，在鼠街的墙根下，搭起了窝棚。孩子们饿得没有哭声。\n本来就拥挤的下城，一下子，更挤了。",
+    "options": [
+      {
+        "label": "把身上的干粮，分给他们",
+        "text": "几个孩子，抱着干粮跑开了。他们的母亲，朝你鞠了一躬。",
+        "fx": [
+          "gold-8",
+          "hometown+4",
+          "wil_exp+1"
+        ],
+        "cond": "gold>=8"
+      },
+      {
+        "label": "组织几个邻居，一起烧锅粥",
+        "text": "一口大锅，架在巷子中央，热气腾腾。整整一个晚上，排队的人，没有断过。",
+        "fx": [
+          "gold-20",
+          "hometown+6",
+          "cha_exp+3",
+          "rep:shadow+1"
+        ],
+        "cond": "gold>=20"
+      },
+      {
+        "label": "趁乱，在人群里下手",
+        "text": "",
+        "fx": [
+          "gold+40",
+          "count:heat+6",
+          "hometown-4"
+        ],
+        "avoid": true
+      }
+    ],
+    "pool": "world",
+    "weight": 7,
+    "cond": "age>=17",
+    "scene": "alley"
   }
 ]

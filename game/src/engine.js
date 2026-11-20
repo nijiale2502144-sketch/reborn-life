@@ -23,7 +23,7 @@ export function makeGame(content, scriptId) {
   const HELP = merge(cfg.help, script.help);
   const TIPS = merge(cfg.tips, script.tips);
   const A = {}, E = {}, QM = {}, D = {};
-  const mine = x => !x.only || x.only.includes(scriptId);   // only:["剧本id"] 的内容只在该剧本出现
+  const mine = x => (!x.only || x.only.includes(scriptId)) && !(x.except && x.except.includes(scriptId));   // only:["剧本id"] 只在该剧本出现；except:["剧本id"] 在该剧本里不出现
   for (const a of [...content.common.actions, ...script.actions].filter(mine)) A[a.id] = a;
   for (const e of [...content.common.events, ...script.events].filter(mine)) E[e.id] = e;
   for (const q of script.quests) QM[q.id] = q;

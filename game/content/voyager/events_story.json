@@ -1,1 +1,188 @@
-[]
+[
+  {
+    "id": "v_19s",
+    "kind": "special",
+    "title": "第一次独自掌舵",
+    "text": "海德把一船货，交到你手里：“送去对岸，三天。我不跟你去。”\n他叼着烟斗，站在码头上，没有多说一个字。\n你握着舵，掌心全是汗。身后，码头越来越小，越来越小。",
+    "options": [
+      {
+        "label": "按海图，稳稳地走",
+        "check": {
+          "attr": "int",
+          "diff": 11
+        },
+        "ok": {
+          "text": "三天后，你把货，一包不少地，送到了对岸。收货人签字的时候，你的手还在发抖。\n回港的时候，海德在码头上，抽着烟斗，只说了三个字：“还行吧。”",
+          "fx": [
+            "flag+:first_solo",
+            "int_exp+4",
+            "count:voyages+1",
+            "gold+40",
+            "rel:haide+2",
+            "exp+30"
+          ]
+        },
+        "fail": {
+          "text": "第二天夜里，你走偏了半条航线。多绕了一天，货晚了。海德没骂你，只是让你把海图，重新抄了三遍。",
+          "fx": [
+            "int_exp+2",
+            "count:voyages+1",
+            "rel:haide+1",
+            "gold+10"
+          ]
+        }
+      },
+      {
+        "label": "抄近路，想早点回港",
+        "check": {
+          "attr": "agi",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你借着一股顺风，抢了半天，提前一天靠岸。海德看了看你，把烟斗拿下来，没说话，只是笑了。",
+          "fx": [
+            "flag+:first_solo",
+            "agi_exp+4",
+            "count:voyages+1",
+            "gold+55",
+            "rel:haide+1"
+          ]
+        },
+        "fail": {
+          "text": "近路上，有一片暗礁。你的船底擦了一下，半夜进水，靠着一整夜的舀水，才勉强撑到了港。",
+          "fx": [
+            "hp-8",
+            "agi_exp+1",
+            "count:voyages+1",
+            "gold-20"
+          ]
+        }
+      },
+      {
+        "label": "心里没底，请水手布拉姆跟你一起",
+        "text": "你们两个，一个掌舵，一个盯着风帆。三天，竟然很快就过去了。",
+        "fx": [
+          "flag+:first_solo",
+          "rel:bram+2",
+          "count:voyages+1",
+          "gold+30",
+          "cha_exp+2"
+        ],
+        "cond": "flag:met_bram",
+        "reason": "还没认识布拉姆"
+      }
+    ],
+    "when": {
+      "age": 19,
+      "season": "spring"
+    },
+    "priority": 50,
+    "portrait": "haide",
+    "scene": "sea"
+  },
+  {
+    "id": "v_24s",
+    "kind": "special",
+    "title": "红帆围港",
+    "text": "夏天的一个清晨，整个潮湾港，都被一片红色的帆，围住了。\n几十艘海盗船，静静地泊在港口外，没有一艘，放下过一只小艇。\n斯嘉丽站在最大的那艘船头，用一只铜喇叭，朝港口里，喊了一句话。",
+    "options": [
+      {
+        "label": "驾自己的船，出港去见她",
+        "text": "你的船，缓缓地穿过一排排红帆。斯嘉丽在船头，朝你举起一只酒杯：“我没有恶意。我只是来看看，你的港口，还能撑多久。”",
+        "fx": [
+          "rep:sea+3",
+          "cha_exp+3",
+          "exp+30",
+          "flag+:red_visit"
+        ],
+        "cond": "count.ship>=1",
+        "reason": "需要有一条船"
+      },
+      {
+        "label": "号召港口的人，一起布防",
+        "check": {
+          "attr": "cha",
+          "diff": 13
+        },
+        "ok": {
+          "text": "你站在码头最高的货堆上，把一席话喊了出来。渔民、水手、船匠，一个接一个，抄起了家伙。红帆在日落前，悄悄地退走了。",
+          "fx": [
+            "hometown+6",
+            "rep:harbor+4",
+            "cha_exp+4",
+            "exp+30"
+          ]
+        },
+        "fail": {
+          "text": "人心，没有聚拢起来。港口里一片混乱，有人开始往内陆跑。",
+          "fx": [
+            "hometown-4",
+            "cha_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "躲在家里，等风波过去",
+        "text": "你把门窗都关死了。直到傍晚，才听见外面的人说：“红帆走了。”",
+        "fx": [
+          "hometown-3",
+          "wil_exp+1"
+        ],
+        "avoid": true
+      }
+    ],
+    "when": {
+      "age": 24,
+      "season": "summer"
+    },
+    "priority": 45,
+    "portrait": "scarlett",
+    "scene": "harbor_dusk"
+  },
+  {
+    "id": "v_27s",
+    "kind": "special",
+    "title": "祭海节的前夜",
+    "text": "潮汐之门，只剩一年了。\n整座港口，都在为“祭海节”忙碌：彩旗，纸灯，和一排排将要被放进海里的小木船。\n每个人，都有一句想对你说的话。",
+    "options": [
+      {
+        "label": "去找海德的旧船，坐一夜",
+        "text": "旧船还在老泊位。你一个人，坐在断了半截的桅杆下，听着潮声，坐了一夜。",
+        "fx": [
+          "wil_exp+4",
+          "rel:haide+1",
+          "hometown+2"
+        ]
+      },
+      {
+        "label": "和布拉姆、薇尔，一起放一只纸船",
+        "text": "你们三个，各自在纸船上，写下了一句话。放进海里的时候，谁也没说自己写了什么。",
+        "fx": [
+          "rel:bram+2",
+          "cha_exp+3",
+          "hometown+3"
+        ],
+        "cond": "flag:met_bram&&flag:met_vel",
+        "reason": "需要认识布拉姆和薇尔"
+      },
+      {
+        "label": "在祭海节上，向全港的人，敬一杯酒",
+        "text": "你站在码头上，高高举起酒杯。人群里响起一片欢呼。那一刻，整个潮湾港，都是你的家。",
+        "fx": [
+          "rep:harbor+4",
+          "hometown+5",
+          "cha_exp+4"
+        ],
+        "cond": "rep.harbor>=15",
+        "reason": "港口声望 ≥ 15"
+      }
+    ],
+    "when": {
+      "age": 27,
+      "season": "summer"
+    },
+    "priority": 45,
+    "portrait": "bram",
+    "scene": "harbor_dusk"
+  }
+]
