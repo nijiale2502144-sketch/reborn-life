@@ -213,7 +213,8 @@ const KIND_CN = { true: '真结局', normal: '普通结局', fail: '失败结局
 const KIND_CLS = { true: 'good', normal: 'info', fail: 'bad', hidden: 'good' };
 function showMuseum() {
   screen = 'museum';
-  const scripts = Object.values(content.scripts);
+  // 标了 safety 的是保底结局（正常游玩到不了），不在博物馆展示，也不计入收集进度
+  const scripts = Object.values(content.scripts).map(sc => Object.assign({}, sc, { endings: sc.endings.filter(e => !e.safety) }));
   const by = meta.endingsBy || {};
   const total = scripts.reduce((a, sc) => a + sc.endings.length, 0);
   const got = scripts.reduce((a, sc) => a + sc.endings.filter(e => by[`${sc.id}:${e.id}`]).length, 0);
