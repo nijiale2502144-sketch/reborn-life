@@ -1,0 +1,397 @@
+[
+  {
+    "id": "v_dv_dock_ship",
+    "kind": "derived",
+    "title": "靠港的大船",
+    "text": "一艘三桅的大船正在卸货，甲板上站着穿着体面的水手，船长在船头抽着雪茄。\n你扛着麻袋，忍不住多看了两眼。",
+    "options": [
+      {
+        "label": "把麻袋放下，多看一会儿",
+        "text": "船长看见你，笑了笑，朝你点了点头。你的心跳忽然快了一拍。",
+        "fx": [
+          "int_exp+1",
+          "wil_exp+2"
+        ]
+      },
+      {
+        "label": "继续干活，咬着牙想：总有一天",
+        "text": "你的肩膀被麻袋压出了一道红印，但你的背，挺得很直。",
+        "fx": [
+          "str_exp+2"
+        ]
+      }
+    ],
+    "parent": "work_docks",
+    "weight": 8
+  },
+  {
+    "id": "v_dv_dock_knot",
+    "kind": "derived",
+    "title": "打结的手艺",
+    "text": "一个老水手教你如何打一个“永不松的结”。\n“手要慢，”他说，“心要稳。结不是绳子打的，是人打的。”",
+    "options": [
+      {
+        "label": "认真学三遍",
+        "text": "你的手指被绳子磨得发红，但你终于打出了那个结。",
+        "fx": [
+          "agi_exp+3",
+          "int_exp+1",
+          "count:sail+1"
+        ]
+      }
+    ],
+    "parent": "work_docks",
+    "weight": 8
+  },
+  {
+    "id": "v_dv_chart_ghost",
+    "kind": "derived",
+    "title": "图上的批注",
+    "text": "你在一张旧海图的边缘，发现了一行用红笔写的小字：“别信北边的灯塔。”\n你不知道是谁写的，也不知道，它为什么还留在这里。",
+    "options": [
+      {
+        "label": "把批注抄下来，留作记号",
+        "check": {
+          "attr": "int",
+          "diff": 11
+        },
+        "ok": {
+          "text": "后来你在北边的海上，真的碰见了一座“不该亮”的灯塔，幸亏你记着这一行字。",
+          "fx": [
+            "int_exp+3",
+            "count:charts+1"
+          ]
+        },
+        "fail": {
+          "text": "字迹太潦草，你只抄了一半。",
+          "fx": [
+            "int_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "不当回事，翻到下一页",
+        "text": "",
+        "fx": [
+          "int_exp+1"
+        ]
+      }
+    ],
+    "parent": "study_charts",
+    "weight": 8
+  },
+  {
+    "id": "v_dv_chart_vel",
+    "kind": "derived",
+    "title": "薇尔的修订",
+    "text": "一支红笔，在你的海图上划了几道。你抬头，是薇尔：“这里，水深不对。这里，暗流的方向反了。”\n她说话很快，很准，一点也不客气。",
+    "options": [
+      {
+        "label": "谢谢她，把修订抄下来",
+        "text": "薇尔难得地笑了笑：“你抄得比我想象的快。”",
+        "fx": [
+          "int_exp+4",
+          "cha_exp+1",
+          "count:charts+1"
+        ]
+      },
+      {
+        "label": "不服，与她争论",
+        "check": {
+          "attr": "int",
+          "diff": 13
+        },
+        "ok": {
+          "text": "争了半个钟头，你指出了她一处遗漏。薇尔瞪着你，然后，缓缓地，露出了一个服气的表情。",
+          "fx": [
+            "int_exp+5",
+            "cha_exp+2"
+          ]
+        },
+        "fail": {
+          "text": "你被她驳得哑口无言。",
+          "fx": [
+            "int_exp+2"
+          ]
+        }
+      }
+    ],
+    "parent": "study_charts",
+    "weight": 7,
+    "cond": "flag:met_vel"
+  },
+  {
+    "id": "v_dv_haide_sail",
+    "kind": "derived",
+    "title": "海德的舵",
+    "text": "海德把舵交给了你，自己叼着烟斗，靠在了桅杆上。\n“你来。”",
+    "options": [
+      {
+        "label": "稳稳握住",
+        "text": "你的手心全是汗。浪来了，你下意识地顺着它转了半圈。海德点点头：“不错，浪是用来顺的。”",
+        "fx": [
+          "agi_exp+3",
+          "wil_exp+2",
+          "exp+10"
+        ]
+      }
+    ],
+    "parent": "learn_haide",
+    "weight": 9
+  },
+  {
+    "id": "v_dv_haide_weather",
+    "kind": "derived",
+    "title": "云的语言",
+    "text": "海德指着天边一缕细长的云：“那叫‘鱼骨’。明天，要变天。”\n第二天，果然下起了雨。",
+    "options": [
+      {
+        "label": "记住云的样子",
+        "text": "你一连几天，每天早晚，各看一遍天。",
+        "fx": [
+          "int_exp+2",
+          "wil_exp+2",
+          "count:sail+1"
+        ]
+      }
+    ],
+    "parent": "learn_haide",
+    "weight": 8
+  },
+  {
+    "id": "v_dv_fish_net",
+    "kind": "derived",
+    "title": "满网的银鱼",
+    "text": "收网的时候，网拖得几乎拉不动。水手们一起使劲，最后拽上来一网白花花的银鱼，把整条甲板都铺满了。",
+    "options": [
+      {
+        "label": "把多余的鱼分给港口的邻居",
+        "text": "邻居们提着篮子来，笑得合不拢嘴。",
+        "fx": [
+          "hometown+3",
+          "rep:harbor+2"
+        ]
+      },
+      {
+        "label": "全部拿去卖了",
+        "text": "你换来了一大笔钱，也换来了一点说不清的愧疚。",
+        "fx": [
+          "gold+30"
+        ]
+      }
+    ],
+    "parent": "fish_trip",
+    "weight": 8
+  },
+  {
+    "id": "v_dv_fish_dolphin",
+    "kind": "derived",
+    "title": "跟着船的海豚",
+    "text": "一群海豚，围着你的船游了整整一个下午，一会儿冒头，一会儿潜下去，像是在替你领路。",
+    "options": [
+      {
+        "label": "把一条鱼抛给它们",
+        "text": "领头的海豚叼着鱼，高高地跃起，又落下，溅了你一身水。",
+        "fx": [
+          "cha_exp+2",
+          "luk_exp+2",
+          "status+:blessed:2"
+        ]
+      }
+    ],
+    "parent": "fish_trip",
+    "weight": 7
+  },
+  {
+    "id": "v_dv_hire_story",
+    "kind": "derived",
+    "title": "新水手的故事",
+    "text": "新入伙的水手，夜里坐在船头，轻轻地哼着一首歌。\n你问他这是什么歌，他说：“我母亲教的。她说，听着这歌，海就不会吃我。”",
+    "options": [
+      {
+        "label": "请他再哼一遍",
+        "text": "整艘船都安静了下来，水手们一个一个地凑过来，听完了整首歌。",
+        "fx": [
+          "cha_exp+2",
+          "hometown+1"
+        ]
+      }
+    ],
+    "parent": "hire_sailor",
+    "weight": 7
+  },
+  {
+    "id": "v_dv_hire_runaway",
+    "kind": "derived",
+    "title": "逃出来的少年",
+    "text": "一个满脸风霜的少年，在你面前跪了下来：“船长，我逃出来的……我不想再回去了。”",
+    "options": [
+      {
+        "label": "收留他",
+        "check": {
+          "attr": "cha",
+          "diff": 11
+        },
+        "ok": {
+          "text": "少年成了你船上最勤快的水手，对你，忠心得像一条狗。",
+          "fx": [
+            "count:crew+1",
+            "rep:harbor+1"
+          ]
+        },
+        "fail": {
+          "text": "他的原主人找上了门，你不得不赔了一笔钱。",
+          "fx": [
+            "gold-60",
+            "rep:harbor-1"
+          ]
+        }
+      },
+      {
+        "label": "给他一些钱，让他自己找路",
+        "text": "他接过钱，朝你鞠了个深躬，转身走了。",
+        "fx": [
+          "gold-20",
+          "hometown+1"
+        ]
+      }
+    ],
+    "parent": "hire_sailor",
+    "weight": 6
+  },
+  {
+    "id": "v_dv_repair_carpenter",
+    "kind": "derived",
+    "title": "老船匠的叮嘱",
+    "text": "老船匠一边敲着钉子，一边嘟囔：“你的船，龙骨有点歪。再这么出海，哪天风大了，就散架了。”",
+    "options": [
+      {
+        "label": "请他一并加固（再花 40 金币）",
+        "text": "老船匠满意地点了点头：“这才像话。”",
+        "fx": [
+          "gold-40",
+          "rep:harbor+2",
+          "flag+:keel_fixed"
+        ],
+        "cond": "gold>=40"
+      },
+      {
+        "label": "谢谢他的提醒，下次再说",
+        "text": "",
+        "fx": [
+          "int_exp+1"
+        ]
+      }
+    ],
+    "parent": "repair_ship",
+    "weight": 7
+  },
+  {
+    "id": "v_dv_trade_port",
+    "kind": "derived",
+    "title": "陌生港口的货",
+    "text": "你把货运到对岸。收货人是个老太太，一边验货，一边念叨：“年轻人，别走得太急。慢慢来，海不会丢。”",
+    "options": [
+      {
+        "label": "听她说完",
+        "text": "老太太往你手里塞了一小罐果酱：“路上吃。”",
+        "fx": [
+          "hometown+1",
+          "cha_exp+2"
+        ]
+      }
+    ],
+    "parent": "trade_coast",
+    "weight": 7
+  },
+  {
+    "id": "v_dv_trade_rival",
+    "kind": "derived",
+    "title": "同行的挑衅",
+    "text": "在对岸的码头，另一家商船的船长，斜着眼看你：“小子，这趟的货，是我先看上的。”",
+    "options": [
+      {
+        "label": "不卑不亢，跟他谈条件",
+        "check": {
+          "attr": "cha",
+          "diff": 13
+        },
+        "ok": {
+          "text": "三言两语，你让他心服口服地让出了一半。",
+          "fx": [
+            "gold+40",
+            "cha_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "他寸步不让。你最后只好低价出了货。",
+          "fx": [
+            "gold-20",
+            "cha_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "什么也不说，把货转运去别的港口",
+        "text": "这一趟，多花了三天，也少赚了一些。但你省下了麻烦。",
+        "fx": [
+          "gold-10"
+        ]
+      }
+    ],
+    "parent": "trade_far",
+    "weight": 7,
+    "cond": "count.ship>=2"
+  },
+  {
+    "id": "v_dv_survey_aurora",
+    "kind": "derived",
+    "title": "夜里的光",
+    "text": "观测的第二个夜里，天边亮起了一抹淡淡的绿光，像是有谁在天空里，轻轻抖开了一块丝绸。\n薇尔放下笔，轻声说：“……这是我第一次，见到极光。”",
+    "options": [
+      {
+        "label": "陪她看完",
+        "text": "你们谁也没有说话。光在海面上流淌了很久，才一点点暗下去。",
+        "fx": [
+          "wil_exp+2",
+          "int_exp+2",
+          "rel:bram+0"
+        ]
+      }
+    ],
+    "parent": "star_survey",
+    "weight": 8,
+    "cond": "flag:met_vel"
+  },
+  {
+    "id": "v_dv_cargo_warn",
+    "kind": "derived",
+    "title": "收货人的暗示",
+    "text": "收货人悄悄凑近你：“下次，你带这批货时，最好……别走东边那条路。”\n他没有解释，只是意味深长地看了你一眼。",
+    "options": [
+      {
+        "label": "记在心里",
+        "check": {
+          "attr": "int",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你后来查了一下，才发现，东边那条路上，最近果然出了几艘船被劫的事。",
+          "fx": [
+            "count:charts+1",
+            "int_exp+3",
+            "rep:guild+1"
+          ]
+        },
+        "fail": {
+          "text": "你没太当回事。",
+          "fx": [
+            "int_exp+1"
+          ]
+        }
+      }
+    ],
+    "parent": "deliver_cargo",
+    "weight": 7
+  }
+]

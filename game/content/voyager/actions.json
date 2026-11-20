@@ -1,0 +1,598 @@
+[
+  {
+    "id": "work_docks",
+    "name": "码头做工",
+    "cost": 2,
+    "group": "daily",
+    "hint": "金币·体魄",
+    "desc": "扛包、系缆、刷船底，港口永远缺人手。",
+    "fx": [
+      "gold+24",
+      "str_exp+3",
+      "hometown+1",
+      "exp+6"
+    ],
+    "texts": [
+      "你和一群光着膀子的汉子，把一麻袋一麻袋的货搬上跳板。",
+      "工头一边结账，一边嘟囔：“小子，你的手比去年更像样了。”"
+    ]
+  },
+  {
+    "id": "study_charts",
+    "name": "研读海图",
+    "cost": 2,
+    "group": "daily",
+    "tag": "study",
+    "hint": "智力·航海",
+    "desc": "港口的图书室里有一整面墙的旧海图。",
+    "fx": [
+      "int_exp+5",
+      "wil_exp+1",
+      "count:charts+1",
+      "exp+8"
+    ],
+    "texts": [
+      "你把一张发黄的海图摊在桌上，用手指一寸一寸地顺着航线摸过去。",
+      "图上有人用红笔批注：“此处有暗流，勿近。”字迹潦草，却很用力。"
+    ]
+  },
+  {
+    "id": "learn_haide",
+    "name": "向老船长学艺",
+    "cost": 2,
+    "group": "daily",
+    "cond": "flag:met_haide&&!flag:haide_gone",
+    "hint": "意志·老船长好感",
+    "desc": "海德的课堂在码头上，也在每一次风浪里。",
+    "fx": [
+      "wil_exp+3",
+      "agi_exp+2",
+      "rel:haide+1",
+      "count:sail+1",
+      "exp+10"
+    ],
+    "texts": [
+      "海德把舵交给你：“握稳，别怕浪。浪怕的是不怕它的人。”",
+      "他一边抽烟斗，一边指着天边的云：“看见没？那是明天的雨。”"
+    ]
+  },
+  {
+    "id": "fish_trip",
+    "name": "出海捕鱼",
+    "cost": 2,
+    "group": "daily",
+    "tag": "adventure",
+    "cond": [
+      "flag:met_haide",
+      "count.ship>=1"
+    ],
+    "hint": "金币·敏捷",
+    "desc": "跟着渔船出海，换一点新鲜的收成。冬天风浪大。",
+    "check": {
+      "attr": "agi",
+      "diff": 10,
+      "seasonDiff": {
+        "winter": 2
+      }
+    },
+    "ok": {
+      "text": "网收上来的时候，银色的鱼群在甲板上扑腾，海鸥围着船叫了一路。",
+      "fx": [
+        "gold+34",
+        "agi_exp+3",
+        "count:voyages+1",
+        "exp+8"
+      ]
+    },
+    "fail": {
+      "text": "起网的时候，一个浪头打了过来，你摔在甲板上，鱼网也散了。",
+      "fx": [
+        "hp-5",
+        "agi_exp+1"
+      ]
+    }
+  },
+  {
+    "id": "hire_sailor",
+    "name": "招募水手",
+    "cost": 2,
+    "group": "social",
+    "cond": "count.ship>=1&&count.crew<6&&gold>=50",
+    "hint": "水手·魅力",
+    "desc": "在酒馆、码头边，找一个愿意跟你出海的人。",
+    "check": {
+      "attr": "cha",
+      "diff": 11
+    },
+    "ok": {
+      "text": "你请他喝了一杯麦酒，他把手里的缆绳往肩上一甩：“算我一个。”",
+      "fx": [
+        "count:crew+1",
+        "cha_exp+3",
+        "gold-50",
+        "rep:harbor+1"
+      ]
+    },
+    "fail": {
+      "text": "对方上下打量你一番，笑着摇了摇头：“等你有条像样的船再来吧。”",
+      "fx": [
+        "cha_exp+1",
+        "gold-10"
+      ]
+    }
+  },
+  {
+    "id": "repair_ship",
+    "name": "修缮船只",
+    "cost": 1,
+    "group": "daily",
+    "cond": "flag:ship_damaged&&gold>=40",
+    "hint": "金币",
+    "desc": "风暴留下的伤，不修好，船不敢再出海。",
+    "fx": [
+      "gold-40",
+      "flag-:ship_damaged",
+      "str_exp+1"
+    ],
+    "texts": [
+      "你和船匠一起，把破开的船板一块块钉回去，海水的盐味混着桐油味。"
+    ]
+  },
+  {
+    "id": "trade_coast",
+    "name": "近海跑商",
+    "cost": 2,
+    "group": "daily",
+    "cond": "count.ship>=1&&!flag:ship_damaged",
+    "hint": "金币·智力·航次",
+    "desc": "沿着海岸线，把货从一个港口运到另一个。冬天风浪大。",
+    "check": {
+      "attr": "int",
+      "diff": 11,
+      "seasonDiff": {
+        "winter": 2
+      }
+    },
+    "ok": {
+      "text": "货顺顺利利地卸在了对岸的码头。收货人数了数，爽快地结了账。",
+      "fx": [
+        "gold+62",
+        "int_exp+2",
+        "cha_exp+1",
+        "count:voyages+1",
+        "exp+8"
+      ]
+    },
+    "fail": {
+      "text": "途中的风浪把一部分货打湿了。收货人皱着眉，压了价。",
+      "fx": [
+        "gold-10",
+        "hp-4",
+        "int_exp+1",
+        "count:voyages+1",
+        {
+          "if": "season==winter",
+          "then": [
+            "flag+:ship_damaged"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "trade_far",
+    "name": "远洋跑商",
+    "cost": 3,
+    "group": "daily",
+    "cond": "count.ship>=2&&!flag:ship_damaged",
+    "hint": "金币·智力·航次",
+    "desc": "穿过两个海域，运一船南方的香料和北方的皮货。冬天风浪更大。",
+    "check": {
+      "attr": "int",
+      "diff": 13,
+      "seasonDiff": {
+        "winter": 3
+      }
+    },
+    "ok": {
+      "text": "十七天的航程，三场风，一次差点触礁。货安全上岸的时候，所有水手都在码头上喊了起来。",
+      "fx": [
+        "gold+165",
+        "int_exp+3",
+        "wil_exp+2",
+        "count:voyages+1",
+        "exp+16"
+      ]
+    },
+    "fail": {
+      "text": "一场风暴把你们逼进了一个陌生的港口，修船、补给，什么都花了钱。",
+      "fx": [
+        "gold-30",
+        "hp-8",
+        "wil_exp+2",
+        "count:voyages+1",
+        "flag+:ship_damaged"
+      ]
+    }
+  },
+  {
+    "id": "trade_luxury",
+    "name": "奢侈品航线",
+    "cost": 4,
+    "group": "daily",
+    "cond": "count.ship>=3&&!flag:ship_damaged&&rep.guild>=10",
+    "hint": "金币·魅力·航次",
+    "desc": "丝绸、香料、魔晶，每一箱都值一座房子。需要商会的信任。",
+    "check": {
+      "attr": "cha",
+      "diff": 14,
+      "seasonDiff": {
+        "winter": 3
+      }
+    },
+    "ok": {
+      "text": "你在最贵的港口，用最体面的笑，换走了最贵的货。对方客气地送你上了船。",
+      "fx": [
+        "gold+330",
+        "cha_exp+4",
+        "int_exp+2",
+        "count:voyages+1",
+        "exp+24",
+        "rep:guild+2"
+      ]
+    },
+    "fail": {
+      "text": "买家挑剔地翻了一遍货，把价压到了成本线。",
+      "fx": [
+        "gold-20",
+        "cha_exp+1",
+        "count:voyages+1",
+        "hp-6"
+      ]
+    }
+  },
+  {
+    "id": "buy_ship_1",
+    "name": "购置舢板（250 金币）",
+    "cost": 2,
+    "group": "daily",
+    "cond": "count.ship==0&&gold>=250&&age>=17",
+    "hint": "船",
+    "desc": "一条能出海的小舢板，只够沿着海岸走。",
+    "fx": [
+      "gold-250",
+      "count:ship+1",
+      "item:ship_shield",
+      "log:你把一条旧舢板刷了漆，在船头写上了自己的名字。"
+    ]
+  },
+  {
+    "id": "buy_ship_2",
+    "name": "购置单桅帆船（800 金币）",
+    "cost": 2,
+    "group": "daily",
+    "cond": "count.ship==1&&gold>=800&&flag:captain_license",
+    "hint": "船",
+    "desc": "一条真正的帆船，能跑远洋，也能装载更多的人。",
+    "fx": [
+      "gold-800",
+      "count:ship+1",
+      "log:单桅帆船的帆升起来的那一刻，你觉得整个港口都在看你。"
+    ]
+  },
+  {
+    "id": "buy_ship_3",
+    "name": "购置三桅商船（2000 金币）",
+    "cost": 2,
+    "group": "daily",
+    "cond": "count.ship==2&&gold>=2000&&flag:captain_license&&rep.guild>=20",
+    "hint": "船",
+    "desc": "三桅的大船，吃水深，货舱大。需要商会声望 ≥ 20。",
+    "fx": [
+      "gold-2000",
+      "count:ship+1",
+      "log:三桅的大船，驶入港口的时候，连海鸥都安静了。"
+    ]
+  },
+  {
+    "id": "buy_ship_4",
+    "name": "改造魔导战帆船（5000 金币）",
+    "cost": 3,
+    "group": "daily",
+    "cond": "count.ship==3&&gold>=5000&&rep.guild>=40&&flag:vel_navigator",
+    "hint": "船",
+    "desc": "在船底刻上魔法符文，装上能破浪的魔导炮。需要商会声望 ≥ 40，以及一位领航员。",
+    "fx": [
+      "gold-5000",
+      "count:ship+1",
+      "log:当符文在船底一圈圈亮起来的时候，水手们都不敢出声。"
+    ]
+  },
+  {
+    "id": "go_market",
+    "name": "去港口集市",
+    "cost": 1,
+    "group": "daily",
+    "cond": "age>=17",
+    "hint": "装备·药品·海图",
+    "desc": "码头旁的集市，什么都有。",
+    "fx": [
+      "goto:ev_sea_market"
+    ]
+  },
+  {
+    "id": "go_tavern",
+    "name": "去「海鸥」酒馆",
+    "cost": 1,
+    "group": "social",
+    "cond": "age>=17",
+    "hint": "传闻·赌局·歌声",
+    "desc": "港口最热闹的地方。",
+    "fx": [
+      "goto:ev_sea_tavern"
+    ]
+  },
+  {
+    "id": "dg_reef",
+    "name": "驶入雾礁海域",
+    "cost": 3,
+    "group": "adventure",
+    "tag": "adventure",
+    "cond": "count.ship>=1",
+    "hint": "战斗·宝箱",
+    "desc": "推荐等级 3–6，共 4 层。雾里藏着海盗小艇。",
+    "fx": [],
+    "dungeon": "reef",
+    "dungeonName": "雾礁海域"
+  },
+  {
+    "id": "dg_wreck",
+    "name": "探索沉船墓场",
+    "cost": 4,
+    "group": "adventure",
+    "tag": "adventure",
+    "cond": "count.ship>=2&&level>=6",
+    "hint": "战斗·宝箱",
+    "desc": "推荐等级 6–10，共 5 层。溺水的水手并不安息。",
+    "fx": [],
+    "dungeon": "wreck",
+    "dungeonName": "沉船墓场"
+  },
+  {
+    "id": "dg_kraken",
+    "name": "挑战海妖巢穴",
+    "cost": 5,
+    "group": "adventure",
+    "tag": "adventure",
+    "cond": "count.ship>=2&&level>=10",
+    "hint": "战斗·宝箱",
+    "desc": "推荐等级 10–14，共 6 层。",
+    "fx": [],
+    "dungeon": "kraken_den",
+    "dungeonName": "海妖巢穴"
+  },
+  {
+    "id": "dg_abyss",
+    "name": "闯入深渊之门",
+    "cost": 6,
+    "group": "adventure",
+    "tag": "adventure",
+    "cond": "count.ship>=3&&level>=15",
+    "hint": "战斗·宝箱",
+    "desc": "推荐等级 15–20，共 7 层。深渊里有什么在看你。",
+    "fx": [],
+    "dungeon": "abyss_gate",
+    "dungeonName": "深渊之门"
+  },
+  {
+    "id": "take_exam",
+    "name": "参加船长考试",
+    "cost": 3,
+    "group": "quest",
+    "cond": "quest.main_star==active&&qstage.main_star==0&&count.voyages>=3&&age>=18&&!flag:exam_try3",
+    "hint": "船长执照",
+    "desc": "海事官的考题：航线、天气、船规、应急。智力检定，最多三次机会。",
+    "check": {
+      "attr": "int",
+      "diff": 13,
+      "memDiff": {
+        "id": "m_v_haide",
+        "diff": -2
+      }
+    },
+    "ok": {
+      "text": "海事官合上你的答卷，盖了一枚蓝色的章：“潮湾港，又多了一位船长。”",
+      "fx": [
+        "flag+:captain_license",
+        "int_exp+4",
+        "exp+40",
+        "rep:harbor+5"
+      ]
+    },
+    "fail": {
+      "text": "你把一道关于暗流的题答反了方向。海事官摇摇头：“半年后再来。”",
+      "fx": [
+        "int_exp+2",
+        {
+          "if": "flag:exam_try2",
+          "then": [
+            "flag+:exam_try3"
+          ],
+          "else": [
+            {
+              "if": "flag:exam_try1",
+              "then": [
+                "flag+:exam_try2"
+              ],
+              "else": [
+                "flag+:exam_try1"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "redeem_chart",
+    "name": "赎回抵押的海图",
+    "cost": 1,
+    "group": "quest",
+    "cond": "flag:chart_pawned&&gold>=300&&!flag:fragment_1",
+    "hint": "星图残片",
+    "desc": "海德的那半张海图，被抵押在了港口当铺。",
+    "fx": [
+      "gold-300",
+      "flag+:fragment_1",
+      "flag-:chart_pawned",
+      "log:当铺老板把海图递给你，也递给你一句话：“这东西，别丢了。”"
+    ]
+  },
+  {
+    "id": "meet_scarlett",
+    "name": "前往红鲨的锚地",
+    "cost": 3,
+    "group": "quest",
+    "tag": "adventure",
+    "cond": "quest.scarlett_deal==active&&!flag:scarlett_resolved",
+    "hint": "红鲨斯嘉丽",
+    "desc": "她在远海的一座小岛上等你。",
+    "fx": [
+      "goto:ev_scarlett_meet"
+    ]
+  },
+  {
+    "id": "listen_song",
+    "name": "在新月夜听人鱼的歌",
+    "cost": 2,
+    "group": "quest",
+    "cond": "quest.nerea_song==active&&qstage.nerea_song==1&&!flag:nerea_song&&!flag:song_try3",
+    "hint": "奈蕾雅",
+    "desc": "新月之夜，在礁石边静静地听。意志检定，最多三次机会。",
+    "check": {
+      "attr": "wil",
+      "diff": 13,
+      "memDiff": {
+        "id": "m_v_song",
+        "diff": -2
+      }
+    },
+    "ok": {
+      "text": "歌声像水一样漫过你的脚踝，你没有睡着，也没有醒着。等你回过神，奈蕾雅正笑着看你。",
+      "fx": [
+        "flag+:nerea_song",
+        "flag+:nerea_friend",
+        "wil_exp+4",
+        "exp+30"
+      ]
+    },
+    "fail": {
+      "text": "你太想听懂歌词，反而什么也没听到。天亮的时候，礁石上空空如也。",
+      "fx": [
+        "wil_exp+2",
+        {
+          "if": "flag:song_try2",
+          "then": [
+            "flag+:song_try3"
+          ],
+          "else": [
+            {
+              "if": "flag:song_try1",
+              "then": [
+                "flag+:song_try2"
+              ],
+              "else": [
+                "flag+:song_try1"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "star_survey",
+    "name": "观测星位",
+    "cost": 3,
+    "group": "quest",
+    "tag": "adventure",
+    "cond": "quest.vel_chart==active&&count.stars<3",
+    "hint": "领航员薇尔",
+    "desc": "夜里在甲板上，对着星空用六分仪量角。智力检定，冬天很难。",
+    "check": {
+      "attr": "int",
+      "diff": 13,
+      "seasonDiff": {
+        "winter": 2
+      },
+      "memDiff": {
+        "id": "m_v_chart",
+        "diff": -2
+      }
+    },
+    "ok": {
+      "text": "你把六分仪举到眼前，数着星辰的夹角。薇尔在旁边记着数字，笔尖沙沙响。“……对上了。”",
+      "fx": [
+        "count:stars+1",
+        "int_exp+3",
+        "exp+16"
+      ]
+    },
+    "fail": {
+      "text": "云层突然合拢，什么也看不到。薇尔叹了口气：“明晚再来。”",
+      "fx": [
+        "int_exp+1",
+        "hp-2"
+      ]
+    }
+  },
+  {
+    "id": "deliver_cargo",
+    "name": "递送商会的货",
+    "cost": 3,
+    "group": "quest",
+    "tag": "adventure",
+    "cond": "quest.merchant_contract==active&&count.cargo<3&&count.ship>=2&&!flag:ship_damaged",
+    "hint": "商会的委托",
+    "desc": "商会指定的货，指定的港口，指定的日子。",
+    "check": {
+      "attr": "int",
+      "diff": 12,
+      "seasonDiff": {
+        "winter": 2
+      }
+    },
+    "ok": {
+      "text": "货按时到了。商会的接货人签了字，把你的名字，登记在了一本厚厚的册子上。",
+      "fx": [
+        "count:cargo+1",
+        "rep:guild+4",
+        "gold+40",
+        "exp+20"
+      ]
+    },
+    "fail": {
+      "text": "货晚到了一天，接货人皱了皱眉。你默默地把赔偿金付了。",
+      "fx": [
+        "gold-25",
+        "rep:guild-1",
+        "hp-3"
+      ]
+    }
+  },
+  {
+    "id": "help_bram",
+    "name": "替布拉姆赎回父亲的船（200 金币）",
+    "cost": 1,
+    "group": "quest",
+    "cond": "quest.bram_crew==active&&gold>=200&&!flag:bram_boat",
+    "hint": "布拉姆",
+    "desc": "他的父亲留下的小船，被商会抵押了。",
+    "fx": [
+      "gold-200",
+      "flag+:bram_boat",
+      "rel:bram+3",
+      "log:布拉姆接过船契，手在发抖。他没说谢谢，只是用力地拍了拍你的肩。"
+    ]
+  }
+]

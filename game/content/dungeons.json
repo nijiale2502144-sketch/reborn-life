@@ -1,0 +1,490 @@
+[
+  {
+    "id": "cave",
+    "name": "后山洞穴",
+    "scene": "cave_entrance",
+    "layers": 4,
+    "power": 48,
+    "step": 3,
+    "bossBonus": 8,
+    "boss": "哥布林头目",
+    "enemies": [
+      "哥布林",
+      "洞穴蝙蝠",
+      "史莱姆"
+    ],
+    "exp": [
+      16,
+      24
+    ],
+    "bossExp": 55,
+    "gold": [
+      4,
+      8
+    ],
+    "bossGold": 20,
+    "chest": [
+      9,
+      20
+    ],
+    "loot": [
+      "leather_armor",
+      "round_shield",
+      "silver_ring"
+    ],
+    "onClear": [
+      "rep:guild+10",
+      "exp+30",
+      "log:公会的新人试炼完成了。"
+    ],
+    "tag": "beast"
+  },
+  {
+    "id": "mine",
+    "name": "废弃矿坑",
+    "scene": "cave_entrance",
+    "layers": 5,
+    "power": 92,
+    "step": 4,
+    "bossBonus": 10,
+    "boss": "岩甲巨蝎",
+    "enemies": [
+      "矿坑蜘蛛",
+      "石像鬼",
+      "掘地鼠人"
+    ],
+    "exp": [
+      36,
+      50
+    ],
+    "bossExp": 110,
+    "gold": [
+      8,
+      16
+    ],
+    "bossGold": 45,
+    "chest": [
+      20,
+      40
+    ],
+    "loot": [
+      "miner_pick",
+      "chain_mail",
+      "steel_sword"
+    ],
+    "onClear": [
+      "rep:guild+10"
+    ],
+    "tag": "beast"
+  },
+  {
+    "id": "grave",
+    "name": "亡灵墓地",
+    "scene": "cave_entrance",
+    "layers": 6,
+    "power": 129,
+    "step": 5,
+    "bossBonus": 12,
+    "boss": "枯骨骑士",
+    "enemies": [
+      "骷髅兵",
+      "游荡的幽魂",
+      "僵尸"
+    ],
+    "exp": [
+      62,
+      82
+    ],
+    "bossExp": 180,
+    "gold": [
+      12,
+      22
+    ],
+    "bossGold": 65,
+    "chest": [
+      30,
+      55
+    ],
+    "loot": [
+      "holy_amulet",
+      "tower_shield",
+      "lion_pendant"
+    ],
+    "nodeWeights": {
+      "fight": 5,
+      "chest": 2,
+      "event": 2,
+      "rest": 1
+    },
+    "onClear": [
+      "rep:church+8",
+      "rep:guild+5"
+    ],
+    "tag": "undead"
+  },
+  {
+    "id": "fortress",
+    "name": "魔潮前线要塞",
+    "scene": "mountain",
+    "layers": 7,
+    "power": 169,
+    "step": 6,
+    "bossBonus": 14,
+    "boss": "魔潮先锋官",
+    "enemies": [
+      "魔族斥候",
+      "地狱犬",
+      "堕落骑士"
+    ],
+    "exp": [
+      96,
+      124
+    ],
+    "bossExp": 270,
+    "gold": [
+      20,
+      35
+    ],
+    "bossGold": 100,
+    "chest": [
+      45,
+      80
+    ],
+    "loot": [
+      "knight_armor",
+      "plate_armor",
+      "silver_blade"
+    ],
+    "onClear": [
+      "rep:kingdom+10",
+      "rep:church+5"
+    ],
+    "tag": "demon"
+  },
+  {
+    "id": "sewer",
+    "name": "鼠街下水道",
+    "scene": "sewer",
+    "layers": 4,
+    "power": 48,
+    "step": 3,
+    "bossBonus": 8,
+    "boss": "下水道巨鼠王",
+    "enemies": [
+      "成群的老鼠",
+      "下水道的流浪汉",
+      "史莱姆"
+    ],
+    "exp": [
+      16,
+      24
+    ],
+    "bossExp": 55,
+    "gold": [
+      4,
+      8
+    ],
+    "bossGold": 20,
+    "chest": [
+      9,
+      20
+    ],
+    "loot": [
+      "stiletto",
+      "shadow_leathers",
+      "black_pearl"
+    ],
+    "onClear": [
+      "rep:shadow+10",
+      "exp+30",
+      "log:你在鼠街的暗处站稳了脚跟。"
+    ],
+    "tag": "beast"
+  },
+  {
+    "id": "warehouse",
+    "name": "红手帮仓库区",
+    "scene": "warehouse",
+    "layers": 5,
+    "power": 92,
+    "step": 4,
+    "bossBonus": 10,
+    "boss": "「断指」的亲信",
+    "enemies": [
+      "红手帮打手",
+      "看门的恶犬",
+      "走私贩"
+    ],
+    "exp": [
+      40,
+      56
+    ],
+    "bossExp": 130,
+    "gold": [
+      10,
+      16
+    ],
+    "bossGold": 45,
+    "chest": [
+      22,
+      40
+    ],
+    "loot": [
+      "shadow_dagger",
+      "shadow_leathers",
+      "fortune_coin"
+    ],
+    "onClear": [
+      "rep:shadow+10",
+      "exp+60",
+      "log:红手帮的仓库被你翻了个底朝天。",
+      "flag+:warehouse_cleared"
+    ],
+    "tag": "human"
+  },
+  {
+    "id": "manor_heist",
+    "name": "贵族宅邸夜袭",
+    "scene": "rooftop",
+    "layers": 6,
+    "power": 129,
+    "step": 5,
+    "bossBonus": 12,
+    "boss": "宅邸的魔法守卫",
+    "enemies": [
+      "宅邸的护卫",
+      "训练有素的猎犬",
+      "守夜的法师学徒"
+    ],
+    "exp": [
+      64,
+      86
+    ],
+    "bossExp": 200,
+    "gold": [
+      16,
+      26
+    ],
+    "bossGold": 60,
+    "chest": [
+      30,
+      55
+    ],
+    "loot": [
+      "venom_fang",
+      "phantom_cloak",
+      "fortune_coin"
+    ],
+    "onClear": [
+      "rep:shadow+10",
+      "gold+60",
+      "log:这一夜之后，贵族们开始锁好每一扇窗。"
+    ],
+    "tag": "human"
+  },
+  {
+    "id": "vault_outer",
+    "name": "王城地下水渠",
+    "scene": "vault",
+    "layers": 7,
+    "power": 169,
+    "step": 6,
+    "bossBonus": 14,
+    "boss": "水渠尽头的魔像",
+    "enemies": [
+      "王室暗哨",
+      "魔晶傀儡",
+      "地下的守卫队"
+    ],
+    "exp": [
+      96,
+      124
+    ],
+    "bossExp": 270,
+    "gold": [
+      20,
+      35
+    ],
+    "bossGold": 100,
+    "chest": [
+      45,
+      80
+    ],
+    "loot": [
+      "night_edge",
+      "mask_charm",
+      "phantom_cloak"
+    ],
+    "onClear": [
+      "rep:shadow+10",
+      "rep:kingdom-5",
+      "log:你摸清了王城水渠里的每一道暗门。"
+    ],
+    "tag": "human"
+  },
+  {
+    "id": "reef",
+    "name": "雾礁海域",
+    "scene": "reef",
+    "layers": 4,
+    "power": 48,
+    "step": 3,
+    "bossBonus": 8,
+    "boss": "礁石上的海蛇",
+    "enemies": [
+      "海盗小艇",
+      "海鸥群",
+      "礁石蟹"
+    ],
+    "exp": [
+      16,
+      24
+    ],
+    "bossExp": 55,
+    "gold": [
+      4,
+      8
+    ],
+    "bossGold": 20,
+    "chest": [
+      9,
+      20
+    ],
+    "loot": [
+      "cutlass",
+      "sealskin_coat",
+      "sea_charm"
+    ],
+    "onClear": [
+      "rep:harbor+10",
+      "exp+30",
+      "log:你在雾礁里认出了第一条属于自己的航线。",
+      "flag+:reef_cleared"
+    ],
+    "tag": "beast"
+  },
+  {
+    "id": "wreck",
+    "name": "沉船墓场",
+    "scene": "wreck",
+    "layers": 5,
+    "power": 92,
+    "step": 4,
+    "bossBonus": 10,
+    "boss": "船魂",
+    "enemies": [
+      "溺水的水手",
+      "珊瑚中的怪鱼",
+      "海盗幽灵"
+    ],
+    "exp": [
+      40,
+      56
+    ],
+    "bossExp": 130,
+    "gold": [
+      10,
+      16
+    ],
+    "bossGold": 45,
+    "chest": [
+      22,
+      40
+    ],
+    "loot": [
+      "boarding_axe",
+      "ship_shield",
+      "pearl_amulet"
+    ],
+    "onClear": [
+      "rep:harbor+10",
+      "exp+60",
+      "log:沉船里的旧货，让港口的人对你多看了一眼。",
+      "flag+:wreck_cleared",
+      "flag+:fragment_3"
+    ],
+    "tag": "undead"
+  },
+  {
+    "id": "kraken_den",
+    "name": "海妖巢穴",
+    "scene": "kraken_den",
+    "layers": 6,
+    "power": 129,
+    "step": 5,
+    "bossBonus": 12,
+    "boss": "海妖",
+    "enemies": [
+      "海妖幼体",
+      "巨型章鱼",
+      "盐泽女妖"
+    ],
+    "exp": [
+      64,
+      86
+    ],
+    "bossExp": 200,
+    "gold": [
+      16,
+      26
+    ],
+    "bossGold": 60,
+    "chest": [
+      30,
+      55
+    ],
+    "loot": [
+      "tidal_trident",
+      "coral_mail",
+      "turtle_shield"
+    ],
+    "onClear": [
+      "rep:harbor+10",
+      "gold+60",
+      "log:海妖退回了深处，航线暂时安静了下来。",
+      "flag+:kraken_slain"
+    ],
+    "tag": "beast"
+  },
+  {
+    "id": "abyss_gate",
+    "name": "深渊之门",
+    "scene": "abyss",
+    "layers": 7,
+    "power": 169,
+    "step": 6,
+    "bossBonus": 14,
+    "boss": "深渊守门者",
+    "enemies": [
+      "深渊鱼人",
+      "溺亡骑士",
+      "深海巨蟹"
+    ],
+    "exp": [
+      96,
+      124
+    ],
+    "bossExp": 270,
+    "gold": [
+      20,
+      35
+    ],
+    "bossGold": 100,
+    "chest": [
+      45,
+      80
+    ],
+    "loot": [
+      "storm_blade",
+      "kraken_tooth",
+      "coral_mail"
+    ],
+    "onClear": [
+      "rep:harbor+10",
+      "rep:sea+5",
+      "log:你从深渊的门前活着回来了。",
+      "flag+:abyss_cleared"
+    ],
+    "tag": "beast"
+  }
+]

@@ -1,0 +1,252 @@
+{
+  "goblin": {
+    "name": "哥布林斥候",
+    "power": 48,
+    "exp": 36,
+    "gold": [
+      8,
+      16
+    ],
+    "tag": "beast"
+  },
+  "wolves": {
+    "name": "饥饿的狼群",
+    "power": 44,
+    "exp": 30,
+    "gold": [
+      0,
+      0
+    ],
+    "tag": "beast"
+  },
+  "orc_raid": {
+    "name": "兽人劫掠队",
+    "power": 72,
+    "exp": 90,
+    "gold": [
+      20,
+      30
+    ],
+    "tag": "beast"
+  },
+  "demon_guard": {
+    "name": "魔王近卫",
+    "power": 184,
+    "exp": 0,
+    "gold": [
+      0,
+      0
+    ],
+    "tag": "demon"
+  },
+  "demon_king": {
+    "name": "魔王",
+    "power": 228,
+    "exp": 0,
+    "gold": [
+      0,
+      0
+    ],
+    "tag": "demon"
+  },
+  "bandit": {
+    "name": "山道劫匪",
+    "power": 56,
+    "exp": 50,
+    "gold": [
+      20,
+      40
+    ],
+    "tag": "human"
+  },
+  "boar": {
+    "name": "发狂的野猪",
+    "power": 40,
+    "exp": 26,
+    "gold": [
+      0,
+      0
+    ],
+    "tag": "beast"
+  },
+  "bear": {
+    "name": "棕熊",
+    "power": 70,
+    "exp": 80,
+    "gold": [
+      0,
+      0
+    ],
+    "tag": "beast"
+  },
+  "thug": {
+    "name": "债主雇的打手",
+    "power": 52,
+    "exp": 40,
+    "gold": [
+      10,
+      20
+    ],
+    "tag": "human"
+  },
+  "valen_duel": {
+    "name": "瓦伦",
+    "power": 78,
+    "exp": 70,
+    "gold": [
+      0,
+      0
+    ],
+    "tag": "human"
+  },
+  "assassin": {
+    "name": "黑衣刺客",
+    "power": 88,
+    "exp": 90,
+    "gold": [
+      20,
+      40
+    ],
+    "tag": "human"
+  },
+  "lockwood": {
+    "name": "宰相洛克伍德",
+    "power": 150,
+    "exp": 0,
+    "gold": [
+      0,
+      0
+    ],
+    "tag": "human"
+  },
+  "guard_patrol": {
+    "name": "巡逻队",
+    "power": 60,
+    "exp": 50,
+    "gold": [
+      10,
+      20
+    ],
+    "tag": "human"
+  },
+  "red_hand": {
+    "name": "红手帮打手",
+    "power": 72,
+    "exp": 60,
+    "gold": [
+      15,
+      30
+    ],
+    "tag": "human"
+  },
+  "red_boss": {
+    "name": "红手帮老大「断指」",
+    "power": 118,
+    "exp": 0,
+    "gold": [
+      0,
+      0
+    ],
+    "tag": "human"
+  },
+  "captain_cass": {
+    "name": "捕快队长卡斯",
+    "power": 112,
+    "exp": 0,
+    "gold": [
+      0,
+      0
+    ],
+    "tag": "human"
+  },
+  "mask_man": {
+    "name": "面具先生",
+    "power": 150,
+    "exp": 0,
+    "gold": [
+      0,
+      0
+    ],
+    "tag": "human"
+  },
+  "royal_guard": {
+    "name": "王室禁卫",
+    "power": 165,
+    "exp": 0,
+    "gold": [
+      0,
+      0
+    ],
+    "tag": "human"
+  },
+  "vault_golem": {
+    "name": "魔晶库看守",
+    "power": 190,
+    "exp": 0,
+    "gold": [
+      0,
+      0
+    ],
+    "tag": "demon"
+  },
+  "pirate_raider": {
+    "name": "海盗劫掠者",
+    "power": 60,
+    "exp": 50,
+    "gold": [
+      15,
+      30
+    ],
+    "tag": "human"
+  },
+  "sea_serpent": {
+    "name": "海蛇",
+    "power": 80,
+    "exp": 70,
+    "gold": [
+      0,
+      0
+    ],
+    "tag": "beast"
+  },
+  "scarlett": {
+    "name": "红鲨·斯嘉丽",
+    "power": 128,
+    "exp": 0,
+    "gold": [
+      0,
+      0
+    ],
+    "tag": "human"
+  },
+  "kraken_spawn": {
+    "name": "海妖幼体",
+    "power": 120,
+    "exp": 100,
+    "gold": [
+      0,
+      0
+    ],
+    "tag": "beast"
+  },
+  "drowned_knight": {
+    "name": "溺亡骑士",
+    "power": 150,
+    "exp": 0,
+    "gold": [
+      0,
+      0
+    ],
+    "tag": "undead"
+  },
+  "leviathan": {
+    "name": "深渊巨兽",
+    "power": 215,
+    "exp": 0,
+    "gold": [
+      0,
+      0
+    ],
+    "tag": "beast"
+  }
+}

@@ -1,0 +1,1604 @@
+[
+  {
+    "id": "ev_capital_arrival",
+    "kind": "special",
+    "priority": 40,
+    "cond": "flag:order_member",
+    "title": "初到王都",
+    "scene": "village_spring",
+    "text": "见习骑士团的营房在王都东区。第一晚，你躺在硬板床上，听着窗外的钟声和远处的马蹄，一时分不清这里是现实还是梦。",
+    "options": [
+      {
+        "label": "翻出推荐信，重读一遍",
+        "fx": [
+          "wil_exp+3",
+          "rep:church+1"
+        ],
+        "text": "信纸边角已经磨毛了，字迹还是那样工整。"
+      },
+      {
+        "label": "出去走走，认认路",
+        "fx": [
+          "agi_exp+2",
+          "cha_exp+2",
+          "exp+15"
+        ],
+        "text": "你在夜色里走了一个多时辰，记下了每一条街的名字。"
+      }
+    ]
+  },
+  {
+    "id": "ev_knight_rival",
+    "kind": "special",
+    "priority": 30,
+    "cond": "flag:order_member&&level>=8",
+    "title": "见习骑士阿拉里克",
+    "scene": "village_spring",
+    "text": "同期的见习骑士阿拉里克出身贵族，总在训练场上有意无意地和你比较。“农夫的儿子，也配穿这身银甲？”",
+    "options": [
+      {
+        "label": "比一场，用实力回答",
+        "check": {
+          "attr": "str",
+          "diff": 14
+        },
+        "ok": {
+          "text": "你一拳不留情面地压倒了他。围观的见习生们起了哄，他咬着牙，第一次正视了你。",
+          "fx": [
+            "rep:church+3",
+            "str_exp+3",
+            "cha_exp+2",
+            "exp+30",
+            "flag+:alaric_respect"
+          ]
+        },
+        "fail": {
+          "text": "他略胜一筹，笑得很得意。你却把每一招都记在了心里。",
+          "fx": [
+            "str_exp+2",
+            "wil_exp+3",
+            "hp-6"
+          ]
+        }
+      },
+      {
+        "label": "不接话，转身去练剑",
+        "fx": [
+          "wil_exp+3",
+          "rep:church+1"
+        ],
+        "text": "你把木剑抡得虎虎生风，直到手心磨出了血泡。"
+      }
+    ]
+  },
+  {
+    "id": "ev_knight_mentor",
+    "kind": "special",
+    "priority": 30,
+    "cond": "flag:order_member&&level>=10",
+    "portrait": "glen",
+    "title": "教官的指点",
+    "scene": "village_spring",
+    "text": "训练结束后，满脸风霜的教官留下了你：“你的剑，招式漂亮，但没杀气。上过战场吗？”",
+    "options": [
+      {
+        "label": "如实回答：只对付过哥布林和山贼",
+        "fx": [
+          "wil_exp+3",
+          "exp+20"
+        ],
+        "text": "教官哼了一声：“那就多去战场看看。”"
+      },
+      {
+        "label": "请他教怎么在乱战中保命",
+        "fx": [
+          "agi_exp+4",
+          "str_exp+3",
+          "exp+30",
+          "rep:church+2"
+        ],
+        "text": "他一口气教了你七个保命的小窍门，没有一个体面，但都管用。"
+      }
+    ]
+  },
+  {
+    "id": "ev_frontline_call",
+    "kind": "special",
+    "priority": 50,
+    "cond": "flag:paladin",
+    "title": "前线的征召",
+    "scene": "mountain",
+    "text": "成为圣骑士后的第一道命令，来自王国和教会的联合署名：调你去北境前线协助布防，同时留意魔王苏醒的任何迹象。",
+    "options": [
+      {
+        "label": "服从命令，前往前线（2 体力）",
+        "cost": 2,
+        "fx": [
+          "rep:kingdom+6",
+          "rep:church+3",
+          "exp+60",
+          "hometown-2"
+        ],
+        "text": "你在前线待了数日，亲眼看见了魔物的真实模样。"
+      },
+      {
+        "label": "请求暂留故乡，协助布防",
+        "fx": [
+          "hometown+4",
+          "rep:church+1"
+        ],
+        "text": "你在村子北口加建了一道木栅，请神父登记了三十个能拿起武器的人。"
+      }
+    ]
+  },
+  {
+    "id": "ev_omen_1",
+    "kind": "special",
+    "when": {
+      "age": 27,
+      "season": "spring"
+    },
+    "priority": 70,
+    "title": "第一个征兆",
+    "scene": "village_spring",
+    "text": "开春后，北边的鸟不再飞回来了。老猎人说，山里的野兽都在往南迁。",
+    "options": [
+      {
+        "label": "帮着村里人把牲口迁到南坡（2 体力）",
+        "cost": 2,
+        "fx": [
+          "hometown+3",
+          "str_exp+2"
+        ],
+        "text": "一场看不见的灾难正在逼近，你们都在悄悄准备。"
+      },
+      {
+        "label": "整理自己的装备",
+        "fx": [
+          "exp+20",
+          "wil_exp+2"
+        ],
+        "text": "你把武器磨了三遍。"
+      }
+    ]
+  },
+  {
+    "id": "ev_omen_2",
+    "kind": "special",
+    "when": {
+      "age": 28,
+      "season": "autumn"
+    },
+    "priority": 70,
+    "title": "第二个征兆",
+    "scene": "village_autumn",
+    "text": "月亮变成了暗红色，连续三个晚上都没有星。教会的钟楼夜夜敲响，神父让大家都躲进屋里。",
+    "options": [
+      {
+        "label": "通宵祈祷（1 体力）",
+        "cost": 1,
+        "fx": [
+          "wil_exp+4",
+          "rep:church+3",
+          "hometown+1"
+        ],
+        "text": "天亮时，每个人的眼睛里都带着血丝。"
+      },
+      {
+        "label": "挨家挨户检查门窗",
+        "fx": [
+          "hometown+3",
+          "cha_exp+2"
+        ],
+        "text": "你敲开了每一扇门，给每一家都送去了一盏灯。"
+      }
+    ]
+  },
+  {
+    "id": "ev_omen_3",
+    "kind": "special",
+    "when": {
+      "age": 29,
+      "season": "summer"
+    },
+    "priority": 70,
+    "title": "第三个征兆",
+    "scene": "mountain",
+    "text": "夏天，整整一个月没有下雨，北边的山脊上常常传来闷雷般的声音，可天上一朵云也没有。有人说，那是魔王在翻身。",
+    "options": [
+      {
+        "label": "趁着最后的时间，闭关修炼（2 体力）",
+        "cost": 2,
+        "fx": [
+          "str_exp+4",
+          "wil_exp+4",
+          "exp+40"
+        ],
+        "text": "你知道，剩下的日子已经不多了。"
+      },
+      {
+        "label": "去探望家人，多陪陪他们",
+        "fx": [
+          "hometown+3",
+          "rel:mina+2",
+          "wil_exp+2"
+        ],
+        "text": "母亲给你做了最爱吃的面。你吃了两碗。"
+      }
+    ]
+  },
+  {
+    "id": "ev_efna_herb_clue",
+    "kind": "special",
+    "priority": 60,
+    "cond": "quest.efna_wish==active&&qstage.efna_wish==1",
+    "portrait": "efna",
+    "title": "夹在书里的一页",
+    "scene": "village_autumn",
+    "text": "艾芙娜把一张折起来的纸塞给你：“这是我妈留下的药书，我只找到这一页。上面说月华草喜阴，只在夏秋的月夜里开花，要找背阴的崖缝。”",
+    "options": [
+      {
+        "label": "把这一页小心收好",
+        "fx": [
+          "int_exp+3",
+          "rel:efna+1"
+        ],
+        "text": "纸页边缘有淡淡的药香。"
+      }
+    ]
+  },
+  {
+    "id": "ev_efna_farewell",
+    "kind": "special",
+    "priority": 60,
+    "cond": "flag:efna_lost&&!flag:efna_resolved",
+    "title": "艾芙娜的窗",
+    "scene": "village_winter",
+    "text": "冬天，艾芙娜家的窗一直没有亮灯。邻居说，她在昨夜走了，走得很安静。窗台上，那束干花还在。",
+    "options": [
+      {
+        "label": "在她的窗前站了很久",
+        "fx": [
+          "wil_exp+4",
+          "rel:efna-10"
+        ],
+        "text": "你站到雪落满了肩膀。从那以后，你再也没有轻易说过“下次”。"
+      },
+      {
+        "label": "替她把窗关好",
+        "fx": [
+          "wil_exp+3",
+          "rep:church+1"
+        ],
+        "text": "屋里还留着她煮的草药的味道。"
+      }
+    ]
+  },
+  {
+    "id": "ev_efna_star_end",
+    "kind": "special",
+    "priority": 60,
+    "cond": "flag:efna_lost&&flag:efna_resolved",
+    "portrait": "efna",
+    "title": "最亮的一夜",
+    "scene": "village_winter",
+    "text": "几个月后，神殿的信使带来一封信，只有短短一行：“她走得很安详，嘴角带着笑。她说，那是她一生里最亮的一晚。”",
+    "options": [
+      {
+        "label": "把信贴身收好",
+        "fx": [
+          "wil_exp+4",
+          "exp+30"
+        ],
+        "text": "你抬起头，天上的星星一颗一颗亮了起来。"
+      }
+    ]
+  },
+  {
+    "id": "ev_efna_letter",
+    "kind": "special",
+    "priority": 40,
+    "cond": "flag:efna_priest&&age>=26",
+    "portrait": "efna",
+    "title": "神殿来信",
+    "scene": "village_autumn",
+    "text": "艾芙娜托圣城来的信使给你带了一只小布袋，里面是一枚磨得发亮的圣徽，附着一张纸条：“在神殿的日子很忙，但每天晚上我都会想起麦田。愿圣光保佑你。”",
+    "options": [
+      {
+        "label": "把圣徽挂在胸前",
+        "fx": [
+          "status+:blessed:4",
+          "rel:efna+1",
+          "wil_exp+3"
+        ],
+        "text": "圣徽贴着胸口，很暖。"
+      }
+    ]
+  },
+  {
+    "id": "ev_efna_visit",
+    "kind": "special",
+    "priority": 40,
+    "cond": "flag:efna_cured&&age>=26",
+    "portrait": "efna",
+    "title": "她回来了",
+    "scene": "village_spring",
+    "text": "有一天，村口有个熟悉的身影走来，脸色红润，脚步轻快。“我回来看看。”艾芙娜笑着说，“顺便给你带了圣城的点心。”",
+    "options": [
+      {
+        "label": "陪她在村里走一圈（1 体力）",
+        "cost": 1,
+        "fx": [
+          "rel:efna+2",
+          "hometown+3",
+          "wil_exp+2"
+        ],
+        "text": "她摸了摸每一棵老树，像是在认亲。"
+      },
+      {
+        "label": "请她给教堂的孩子们讲讲圣城",
+        "fx": [
+          "hometown+2",
+          "rep:church+3",
+          "cha_exp+2"
+        ],
+        "text": "孩子们听得入了神，再也不吵着要走了。"
+      }
+    ]
+  },
+  {
+    "id": "ev_glen_shield",
+    "kind": "special",
+    "priority": 50,
+    "cond": "flag:glen_cleared",
+    "portrait": "glen",
+    "title": "格伦的盾",
+    "scene": "village_autumn",
+    "text": "格伦换上了一身干净的旧军装，手里拎着一面磨得发亮的圆盾。“当年的兄弟们都不在了，”他说，“这面盾，该有个新主人。”",
+    "options": [
+      {
+        "label": "双手接过",
+        "fx": [
+          "item:old_shield",
+          "rel:glen+2",
+          "wil_exp+3"
+        ],
+        "text": "盾面上刻着一圈小字，是十二个名字。"
+      }
+    ]
+  },
+  {
+    "id": "ev_glen_empty",
+    "kind": "special",
+    "priority": 40,
+    "cond": "flag:glen_left",
+    "title": "空窝棚",
+    "scene": "village_winter",
+    "text": "榆树下的窝棚空了，地上留着一圈烧尽的篝火灰，和一只擦得很干净的旧水壶。",
+    "options": [
+      {
+        "label": "把水壶带走",
+        "fx": [
+          "wil_exp+2"
+        ],
+        "text": "水壶里还剩半壶凉透的酒。你没有喝，也没有倒。"
+      }
+    ]
+  },
+  {
+    "id": "ev_after_raid_party",
+    "kind": "special",
+    "priority": 45,
+    "cond": "flag:village_saved",
+    "title": "篝火晚会",
+    "scene": "village_winter",
+    "text": "兽人退去后的第三天，村里人在广场上点起篝火，把珍藏的腊肉和麦酒都拿了出来。有人高喊你的名字，有人把孩子举过头顶让你看。",
+    "options": [
+      {
+        "label": "举杯，向牺牲的人致意",
+        "fx": [
+          "hometown+4",
+          "rep:church+2",
+          "wil_exp+2"
+        ],
+        "text": "村长眼眶红了，一口干了杯。"
+      },
+      {
+        "label": "悄悄退到人群后面",
+        "fx": [
+          "wil_exp+3"
+        ],
+        "text": "你不习惯被注视，但今晚没人觉得这有什么不对。"
+      }
+    ]
+  },
+  {
+    "id": "ev_village_rebuild",
+    "kind": "special",
+    "priority": 45,
+    "cond": "flag:village_hurt",
+    "title": "重建家园",
+    "scene": "village_winter",
+    "text": "兽人走后，村里一半的房子烧成了黑炭，田里的雪都带着焦味。父亲站在废墟里，一言不发。",
+    "options": [
+      {
+        "label": "留下来帮忙重建（2 体力）",
+        "cost": 2,
+        "fx": [
+          "hometown+6",
+          "str_exp+4",
+          "wil_exp+2"
+        ],
+        "text": "半个月后，十几户人家重新有了屋顶。"
+      },
+      {
+        "label": "拿出积蓄接济灾民（40 金币）",
+        "cond": "gold>=40",
+        "reason": "金币不足",
+        "fx": [
+          "gold-40",
+          "hometown+8",
+          "rep:church+3"
+        ],
+        "text": "有人哭着给你磕头，你赶紧把他扶了起来。"
+      },
+      {
+        "label": "相信他们能撑过去",
+        "fx": [
+          "wil_exp+1"
+        ],
+        "text": "你转身离开，把行李背得很紧。"
+      }
+    ]
+  },
+  {
+    "id": "ev_famine",
+    "kind": "special",
+    "priority": 45,
+    "cond": "hometown<=25&&age>=19",
+    "title": "饥荒的冬天",
+    "scene": "village_winter",
+    "text": "仓房空了。邻居一户一户地搬走，村口的石板路上，每天都有拖着行李的背影。",
+    "options": [
+      {
+        "label": "拿出所有积蓄买粮（60 金币）",
+        "cond": "gold>=60",
+        "reason": "金币不足",
+        "fx": [
+          "gold-60",
+          "hometown+10",
+          "rep:church+2"
+        ],
+        "text": "你背着粮袋走过每一户的门，没有人说话，只有眼泪。"
+      },
+      {
+        "label": "组织剩下的人去山里狩猎（2 体力）",
+        "cost": 2,
+        "fx": [
+          "hometown+5",
+          "agi_exp+3",
+          "str_exp+2"
+        ],
+        "text": "一个冬天，你们靠着山里的野味撑了过来。"
+      },
+      {
+        "label": "沉默",
+        "fx": [
+          "hometown-4"
+        ],
+        "text": "村口又空了两户人家。"
+      }
+    ]
+  },
+  {
+    "id": "ev_great_festival",
+    "kind": "special",
+    "priority": 35,
+    "cond": "hometown>=75&&season==autumn",
+    "title": "丰年盛典",
+    "scene": "village_autumn",
+    "text": "今年的收成好得出奇，全村人在打谷场上摆了三十张长桌。教会的神父、过路的商人、邻村的亲戚都来了，笑声传出去老远。",
+    "options": [
+      {
+        "label": "站上木台，说几句话",
+        "check": {
+          "attr": "cha",
+          "diff": 10
+        },
+        "ok": {
+          "text": "你说的话很朴素，却让所有人都安静了下来。掌声持续了很久。",
+          "fx": [
+            "cha_exp+5",
+            "hometown+3",
+            "rep:church+3"
+          ]
+        },
+        "fail": {
+          "text": "你紧张得说不出话，台下善意地笑了。",
+          "fx": [
+            "cha_exp+2",
+            "hometown+2"
+          ]
+        }
+      },
+      {
+        "label": "和乡亲们一起吃喝",
+        "fx": [
+          "hometown+3",
+          "heal:0.3",
+          "rel:mina+1"
+        ],
+        "text": "桌上的酒一杯接着一杯，没人记得是谁先喝醉的。"
+      }
+    ]
+  },
+  {
+    "id": "ev_guild_promotion",
+    "kind": "special",
+    "priority": 35,
+    "cond": "rep.guild>=30",
+    "title": "公会的认可",
+    "scene": "village_spring",
+    "text": "公会会长把你叫去，递来一枚银色的徽章：“你完成的委托，我们都记着。从今天起，你是银牌冒险者。”",
+    "options": [
+      {
+        "label": "接过徽章",
+        "fx": [
+          "gold+40",
+          "rep:guild+5",
+          "cha_exp+2",
+          "exp+30"
+        ],
+        "text": "徽章不重，但你把它擦了又擦。"
+      }
+    ]
+  },
+  {
+    "id": "ev_guild_rivals",
+    "kind": "random",
+    "pool": "social",
+    "weight": 8,
+    "once": true,
+    "cond": "flag:guild&&level>=10",
+    "title": "对手小队",
+    "scene": "village_spring",
+    "text": "一支同样在刷矿坑的冒险小队在公会堵住了你：“听说你最近风头很盛，要不要组队？我们缺一个能扛的。”",
+    "options": [
+      {
+        "label": "同意，临时组队（2 体力）",
+        "cost": 2,
+        "fx": [
+          "rep:guild+4",
+          "gold+40",
+          "exp+30"
+        ],
+        "text": "配合默契得出乎意料，战利品也分得公平。"
+      },
+      {
+        "label": "拒绝，独来独往",
+        "fx": [
+          "wil_exp+2",
+          "rep:guild+1"
+        ],
+        "text": "对方笑了笑：“有骨气。”"
+      }
+    ]
+  },
+  {
+    "id": "ev_church_shadow_1",
+    "kind": "random",
+    "pool": "world",
+    "weight": 16,
+    "once": true,
+    "cond": "rep.church>=30&&age>=22",
+    "portrait": "priest",
+    "title": "神父欲言又止",
+    "scene": "village_spring",
+    "text": "神父安布罗斯在擦拭圣像时，忽然问你：“如果有一天，教会做了一件不那么光彩的事，你会怎么想？”",
+    "options": [
+      {
+        "label": "“我会先问清楚。”",
+        "fx": [
+          "wil_exp+3",
+          "rel:ambrose+1",
+          "flag+:church_shadow_1"
+        ],
+        "text": "神父点了点头，没有再说下去。"
+      },
+      {
+        "label": "“教会不会做这种事。”",
+        "fx": [
+          "rep:church+2",
+          "flag+:church_shadow_1"
+        ],
+        "text": "神父苦笑了一下：“……希望如此。”"
+      }
+    ]
+  },
+  {
+    "id": "ev_church_shadow_2",
+    "kind": "random",
+    "pool": "world",
+    "weight": 20,
+    "cond": "rep.church>=45&&age>=25&&flag:church_shadow_1&&!flag:church_clue_2&&!flag:shadow_ignored",
+    "portrait": "priest",
+    "title": "被封存的档案",
+    "scene": "village_autumn",
+    "text": "你在教会的档案室里整理文件，发现一本被封了蜡的旧册，封面上写着：“北境圣骑士团·百年前封印记录”。",
+    "options": [
+      {
+        "label": "拆开封蜡",
+        "check": {
+          "attr": "int",
+          "diff": 12
+        },
+        "ok": {
+          "text": "册子里记载：百年前的圣骑士团并未杀死魔王，而是把它封印在了北境的某处。负责封印的圣剑，早已失落。",
+          "fx": [
+            "int_exp+6",
+            "exp+40",
+            "flag+:church_clue_2"
+          ]
+        },
+        "fail": {
+          "text": "你刚想打开，值班的执事走了过来，你赶紧放回原处。",
+          "fx": [
+            "rep:church-1"
+          ]
+        }
+      },
+      {
+        "label": "放回原处，装作没看见",
+        "fx": [
+          "wil_exp+2",
+          "rep:church+1",
+          "flag+:shadow_ignored"
+        ],
+        "text": "不属于你的秘密，最好留给时间。"
+      }
+    ],
+    "cooldown": 4
+  },
+  {
+    "id": "ev_mina_apprentice",
+    "kind": "special",
+    "when": {
+      "age": 20,
+      "season": "spring"
+    },
+    "priority": 55,
+    "title": "妹妹的心事",
+    "scene": "village_spring",
+    "text": "妹妹米娜把你叫到屋后，红着脸说：“哥，镇上的裁缝铺要收学徒，我想去。可是，爹娘……”",
+    "options": [
+      {
+        "label": "替她说服爹娘（1 体力）",
+        "cost": 1,
+        "check": {
+          "attr": "cha",
+          "diff": 10
+        },
+        "ok": {
+          "text": "你把话讲得有理有据，爹娘终于松了口。米娜抱着你，蹦了三下。",
+          "fx": [
+            "rel:mina+3",
+            "cha_exp+3",
+            "hometown-1",
+            "flag+:mina_tailor"
+          ]
+        },
+        "fail": {
+          "text": "爹娘没松口，米娜红着眼眶回屋了。你们都很沮丧。",
+          "fx": [
+            "rel:mina-1",
+            "cha_exp+2"
+          ]
+        }
+      },
+      {
+        "label": "“你自己去和爹娘说。”",
+        "fx": [
+          "wil_exp+1"
+        ],
+        "text": "她咬咬牙，点了点头。"
+      }
+    ]
+  },
+  {
+    "id": "ev_mina_letter",
+    "kind": "random",
+    "pool": "social",
+    "weight": 10,
+    "once": true,
+    "cond": "flag:mina_tailor&&age>=24",
+    "title": "妹妹的信",
+    "scene": "village_autumn",
+    "text": "镇上的邮差给你带来一封信，是米娜寄的：“哥，我出师了！铺子老板说我手艺好，要给我涨钱。我给你缝了一件披风，下次回家记得穿。”信封里掉出一小块碎布。",
+    "options": [
+      {
+        "label": "把碎布夹进随身的小本子里",
+        "fx": [
+          "rel:mina+2",
+          "hometown+2",
+          "wil_exp+2"
+        ],
+        "text": "你笑着，眼睛却有一点酸。"
+      }
+    ]
+  },
+  {
+    "id": "ev_ambrose_gift",
+    "kind": "special",
+    "priority": 35,
+    "cond": "rel.ambrose>=3",
+    "portrait": "priest",
+    "title": "神父的赠礼",
+    "scene": "village_spring",
+    "text": "神父把你叫到祭坛后，从一只旧木匣里取出一枚磨损的护符：“年轻时我佩戴过它，后来再也没有用得上的地方。现在，它该给你。”",
+    "options": [
+      {
+        "label": "郑重收下",
+        "fx": [
+          "item:holy_amulet",
+          "rep:church+3",
+          "rel:ambrose+1",
+          "wil_exp+3"
+        ],
+        "text": "护符背面刻着一行小字：“愿你的光，足够照亮自己。”"
+      }
+    ]
+  },
+  {
+    "id": "ev_rex_friend",
+    "kind": "special",
+    "priority": 35,
+    "cond": "rel.rex>=3&&age>=21",
+    "title": "雷克斯的变化",
+    "scene": "village_spring",
+    "text": "曾经爱找茬的雷克斯，如今成了你最信得过的帮手。他拍拍你的肩：“村口那块地我帮你守着，你尽管去闯。”",
+    "options": [
+      {
+        "label": "“有你在，我放心。”",
+        "fx": [
+          "hometown+4",
+          "rel:rex+2",
+          "flag+:rex_ally"
+        ],
+        "text": "他挺起胸，像是接到了什么了不得的任务。"
+      },
+      {
+        "label": "拉他一起去地下城（2 体力）",
+        "cost": 2,
+        "fx": [
+          "rel:rex+2",
+          "exp+30",
+          "gold+30",
+          "str_exp+2"
+        ],
+        "text": "他嘴上说着不怕，腿却抖了一路。但那天，他挡在了你前面。"
+      }
+    ]
+  },
+  {
+    "id": "ev_lorn_trust",
+    "kind": "special",
+    "priority": 35,
+    "cond": "rel.lorn>=4",
+    "title": "洛恩的谢礼",
+    "scene": "village_autumn",
+    "text": "洛恩特意绕了半个大陆来见你，推着车上的一只长木盒：“这是给你的谢礼。别问多少钱，问就是友情价。”",
+    "options": [
+      {
+        "label": "打开木盒",
+        "fx": [
+          "item:hunter_bow",
+          "rel:lorn+1",
+          "agi_exp+3"
+        ],
+        "text": "里面是一把保养得极好的猎弓。弓梢刻着一枚小小的车轮。"
+      }
+    ]
+  },
+  {
+    "id": "ev_market",
+    "kind": "chain",
+    "title": "镇上的集市",
+    "scene": "village_autumn",
+    "text": "集市里人声鼎沸。铁匠铺的炉火烧得通红，药剂摊飘出苦涩的香气，旧书摊前围着几个学徒模样的年轻人。你摸了摸腰间的钱袋。",
+    "options": [
+      {
+        "label": "买一把铁剑（80 金币）",
+        "cond": "gold>=80&&!flag:has_iron_sword",
+        "reason": "金币不足或已拥有",
+        "fx": [
+          "gold-80",
+          "item:iron_sword",
+          "flag+:has_iron_sword"
+        ],
+        "text": "铁匠把剑往你手里一塞：“试试分量。”剑身有点歪，却很趁手。"
+      },
+      {
+        "label": "买一面圆盾（100 金币）",
+        "cond": "gold>=100&&!flag:has_round_shield",
+        "reason": "金币不足或已拥有",
+        "fx": [
+          "gold-100",
+          "item:round_shield",
+          "flag+:has_round_shield"
+        ],
+        "text": "盾面很朴素，边缘磕过几次，但够结实。"
+      },
+      {
+        "label": "买一件皮甲（120 金币）",
+        "cond": "gold>=120&&!flag:has_leather_buy",
+        "reason": "金币不足或已拥有",
+        "fx": [
+          "gold-120",
+          "item:leather_armor",
+          "flag+:has_leather_buy"
+        ],
+        "text": "皮甲穿在身上有点紧，活动几下就合身了。"
+      },
+      {
+        "label": "买一瓶伤药（30 金币）",
+        "cond": "gold>=30",
+        "reason": "金币不足",
+        "fx": [
+          "gold-30",
+          "heal:0.6"
+        ],
+        "text": "药汁苦得你直皱眉，伤口很快不疼了。"
+      },
+      {
+        "label": "买一瓶魔力药剂（40 金币）",
+        "cond": "gold>=40",
+        "reason": "金币不足",
+        "fx": [
+          "gold-40",
+          "mpheal:0.8"
+        ],
+        "text": "药剂带着薄荷的清凉，胸口的空虚被慢慢填满。"
+      },
+      {
+        "label": "买一本学者的笔记（40 金币）",
+        "cond": "gold>=40",
+        "reason": "金币不足",
+        "fx": [
+          "gold-40",
+          "int_exp+8"
+        ],
+        "text": "旧书摊的老板推荐你这本：“前人踩过的坑，都写在里头了。”"
+      },
+      {
+        "label": "请剑术师傅指点一番（60 金币）",
+        "cond": "gold>=60",
+        "reason": "金币不足",
+        "fx": [
+          "gold-60",
+          "str_exp+5",
+          "agi_exp+5",
+          "exp+10"
+        ],
+        "text": "师傅看了你三招，就开始骂。骂完，又指出了三个你一直没发觉的毛病。"
+      },
+      {
+        "label": "向教堂捐一些钱（20 金币）",
+        "cond": "gold>=20",
+        "reason": "金币不足",
+        "fx": [
+          "gold-20",
+          "rep:church+3",
+          "hometown+1"
+        ],
+        "text": "神父收下钱，在捐赠簿上记下你的名字，对你点点头。"
+      },
+      {
+        "label": "走进内间看看贵重货（只对有魅力的人开放）",
+        "fx": [
+          "goto:ev_market_vip"
+        ],
+        "text": "老掌柜打量了你一眼，掀开了内间的帘子。"
+      },
+      {
+        "label": "什么也不买，转一圈就走",
+        "fx": [
+          "cha_exp+1"
+        ],
+        "text": "光看看也不要钱。你顺便听了一耳朵各地的新闻。"
+      }
+    ]
+  },
+  {
+    "id": "ev_tavern",
+    "kind": "chain",
+    "title": "酒馆",
+    "scene": "village_autumn",
+    "text": "酒馆里弥漫着麦酒和烤肉的香气，角落里几个冒险者正压低声音争论着什么。老板擦着杯子，朝你抬了抬下巴：“坐。”",
+    "options": [
+      {
+        "label": "喝一杯热酒，吃顿好的（8 金币）",
+        "cond": "gold>=8",
+        "reason": "金币不足",
+        "fx": [
+          "gold-8",
+          "heal:0.4",
+          "mpheal:0.4",
+          "status-:fatigue"
+        ],
+        "text": "热汤下肚，一整天的疲惫都被烫散了。"
+      },
+      {
+        "label": "请人喝一杯，打听消息（5 金币）",
+        "cond": "gold>=5",
+        "reason": "金币不足",
+        "fx": [
+          "gold-5",
+          "cha_exp+2",
+          {
+            "if": "count.rumor==0",
+            "then": [
+              "log:听说老兵格伦年轻时被人冤枉过，一直憋着一口气没说出口。",
+              "flag+:rumor_glen",
+              "rel:glen+1"
+            ],
+            "else": [
+              {
+                "if": "count.rumor==1",
+                "then": [
+                  "log:听说月华草只在夏、秋两季的月夜里开，长在背阴的崖缝里。",
+                  "flag+:herb_hint"
+                ],
+                "else": [
+                  {
+                    "if": "count.rumor==2",
+                    "then": [
+                      "log:听说教会最近缺人手，愿意帮忙的年轻人，会被记在心里。",
+                      "rep:church+3"
+                    ],
+                    "else": [
+                      {
+                        "if": "count.rumor==3",
+                        "then": [
+                          "log:听说行商洛恩最近到处找靠得住的护卫，开的价不低。",
+                          "gold+20",
+                          "flag+:rumor_lorn"
+                        ],
+                        "else": [
+                          "exp+8"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "count:rumor+1"
+        ],
+        "text": "几杯酒下肚，邻座的人开始絮絮叨叨。"
+      },
+      {
+        "label": "赌一把骰子（20 金币）",
+        "cond": "gold>=20",
+        "reason": "金币不足",
+        "check": {
+          "attr": "luk",
+          "diff": 10
+        },
+        "ok": {
+          "text": "骰子在碗里转了三圈，停在了最大的点数上。你赢得盆满钵满。",
+          "fx": [
+            "gold+34"
+          ]
+        },
+        "fail": {
+          "text": "你一把输了个精光，庄家笑着收走了你的钱。",
+          "fx": [
+            "gold-20",
+            "wil_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "坐一会儿就走",
+        "fx": [
+          "wil_exp+1"
+        ],
+        "text": "你听了会儿角落里的争吵，没插话。"
+      }
+    ]
+  },
+  {
+    "id": "ev_lorn_offer",
+    "kind": "chain",
+    "title": "洛恩的邀请",
+    "scene": "village_autumn",
+    "text": "商队第二次平安回到村里。洛恩把你拉到一边，神神秘秘地从怀里掏出一份契书：“我想把北线的生意做大，还差一个信得过的合伙人。你出 60 金币，每年按份分红，怎么样？”",
+    "options": [
+      {
+        "label": "入股（60 金币）",
+        "cond": "gold>=60",
+        "reason": "金币不足",
+        "fx": [
+          "gold-60",
+          "flag+:lorn_partner",
+          "rel:lorn+2",
+          "cha_exp+2"
+        ],
+        "text": "你在契书上按下手印。洛恩笑得合不拢嘴：“放心，亏不了你。”"
+      },
+      {
+        "label": "婉拒，只做朋友",
+        "fx": [
+          "flag+:lorn_decline",
+          "rel:lorn+1"
+        ],
+        "text": "洛恩没勉强，把契书收了回去：“有需要，随时找我。”"
+      }
+    ]
+  },
+  {
+    "id": "ev_orphan_future",
+    "kind": "chain",
+    "title": "孩子的去处",
+    "scene": "village_spring",
+    "text": "孩子已经能和邻居家的小孩一起玩耍了。夜里，他忽然拉住你的衣角，小声问：“我……可以一直留在这里吗？”",
+    "options": [
+      {
+        "label": "“当然可以，你以后就是这个家里的人。”",
+        "fx": [
+          "flag+:orphan_home",
+          "hometown+4",
+          "rel:mina+1",
+          "wil_exp+2"
+        ],
+        "text": "他把脸埋在你的袖子里，半天没抬起头。母亲在门口，悄悄擦了擦眼睛。"
+      },
+      {
+        "label": "托付给神父，让他在教堂学一门手艺",
+        "fx": [
+          "flag+:orphan_home",
+          "rep:church+4",
+          "rel:ambrose+1"
+        ],
+        "text": "神父把孩子领到身边，轻轻摸了摸他的头：“好孩子，你不会再饿着了。”"
+      },
+      {
+        "label": "托洛恩带到南方，找一户好人家",
+        "fx": [
+          "flag+:orphan_home",
+          "rel:lorn+1",
+          "cha_exp+1"
+        ],
+        "text": "洛恩拍着胸脯保证。孩子回头朝你挥了很久的手，才被车厢的帆布挡住。"
+      }
+    ]
+  },
+  {
+    "id": "ev_ruins_vault",
+    "kind": "chain",
+    "title": "石室里的发现",
+    "scene": "mountain",
+    "text": "石台升起，上面放着一只落满灰尘的铜匣。匣子里是一卷用兽皮写成的卷轴，字迹已经淡去大半。你勉强认出几行：“……封印……圣剑……北境……”\n角落里还堆着一小袋早已无人认领的金币。",
+    "options": [
+      {
+        "label": "带去教堂，交给神父研究",
+        "fx": [
+          "flag+:ruins_told",
+          "rep:church+6",
+          "rel:ambrose+2",
+          "int_exp+4",
+          "flag+:church_clue_1"
+        ],
+        "text": "神父读了很久，把卷轴小心翼翼地收进了教堂的密室。“你做了一件重要的事。”"
+      },
+      {
+        "label": "留给自己，慢慢研究",
+        "fx": [
+          "flag+:ruins_told",
+          "flag+:magic_tome",
+          "int_exp+8",
+          "count:arcana+2"
+        ],
+        "text": "夜里，你就着一盏油灯，一点一点地把残卷抄在自己的本子上。"
+      },
+      {
+        "label": "只拿走金币，把卷轴放回原处",
+        "fx": [
+          "flag+:ruins_told",
+          "gold+80",
+          "rep:church-1"
+        ],
+        "text": "你把铜匣盖好，把石台推回原位。有些东西，不是你的。"
+      }
+    ]
+  },
+  {
+    "id": "ev_main_failed",
+    "kind": "special",
+    "priority": 95,
+    "cond": "flag:main_failed",
+    "title": "断掉的路",
+    "scene": "village_autumn",
+    "text": "你把那封一直没送出的推荐信，在手里折了又折。\n通往圣骑士的路，到这里断了。教会的名册上，不会再有你的名字。\n但你知道，魔王不会因为你的失败而晚来一天。\n镇上公会的告示栏上，有一行褪色的大字：“不问出身，只看战绩。”",
+    "options": [
+      {
+        "label": "去公会看看，还有没有别的路",
+        "fx": [
+          "rep:guild+3",
+          "exp+20",
+          "wil_exp+2"
+        ],
+        "text": "公会长看着你，只问了一句：“你想打赢，还是想被人记住？”\n你说：“我想打赢。”\n他把一张登记表推到了你面前。"
+      },
+      {
+        "label": "不甘心，埋头苦练",
+        "fx": [
+          "str_exp+4",
+          "wil_exp+4"
+        ],
+        "text": "你把所有的火气，都撒在了训练场的木桩上。"
+      },
+      {
+        "label": "回到田里去",
+        "fx": [
+          "hometown+4",
+          "wil_exp+1"
+        ],
+        "text": "麦子不问你为什么回来，它们只管长。"
+      }
+    ]
+  },
+  {
+    "id": "ev_16_summer",
+    "kind": "special",
+    "when": {
+      "age": 16,
+      "season": "summer"
+    },
+    "priority": 40,
+    "title": "第一次独自割麦",
+    "text": "夏天的麦浪在风里一层一层地翻。父亲这一年腰疼，把最东边那块地交给了你。\n太阳毒得发白，镰刀把手被汗水浸得滑腻。你割了一整个上午，直起腰时，发现身后留下了长长的一条空地。",
+    "options": [
+      {
+        "label": "一鼓作气，割完整块地",
+        "fx": [
+          "str_exp+4",
+          "hometown+2",
+          "hp-3"
+        ],
+        "text": "傍晚，你把最后一捆麦子扛上车，父亲站在田埂上，什么也没说，只把一壶水递给了你。"
+      },
+      {
+        "label": "歇口气，叫上艾芙娜一起",
+        "fx": [
+          "rel:efna+1",
+          "hometown+1",
+          "cha_exp+1"
+        ],
+        "text": "艾芙娜顶着草帽，提着一篮凉饼跑过来。你们坐在麦垛的阴影里，谁也没提累。"
+      }
+    ],
+    "scene": "village_spring"
+  },
+  {
+    "id": "ev_16_autumn",
+    "kind": "special",
+    "when": {
+      "age": 16,
+      "season": "autumn"
+    },
+    "priority": 40,
+    "title": "打谷场的夜",
+    "text": "秋收结束的夜里，全村人聚在打谷场上，堆起了一座小山似的篝火。有人拉起了手风琴，有人在跳舞。\n艾芙娜坐在火堆边，望着跳动的火苗发呆，你走过去，她抬头笑了笑。",
+    "options": [
+      {
+        "label": "在她身边坐下",
+        "fx": [
+          "rel:efna+1",
+          "hometown+1"
+        ],
+        "text": "她小声说：“明年的这个时候，你大概已经不在村里了吧？”你没有回答。"
+      },
+      {
+        "label": "加入舞圈，笑闹一阵",
+        "fx": [
+          "cha_exp+3",
+          "hometown+2"
+        ],
+        "text": "你被拉进了舞圈，脚下的泥巴溅了一身。你笑着，一晚上都没停。"
+      }
+    ],
+    "portrait": "efna",
+    "scene": "village_autumn"
+  },
+  {
+    "id": "ev_16_winter",
+    "kind": "special",
+    "when": {
+      "age": 16,
+      "season": "winter"
+    },
+    "priority": 40,
+    "title": "第一场雪",
+    "text": "第一场雪是半夜里落下来的。早上你推开门，院子里一片白，只有鸡窝门口留着几行小爪印。\n母亲在灶前熬着热粥，妹妹米娜光着脚丫跑出来，兴奋地大叫。",
+    "options": [
+      {
+        "label": "陪米娜堆雪人",
+        "fx": [
+          "rel:mina+2",
+          "hometown+1"
+        ],
+        "text": "你们堆了一个歪歪扭扭的雪人，米娜非要给它戴上你的旧帽子。"
+      },
+      {
+        "label": "先把院子里的雪扫开，给父亲清出路",
+        "fx": [
+          "str_exp+2",
+          "hometown+2",
+          "wil_exp+1"
+        ],
+        "text": "父亲踩着你扫开的小路出了门，背影很稳。"
+      }
+    ],
+    "scene": "village_winter"
+  },
+  {
+    "id": "ev_17_spring",
+    "kind": "special",
+    "when": {
+      "age": 17,
+      "season": "spring"
+    },
+    "priority": 40,
+    "title": "春季庙会",
+    "text": "镇上一年一度的庙会开张了，彩旗从街头挂到街尾，卖糖人的、耍杂技的、算命的挤在一起。\n父亲给了你几个铜板：“去逛逛吧，别总惦记着地里的活。”",
+    "options": [
+      {
+        "label": "去逛逛，长长见识（1 体力）",
+        "cost": 1,
+        "fx": [
+          "cha_exp+3",
+          "gold+8",
+          "int_exp+1"
+        ],
+        "text": "你在算命摊前站了很久。算命的老头看了你一眼：“小子，你的路，在北边。”"
+      },
+      {
+        "label": "帮父亲在庙会上卖粮食",
+        "fx": [
+          "gold+18",
+          "hometown+1",
+          "cha_exp+1"
+        ],
+        "text": "价钱谈得不错，父亲回家路上哼起了小调。"
+      }
+    ],
+    "scene": "village_spring"
+  },
+  {
+    "id": "ev_17_autumn",
+    "kind": "special",
+    "when": {
+      "age": 17,
+      "season": "autumn"
+    },
+    "priority": 40,
+    "title": "圣剧排演",
+    "text": "教堂在为冬至圣剧排练。神父缺一个演“勇者”的人，他看了一圈，目光落在你身上。\n“这个角色不难，只要站得直，声音稳就行。”他说。",
+    "options": [
+      {
+        "label": "答应扮演勇者",
+        "fx": [
+          "cha_exp+3",
+          "rep:church+3",
+          "wil_exp+1"
+        ],
+        "text": "台词只有三句，你背了一个星期。演出那天，你的腿一直在抖，但没有忘词。"
+      },
+      {
+        "label": "帮着搬道具、挂布景",
+        "fx": [
+          "str_exp+2",
+          "rep:church+2",
+          "hometown+1"
+        ],
+        "text": "神父说，台下的人看不见搬布景的人，可没有他们，戏就演不成。"
+      }
+    ],
+    "portrait": "priest",
+    "scene": "village_autumn"
+  },
+  {
+    "id": "ev_17_winter",
+    "kind": "special",
+    "when": {
+      "age": 17,
+      "season": "winter"
+    },
+    "priority": 40,
+    "title": "暴风雪",
+    "text": "一场暴风雪连下了三天，村东头格伦的窝棚被积雪压塌了半边。你听见邻居们说起这事的时候，雪还没停。",
+    "options": [
+      {
+        "label": "顶着风雪过去帮忙（1 体力）",
+        "cost": 1,
+        "fx": [
+          "rel:glen+2",
+          "str_exp+2",
+          "wil_exp+2"
+        ],
+        "text": "你们把塌掉的木梁一根一根抬开，格伦一边骂天气，一边把他最后半壶酒塞给了你。"
+      },
+      {
+        "label": "让父亲送去一些干柴",
+        "fx": [
+          "rel:glen+1",
+          "hometown+1"
+        ],
+        "text": "格伦托人带话：“替我谢谢你家人。”"
+      }
+    ],
+    "cond": "flag:met_glen",
+    "portrait": "glen",
+    "scene": "village_winter"
+  },
+  {
+    "id": "ev_18_spring",
+    "kind": "special",
+    "when": {
+      "age": 18,
+      "season": "spring"
+    },
+    "priority": 40,
+    "title": "十八岁的岔路口",
+    "text": "十八岁的春天，神父把你叫到教堂后院：“你已经成年了，该想想往后的路。”\n他给你讲了几件事：\n镇上的冒险者公会从十八岁起收新人；教会的巡游使者每隔几年会路过北境，他们看重体格和意志，等级和属性要有些底子；而不管走哪条路，北边的那个日子，都在等着你。",
+    "options": [
+      {
+        "label": "去镇上公会看看",
+        "fx": [
+          "rep:guild+1",
+          "exp+10",
+          "int_exp+1"
+        ],
+        "text": "公会大厅里挂满了委托单。接待员打量你一眼：“有想法就来登记，别死在半路上。”"
+      },
+      {
+        "label": "留在教堂，多听神父讲讲",
+        "fx": [
+          "rep:church+3",
+          "wil_exp+3",
+          "rel:ambrose+1"
+        ],
+        "text": "神父说了很多，大部分你都没听懂，但有一句你记住了：“光，是被人一点一点点亮的。”"
+      },
+      {
+        "label": "回家，继续守着这片地",
+        "fx": [
+          "hometown+3",
+          "wil_exp+1"
+        ],
+        "text": "晚饭时，母亲多给你夹了一块肉，什么也没问。"
+      }
+    ],
+    "portrait": "priest",
+    "scene": "village_spring"
+  },
+  {
+    "id": "ev_market_vip",
+    "kind": "chain",
+    "title": "集市内间",
+    "scene": "village_autumn",
+    "text": "内间很安静，墙上挂着一排用布盖着的货。老掌柜擦着一把剑，头也不抬：“这里的货，只卖给‘说得上话’的人。你有多体面，我就让你看多少。”\n（魅力 ≥ 10 / 14 / 18，可以买到越来越好的装备。同一栏位只取最强的一件，饰品取最强的两件。）",
+    "options": [
+      {
+        "label": "精钢长剑（武器，战力 +8，260 金币，魅力 ≥ 10）",
+        "cond": "gold>=260&&attr.cha>=10&&!flag:own_steel_sword",
+        "reason": "需要 260 金币和魅力 ≥ 10，或已经拥有",
+        "fx": [
+          "gold-260",
+          "item:steel_sword",
+          "flag+:own_steel_sword"
+        ],
+        "text": "老匠人把剑从布里一层层剥出来：“试试，别砍坏了我的铁砧。”"
+      },
+      {
+        "label": "锁子甲（护甲，战力 +8，300 金币，魅力 ≥ 10）",
+        "cond": "gold>=300&&attr.cha>=10&&!flag:own_chain_mail",
+        "reason": "需要 300 金币和魅力 ≥ 10，或已经拥有",
+        "fx": [
+          "gold-300",
+          "item:chain_mail",
+          "flag+:own_chain_mail"
+        ],
+        "text": "锁甲披上身，像披着一件会响的衣服。"
+      },
+      {
+        "label": "塔盾（盾牌，战力 +8，280 金币，魅力 ≥ 10）",
+        "cond": "gold>=280&&attr.cha>=10&&!flag:own_tower_shield",
+        "reason": "需要 280 金币和魅力 ≥ 10，或已经拥有",
+        "fx": [
+          "gold-280",
+          "item:tower_shield",
+          "flag+:own_tower_shield"
+        ],
+        "text": "盾沿的铁边在灯下闪着冷光。"
+      },
+      {
+        "label": "银戒指（饰品，战力 +5，200 金币，魅力 ≥ 10）",
+        "cond": "gold>=200&&attr.cha>=10&&!flag:own_silver_ring",
+        "reason": "需要 200 金币和魅力 ≥ 10，或已经拥有",
+        "fx": [
+          "gold-200",
+          "item:silver_ring",
+          "flag+:own_silver_ring"
+        ],
+        "text": "戒指内圈刻着一句不太押韵的祝福，你挺喜欢。"
+      },
+      {
+        "label": "银纹长剑（武器，战力 +12，600 金币，魅力 ≥ 14）",
+        "cond": "gold>=600&&attr.cha>=14&&!flag:own_silver_blade",
+        "reason": "需要 600 金币和魅力 ≥ 14，或已经拥有",
+        "fx": [
+          "gold-600",
+          "item:silver_blade",
+          "flag+:own_silver_blade"
+        ],
+        "text": "剑身映着窗外的光，像一道静止的闪电。"
+      },
+      {
+        "label": "板甲（护甲，战力 +12，650 金币，魅力 ≥ 14）",
+        "cond": "gold>=650&&attr.cha>=14&&!flag:own_plate_armor",
+        "reason": "需要 650 金币和魅力 ≥ 14，或已经拥有",
+        "fx": [
+          "gold-650",
+          "item:plate_armor",
+          "flag+:own_plate_armor"
+        ],
+        "text": "工匠绕着你转了三圈，说：“嗯，合身。”"
+      },
+      {
+        "label": "狮心吊坠（饰品，战力 +9，550 金币，魅力 ≥ 14）",
+        "cond": "gold>=550&&attr.cha>=14&&!flag:own_lion_pendant",
+        "reason": "需要 550 金币和魅力 ≥ 14，或已经拥有",
+        "fx": [
+          "gold-550",
+          "item:lion_pendant",
+          "flag+:own_lion_pendant"
+        ],
+        "text": "吊坠贴在胸口，沉甸甸的，像一个承诺。"
+      },
+      {
+        "label": "秘银细剑（武器，战力 +16，1200 金币，魅力 ≥ 18）",
+        "cond": "gold>=1200&&attr.cha>=18&&!flag:own_mithril_edge",
+        "reason": "需要 1200 金币和魅力 ≥ 18，或已经拥有",
+        "fx": [
+          "gold-1200",
+          "item:mithril_edge",
+          "flag+:own_mithril_edge"
+        ],
+        "text": "掌柜亲自把剑递到你手里，什么也没说，只是点了点头。"
+      },
+      {
+        "label": "秘银锁甲（护甲，战力 +16，1300 金币，魅力 ≥ 18）",
+        "cond": "gold>=1300&&attr.cha>=18&&!flag:own_mithril_mail",
+        "reason": "需要 1300 金币和魅力 ≥ 18，或已经拥有",
+        "fx": [
+          "gold-1300",
+          "item:mithril_mail",
+          "flag+:own_mithril_mail"
+        ],
+        "text": "锁甲轻得让你怀疑是不是被骗了，直到匠人拿刀在上面划了一下。"
+      },
+      {
+        "label": "神盾（盾牌，战力 +12，1100 金币，魅力 ≥ 18）",
+        "cond": "gold>=1100&&attr.cha>=18&&!flag:own_holy_aegis",
+        "reason": "需要 1100 金币和魅力 ≥ 18，或已经拥有",
+        "fx": [
+          "gold-1100",
+          "item:holy_aegis",
+          "flag+:own_holy_aegis"
+        ],
+        "text": "盾心的圣徽微微发亮，像是认出了你。"
+      },
+      {
+        "label": "龙鳞护符（饰品，战力 +12，1400 金币，魅力 ≥ 18）",
+        "cond": "gold>=1400&&attr.cha>=18&&!flag:own_dragon_charm",
+        "reason": "需要 1400 金币和魅力 ≥ 18，或已经拥有",
+        "fx": [
+          "gold-1400",
+          "item:dragon_charm",
+          "flag+:own_dragon_charm"
+        ],
+        "text": "鳞片温温的，握在手心，像握着一颗很远很远的心跳。"
+      },
+      {
+        "label": "回外间",
+        "text": "掌柜点点头：“下次再来，货会有新的。”",
+        "fx": []
+      }
+    ]
+  },
+  {
+    "id": "ev_shadow_ambrose",
+    "kind": "chain",
+    "title": "神父的沉默",
+    "portrait": "priest",
+    "scene": "village_autumn",
+    "text": "傍晚的教堂里只剩下烛光。你把那本蜡封的册子上的字，一句一句复述给安布罗斯听。\n神父擦圣像的手一直没有停，直到你说到“圣剑”两个字。\n“你比我想的走得更远。”他终于开口，声音很轻。",
+    "options": [
+      {
+        "label": "“神父，我想知道全部。”",
+        "cond": [
+          "rel.ambrose>=3",
+          "memory:m_truth"
+        ],
+        "reason": "神父还不够信任你（好感 ≥ 3）",
+        "fx": [
+          "flag+:shadow_ambrose",
+          "rel:ambrose+1",
+          "int_exp+4"
+        ],
+        "text": "“百年前，圣骑士团没有杀死魔王。他们杀不了。他们用圣剑做了一把锁，把它锁在了北境。”\n安布罗斯从衣袖里取出一把磨得发亮的铜钥匙，放在你手心：“王都圣库第三层，有一本没有标题的册子。看完以后，再决定要不要恨我。”"
+      },
+      {
+        "label": "“我在档案室看到了封印记录，请别瞒我。”",
+        "check": {
+          "attr": "cha",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你的声音很稳，没有逼问，只是在等。\n安布罗斯终于叹了口气：“教会管它叫‘必要的沉默’。圣剑不是用来杀魔王的，它是锁。”\n他把一把旧钥匙推到你面前：“王都圣库第三层。看完以后，再决定要不要恨我。”",
+          "fx": [
+            "flag+:shadow_ambrose",
+            "int_exp+4"
+          ]
+        },
+        "fail": {
+          "text": "“你还不明白自己在问什么，孩子。”神父别过脸，不再说话。\n你在门口站了很久，直到烛火熄了一支。",
+          "fx": [
+            "rep:church-1",
+            "wil_exp+2"
+          ]
+        }
+      },
+      {
+        "label": "“对不起，是我不该问。”",
+        "fx": [
+          "wil_exp+1",
+          "rel:ambrose+1"
+        ],
+        "text": "神父点了点头，没有挽留。过一阵子，也许他会改变主意。"
+      }
+    ]
+  },
+  {
+    "id": "ev_shadow_vault",
+    "kind": "chain",
+    "title": "圣库第三层",
+    "portrait": "priest",
+    "scene": "mountain",
+    "text": "那本册子没有标题，纸页已经发脆。你借着灯光，一页一页地读下去。\n初代圣骑士团长在封印之夜写道：魔王并非来自深渊，而是被圣剑之光侵蚀的人。要让封印存续，每一代圣骑士宣誓时，圣剑都会取走他们心里的一小块“抗拒”，作为锁的燃料。\n最后一页的末尾，只有一行字：“当锁磨尽，被锁住的会醒来，而持剑的人会成为下一个。”",
+    "options": [
+      {
+        "label": "把封印记录抄下来，带走",
+        "fx": [
+          "flag+:shadow_known",
+          "flag+:shadow_copy",
+          "int_exp+6",
+          "log:你把真相抄在了贴身的册子里。"
+        ],
+        "text": "笔尖划过纸面的声音在圣库里格外清楚。你知道，这一笔下去，就再也回不去了。"
+      },
+      {
+        "label": "只记在心里，把册子放回原处",
+        "fx": [
+          "flag+:shadow_known",
+          "wil_exp+6",
+          "rep:church+1"
+        ],
+        "text": "你把册子放回石架，抹去了灰尘上的指印。有些事，你一个人知道，就够沉的了。"
+      }
+    ]
+  }
+]

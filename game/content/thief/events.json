@@ -1,0 +1,1429 @@
+[
+  {
+    "id": "t_meet_rat",
+    "kind": "special",
+    "title": "灰鼠",
+    "text": "夜里，你的手刚伸进一个老头的袖子，就被另一只更快的手扣住了。\n“手法不错，”老头吐掉嘴里的草茎，“就是脸上写着‘我在偷’三个字。”\n他松开手，看着你，像在掂量一块不知道值不值钱的料。",
+    "options": [
+      {
+        "label": "老老实实挨训，问他是谁",
+        "text": "“鼠街的灰鼠，”他说，“想活得久一点，就跟我来。”从这一夜起，你有了一个师父，虽然他从来不承认。",
+        "fx": [
+          "flag+:met_rat",
+          "rel:rat+3",
+          "int_exp+2"
+        ]
+      },
+      {
+        "label": "趁他不备，再偷一次",
+        "check": {
+          "attr": "agi",
+          "diff": 14
+        },
+        "ok": {
+          "text": "你在他松手的刹那，摸走了他的烟袋。灰鼠愣了一下，哈哈大笑：“有意思，真有意思！”",
+          "fx": [
+            "flag+:met_rat",
+            "rel:rat+3",
+            "agi_exp+4",
+            "gold+10"
+          ]
+        },
+        "fail": {
+          "text": "他连头也没回，一把按住你的手，顺势拧了半圈。“疼吗？记住这个疼。”",
+          "fx": [
+            "hp-6",
+            "flag+:met_rat",
+            "rel:rat+1",
+            "agi_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "掉头就跑",
+        "text": "你钻进巷子，跑了三条街才敢回头。身后没有脚步声，只有一声很轻的笑。",
+        "fx": [
+          "agi_exp+2",
+          "flag+:met_rat"
+        ]
+      }
+    ],
+    "when": {
+      "age": 16,
+      "season": "autumn"
+    },
+    "priority": 70,
+    "portrait": "rat",
+    "scene": "alley"
+  },
+  {
+    "id": "t_meet_lila",
+    "kind": "special",
+    "title": "巷口的女孩",
+    "text": "你在蹲点的时候，被人从背后拍了一下。回头，是个扎着脏辫子的女孩，指着你要偷的那辆货车：“别动，那是孤儿院的粮。”\n她叫莉拉，十五岁，在孤儿院长大，偶尔也替嬷嬷“拿”点东西。",
+    "options": [
+      {
+        "label": "把到手的面包分她一半",
+        "text": "她接过去，咬了一口：“……行，你不算坏人。”",
+        "fx": [
+          "flag+:met_lila",
+          "rel:lila+3",
+          "hometown+2"
+        ]
+      },
+      {
+        "label": "跟她打听孤儿院的事",
+        "text": "莉拉说了很多：谁家的孩子被送走，谁的病没人管。你听着，心里有点堵。",
+        "fx": [
+          "flag+:met_lila",
+          "rel:lila+2",
+          "cha_exp+2"
+        ]
+      },
+      {
+        "label": "不理她，转身走掉",
+        "text": "你走出老远，才发现她一直在后面远远地看着你。",
+        "fx": [
+          "flag+:met_lila",
+          "rel:lila+1"
+        ]
+      }
+    ],
+    "when": {
+      "age": 17,
+      "season": "spring"
+    },
+    "priority": 65,
+    "portrait": "lila",
+    "scene": "alley"
+  },
+  {
+    "id": "t_red_threat",
+    "kind": "special",
+    "title": "红手印",
+    "text": "一夜之间，鼠街的墙上多了一只红手印。\n红手帮的人在街口收“保护费”：卖菜的、修鞋的、摆摊的，一个也不放过。领头的是个缺了小指的男人，人称「断指」。\n有人悄悄看向你，什么也没说。",
+    "options": [
+      {
+        "label": "先观察几天，看他们的人手",
+        "text": "你蹲在屋顶上数了三个晚上。他们有十二个人，三条狗，一间仓库。",
+        "fx": [
+          "flag+:red_hand_threat",
+          "int_exp+3",
+          "count:intel+1",
+          "quest:start:red_hand_war"
+        ]
+      },
+      {
+        "label": "去找灰鼠商量",
+        "text": "灰鼠听完，沉默了很久：“红手帮不是普通的地头蛇。小心点，别一个人去。”",
+        "fx": [
+          "flag+:red_hand_threat",
+          "rel:rat+1",
+          "quest:start:red_hand_war"
+        ]
+      },
+      {
+        "label": "装作没看见",
+        "text": "但街坊们看你的眼神，变得有点不一样。",
+        "fx": [
+          "flag+:red_hand_threat",
+          "hometown-3",
+          "quest:start:red_hand_war"
+        ]
+      }
+    ],
+    "when": {
+      "age": 19,
+      "season": "summer"
+    },
+    "priority": 60,
+    "portrait": "cass",
+    "scene": "alley"
+  },
+  {
+    "id": "t_meet_cass",
+    "kind": "special",
+    "title": "追捕",
+    "text": "那晚你从一户人家后窗出来，迎面就是一队巡逻的火把。\n为首的是个年轻的女捕快，目光像刀。“站住。”她说，声音不高，却让你的腿停了半拍。\n她叫卡斯，是新上任的巡逻队队长。",
+    "options": [
+      {
+        "label": "翻上屋顶，拔腿就跑",
+        "check": {
+          "attr": "agi",
+          "diff": 14,
+          "fateDiff": 1,
+          "memDiff": {
+            "id": "m_t_cass",
+            "diff": -2
+          }
+        },
+        "ok": {
+          "text": "你从屋檐一路跑过三条街，把火把的光远远甩在身后。卡斯站在巷口，看着屋顶上你的背影，一动不动。",
+          "fx": [
+            "flag+:met_cass",
+            "agi_exp+4",
+            "count:heat+6"
+          ]
+        },
+        "fail": {
+          "text": "你从屋顶上滑了下去，摔在一堆麻袋上。卡斯的火把照着你，“带走。”",
+          "fx": [
+            "flag+:met_cass",
+            "hp-8",
+            "count:heat+10",
+            "gold-20",
+            "log:卡斯把你拎回巡逻队，盘问了一整夜。没有证据，只能放人。她在你离开前，说了一句：“我会盯着你。”"
+          ]
+        }
+      },
+      {
+        "label": "丢下一枚金币，装作路人",
+        "text": "卡斯没接。“路人不会半夜从后窗出来。”她看了你很久，才让开了路。“……我记住你了。”",
+        "fx": [
+          "flag+:met_cass",
+          "gold-15",
+          "count:heat+4",
+          "cha_exp+2"
+        ],
+        "cond": "gold>=15",
+        "reason": "金币不足"
+      },
+      {
+        "label": "点头哈腰，说自己是送货的",
+        "check": {
+          "attr": "cha",
+          "diff": 13
+        },
+        "ok": {
+          "text": "你一连串的谎话说得天衣无缝。卡斯皱着眉，最后还是放了你。",
+          "fx": [
+            "flag+:met_cass",
+            "cha_exp+4"
+          ]
+        },
+        "fail": {
+          "text": "她盯着你的鞋看了一眼，那上面还沾着别人家窗台上的青苔。",
+          "fx": [
+            "flag+:met_cass",
+            "count:heat+8",
+            "gold-15",
+            "log:卡斯没有证据，只能放你走。她盯着你的背影，一直盯到你转过街角。"
+          ]
+        }
+      }
+    ],
+    "when": {
+      "age": 20,
+      "season": "winter"
+    },
+    "priority": 60,
+    "portrait": "cass",
+    "scene": "alley_snow"
+  },
+  {
+    "id": "t_orphan_raid",
+    "kind": "special",
+    "title": "深夜的孤儿院",
+    "text": "半夜，莉拉气喘吁吁地敲你的窗：“红手帮的人在孤儿院门口，他们要抢地契！”\n你赶到的时候，七八个人正堵在门口，孩子们挤在二楼窗后，哭声一阵一阵传出来。",
+    "options": [
+      {
+        "label": "冲进去，挡在门口",
+        "text": "你一脚踹开最前面的人，把嬷嬷护在身后。",
+        "fx": [
+          {
+            "type": "combat",
+            "enemy": "red_hand",
+            "win": [
+              "flag+:orphan_defended",
+              "hometown+8",
+              "rel:lila+2",
+              "exp+30",
+              "log:红手帮的人被你们打跑了。"
+            ],
+            "lose": [
+              "hp-15",
+              "hometown-3",
+              "flag+:orphan_defended",
+              "log:你被打得很惨，但他们也没敢再往里闯。"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "从后院绕进去，把孩子们先带走",
+        "check": {
+          "attr": "agi",
+          "diff": 13
+        },
+        "ok": {
+          "text": "你们从后院的墙洞里把孩子一个个送了出去。红手帮的人闯进去的时候，只抓到了一屋子的空床。",
+          "fx": [
+            "flag+:orphan_defended",
+            "hometown+6",
+            "rel:lila+2",
+            "agi_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "你们被发现了。混乱里，有人受了伤。",
+          "fx": [
+            "hp-10",
+            "hometown-4",
+            "flag+:orphan_defended"
+          ]
+        }
+      },
+      {
+        "label": "不管了，这不是你的事",
+        "text": "第二天，孤儿院的门被钉上了板。你路过时，没敢抬头。",
+        "fx": [
+          "hometown-10",
+          "rel:lila-3",
+          "flag+:orphan_cold"
+        ]
+      }
+    ],
+    "when": {
+      "age": 22,
+      "season": "autumn"
+    },
+    "priority": 55,
+    "portrait": "lila",
+    "scene": "alley"
+  },
+  {
+    "id": "t_rat_dying",
+    "kind": "special",
+    "title": "灰鼠的最后一夜",
+    "text": "冬天最冷的那个夜晚，灰鼠把你叫到了他的阁楼。\n老人躺在一张发黑的床板上，脸色灰得像他的名字。“咳……别哭，”他说，“我这辈子偷过的东西，比你见过的都多，没什么亏的。”\n他从枕下摸出一枚小小的、断了一半的钥匙，塞进你手里。",
+    "options": [
+      {
+        "label": "握住他的手，一直陪到天亮",
+        "text": "灰鼠没有再说话。天亮前，他的手慢慢松开了。你把那半把钥匙贴在胸口，坐了很久。",
+        "fx": [
+          "flag+:rat_dead",
+          "flag+:half_key",
+          "rel:rat+3",
+          "wil_exp+4",
+          "hometown+2"
+        ],
+        "cond": "rel.rat>=4",
+        "reason": "灰鼠还没信任你到这个地步（好感 ≥ 4）"
+      },
+      {
+        "label": "接过钥匙，问他另一半在哪",
+        "text": "灰鼠笑了，笑得很吃力：“……最没人想看的地方。”这是他留下的最后一句话。",
+        "fx": [
+          "flag+:rat_dead",
+          "rel:rat+1",
+          "wil_exp+2"
+        ]
+      },
+      {
+        "label": "什么也不说，只是点点头",
+        "text": "你站在床边，看着他一点点变凉。窗外的雪下得很静。",
+        "fx": [
+          "flag+:rat_dead",
+          "wil_exp+3"
+        ]
+      }
+    ],
+    "when": {
+      "age": 22,
+      "season": "winter"
+    },
+    "priority": 75,
+    "portrait": "rat",
+    "scene": "alley_snow"
+  },
+  {
+    "id": "t_mask_invite",
+    "kind": "special",
+    "title": "面具先生的邀请",
+    "text": "一张没有署名的邀请函，夹在你每天经过的那块松动的砖缝里。\n公会大厅的最深处，一个戴着白色无面面具的人，背对着你站着。“影子，”他说，声音像是从很远的井底传上来，“月蚀之夜，我需要一双最快的手。”\n他知道你的所有事，也知道你不知道的那一部分。",
+    "options": [
+      {
+        "label": "答应他，听听他的条件",
+        "text": "“你只需要在魔晶库里，替我拿一样东西。别的，随你。”他递给你一枚金币，“预付。”",
+        "fx": [
+          "flag+:mask_hired",
+          "rep:shadow+8",
+          "gold+150",
+          "count:intel+1"
+        ]
+      },
+      {
+        "label": "婉拒，说你有自己的计划",
+        "check": {
+          "attr": "cha",
+          "diff": 14
+        },
+        "ok": {
+          "text": "面具沉默了一会儿：“很好。有自己想法的人，才值得信任。”他没有再逼你。",
+          "fx": [
+            "rep:shadow+5",
+            "cha_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "面具轻轻地“嗯”了一声。你的背后，不知什么时候多出了几个人。“……再考虑考虑。”",
+          "fx": [
+            "count:heat+8",
+            "rep:shadow-3"
+          ]
+        }
+      },
+      {
+        "label": "装作恭敬，暗中留意他的破绽",
+        "check": {
+          "attr": "int",
+          "diff": 13
+        },
+        "ok": {
+          "text": "他说话时，左手总是下意识地摸一下腰间。那里，似乎挂着什么东西。",
+          "fx": [
+            "count:mask_clue+1",
+            "int_exp+3",
+            "count:intel+1"
+          ]
+        },
+        "fail": {
+          "text": "你什么也没看出来，只觉得后背发凉。",
+          "fx": [
+            "int_exp+1"
+          ]
+        }
+      }
+    ],
+    "when": {
+      "age": 23,
+      "season": "spring"
+    },
+    "priority": 60,
+    "portrait": "mask",
+    "scene": "tavern"
+  },
+  {
+    "id": "t_last_job",
+    "kind": "special",
+    "title": "最后一票",
+    "text": "年轻的时候，你从没想过自己会有退路。\n可今天，你的钱袋里有了一点分量，街角那家要转让的小铺子，又被人提起了。\n“金盆洗手吧，”莉拉说，“你已经做得够多了。”",
+    "options": [
+      {
+        "label": "金盆洗手，开一间修锁的铺子",
+        "text": "你把撬锁工具擦干净，放进了柜台下的抽屉。从今天起，你只修锁，不开锁。",
+        "fx": [
+          "flag+:retired",
+          "end:auto"
+        ],
+        "cond": "gold>=800&&hometown>=30",
+        "reason": "需要金币 ≥ 800，街区人望 ≥ 30",
+        "avoid": true
+      },
+      {
+        "label": "再干一票，攒够再说",
+        "text": "你把铺子的事暂时压在了心底。",
+        "fx": [
+          "wil_exp+1"
+        ]
+      },
+      {
+        "label": "不，我要去月蚀之夜",
+        "text": "莉拉叹了口气，没有再劝。",
+        "fx": [
+          "wil_exp+2",
+          "cha_exp+1"
+        ]
+      }
+    ],
+    "when": {
+      "age": 25,
+      "season": "spring"
+    },
+    "priority": 50,
+    "portrait": "lila",
+    "scene": "alley"
+  },
+  {
+    "id": "t_eclipse_warn",
+    "kind": "special",
+    "title": "月缺之时",
+    "text": "王都的天空，一夜比一夜暗。\n老人们说，那是月蚀要来了。公会大厅里点起了一盏盏灯，每个人都在检查自己的家什。\n莉拉把你拉到一边，问：“你准备好了吗？”",
+    "options": [
+      {
+        "label": "清点准备：图纸、同伙、钥匙",
+        "text": "你把能用的东西摊在桌上，一件一件地过。\n心里有数了。",
+        "fx": [
+          "int_exp+2",
+          "wil_exp+2"
+        ]
+      },
+      {
+        "label": "一个人在屋顶上，看了一夜的月亮",
+        "text": "风很凉。你想起灰鼠，想起鼠街，想起第一次被他抓住手腕的那个晚上。",
+        "fx": [
+          "wil_exp+4",
+          "hp+0"
+        ]
+      },
+      {
+        "label": "找卡斯，试探她的态度",
+        "check": {
+          "attr": "cha",
+          "diff": 13
+        },
+        "ok": {
+          "text": "卡斯没有拦你，只说了一句：“月蚀之夜，我会在城里。你自己，别让我抓住你。”",
+          "fx": [
+            "rel:cass+1",
+            "cha_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "她看了你一眼：“你在打听什么？”",
+          "fx": [
+            "count:heat+6"
+          ]
+        }
+      }
+    ],
+    "when": {
+      "age": 26,
+      "season": "autumn"
+    },
+    "priority": 50,
+    "portrait": "lila",
+    "scene": "rooftop"
+  },
+  {
+    "id": "t_heist_night",
+    "kind": "special",
+    "title": "月蚀之夜",
+    "text": "月亮被一点点吞掉的时候，整座王都都安静了。\n鼠街的老人们说得没错：王城地下，魔晶库的结界，在这一夜松开了一道缝。\n你站在水渠入口，身后是你的同伙，或许是一个，或许是三个。你知道，这扇门一旦推开，就不会再有一个“原来的你”。",
+    "options": [
+      {
+        "label": "按计划行动",
+        "text": "你摊开图纸，把最后一遍任务讲给每个人。\n“走。”",
+        "fx": [
+          "goto:ev_heist_1"
+        ],
+        "cond": "flag:vault_plan&&count.crew>=3&&flag:half_key",
+        "reason": "准备不足（需要图纸、3 个同伙、半把钥匙）"
+      },
+      {
+        "label": "带着已有的东西硬闯",
+        "text": "你没有图纸，也没有足够的人手。你只有一双手，和一个不肯回头的念头。",
+        "fx": [
+          "goto:ev_heist_1"
+        ]
+      },
+      {
+        "label": "不去了，回到鼠街",
+        "text": "你转身走回了下城。身后，月亮正好被吞尽。",
+        "fx": [
+          "flag+:skipped_heist",
+          "end:auto"
+        ]
+      }
+    ],
+    "when": {
+      "age": 27,
+      "season": "autumn"
+    },
+    "priority": 200,
+    "finale": true,
+    "portrait": "thief",
+    "scene": "rooftop"
+  },
+  {
+    "id": "ev_black_market",
+    "kind": "chain",
+    "title": "地下黑市",
+    "text": "下城最深处的一条地下街，没有门牌，只有暗号。摆摊的人都戴着兜帽，客人也一样。\n一个驼背的老头从阴影里抬起头：“买卖，不问姓名。”",
+    "options": [
+      {
+        "label": "买一瓶伤药（30 金币）",
+        "text": "苦得你直皱眉，伤口却很快不疼了。",
+        "fx": [
+          "gold-30",
+          "heal:0.6"
+        ],
+        "cond": "gold>=30",
+        "reason": "金币不足"
+      },
+      {
+        "label": "买一颗烟雾弹配方（120 金币）",
+        "text": "老头把卷着的纸条塞给你，指尖冰凉：“记住，别在室内用。”",
+        "fx": [
+          "gold-120",
+          "flag+:tricks_smoke"
+        ],
+        "cond": "gold>=120&&!flag:tricks_smoke",
+        "reason": "金币不足或已拥有"
+      },
+      {
+        "label": "买一份魔晶库图纸（300 金币）",
+        "text": "图纸是描摹来的，有一两处模糊，但足够你认出主要的暗道。",
+        "fx": [
+          "gold-300",
+          "flag+:vault_plan"
+        ],
+        "cond": "gold>=300&&!flag:vault_plan",
+        "reason": "金币不足或已拥有"
+      },
+      {
+        "label": "请老头指点开锁的窍门（60 金币）",
+        "text": "老头一边收钱一边吐槽，最后还是给你演示了三种你没见过的法子。",
+        "fx": [
+          "gold-60",
+          "agi_exp+5",
+          "int_exp+2",
+          "exp+10"
+        ],
+        "cond": "gold>=60",
+        "reason": "金币不足"
+      },
+      {
+        "label": "打听最近的风声（40 金币）",
+        "text": "老头眯着眼睛，慢吞吞地说了几句。有两句是有用的。",
+        "fx": [
+          "gold-40",
+          "count:intel+1",
+          "exp+5"
+        ],
+        "cond": "gold>=40",
+        "reason": "金币不足"
+      },
+      {
+        "label": "看看「贵客」才能进的货架",
+        "text": "老头抬眼看了看你，一言不发地把后面的布帘掀开了。",
+        "fx": [
+          "goto:ev_black_market_vip"
+        ],
+        "cond": "rep.shadow>=10",
+        "reason": "影子公会声望 ≥ 10，才有资格看"
+      },
+      {
+        "label": "什么也不买，转身离开",
+        "text": "",
+        "fx": [
+          "wil_exp+0"
+        ]
+      }
+    ],
+    "scene": "black_market",
+    "enter": [
+      "flag+:met_gu"
+    ]
+  },
+  {
+    "id": "ev_black_market_vip",
+    "kind": "chain",
+    "title": "黑市·贵客区",
+    "text": "布帘后面是另一个世界：每样东西都用黑绒布盖着，掀开时，灯光会在刀刃上跳一下。\n老头压低声音：“这些货，只卖给‘有门路’的人。魅力不够的，我连说都不说。”",
+    "options": [
+      {
+        "label": "细长匕首（200 金币）",
+        "text": "这把匕首薄得能插进门缝，握在手里却很稳。",
+        "fx": [
+          "gold-200",
+          "item:stiletto",
+          "flag+:own_stiletto"
+        ],
+        "cond": "cha>=10&&gold>=200&&!flag:own_stiletto",
+        "reason": "需要魅力 ≥ 10、200 金币，且尚未拥有"
+      },
+      {
+        "label": "暗纹软甲（280 金币）",
+        "text": "贴身，无声，针脚里缝着细细的软钢丝。",
+        "fx": [
+          "gold-280",
+          "item:shadow_leathers",
+          "flag+:own_shadow_leathers"
+        ],
+        "cond": "cha>=10&&gold>=280&&!flag:own_shadow_leathers",
+        "reason": "需要魅力 ≥ 10、280 金币，且尚未拥有"
+      },
+      {
+        "label": "黑珍珠（220 金币）",
+        "text": "一颗黑色的珍珠，凑近了能看见里面有一点点光。",
+        "fx": [
+          "gold-220",
+          "item:black_pearl",
+          "flag+:own_black_pearl"
+        ],
+        "cond": "cha>=10&&gold>=220&&!flag:own_black_pearl",
+        "reason": "需要魅力 ≥ 10、220 金币，且尚未拥有"
+      },
+      {
+        "label": "影刃（520 金币）",
+        "text": "刀身涂着一层吸光的黑漆，你几乎看不见它的轮廓。",
+        "fx": [
+          "gold-520",
+          "item:shadow_dagger",
+          "flag+:own_shadow_dagger"
+        ],
+        "cond": "cha>=14&&gold>=520&&!flag:own_shadow_dagger",
+        "reason": "需要魅力 ≥ 14、520 金币，且尚未拥有"
+      },
+      {
+        "label": "幻影斗篷（600 金币）",
+        "text": "披上它，巡逻的人总会多看你两眼，却不知道自己在看什么。",
+        "fx": [
+          "gold-600",
+          "item:phantom_cloak",
+          "flag+:own_phantom_cloak"
+        ],
+        "cond": "cha>=14&&gold>=600&&!flag:own_phantom_cloak",
+        "reason": "需要魅力 ≥ 14、600 金币，且尚未拥有"
+      },
+      {
+        "label": "幸运金币（500 金币）",
+        "text": "两面都是同一个头像的金币，抛出去，总是你想要的那面。",
+        "fx": [
+          "gold-500",
+          "item:fortune_coin",
+          "flag+:own_fortune_coin"
+        ],
+        "cond": "cha>=14&&gold>=500&&!flag:own_fortune_coin",
+        "reason": "需要魅力 ≥ 14、500 金币，且尚未拥有"
+      },
+      {
+        "label": "毒牙短剑（1100 金币）",
+        "text": "老头一路上嘟囔：“这把货，上一个主人是个公爵。”",
+        "fx": [
+          "gold-1100",
+          "item:venom_fang",
+          "flag+:own_venom_fang"
+        ],
+        "cond": "cha>=18&&gold>=1100&&!flag:own_venom_fang",
+        "reason": "需要魅力 ≥ 18、1100 金币，且尚未拥有"
+      },
+      {
+        "label": "面具符咒（1200 金币）",
+        "text": "刻着一张没有五官的脸。戴着它，别人更容易忘记你。",
+        "fx": [
+          "gold-1200",
+          "item:mask_charm",
+          "flag+:own_mask_charm"
+        ],
+        "cond": "cha>=18&&gold>=1200&&!flag:own_mask_charm",
+        "reason": "需要魅力 ≥ 18、1200 金币，且尚未拥有"
+      },
+      {
+        "label": "夜行者之刃（1500 金币）",
+        "text": "老头亲手把它从布里取出来，像是在递一个婴儿：“别让它沾太多人的血。”",
+        "fx": [
+          "gold-1500",
+          "item:night_edge",
+          "flag+:own_night_edge"
+        ],
+        "cond": "cha>=18&&gold>=1500&&!flag:own_night_edge",
+        "reason": "需要魅力 ≥ 18、1500 金币，且尚未拥有"
+      },
+      {
+        "label": "先到这里",
+        "text": "",
+        "fx": []
+      }
+    ],
+    "scene": "black_market"
+  },
+  {
+    "id": "ev_tavern",
+    "kind": "chain",
+    "title": "醉鼠酒馆",
+    "text": "酒馆里烟雾腾腾，赌桌边永远围着人，角落里永远有人在压低声音说话。\n老板娘擦着杯子，朝你抬了抬下巴：“今晚想玩点什么？”",
+    "options": [
+      {
+        "label": "坐上赌桌，押 40 金币",
+        "check": {
+          "attr": "luk",
+          "diff": 12
+        },
+        "ok": {
+          "text": "骰子在碗里转了很久，最后停在你想要的那一面。你把赢来的钱揣进怀里，没敢多留。",
+          "fx": [
+            "gold+85",
+            "exp+4"
+          ]
+        },
+        "fail": {
+          "text": "骰子冷冰冰地落在了另一面。对面的人收走了你的钱，笑得很和气。",
+          "fx": [
+            "gold-40"
+          ]
+        },
+        "cond": "gold>=40",
+        "reason": "金币不足"
+      },
+      {
+        "label": "请一圈酒，套套话（20 金币）",
+        "check": {
+          "attr": "cha",
+          "diff": 12
+        },
+        "ok": {
+          "text": "三杯下去，几个常客开始争先恐后地讲起王城里的事。你听到了两条有用的。",
+          "fx": [
+            "gold-20",
+            "count:intel+1",
+            "cha_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "酒喝了，话没问出来，只被灌了个半醉。",
+          "fx": [
+            "gold-20",
+            "status+:fatigue:1"
+          ]
+        },
+        "cond": "gold>=20",
+        "reason": "金币不足"
+      },
+      {
+        "label": "打听红手帮的动向",
+        "text": "一个独眼的酒客压低声音：“断指最近缺钱，仓库里堆的东西，不是他自己的。”",
+        "fx": [
+          "count:intel+1",
+          "int_exp+2"
+        ],
+        "cond": "flag:red_hand_threat",
+        "reason": "还没听说红手帮的事"
+      },
+      {
+        "label": "只喝一杯热酒，听听传闻",
+        "text": "酒很烈，传闻很杂。你只带走了一句：“月蚀之夜的守卫，今年要换新的了。”",
+        "fx": [
+          "count:intel+1",
+          "hp+0",
+          "heal:0.2"
+        ]
+      },
+      {
+        "label": "离开",
+        "text": "",
+        "fx": []
+      }
+    ],
+    "scene": "tavern"
+  },
+  {
+    "id": "ev_arrested",
+    "kind": "chain",
+    "title": "被带走了",
+    "text": "冰冷的铁链咬住了你的手腕。\n你被带到巡逻队的小黑屋里，一盏油灯在头顶晃着，对面的人在翻你的口袋。",
+    "options": [
+      {
+        "label": "认罚，交出一半的钱",
+        "text": "“算你识相。”对方把你的钱袋翻了个底朝天，又把你推了出去。",
+        "fx": [
+          {
+            "if": "fate>=3",
+            "then": [
+              "gold-60"
+            ],
+            "else": []
+          },
+          "count:arrests+1",
+          "count:heat-25",
+          "gold-40",
+          "hp-6",
+          {
+            "if": "count.arrests>=3",
+            "then": [
+              "flag+:jailed_end",
+              "end:auto"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "咬牙不认，硬扛",
+        "check": {
+          "attr": "wil",
+          "diff": 14
+        },
+        "ok": {
+          "text": "你一句话也没说，扛了整整一夜。天亮时，对方不耐烦地把你踢了出去。",
+          "fx": [
+            "count:arrests+1",
+            "count:heat-15",
+            "wil_exp+4",
+            "hp-10",
+            {
+              "if": "count.arrests>=3",
+              "then": [
+                "flag+:jailed_end",
+                "end:auto"
+              ]
+            }
+          ]
+        },
+        "fail": {
+          "text": "第二天，你被关进了牢里，整整一个月。",
+          "fx": [
+            "count:arrests+1",
+            "count:heat-25",
+            "gold-80",
+            "hp-12",
+            "status+:fatigue:2",
+            {
+              "if": "count.arrests>=3",
+              "then": [
+                "flag+:jailed_end",
+                "end:auto"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "label": "塞钱，托人说情（金币 ≥ 150）",
+        "text": "你托人把钱递了进去。当晚，你就走出了巡逻队的大门。",
+        "fx": [
+          "gold-150",
+          "count:heat-20",
+          "count:arrests+1",
+          {
+            "if": "count.arrests>=3",
+            "then": [
+              "flag+:jailed_end",
+              "end:auto"
+            ]
+          }
+        ],
+        "cond": "gold>=150",
+        "reason": "金币不足"
+      }
+    ],
+    "scene": "court"
+  },
+  {
+    "id": "ev_heist_1",
+    "kind": "chain",
+    "title": "水渠入口",
+    "text": "王城地下水渠的入口，被一道生锈的铁栅封着。栅栏后面，是一股潮湿的黑暗。\n暗哨的脚步声每隔十息响一次，你数着。",
+    "options": [
+      {
+        "label": "让同伙分头引开暗哨",
+        "check": {
+          "attr": "cha",
+          "diff": 15,
+          "fateDiff": 1
+        },
+        "ok": {
+          "text": "同伙们在远处制造了一阵恰到好处的骚动。暗哨们被调开了。你推开铁栅，滑了进去。",
+          "fx": [
+            "goto:ev_heist_2",
+            "cha_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "骚动太大了，守卫们把整个水渠都围了起来。你们不得不硬闯。",
+          "fx": [
+            "count:heat+15",
+            "hp-6",
+            "flag+:heist_alarm",
+            "count:hfail+1",
+            "goto:ev_heist_2"
+          ]
+        },
+        "cond": "count.crew>=3",
+        "reason": "需要至少 3 个同伙"
+      },
+      {
+        "label": "一个人摸进去",
+        "check": {
+          "attr": "agi",
+          "diff": 19,
+          "fateDiff": 1
+        },
+        "ok": {
+          "text": "你贴着墙，数着暗哨的脚步，在第七次交错的间隙里翻过了铁栅。",
+          "fx": [
+            "agi_exp+5",
+            "goto:ev_heist_2"
+          ]
+        },
+        "fail": {
+          "text": "你的靴子踩进了水里，“哗”的一声。暗哨猛地回头。",
+          "fx": [
+            "hp-10",
+            "flag+:heist_alarm",
+            "count:hfail+1",
+            "goto:ev_heist_2"
+          ]
+        }
+      },
+      {
+        "label": "用烟雾弹封住入口，闯进去",
+        "text": "白烟翻涌，你在一片混乱里冲了进去。",
+        "fx": [
+          "flag+:heist_alarm",
+          "count:hfail+1",
+          "goto:ev_heist_2"
+        ],
+        "cond": "flag:sk_smoke_bomb",
+        "reason": "需要会用烟雾弹"
+      }
+    ],
+    "scene": "vault"
+  },
+  {
+    "id": "ev_heist_2",
+    "kind": "chain",
+    "title": "魔晶库深处",
+    "text": "水渠尽头，是一道刻满符文的黑色石门。门后有微弱的光，像一颗被捂住的心跳。",
+    "options": [
+      {
+        "label": "用半把钥匙和图纸开启暗门",
+        "check": {
+          "attr": "int",
+          "diff": 15,
+          "fateDiff": 1,
+          "memDiff": {
+            "id": "m_t_vault",
+            "diff": -2
+          }
+        },
+        "ok": {
+          "text": "暗门缓缓地向内打开，没有发出一点声音。你想起灰鼠，想起他说过：钥匙只有一半是钥匙。",
+          "fx": [
+            "int_exp+4",
+            "goto:ev_heist_3"
+          ]
+        },
+        "fail": {
+          "text": "你把图纸上的暗号读错了一个符号。石门轰的一声，所有的符文都亮了。",
+          "fx": [
+            "hp-8",
+            "flag+:heist_alarm",
+            "count:hfail+1",
+            "goto:ev_heist_3"
+          ]
+        },
+        "cond": "flag:half_key&&flag:vault_plan",
+        "reason": "需要半把钥匙和图纸"
+      },
+      {
+        "label": "撬开主门",
+        "check": {
+          "attr": "agi",
+          "diff": 19,
+          "fateDiff": 1,
+          "memDiff": {
+            "id": "m_t_vault",
+            "diff": -2
+          }
+        },
+        "ok": {
+          "text": "你屏住呼吸，用最细的钩子，一枚一枚地拨开了三十七个机括。主门打开的时候，你的手心全是汗。",
+          "fx": [
+            "agi_exp+5",
+            "goto:ev_heist_3"
+          ]
+        },
+        "fail": {
+          "text": "第三十一个机括弹了回来，削掉了你指尖的一块皮。符文骤然亮起。",
+          "fx": [
+            "hp-12",
+            "flag+:heist_alarm",
+            "count:hfail+1",
+            "goto:ev_heist_3"
+          ]
+        }
+      },
+      {
+        "label": "请同伙里的锁匠出手",
+        "text": "同伙里的锁匠接过你的工具，一言不发地开了门。他说：“剩下的，你自己来。”",
+        "fx": [
+          "count:crew-1",
+          "goto:ev_heist_3"
+        ],
+        "cond": "count.crew>=4",
+        "reason": "需要至少 4 个同伙"
+      }
+    ],
+    "scene": "vault"
+  },
+  {
+    "id": "ev_heist_3",
+    "kind": "chain",
+    "title": "水晶与看守",
+    "text": "门后，是一间圆形的石室。中央的石台上，悬浮着一颗拳头大小的水晶，在黑暗里一明一灭，像是在呼吸。\n水晶前，站着一尊魔晶魔像。它的眼睛，慢慢亮了起来。",
+    "options": [
+      {
+        "label": "与魔像正面交战",
+        "text": "你拔出了匕首。",
+        "fx": [
+          {
+            "type": "combat",
+            "enemy": "vault_golem",
+            "noFlee": true,
+            "win": [
+              "goto:ev_heist_4"
+            ],
+            "lose": [
+              "flag+:heist_caught",
+              "end:auto"
+            ]
+          }
+        ],
+        "avoid": true
+      },
+      {
+        "label": "用烟雾弹和影步，绕开它",
+        "check": {
+          "attr": "luk",
+          "diff": 15,
+          "fateDiff": 1
+        },
+        "ok": {
+          "text": "白烟里，你贴着魔像的脚边滑了过去。它的巨拳砸在你身后的石板上，激起一片碎屑。",
+          "fx": [
+            "agi_exp+4",
+            "goto:ev_heist_4"
+          ]
+        },
+        "fail": {
+          "text": "魔像转头的速度比你想的快。它的拳头擦着你的肩膀砸了下去。",
+          "fx": [
+            "hp-14",
+            "flag+:heist_alarm",
+            "count:hfail+1",
+            "goto:ev_heist_4"
+          ]
+        },
+        "cond": [
+          "flag:sk_smoke_bomb",
+          "flag:sk_shadow_step"
+        ],
+        "reason": "需要烟雾弹或影步"
+      },
+      {
+        "label": "让同伙缠住魔像",
+        "text": "同伙们冲了上去。魔像的拳头落下来的时候，你听见有人喊了一声。\n你没有回头。",
+        "fx": [
+          "count:crew-1",
+          "hp-4",
+          "goto:ev_heist_4"
+        ],
+        "cond": "count.crew>=3",
+        "reason": "需要至少 3 个同伙"
+      }
+    ],
+    "scene": "vault"
+  },
+  {
+    "id": "ev_heist_4",
+    "kind": "chain",
+    "title": "悬浮的水晶",
+    "text": "你把手放在水晶上。\n没有警报，没有光，只有一种说不清的温度，顺着手臂往上爬。你忽然明白，王城里传了几百年的魔晶库，守着的不是金币，不是魔晶，而是这颗心脏。",
+    "options": [
+      {
+        "label": "拿走它",
+        "text": "水晶落进你掌心的那一刻，整座魔晶库的符文，一圈一圈，缓缓地暗了下去。",
+        "fx": [
+          {
+            "if": "count.hfail>=3",
+            "then": [
+              "log:魔晶库里警钟大作，所有的出口都被封死了。",
+              "flag+:heist_caught",
+              "end:auto"
+            ],
+            "else": [
+              {
+                "if": "flag:heist_alarm",
+                "then": [
+                  "goto:ev_heist_escape"
+                ],
+                "else": [
+                  "goto:ev_heist_mask"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "scene": "vault"
+  },
+  {
+    "id": "ev_heist_escape",
+    "kind": "chain",
+    "title": "警钟",
+    "text": "魔晶库上方，警钟终于敲响了。\n整座王城都醒了。你从水渠冲出去的时候，前面是一队举着火把的王室禁卫，领头的那个人，面无表情地拔出了剑。",
+    "options": [
+      {
+        "label": "与禁卫一战，杀出一条路",
+        "text": "你把水晶塞进怀里，握紧了匕首。",
+        "fx": [
+          {
+            "type": "combat",
+            "enemy": "royal_guard",
+            "noFlee": true,
+            "win": [
+              "goto:ev_heist_mask"
+            ],
+            "lose": [
+              "flag+:heist_caught",
+              "end:auto"
+            ]
+          }
+        ],
+        "avoid": true
+      },
+      {
+        "label": "扔出烟雾弹，趁乱遁入暗巷",
+        "check": {
+          "attr": "agi",
+          "diff": 18,
+          "fateDiff": 1
+        },
+        "ok": {
+          "text": "烟雾里，你从禁卫的盔甲缝隙间钻了过去。身后的叫喊声越来越远。",
+          "fx": [
+            "agi_exp+5",
+            "goto:ev_heist_mask"
+          ]
+        },
+        "fail": {
+          "text": "你冲出烟雾的时候，一支弩箭擦过了你的小腿。你踉跄着摔在了巷口，禁卫们围了上来。",
+          "fx": [
+            "hp-16",
+            "flag+:heist_caught",
+            "end:auto"
+          ]
+        },
+        "cond": "flag:sk_smoke_bomb",
+        "reason": "需要会用烟雾弹"
+      }
+    ],
+    "scene": "street"
+  },
+  {
+    "id": "ev_heist_mask",
+    "kind": "chain",
+    "title": "水晶的主人",
+    "text": "鼠街最老的那条暗巷里，一个戴着白色无面面具的人，早就等在那儿了。\n“辛苦了，影子。”他说，伸出手，“交给我吧。”\n你的同伙们站在你身后，没人说话。",
+    "options": [
+      {
+        "label": "把水晶交给他",
+        "text": "他接过去，掌心发出一阵很淡的光。\n“从今天起，鼠街，是你的了。”",
+        "fx": [
+          "flag+:gave_crystal",
+          "flag+:heist_done",
+          "rank:5",
+          "end:auto"
+        ]
+      },
+      {
+        "label": "拔刀，与他一战",
+        "text": "你抽出匕首，一步一步地向前。",
+        "fx": [
+          {
+            "type": "combat",
+            "enemy": "mask_man",
+            "noFlee": true,
+            "win": [
+              "flag+:mask_defeated",
+              "flag+:heist_done",
+              "rank:6",
+              "log:面具被你一刀挑落。",
+              "end:auto"
+            ],
+            "lose": [
+              "flag+:heist_caught",
+              "end:auto"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "当众揭穿他的身份",
+        "text": "你一件一件，把税务署的旧账、赌场的流水、那枚家徽，说了出来。同伙们的脸色一点点变了。\n面具先生愣了很久，慢慢地摘下了面具。",
+        "fx": [
+          "flag+:mask_defeated",
+          "flag+:heist_done",
+          "rank:6",
+          "end:auto"
+        ],
+        "cond": "flag:mask_unmasked&&rep.shadow>=40",
+        "reason": "需要知道他的真面目，且影子公会声望 ≥ 40"
+      },
+      {
+        "label": "把水晶交给等在巷口的卡斯",
+        "text": "卡斯看着你，又看了看你手里的东西。\n“我该抓你，”她说，“但今晚，我会先抓他。”",
+        "fx": [
+          "flag+:returned_crystal",
+          "flag+:heist_done",
+          "rank:5",
+          "end:auto"
+        ],
+        "cond": "flag:cass_trust",
+        "reason": "需要卡斯信任你"
+      },
+      {
+        "label": "扔出烟雾弹，带着水晶消失在夜里",
+        "check": {
+          "attr": "agi",
+          "diff": 19,
+          "fateDiff": 1
+        },
+        "ok": {
+          "text": "你一脚蹬上了屋檐。身后的叫喊声很快就听不见了。",
+          "fx": [
+            "flag+:ghosted",
+            "flag+:heist_done",
+            "rank:5",
+            "end:auto"
+          ]
+        },
+        "fail": {
+          "text": "面具先生的手，在黑暗里按在了你的肩上。“你以为，我会让你走？”\n你没有选择，只能拔刀。",
+          "fx": [
+            {
+              "type": "combat",
+              "enemy": "mask_man",
+              "noFlee": true,
+              "win": [
+                "flag+:mask_defeated",
+                "flag+:heist_done",
+                "rank:6",
+                "end:auto"
+              ],
+              "lose": [
+                "flag+:heist_caught",
+                "end:auto"
+              ]
+            }
+          ]
+        },
+        "cond": [
+          "flag:sk_smoke_bomb",
+          "flag:sk_shadow_step"
+        ],
+        "reason": "需要烟雾弹或影步"
+      }
+    ],
+    "scene": "alley"
+  },
+  {
+    "id": "t_red_boss_duel",
+    "kind": "chain",
+    "title": "断指",
+    "text": "红手帮的老大「断指」，坐在仓库最深处的酒桶上，右手只剩四根指头。\n“就你？”他笑，“鼠街的小老鼠，也敢来我这儿撒野？”",
+    "options": [
+      {
+        "label": "拔刀，一对一",
+        "text": "你把匕首握紧了。\n“来吧。”",
+        "fx": [
+          {
+            "type": "combat",
+            "enemy": "red_boss",
+            "noFlee": true,
+            "win": [
+              "flag+:red_hand_broken",
+              "rep:shadow+10",
+              "hometown+6",
+              "log:断指倒下的时候，身后的红手帮，没一个人敢动。",
+              "log:断指的账本还在他的腰间。这东西，也许卡斯会想要。"
+            ],
+            "lose": [
+              "hp-15",
+              "gold-50",
+              "log:你被打得趴在地上，断指踩着你的手说：“回去告诉鼠街，这里是红手帮的。”"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "先退一步，等时机",
+        "text": "你什么也没说，转身离开。\n至少今晚，没有人会为此送命。",
+        "fx": [
+          "wil_exp+1"
+        ]
+      }
+    ],
+    "scene": "warehouse"
+  },
+  {
+    "id": "t_gu_intro",
+    "kind": "special",
+    "title": "黑市里的老头",
+    "text": "你在黑市的暗摊前，被一只干瘦的手拉住了袖口。\n“小子，”一个驼背的老头压低声音，“我看你手上的茧，是个干活的人。”\n黑市里的人都叫他老鬼。他不问姓名，不问来路，只做一种生意：别人不敢做的买卖。",
+    "options": [
+      {
+        "label": "听他说下去",
+        "text": "老鬼眯着眼，把一张泛黄的纸推到你面前：“三件货，取回来，我给你一样好东西。”纸上没有名字，只有地址。",
+        "fx": [
+          "flag+:met_gu",
+          "flag+:gu_invited",
+          "rep:shadow+2",
+          "quest:start:gu_list"
+        ]
+      },
+      {
+        "label": "谢绝，只买点东西",
+        "text": "老鬼耸耸肩：“哪天不紧了，再来。”",
+        "fx": [
+          "flag+:met_gu",
+          "flag+:gu_invited_declined"
+        ]
+      }
+    ],
+    "when": {
+      "age": 18,
+      "season": "autumn"
+    },
+    "priority": 45,
+    "portrait": "gu",
+    "scene": "black_market"
+  },
+  {
+    "id": "t_report_cass",
+    "kind": "chain",
+    "title": "账本上的名字",
+    "text": "卡斯在巡逻队的值房里，把你递来的账本翻了一遍，又翻了一遍。\n“这些名字……”她的手指停在其中一行上，“有两个，是我们队里的人。”\n她把账本合上，抬起眼：“你知道，把这个交给我，意味着什么吗？”",
+    "options": [
+      {
+        "label": "交给她，什么也不要",
+        "text": "卡斯沉默了很久，把账本收进了抽屉：“……我欠你一次。”",
+        "fx": [
+          "flag+:cass_gift_red",
+          "rel:cass+3",
+          "rep:shadow-2",
+          "hometown+3",
+          "count:heat-8"
+        ]
+      },
+      {
+        "label": "交给她，也要一个承诺：别再追我",
+        "check": {
+          "attr": "cha",
+          "diff": 12
+        },
+        "ok": {
+          "text": "卡斯盯着你，嘴角动了动：“好。至少这一阵，我不会。”",
+          "fx": [
+            "flag+:cass_gift_red",
+            "rel:cass+3",
+            "count:heat-15",
+            "cha_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "卡斯收下账本，却摇了摇头：“我不能答应这种事。”",
+          "fx": [
+            "flag+:cass_gift_red",
+            "rel:cass+2",
+            "cha_exp+1"
+          ]
+        }
+      }
+    ],
+    "scene": "court",
+    "portrait": "cass"
+  }
+]

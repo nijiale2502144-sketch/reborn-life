@@ -1,0 +1,1203 @@
+[
+  {
+    "id": "t_drunk_noble",
+    "kind": "random",
+    "title": "喝醉的少爷",
+    "text": "一个喝得东倒西歪的年轻贵族，从酒馆里晃出来，腰间的钱袋随着他的步子一荡一荡。\n他的随从不知跑哪去了。",
+    "options": [
+      {
+        "label": "顺手牵羊",
+        "check": {
+          "attr": "agi",
+          "diff": 10
+        },
+        "ok": {
+          "text": "你从他身边擦过去的时候，钱袋已经到了你手里。他还在哼着小调。",
+          "fx": [
+            "gold+60",
+            "agi_exp+2",
+            "count:heat+5"
+          ]
+        },
+        "fail": {
+          "text": "他忽然转过身，醉醺醺地盯着你：“你……你是谁？”你拔腿就跑。",
+          "fx": [
+            "count:heat+8",
+            "hp-3"
+          ]
+        }
+      },
+      {
+        "label": "把他扶到巷口，让他的随从找到",
+        "text": "他迷迷糊糊地塞了你一把金币：“好小子……明天来我家喝酒。”",
+        "fx": [
+          "gold+20",
+          "cha_exp+3",
+          "hometown+1"
+        ]
+      },
+      {
+        "label": "不管他",
+        "text": "你从他身边走过去。有些钱，今晚不属于你。",
+        "fx": []
+      }
+    ],
+    "pool": "opportunity",
+    "weight": 9,
+    "cond": "age>=16",
+    "scene": "alley"
+  },
+  {
+    "id": "t_lost_cart",
+    "kind": "random",
+    "title": "翻倒的货车",
+    "text": "一辆运货的马车在巷口翻了，木箱滚了一地。车夫抱着头在骂，行人围了一圈，却没有人敢靠近。\n其中一只破开的箱子里，露出了一角绸缎。",
+    "options": [
+      {
+        "label": "趁乱抱走几匹绸缎",
+        "check": {
+          "attr": "agi",
+          "diff": 11
+        },
+        "ok": {
+          "text": "你像一阵风一样从人群里穿了过去，等车夫回过神来，你已经在三条街外。",
+          "fx": [
+            "gold+55",
+            "agi_exp+2",
+            "count:heat+6"
+          ]
+        },
+        "fail": {
+          "text": "一只手抓住了你的后领：“贼！”你挨了两脚才挣脱。",
+          "fx": [
+            "hp-6",
+            "count:heat+8"
+          ]
+        }
+      },
+      {
+        "label": "帮车夫把箱子搬回车上",
+        "text": "车夫涨红了脸，往你手里塞了几个铜板。“好孩子……”",
+        "fx": [
+          "gold+15",
+          "str_exp+2",
+          "hometown+2"
+        ]
+      },
+      {
+        "label": "只在远处看着",
+        "text": "你站在街角，看着人群慢慢散去。",
+        "fx": []
+      }
+    ],
+    "pool": "opportunity",
+    "weight": 8,
+    "scene": "alley"
+  },
+  {
+    "id": "t_street_magician",
+    "kind": "random",
+    "title": "街头魔术师",
+    "text": "广场上，一个戴着礼帽的男人正在变戏法：硬币在他指间翻来翻去，最后从孩子的耳朵里掏出来。\n你看得入了神，他却忽然看了你一眼，眨眨眼。",
+    "options": [
+      {
+        "label": "蹲下来，认真偷师",
+        "check": {
+          "attr": "int",
+          "diff": 11
+        },
+        "ok": {
+          "text": "三个手法，你看了两遍就看懂了。这是你一直缺的最后一块。",
+          "fx": [
+            "agi_exp+3",
+            "int_exp+3",
+            "count:knife+1",
+            "exp+8"
+          ]
+        },
+        "fail": {
+          "text": "你只看出了他袖子里藏了东西，没看出来是怎么放进去的。",
+          "fx": [
+            "agi_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "趁着人群，顺走他帽子里的钱",
+        "text": "礼帽里的硬币，你顺走了十几枚。魔术师看了你一眼，没有声张。",
+        "fx": [
+          "gold+18",
+          "count:heat+2"
+        ],
+        "cond": "age>=17"
+      },
+      {
+        "label": "扔一枚铜板，鼓个掌",
+        "text": "魔术师朝你鞠了一躬，把一枚硬币从你的耳朵里“变”了出来。",
+        "fx": [
+          "gold-1",
+          "cha_exp+2",
+          "hometown+1"
+        ]
+      }
+    ],
+    "pool": "opportunity",
+    "weight": 8,
+    "scene": "street"
+  },
+  {
+    "id": "t_map_seller",
+    "kind": "random",
+    "title": "卖地图的老人",
+    "text": "一个坐在墙根的老人，面前摆着几张发黄的地图。他对你招了招手：“年轻人，要地图吗？下城的，王城的，水渠的……”\n你注意到他的眼睛，看起来看不太清，却总是对着你的口袋。",
+    "options": [
+      {
+        "label": "买一张水渠图（50 金币）",
+        "text": "图画得潦草，但有几处你一眼就认出是真的：那是别人没有走过的暗道。",
+        "fx": [
+          "gold-50",
+          "count:intel+1",
+          "int_exp+3"
+        ],
+        "cond": "gold>=50",
+        "reason": "金币不足"
+      },
+      {
+        "label": "请他讲讲王城的事",
+        "check": {
+          "attr": "cha",
+          "diff": 11
+        },
+        "ok": {
+          "text": "老人开了话匣子，絮絮叨叨讲了一个钟头。有两三句话，你记在了心里。",
+          "fx": [
+            "count:intel+1",
+            "cha_exp+2"
+          ]
+        },
+        "fail": {
+          "text": "他说着说着就睡着了。",
+          "fx": [
+            "cha_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "不买，转身走了",
+        "text": "",
+        "fx": []
+      }
+    ],
+    "pool": "opportunity",
+    "weight": 7,
+    "cond": "age>=17",
+    "scene": "street"
+  },
+  {
+    "id": "t_keysmith",
+    "kind": "random",
+    "title": "钥匙匠的铺子",
+    "text": "巷尾有一间小小的钥匙铺。铺主是个沉默的中年人，柜台下面摆着上百把锁，每一把都被他拆开又装好。\n他抬头看了你一眼：“看够了就走，想学，就给我磨半天钥匙。”",
+    "options": [
+      {
+        "label": "留下来磨半天钥匙",
+        "text": "你的指尖被磨得发烫。但中年人最后只说了一句：“……不算太差。”并随手把一套细钩塞给了你。",
+        "fx": [
+          "int_exp+3",
+          "agi_exp+4",
+          "exp+10",
+          "gold+5"
+        ]
+      },
+      {
+        "label": "偷偷在旁边看，不出声",
+        "check": {
+          "attr": "agi",
+          "diff": 12
+        },
+        "ok": {
+          "text": "他拆一把锁，你在心里拆十把。他假装没看见。",
+          "fx": [
+            "agi_exp+5",
+            "exp+8"
+          ]
+        },
+        "fail": {
+          "text": "他“咣”地把柜台合上，你被撵了出去。",
+          "fx": [
+            "agi_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "走开",
+        "text": "",
+        "fx": []
+      }
+    ],
+    "pool": "opportunity",
+    "weight": 7,
+    "cond": "age>=16&&age<=22",
+    "scene": "alley"
+  },
+  {
+    "id": "t_borrowed_coat",
+    "kind": "random",
+    "title": "借来的外套",
+    "text": "你在晾衣绳上，看中了一件很体面的外套。衣服的主人不在，窗台上还摆着半碗没吃完的汤。",
+    "options": [
+      {
+        "label": "拿走它",
+        "check": {
+          "attr": "agi",
+          "diff": 10
+        },
+        "ok": {
+          "text": "外套套在你的身上，居然很合身。你再走进“上等人”的街区时，没人多看你一眼。",
+          "fx": [
+            "cha_exp+3",
+            "count:heat+3",
+            "gold+10"
+          ]
+        },
+        "fail": {
+          "text": "主人在你伸手的时候回来了，你被泼了一盆水。",
+          "fx": [
+            "hp-2",
+            "count:heat+4"
+          ]
+        }
+      },
+      {
+        "label": "留下一枚金币，换走它",
+        "text": "你把金币放在窗台上，换走了那件外套。你想，也许这算一桩买卖。",
+        "fx": [
+          "gold-5",
+          "cha_exp+3",
+          "hometown+1"
+        ],
+        "cond": "gold>=5"
+      },
+      {
+        "label": "算了，不拿",
+        "text": "",
+        "fx": []
+      }
+    ],
+    "pool": "opportunity",
+    "weight": 7,
+    "scene": "alley"
+  },
+  {
+    "id": "t_lila_favor",
+    "kind": "random",
+    "title": "莉拉的请求",
+    "text": "莉拉在你的窗口敲了三下，这是她的暗号。\n“我有个小忙要你帮，”她小声说，“孤儿院有个孩子发烧了，我钱不够，药铺老板不赊账。”",
+    "options": [
+      {
+        "label": "替她去药铺“拿”一副药",
+        "check": {
+          "attr": "agi",
+          "diff": 12
+        },
+        "ok": {
+          "text": "药铺老板转身的瞬间，你已经把药包放进了怀里。莉拉红着眼，说不出话来。",
+          "fx": [
+            "rel:lila+2",
+            "agi_exp+3",
+            "count:heat+6",
+            "hometown+2"
+          ]
+        },
+        "fail": {
+          "text": "药铺老板的目光落在了你的手上。你只好掏钱买了。",
+          "fx": [
+            "gold-35",
+            "rel:lila+1"
+          ]
+        }
+      },
+      {
+        "label": "直接给她 35 金币",
+        "text": "莉拉拿着钱，沉默了好一会儿：“……我会还你。”",
+        "fx": [
+          "gold-35",
+          "rel:lila+2",
+          "hometown+2"
+        ],
+        "cond": "gold>=35",
+        "reason": "金币不足"
+      },
+      {
+        "label": "这事我帮不了",
+        "text": "莉拉的笑容很淡：“没事。我再想想办法。”",
+        "fx": [
+          "rel:lila-1"
+        ]
+      }
+    ],
+    "pool": "social",
+    "weight": 9,
+    "cond": "flag:met_lila",
+    "scene": "alley"
+  },
+  {
+    "id": "t_street_kid",
+    "kind": "random",
+    "title": "巷口的孩子",
+    "text": "一个瘦瘦的孩子，一直在你住的巷口晃悠。你问他要什么，他说：“我想跟你学。”\n他的手很脏，指甲缝里全是泥，但看你的眼神，亮得像两颗没擦干净的珠子。",
+    "options": [
+      {
+        "label": "收下他，教他几手",
+        "text": "你教了他怎么把手藏进袖子里，怎么看人的步子。他学得很快。",
+        "fx": [
+          "cha_exp+2",
+          "hometown+2",
+          "count:knife+1"
+        ]
+      },
+      {
+        "label": "给他一块面包，叫他回孤儿院去",
+        "text": "他接过面包，咬了一口：“……那里太吵了。”但他还是走了。",
+        "fx": [
+          "gold-2",
+          "hometown+1"
+        ]
+      },
+      {
+        "label": "不理他",
+        "text": "他站了很久，直到天黑才走。",
+        "fx": []
+      }
+    ],
+    "pool": "social",
+    "weight": 8,
+    "cond": "age>=18",
+    "scene": "alley"
+  },
+  {
+    "id": "t_gu_invite",
+    "kind": "random",
+    "title": "老鬼的邀约",
+    "text": "黑市里的老鬼，托人带了句话：“今晚来我这儿一趟，有桩买卖，不是人人都配听。”\n你知道老鬼的买卖，从来不干净。",
+    "options": [
+      {
+        "label": "赴约",
+        "text": "老鬼端着一碗热茶，慢吞吞地说：“我这儿有三件货，要人去取。取回来，我有好处给你。”",
+        "fx": [
+          "quest:start:gu_list",
+          "rep:shadow+2",
+          "flag+:gu_invited"
+        ]
+      },
+      {
+        "label": "婉拒，说自己手头紧",
+        "text": "老鬼点点头：“哪天不紧了，再来。”",
+        "fx": [
+          "flag+:met_gu"
+        ]
+      }
+    ],
+    "pool": "social",
+    "weight": 12,
+    "cond": "flag:met_gu&&!flag:gu_invited&&age>=19&&age<=23",
+    "scene": "black_market",
+    "once": true
+  },
+  {
+    "id": "t_cass_tea",
+    "kind": "random",
+    "title": "茶摊偶遇",
+    "text": "你在茶摊上碰见了卡斯。她没穿制服，一个人坐在角落里，面前是一碗已经凉了的茶。\n她看见你，没有拔刀，只是淡淡地说：“坐吧。”",
+    "options": [
+      {
+        "label": "坐下，装作随口聊聊",
+        "check": {
+          "attr": "cha",
+          "diff": 13
+        },
+        "ok": {
+          "text": "你们聊了很久，聊鼠街的冬天，聊她的老家。她第一次，在你面前笑了一下。",
+          "fx": [
+            "rel:cass+2",
+            "cha_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "她盯着你的手指看了一会儿：“你的手，不像一个干活的人。”",
+          "fx": [
+            "count:heat+5"
+          ]
+        }
+      },
+      {
+        "label": "起身就走",
+        "text": "你背对着她，一步一步走出了茶摊。直到转过街角，你才松了一口气。",
+        "fx": [
+          "count:heat+1"
+        ]
+      },
+      {
+        "label": "请她喝一碗热茶（5 金币）",
+        "text": "她愣了一下，接过茶碗，什么也没说。但她放下碗的时候，似乎没那么紧绷了。",
+        "fx": [
+          "gold-5",
+          "rel:cass+1"
+        ],
+        "cond": "gold>=5"
+      }
+    ],
+    "pool": "social",
+    "weight": 7,
+    "cond": "flag:met_cass",
+    "scene": "street"
+  },
+  {
+    "id": "t_poet",
+    "kind": "random",
+    "title": "吟游诗人",
+    "text": "一个年轻的吟游诗人，在酒馆里唱起了一支新歌：关于一个“来无影，去无踪”的鼠街盗贼。\n歌词里的人，和你很像，又不太像。听众们笑着，鼓掌。",
+    "options": [
+      {
+        "label": "塞给他几个铜板，让他多唱几遍",
+        "text": "诗人欣然领受。从此，鼠街的人，多了一点对你的好奇。",
+        "fx": [
+          "gold-5",
+          "cha_exp+3",
+          "hometown+2"
+        ]
+      },
+      {
+        "label": "把他拉到一边，让他换一首",
+        "text": "诗人耸耸肩：“好吧，好吧。”当晚他换成了关于一个厨子的歌。",
+        "fx": [
+          "count:heat-5",
+          "cha_exp+1"
+        ]
+      },
+      {
+        "label": "不动声色，听完再走",
+        "text": "一首歌的工夫，你想了很多。",
+        "fx": [
+          "wil_exp+2"
+        ]
+      }
+    ],
+    "pool": "social",
+    "weight": 6,
+    "cond": "count.heat>=20",
+    "scene": "tavern"
+  },
+  {
+    "id": "t_rat_story",
+    "kind": "random",
+    "title": "灰鼠的旧事",
+    "text": "灰鼠难得没有骂人，他倚着墙，叼着草茎，讲了一个很久以前的故事：\n关于一个年轻的盗贼，一次失败的大案，和一把一分为二的钥匙。\n“后来呢？”你问。他吐出草茎，说：“后来，我就成了灰鼠。”",
+    "options": [
+      {
+        "label": "追问那把钥匙",
+        "text": "灰鼠眯起眼：“急什么。有些事，要等你配得上，才能知道。”",
+        "fx": [
+          "rel:rat+1",
+          "count:intel+1"
+        ]
+      },
+      {
+        "label": "什么也没问，给他倒了一杯水",
+        "text": "灰鼠接过水，笑了笑：“你小子，倒也不算笨。”",
+        "fx": [
+          "rel:rat+2",
+          "wil_exp+2"
+        ]
+      }
+    ],
+    "pool": "social",
+    "weight": 8,
+    "cond": "flag:met_rat&&rel.rat>=3&&!flag:rat_dead",
+    "scene": "alley",
+    "once": true
+  },
+  {
+    "id": "t_patrol_sweep",
+    "kind": "random",
+    "title": "巡逻队搜查",
+    "text": "半夜，一阵整齐的脚步声从巷子两头同时涌来。\n领头的是个不认识的队长：“奉命搜查下城，闲杂人等，一律待命。”",
+    "options": [
+      {
+        "label": "躲进下水道，等他们走",
+        "check": {
+          "attr": "agi",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你在黑暗里屏息了半个钟头，直到脚步声彻底消失。",
+          "fx": [
+            "agi_exp+3",
+            "count:heat-4"
+          ]
+        },
+        "fail": {
+          "text": "他们的火把照到了你的鞋子。",
+          "fx": [
+            "count:heat+6",
+            "goto:ev_arrested"
+          ]
+        }
+      },
+      {
+        "label": "塞点钱，装作良民",
+        "text": "巡逻队长数了数，咳了一声，带人走了。",
+        "fx": [
+          "gold-40",
+          "count:heat-5"
+        ],
+        "cond": "gold>=40",
+        "reason": "金币不足"
+      },
+      {
+        "label": "翻上屋顶，跑",
+        "text": "你在屋顶上跑了三条街。身后的叫骂声渐渐淡了。",
+        "fx": [
+          "agi_exp+2",
+          "count:heat+4",
+          "hp-4"
+        ]
+      }
+    ],
+    "pool": "calamity",
+    "weight": 12,
+    "cond": "count.heat>=25",
+    "scene": "alley"
+  },
+  {
+    "id": "t_bounty",
+    "kind": "random",
+    "title": "悬赏令",
+    "text": "墙上贴出了一张新的悬赏令：画像不算像，但鼻子和眼睛，足够让人想起你。\n赏金是 200 金币。",
+    "options": [
+      {
+        "label": "撕下来，当没见过",
+        "check": {
+          "attr": "cha",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你一把撕下，揉成一团扔进了水沟。围观的人没说什么。",
+          "fx": [
+            "count:heat-4",
+            "cha_exp+2"
+          ]
+        },
+        "fail": {
+          "text": "撕告示的手，被一个路过的人看见了。",
+          "fx": [
+            "count:heat+8"
+          ]
+        }
+      },
+      {
+        "label": "去黑市，买一张假身份（80 金币）",
+        "text": "老鬼什么也没问，递来一张盖着章的纸。",
+        "fx": [
+          "gold-80",
+          "count:heat-20"
+        ],
+        "cond": "gold>=80&&flag:met_gu",
+        "reason": "金币不足，或还不认识老鬼"
+      },
+      {
+        "label": "躲上几天",
+        "text": "你在阁楼里待了四天，每天听着巷子里人们议论那张画像。",
+        "fx": [
+          "count:heat-8",
+          "wil_exp+1"
+        ]
+      }
+    ],
+    "pool": "calamity",
+    "weight": 14,
+    "cond": "count.heat>=50",
+    "scene": "alley"
+  },
+  {
+    "id": "t_informer",
+    "kind": "random",
+    "title": "叛徒",
+    "text": "有人把你的落脚处，报给了巡逻队。\n你从窗口看见街对面有一个熟悉的背影，是你曾经帮过的人。",
+    "options": [
+      {
+        "label": "追上去，和他谈谈",
+        "check": {
+          "attr": "cha",
+          "diff": 13
+        },
+        "ok": {
+          "text": "他哭着说是被逼的。你叹了口气，没再追究。",
+          "fx": [
+            "wil_exp+2",
+            "count:heat+4",
+            "cha_exp+2"
+          ]
+        },
+        "fail": {
+          "text": "他一见你，转身就跑，边跑边喊：“贼！”",
+          "fx": [
+            "count:heat+10",
+            "hp-3"
+          ]
+        }
+      },
+      {
+        "label": "连夜换一个落脚点",
+        "text": "你收拾了一个小包袱，一晚上换了三条街。",
+        "fx": [
+          "count:heat-6",
+          "gold-10"
+        ]
+      },
+      {
+        "label": "等着，看他们敢不敢来",
+        "text": "你磨亮了刀，在黑暗里坐了一夜。他们没有来。",
+        "fx": [
+          "wil_exp+3"
+        ]
+      }
+    ],
+    "pool": "calamity",
+    "weight": 9,
+    "cond": "count.crew>=1&&count.heat>=20",
+    "scene": "alley"
+  },
+  {
+    "id": "t_extortion",
+    "kind": "random",
+    "title": "红手帮收账",
+    "text": "两个红手帮的人堵在你面前，笑嘻嘻地伸出手：“听说你最近发财了？按规矩，该交份子钱。”",
+    "options": [
+      {
+        "label": "动手",
+        "text": "你一拳挥了出去。",
+        "fx": [
+          {
+            "type": "combat",
+            "enemy": "red_hand",
+            "win": [
+              "exp+20",
+              "rep:shadow+2",
+              "hometown+2",
+              "log:他们灰溜溜地走了。"
+            ],
+            "lose": [
+              "hp-12",
+              "gold-40",
+              "log:他们拿走了你的钱，还踹了你两脚。"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "交钱免灾（40 金币）",
+        "text": "他们收了钱，笑着拍了拍你的肩：“识相。”",
+        "fx": [
+          "gold-40",
+          "rep:shadow-1"
+        ],
+        "cond": "gold>=40",
+        "reason": "金币不足"
+      },
+      {
+        "label": "甩出烟雾弹",
+        "check": {
+          "attr": "agi",
+          "diff": 12
+        },
+        "ok": {
+          "text": "烟雾里，你从他们的腋下钻了过去。",
+          "fx": [
+            "agi_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "烟还没散，一只手已经卡住了你的脖子。",
+          "fx": [
+            "hp-10",
+            "gold-30"
+          ]
+        },
+        "cond": "flag:sk_smoke_bomb",
+        "reason": "需要烟雾弹"
+      }
+    ],
+    "pool": "calamity",
+    "weight": 10,
+    "cond": "flag:red_hand_threat&&!flag:red_hand_broken",
+    "scene": "alley"
+  },
+  {
+    "id": "t_stash_stolen",
+    "kind": "random",
+    "title": "藏的钱不见了",
+    "text": "你回到那块松动的砖头前，伸手一摸，空的。\n藏在里面的钱，不翼而飞。",
+    "options": [
+      {
+        "label": "四处查问，找到小偷",
+        "check": {
+          "attr": "int",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你顺着几条线索找到了偷钱的人，是一个饿坏了的孩子。你看了他很久，只拿回了一半。",
+          "fx": [
+            "gold+25",
+            "int_exp+3",
+            "hometown+1"
+          ]
+        },
+        "fail": {
+          "text": "找了半天，一无所获。你只能骂自己太大意。",
+          "fx": [
+            "gold-20",
+            "int_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "咬牙认栽",
+        "text": "算了，下次换个地方藏。",
+        "fx": [
+          "gold-30",
+          "wil_exp+2"
+        ]
+      }
+    ],
+    "pool": "calamity",
+    "weight": 8,
+    "cond": "gold>=120",
+    "scene": "alley"
+  },
+  {
+    "id": "t_rooftop_slip",
+    "kind": "random",
+    "title": "雨夜屋顶",
+    "text": "一场突如其来的暴雨，把屋顶变成了冰面。你在高处的瓦片上，一脚踩空。",
+    "options": [
+      {
+        "label": "抓住屋檐，翻回去",
+        "check": {
+          "attr": "agi",
+          "diff": 13
+        },
+        "ok": {
+          "text": "你吊在屋檐边，咬紧牙，一点一点把自己撑了上去。",
+          "fx": [
+            "agi_exp+3",
+            "hp-3"
+          ]
+        },
+        "fail": {
+          "text": "你重重地摔进了下面的水沟，疼得半天没爬起来。",
+          "fx": [
+            "hp-14",
+            "status+:injured:2"
+          ]
+        }
+      }
+    ],
+    "pool": "calamity",
+    "weight": 8,
+    "cond": "age>=17&&season!=summer",
+    "scene": "rooftop"
+  },
+  {
+    "id": "t_fever",
+    "kind": "random",
+    "title": "下城热病",
+    "text": "鼠街又起了热病。巷子里每天抬出去几个人，空气里都是艾草和石灰的味道。\n你开始觉得头沉。",
+    "options": [
+      {
+        "label": "花钱买药（40 金币）",
+        "text": "药很苦，但退烧很快。",
+        "fx": [
+          "gold-40",
+          "hp-3"
+        ],
+        "cond": "gold>=40",
+        "reason": "金币不足"
+      },
+      {
+        "label": "硬扛过去",
+        "check": {
+          "attr": "wil",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你一个人躺了三天，把烧挨了过去。",
+          "fx": [
+            "wil_exp+4",
+            "hp-8"
+          ]
+        },
+        "fail": {
+          "text": "你病得很重，足足躺了半个月，才爬得起来。",
+          "fx": [
+            "hp-16",
+            "status+:fatigue:2",
+            "gold-10"
+          ]
+        }
+      }
+    ],
+    "pool": "calamity",
+    "weight": 7,
+    "scene": "alley_snow",
+    "cond": "season==winter"
+  },
+  {
+    "id": "t_snitch_gang",
+    "kind": "random",
+    "title": "公会内部的闲话",
+    "text": "有人在公会里放话，说你抢了不该抢的功劳，还说你和巡逻队的人走得太近。\n传到你耳朵里的时候，已经变成了另一个版本。",
+    "options": [
+      {
+        "label": "找传话的人对质",
+        "check": {
+          "attr": "cha",
+          "diff": 13
+        },
+        "ok": {
+          "text": "三言两语，你把话说开了，对方有点下不来台，反倒承了你的情。",
+          "fx": [
+            "rep:shadow+2",
+            "cha_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "越描越黑。",
+          "fx": [
+            "rep:shadow-4",
+            "cha_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "不辩解，用行动证明",
+        "text": "你什么也没说，一连几个月办了几件漂亮的活。",
+        "fx": [
+          "rep:shadow+1",
+          "wil_exp+2",
+          "gold-15"
+        ]
+      }
+    ],
+    "pool": "calamity",
+    "weight": 7,
+    "cond": "flag:guild_member",
+    "scene": "tavern"
+  },
+  {
+    "id": "t_raid_unlucky",
+    "kind": "random",
+    "title": "盯梢的人",
+    "text": "你察觉到，有人跟了你三条街。\n对方很专业，不近不远，每次你回头，他都恰好在看橱窗。",
+    "options": [
+      {
+        "label": "绕进死胡同，伏击他",
+        "check": {
+          "attr": "agi",
+          "diff": 13
+        },
+        "ok": {
+          "text": "他刚转进巷子，你的刀已经抵在了他的腰上。他是卡斯派来的人，被你放了回去，带话：你已经发现了。",
+          "fx": [
+            "count:heat-3",
+            "agi_exp+3",
+            "rel:cass-1"
+          ]
+        },
+        "fail": {
+          "text": "他早有防备，反手把你按在了墙上。",
+          "fx": [
+            "hp-6",
+            "count:heat+8"
+          ]
+        }
+      },
+      {
+        "label": "甩掉他，换一条路",
+        "text": "你在人群里拐了六个弯，才把他甩开。",
+        "fx": [
+          "agi_exp+2",
+          "count:heat+2"
+        ]
+      }
+    ],
+    "pool": "calamity",
+    "weight": 9,
+    "cond": "flag:met_cass&&count.heat>=30",
+    "scene": "street"
+  },
+  {
+    "id": "t_festival",
+    "kind": "random",
+    "title": "王城节庆夜",
+    "text": "王城里正在庆祝收获节，烟火从塔尖升起，一直亮到下城。\n所有人都仰着头，没有人看自己的口袋。",
+    "options": [
+      {
+        "label": "趁乱在人群里下手",
+        "check": {
+          "attr": "agi",
+          "diff": 11
+        },
+        "ok": {
+          "text": "烟火一朵朵炸开，你的手在一个个口袋之间游走，快得没有人察觉。",
+          "fx": [
+            "gold+90",
+            "agi_exp+3",
+            "count:heat+8"
+          ]
+        },
+        "fail": {
+          "text": "一个壮汉抓住了你的手腕，你被挤出了人群。",
+          "fx": [
+            "hp-5",
+            "count:heat+10"
+          ]
+        }
+      },
+      {
+        "label": "混进人群，看看烟火",
+        "text": "你难得没有想着偷谁。烟火在夜空里炸开，像一场无声的雨。",
+        "fx": [
+          "wil_exp+1",
+          "cha_exp+1",
+          "hometown+1"
+        ]
+      },
+      {
+        "label": "趁着没人盯梢，去踩点王城外围",
+        "check": {
+          "attr": "int",
+          "diff": 12
+        },
+        "ok": {
+          "text": "今夜没人关心王城的围墙。你在围墙外绕了一圈，记下了暗哨的位置。",
+          "fx": [
+            "count:intel+1",
+            "int_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "你绕得太久，被一队巡逻的兵盯上了。",
+          "fx": [
+            "count:heat+6"
+          ]
+        }
+      }
+    ],
+    "pool": "world",
+    "weight": 7,
+    "cond": "season==autumn",
+    "scene": "rooftop"
+  },
+  {
+    "id": "t_tax_season",
+    "kind": "random",
+    "title": "收税季",
+    "text": "税官们挨家挨户地敲门，下城的人们数着铜板，一脸苦相。\n有人在巷子里低声咒骂，有人把家里最后一件值钱的东西拿去了当铺。",
+    "options": [
+      {
+        "label": "把赚的钱匀一些给街坊",
+        "text": "几个人千恩万谢。你被人叫了一整个月的“手哥”。",
+        "fx": [
+          "gold-35",
+          "hometown+5",
+          "rep:shadow+1"
+        ],
+        "cond": "gold>=35",
+        "reason": "金币不足"
+      },
+      {
+        "label": "趁他们交钱的时候，在当铺附近蹲点",
+        "check": {
+          "attr": "agi",
+          "diff": 12
+        },
+        "ok": {
+          "text": "当铺柜台后面的钱箱，被你轻轻地划开了一道口。",
+          "fx": [
+            "gold+70",
+            "count:heat+7",
+            "agi_exp+2"
+          ]
+        },
+        "fail": {
+          "text": "当铺的伙计比你想象的警觉。",
+          "fx": [
+            "hp-6",
+            "count:heat+6"
+          ]
+        }
+      },
+      {
+        "label": "什么也不做，低头走过",
+        "text": "你把手插在口袋里，没有看任何一个人的脸。",
+        "fx": []
+      }
+    ],
+    "pool": "world",
+    "weight": 7,
+    "cond": [
+      "season==winter",
+      "season==spring"
+    ],
+    "scene": "street"
+  },
+  {
+    "id": "t_north_rumor",
+    "kind": "random",
+    "title": "北方的传闻",
+    "text": "酒馆里有人说，北方的边境上，魔物的踪迹越来越多。\n有人说是谣言，有人说，百年一醒的东西，又要醒了。\n你听了一耳朵，没怎么在意：王都的灯，总是亮得很稳。",
+    "options": [
+      {
+        "label": "多听两句，打听消息",
+        "text": "你听到了几条杂乱的消息，有一条，隐隐约约和王城的魔晶有关。",
+        "fx": [
+          "count:intel+1",
+          "int_exp+2"
+        ]
+      },
+      {
+        "label": "不关心，继续喝酒",
+        "text": "与你有什么关系呢？",
+        "fx": []
+      }
+    ],
+    "pool": "world",
+    "weight": 6,
+    "cond": "age>=20",
+    "scene": "tavern"
+  },
+  {
+    "id": "t_clue_ledger",
+    "kind": "random",
+    "title": "账本上的缺页",
+    "text": "你在公会的账房里等人，无意中翻到了一本旧账簿。最近三年的几页，被人小心翼翼地撕走了，只留下装订线旁的一点碎边。",
+    "options": [
+      {
+        "label": "把残页的痕迹记下来",
+        "check": {
+          "attr": "int",
+          "diff": 13
+        },
+        "ok": {
+          "text": "碎边上还留着几个字，像是一笔来自税务署的“特别拨款”。",
+          "fx": [
+            "count:mask_clue+1",
+            "int_exp+3",
+            "flag+:clue_1"
+          ]
+        },
+        "fail": {
+          "text": "你看不出什么，倒是账房先生回来了，一脸狐疑。",
+          "fx": [
+            "count:heat+3"
+          ]
+        }
+      },
+      {
+        "label": "把账簿放回去",
+        "text": "你什么也没碰。有些事，现在还不到时候。",
+        "fx": []
+      }
+    ],
+    "pool": "opportunity",
+    "weight": 7,
+    "cond": "count.intel>=2&&age>=21&&!flag:clue_1",
+    "scene": "tavern",
+    "once": true
+  },
+  {
+    "id": "t_clue_coin",
+    "kind": "random",
+    "title": "金币上的印记",
+    "text": "面具先生给你的预付金币，在酒馆的灯光下，反射出一点不寻常的光。\n你仔细看，币边上，有一圈极细的刻痕，像是一个家徽的轮廓。",
+    "options": [
+      {
+        "label": "拿去黑市，请老鬼看看",
+        "check": {
+          "attr": "cha",
+          "diff": 12
+        },
+        "ok": {
+          "text": "老鬼只看了一眼，就把金币还给你，脸色变了变：“……别问，也别说是我看的。”",
+          "fx": [
+            "count:mask_clue+1",
+            "count:intel+1",
+            "flag+:clue_2"
+          ]
+        },
+        "fail": {
+          "text": "老鬼只说了一句：“假币。”就不再理你。",
+          "fx": [
+            "cha_exp+1"
+          ]
+        },
+        "cond": "flag:met_gu",
+        "reason": "还不认识老鬼"
+      },
+      {
+        "label": "收好，不声张",
+        "text": "金币在你的口袋里，沉得有点不寻常。",
+        "fx": [
+          "int_exp+2"
+        ]
+      }
+    ],
+    "pool": "opportunity",
+    "weight": 7,
+    "cond": "flag:mask_hired&&!flag:clue_2",
+    "scene": "black_market",
+    "once": true
+  },
+  {
+    "id": "t_clue_voice",
+    "kind": "random",
+    "title": "熟悉的声音",
+    "text": "你在王城边上的一家茶楼里，隔着一道屏风，听见了一个声音，沙哑，像从井底传上来。\n你浑身一僵：那是面具先生的声音，却是另一种口音，更体面，更老练。",
+    "options": [
+      {
+        "label": "贴着屏风，屏息细听",
+        "check": {
+          "attr": "agi",
+          "diff": 13
+        },
+        "ok": {
+          "text": "你听见他说：“……魔晶库的事，不必操之过急。下城那些人，只是棋子。”\n你悄悄地后退，没有惊动任何人。",
+          "fx": [
+            "count:mask_clue+1",
+            "agi_exp+3",
+            "flag+:clue_3"
+          ]
+        },
+        "fail": {
+          "text": "屏风后的声音忽然停了。你慌忙离开。",
+          "fx": [
+            "count:heat+6"
+          ]
+        }
+      },
+      {
+        "label": "不敢多留，赶紧走开",
+        "text": "你一路没有回头。",
+        "fx": [
+          "wil_exp+1"
+        ]
+      }
+    ],
+    "pool": "opportunity",
+    "weight": 7,
+    "cond": "count.intel>=4&&age>=22&&!flag:clue_3",
+    "scene": "street",
+    "once": true
+  }
+]

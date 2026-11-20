@@ -1,0 +1,578 @@
+[
+  {
+    "id": "main_revenge",
+    "type": "main",
+    "name": "灰烬中的家徽",
+    "start": "age>=16",
+    "score": 100,
+    "onFail": [
+      "flag+:main_failed",
+      "flag+:ch3_open",
+      "log:高塔的大门对你关上了。可复议日不会因此推迟。"
+    ],
+    "doneStory": {
+      "title": "终章 · 家徽",
+      "text": "法庭的门在你身后合上。\n无论结局如何，你都已经走完了十二年。剩下的，是家徽怎么被人记住，而不再是它被谁玷污。"
+    },
+    "stages": [
+      {
+        "desc": "第一章·旧宅的灰：通过奥术高塔的入塔考试，成为学徒",
+        "done": "flag:tower_admitted",
+        "score": 20,
+        "deadlineAge": 21,
+        "checks": [
+          {
+            "label": "智力 ≥ 13",
+            "cond": "attr.int>=13"
+          },
+          {
+            "label": "等级 ≥ 2",
+            "cond": "level>=2"
+          },
+          {
+            "label": "研读奥术 ≥ 2 次",
+            "cond": "count.arcana>=2"
+          },
+          {
+            "label": "高塔声望 ≥ 5（多去旁听）",
+            "cond": "rep.tower>=5"
+          }
+        ],
+        "story": {
+          "title": "第一章 完 · 旧宅的灰",
+          "portrait": "noble",
+          "scene": "tower",
+          "text": "高塔的钟声在你头顶响了十二下。\n你站在入塔石阶的最上一层，回头望向东区，旧宅的屋顶在傍晚的光里，小得像一枚落灰的纽扣。\n你想起父亲的那句话。你终于有了第一块可以踩的地方。\n——第二章：塔中岁月"
+        }
+      },
+      {
+        "desc": "第二章·塔中岁月：通过初级魔法师考核",
+        "done": "rank>=3",
+        "score": 20,
+        "deadlineAge": 25,
+        "checks": [
+          {
+            "label": "等级 ≥ 8",
+            "cond": "level>=8"
+          },
+          {
+            "label": "智力 ≥ 17",
+            "cond": "attr.int>=17"
+          },
+          {
+            "label": "高塔声望 ≥ 25",
+            "cond": "rep.tower>=25"
+          }
+        ],
+        "story": {
+          "title": "第二章 完 · 塔中岁月",
+          "portrait": "metis",
+          "scene": "tower",
+          "text": "“恭喜。”考官把银色的星纹徽章别在你的袖口，“从今天起，你不再是学徒。”\n你低头看了一眼那枚徽章，没有笑。\n你想起宰相府里的灯，想起那年冬天狱中传来的消息。徽章很轻，肩上的东西却越来越重。\n——第三章：蛛丝马迹"
+        },
+        "fx": [
+          "flag+:ch3_open",
+          {
+            "if": "count.lead>=2",
+            "then": [
+              "count:evidence+2",
+              "log:先前遇到的零碎线索，被你整理成了两份证据。"
+            ],
+            "else": [
+              {
+                "if": "count.lead>=1",
+                "then": [
+                  "count:evidence+1",
+                  "log:先前遇到的一点线索，被你整理成了一份证据。"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "desc": "第三章·蛛丝马迹：收集至少 6 份能证明父亲清白的证据（需要第二章完成后才能开始调查；之前遇到的只算线索）",
+        "done": "count.evidence>=6",
+        "score": 20,
+        "checks": [
+          {
+            "label": "证据 ≥ 6 份",
+            "cond": "count.evidence>=6",
+            "cur": "count.evidence"
+          },
+          {
+            "label": "已积累的线索（开启时折算）",
+            "cond": "count.lead>=0",
+            "cur": "count.lead"
+          }
+        ],
+        "story": {
+          "title": "第三章 完 · 蛛丝马迹",
+          "portrait": "elin",
+          "scene": "library",
+          "text": "六份证据，被你一份一份地摊在书桌上。\n灯光下，每一页纸都像是从另一个人的人生里撕下来的。你一遍遍把它们读到熟，闭上眼，也能背出每一行。\n门外传来阿尔弗轻轻的脚步声，他在门口停了一会儿，没有敲门。\n——第四章：复议日前夜"
+        }
+      },
+      {
+        "desc": "第四章·复议日前夜：请至少两位盟友公开站到你这边（行动：请求支持。需要先赢得他们的信任：墨提斯的赠礼、艾琳的决定、与瓦伦的了断、阿尔弗的暗格）",
+        "done": "count.allies>=2",
+        "score": 20,
+        "checks": [
+          {
+            "label": "盟友 ≥ 2 位",
+            "cond": "count.allies>=2",
+            "cur": "count.allies"
+          },
+          {
+            "label": "墨提斯的赠礼",
+            "cond": "flag:metis_gift"
+          },
+          {
+            "label": "艾琳的决定",
+            "cond": "flag:ally_elin"
+          },
+          {
+            "label": "与瓦伦了断",
+            "cond": "flag:ally_valen"
+          }
+        ],
+        "story": {
+          "title": "第四章 完 · 复议日前夜",
+          "scene": "street",
+          "text": "王都的夜很长，街灯一盏接着一盏地亮起来。\n你从来没有想过，自己会有同行的人。\n他们没有谁说过“我相信你”，却都在你需要的时候，多走了一步。\n——终章：复议日"
+        }
+      },
+      {
+        "desc": "终章·复议日：在 28 岁的秋天，站上王国的法庭",
+        "done": [
+          "flag:trial_won",
+          "flag:revenge_done"
+        ],
+        "score": 20
+      }
+    ]
+  },
+  {
+    "id": "vera_illness",
+    "type": "side",
+    "name": "母亲的药",
+    "deadlineAge": 24,
+    "score": 25,
+    "onFail": [
+      "flag-:vera_alive",
+      "flag+:vera_died",
+      "hometown-6",
+      "log:母亲在一个很安静的清晨睡着了，没有再醒来。"
+    ],
+    "reward": [
+      "log:母亲的气色一天比一天好。"
+    ],
+    "stages": [
+      {
+        "desc": "为母亲筹到药钱（行动：购买药材，两次，每次 90 金币）",
+        "done": "count.medicine>=2",
+        "fx": [
+          "goto:n_vera_recover"
+        ],
+        "checks": [
+          {
+            "label": "购买药材 2 次",
+            "cond": "count.medicine>=2"
+          }
+        ]
+      },
+      {
+        "desc": "陪母亲熬过最难的一个冬天",
+        "done": "flag:vera_better"
+      }
+    ]
+  },
+  {
+    "id": "alfred_secret",
+    "type": "side",
+    "name": "老管家的秘密",
+    "start": "rel.alfred>=3&&age>=17",
+    "deadlineAge": 26,
+    "score": 20,
+    "intro": {
+      "portrait": "alfred",
+      "title": "欲言又止",
+      "text": "阿尔弗收拾茶具的手停了一下：“少爷，老爷走之前，有些话，我答应过他，要等您长大再说。”\n他的眼神里有一种你说不清的东西，像是等了很多年，也怕了很多年。\n也许，该多找他聊聊。但要让他开口，光靠亲近，大概是不够的。"
+    },
+    "reward": [
+      "log:老管家终于卸下了压在心里多年的东西。"
+    ],
+    "stages": [
+      {
+        "desc": "让阿尔弗说出那一夜的往事（好感 ≥ 4，并听完至少两段往事。行动：与老管家聊聊）",
+        "done": "rel.alfred>=4&&count.alfred_tale>=2",
+        "checks": [
+          {
+            "label": "阿尔弗好感 ≥ 4",
+            "cond": "rel.alfred>=4",
+            "cur": "rel.alfred"
+          },
+          {
+            "label": "听完往事 ≥ 2 段",
+            "cond": "count.alfred_tale>=2",
+            "cur": "count.alfred_tale"
+          }
+        ]
+      },
+      {
+        "desc": "解开书房暗格的双重锁（行动：开启书房暗格，智力检定；破译过父亲的密信会更容易）",
+        "done": "flag:safe_opened",
+        "checks": [
+          {
+            "label": "已破译父亲的密信（降低难度）",
+            "cond": "flag:letters_decoded"
+          }
+        ]
+      }
+    ],
+    "snag": {
+      "p": 0.25,
+      "text": "阿尔弗病倒了，躺了几个月。等他好起来，话题就再也接不上了。"
+    }
+  },
+  {
+    "id": "metis_trials",
+    "type": "side",
+    "name": "墨提斯的三道题",
+    "start": "flag:met_metis",
+    "deadlineAge": 27,
+    "score": 30,
+    "doneStory": {
+      "portrait": "metis",
+      "scene": "tower",
+      "title": "通过",
+      "text": "墨提斯把三道题的卷轴一一卷起，交到你手里：“你比我想的走得稳。”\n他看着你，眼神里有一丝很难察觉的怀念：“你父亲，当年也是这样。”"
+    },
+    "stages": [
+      {
+        "desc": "通过墨提斯的三道试炼（行动：墨提斯的试炼，智力检定，成功三次）",
+        "done": "count.metis>=3",
+        "fx": [
+          "goto:n_metis_gift"
+        ],
+        "checks": [
+          {
+            "label": "试炼成功 3 次（高塔声望 ≥ 15）",
+            "cond": "count.metis>=3"
+          }
+        ]
+      },
+      {
+        "desc": "接受墨提斯的赠礼",
+        "done": "flag:metis_gift"
+      }
+    ],
+    "snag": {
+      "p": 0.35,
+      "text": "墨提斯被塔里召去处理一件紧急的事，那三道题，被无限期地搁置了。"
+    }
+  },
+  {
+    "id": "elin_clues",
+    "type": "side",
+    "name": "艾琳的线索",
+    "start": "flag:met_elin",
+    "deadlineAge": 27,
+    "score": 25,
+    "stages": [
+      {
+        "desc": "陪艾琳在档案馆里翻查旧案（行动：调查旧案档案，成功两次）",
+        "done": "count.archive>=2",
+        "fx": [
+          "goto:n_elin_ally"
+        ],
+        "checks": [
+          {
+            "label": "调查成功 2 次",
+            "cond": "count.archive>=2"
+          }
+        ]
+      },
+      {
+        "desc": "接受艾琳的帮助",
+        "done": "flag:ally_elin"
+      }
+    ],
+    "snag": {
+      "p": 0.25,
+      "text": "艾琳的家人把她接回了乡下，书店的门，再没有开过。"
+    }
+  },
+  {
+    "id": "valen_rivalry",
+    "type": "side",
+    "name": "宿敌瓦伦",
+    "start": "flag:met_valen&&rank>=2",
+    "deadlineAge": 27,
+    "score": 25,
+    "stages": [
+      {
+        "desc": "和瓦伦在塔里交锋几次，然后向他下战书（行动：向瓦伦下战书，输了可以再来）",
+        "done": "flag:valen_duel_won",
+        "checks": [
+          {
+            "label": "与瓦伦的交锋 ≥ 2 次（或 24 岁后）",
+            "cond": [
+              "count.valen_clash>=2",
+              "age>=24"
+            ],
+            "cur": "count.valen_clash"
+          }
+        ],
+        "fx": [
+          "goto:n_valen_truth"
+        ]
+      },
+      {
+        "desc": "弄清瓦伦的真实想法",
+        "done": "flag:ally_valen"
+      }
+    ],
+    "intro": {
+      "portrait": "valen",
+      "title": "金鹰徽章",
+      "text": "你已经是塔里的初级魔法师了。每次在回廊遇见瓦伦，他都会停一停，用那种打量猎物的眼神看你一眼，再把目光移开。\n他是宰相的独子。你们谁也没有先开口，但谁都知道，迟早，要有一次了断。"
+    },
+    "snag": {
+      "p": 0.25,
+      "text": "瓦伦被他父亲送去了外地游学，你们的账，只能暂时算不成了。"
+    }
+  },
+  {
+    "id": "debt_free",
+    "type": "side",
+    "name": "清偿债务",
+    "start": "age>=17",
+    "deadlineAge": 27,
+    "score": 25,
+    "doneStory": {
+      "portrait": "alfred",
+      "scene": "manor_spring",
+      "title": "账本上的最后一笔",
+      "text": "阿尔弗把最后一张借据在炉火上点燃，纸边一点一点卷曲，变黑，化成灰。\n“少爷，”他说，“从今天起，我们不欠任何人了。”\n你看着那团火，忽然觉得，这个冬天好像没有以前那么冷。"
+    },
+    "reward": [
+      "hometown+8"
+    ],
+    "stages": [
+      {
+        "desc": "还清所有债务（行动：偿还债务）",
+        "done": "count.debt<=0",
+        "checks": [
+          {
+            "label": "债务清零",
+            "cond": "count.debt<=0"
+          }
+        ]
+      }
+    ],
+    "snag": {
+      "p": 0.2,
+      "text": "债主换了新的管事，所有的旧账，被重新算了一遍，数目对不上了。"
+    }
+  },
+  {
+    "id": "vera_friend",
+    "type": "side",
+    "name": "母亲的旧友",
+    "start": "flag:vera_alive&&rel.vera>=5&&age>=18",
+    "deadlineAge": 25,
+    "score": 20,
+    "intro": {
+      "portrait": "vera",
+      "title": "旧友",
+      "text": "母亲在窗边，把一张泛黄的请柬递给你：“奥黛特是我年轻时最好的朋友。你该去她的宴会上露个面。别提钱，别提债，只是去露个面。”"
+    },
+    "reward": [
+      "log:奥黛特夫人的名字，在母亲的嘴里，又被提起了很多次。"
+    ],
+    "stages": [
+      {
+        "desc": "替母亲去赴两场贵族宴会，让奥黛特夫人认出你（行动：出席贵族宴会，共 2 次）",
+        "done": "count.odette>=2",
+        "fx": [
+          "goto:n_odette"
+        ],
+        "checks": [
+          {
+            "label": "出席宴会 ≥ 2 次（任务开启后）",
+            "cond": "count.odette>=2",
+            "cur": "count.odette"
+          }
+        ]
+      },
+      {
+        "desc": "接受（或谢绝）奥黛特夫人的帮助",
+        "done": "flag:odette_helped"
+      }
+    ],
+    "snag": {
+      "p": 0.3,
+      "text": "奥黛特夫人随丈夫外放，去了很远的地方，没来得及告别。"
+    }
+  },
+  {
+    "id": "tower_theft",
+    "type": "side",
+    "name": "塔中失窃案",
+    "start": "rank>=2&&flag:tower_admitted&&age>=20",
+    "deadlineAge": 26,
+    "score": 25,
+    "intro": {
+      "portrait": "metis",
+      "title": "失踪的书",
+      "text": "墨提斯把你叫住：“藏书室丢了一卷《魔晶共鸣论》。所有人都在互相怀疑。我不能亲自查，你替我看看。”\n他顿了顿，补了一句：“别急着认定是谁。”"
+    },
+    "reward": [
+      "log:高塔的藏书室，又安静了下来。"
+    ],
+    "stages": [
+      {
+        "desc": "在塔里调查，收集线索（行动：调查塔中失窃案，线索 ≥ 3）",
+        "done": "count.theft_clue>=3",
+        "fx": [
+          "goto:n_theft_verdict"
+        ],
+        "checks": [
+          {
+            "label": "线索 ≥ 3",
+            "cond": "count.theft_clue>=3",
+            "cur": "count.theft_clue"
+          }
+        ]
+      },
+      {
+        "desc": "揭晓偷书人",
+        "done": [
+          "flag:theft_solved",
+          "flag:theft_framed"
+        ]
+      }
+    ],
+    "snag": {
+      "p": 0.45,
+      "text": "失窃的那卷书，在一夜之间被悄悄放回了架子上。案子，成了一桩没人再提的悬案。"
+    }
+  },
+  {
+    "id": "cellar_lab",
+    "type": "side",
+    "name": "旧宅的地窖",
+    "start": "age>=18&&flag:father_letter",
+    "deadlineAge": 26,
+    "score": 25,
+    "intro": {
+      "portrait": "alfred",
+      "title": "被堵住的门",
+      "text": "阿尔弗在清点旧宅的仓库时，忽然说了一句：“地窖的暗门，老爷在时，常常一个人下去，一待就是一整夜。”\n他又补了一句：“他走之后，那扇门，就被我用橱柜堵住了。”"
+    },
+    "reward": [
+      "log:地窖里的东西，一件一件地被你搬了上来。"
+    ],
+    "stages": [
+      {
+        "desc": "清理地窖的暗门，找到父亲的实验室（行动：探索旧宅的地窖，成功 2 次）",
+        "done": "count.cellar>=2",
+        "fx": [
+          "goto:n_cellar_notes"
+        ],
+        "checks": [
+          {
+            "label": "成功探索 ≥ 2 次",
+            "cond": "count.cellar>=2",
+            "cur": "count.cellar"
+          }
+        ]
+      },
+      {
+        "desc": "取走父亲留下的东西",
+        "done": "flag:cellar_done"
+      }
+    ],
+    "snag": {
+      "p": 0.45,
+      "text": "一场暴雨灌进了地窖，积水没过了台阶，暗门被泥封住了。"
+    }
+  },
+  {
+    "id": "lockwood_spy",
+    "type": "side",
+    "name": "宰相的耳目",
+    "start": "age>=22&&flag:met_valen&&flag:letters_decoded",
+    "deadlineAge": 27,
+    "score": 25,
+    "intro": {
+      "portrait": "valen",
+      "title": "瓦伦的提醒",
+      "text": "回廊里，瓦伦头也不回地从你身边走过，低声说了一句：“你家里，有他们的人。”\n你没来得及问，他已经走远了。"
+    },
+    "reward": [
+      "log:旧宅里，再没有一只陌生的眼睛。"
+    ],
+    "stages": [
+      {
+        "desc": "盯梢宰相府的出入，找出泄露消息的人（行动：盯梢宰相府的出入，线索 ≥ 3）",
+        "done": "count.spy_clue>=3",
+        "fx": [
+          "goto:n_spy_unmask"
+        ],
+        "checks": [
+          {
+            "label": "线索 ≥ 3",
+            "cond": "count.spy_clue>=3",
+            "cur": "count.spy_clue"
+          }
+        ]
+      },
+      {
+        "desc": "处理这件事",
+        "done": "flag:spy_found"
+      }
+    ],
+    "snag": {
+      "p": 0.4,
+      "text": "宰相府的人先一步察觉，那条线索，在一夜之间断得干干净净。"
+    }
+  },
+  {
+    "id": "forbidden_tome",
+    "type": "hidden",
+    "name": "高塔的禁书",
+    "start": "memory:m_truth&&flag:tower_admitted&&age>=20",
+    "deadlineAge": 27,
+    "score": 40,
+    "intro": {
+      "portrait": "metis",
+      "title": "另一个人生的回响",
+      "text": "一个念头，莫名其妙地在你脑子里响起：“圣剑不是剑，是锁。魔晶……是锁的燃料。”\n你不记得是谁告诉你的，也不记得在哪里读到。但它的每一个字，都像刻在了骨头上。\n你想，也许，禁书库里，能找到答案。"
+    },
+    "reward": [
+      "log:你读到了关于封印的真相。魔晶，不是魔法的燃料，而是封印的燃料。"
+    ],
+    "stages": [
+      {
+        "desc": "潜入高塔禁书库，查阅关于封印的古籍（行动：查阅高塔禁书库，成功 3 次）",
+        "done": "count.seal_pages>=3",
+        "fx": [
+          "goto:n_metis_seal"
+        ],
+        "checks": [
+          {
+            "label": "读出的残页 ≥ 3",
+            "cond": "count.seal_pages>=3",
+            "cur": "count.seal_pages"
+          }
+        ]
+      },
+      {
+        "desc": "向墨提斯求证",
+        "done": "flag:seal_lore"
+      }
+    ]
+  }
+]

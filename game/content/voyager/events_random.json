@@ -1,0 +1,1084 @@
+[
+  {
+    "id": "v_bottle",
+    "kind": "random",
+    "title": "漂流瓶",
+    "text": "潮水退去后，滩涂上卧着一只被藤壶包满的玻璃瓶。瓶塞已经泡得发胀，里面有一卷纸。",
+    "options": [
+      {
+        "label": "拔开瓶塞，读那封信",
+        "check": {
+          "attr": "int",
+          "diff": 10
+        },
+        "ok": {
+          "text": "字迹很淡，但还能辨认：是一个船长写给女儿的最后一封信，信的背面，画着一幅小小的航线图。",
+          "fx": [
+            "count:charts+1",
+            "int_exp+3",
+            "hometown+1"
+          ]
+        },
+        "fail": {
+          "text": "纸一碰就碎，只剩下几个模糊的字。",
+          "fx": [
+            "int_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "原样放回海里",
+        "text": "你把瓶子用力扔回了浪里。也许，另一个岸上，有人在等它。",
+        "fx": [
+          "wil_exp+1"
+        ]
+      }
+    ],
+    "pool": "opportunity",
+    "weight": 8,
+    "scene": "harbor"
+  },
+  {
+    "id": "v_whale",
+    "kind": "random",
+    "title": "鲸的歌",
+    "text": "夜里，海面下传来一阵低沉的歌声，一下一下，像是整片海在呼吸。\n一头巨大的鲸，在你的船边浮了上来，眼睛有一间屋子那么大。",
+    "options": [
+      {
+        "label": "熄灯，静静地听",
+        "text": "你们谁也没有说话。鲸游远的时候，有水手悄悄擦了擦眼睛。",
+        "fx": [
+          "wil_exp+3",
+          "cha_exp+1",
+          "hometown+1",
+          "status+:blessed:3"
+        ],
+        "cond": "count.ship>=1"
+      },
+      {
+        "label": "在船舷边，伸手摸摸它",
+        "check": {
+          "attr": "luk",
+          "diff": 11
+        },
+        "ok": {
+          "text": "鲸缓缓靠了过来，你的手掌贴着它冰凉的皮肤。它发出一声很轻的叹息。",
+          "fx": [
+            "luk_exp+3",
+            "wil_exp+2",
+            "exp+15"
+          ]
+        },
+        "fail": {
+          "text": "鲸受惊潜了下去，翻起的浪把你拍在了甲板上。",
+          "fx": [
+            "hp-5"
+          ]
+        },
+        "cond": "count.ship>=1"
+      }
+    ],
+    "pool": "opportunity",
+    "weight": 7,
+    "scene": "sea",
+    "cond": "age>=17"
+  },
+  {
+    "id": "v_salvage",
+    "kind": "random",
+    "title": "漂浮的货箱",
+    "text": "海面上漂着几只木箱，上面印着某家商会的火漆，大概是被风浪冲出船的。",
+    "options": [
+      {
+        "label": "让水手们把它们捞上来",
+        "check": {
+          "attr": "str",
+          "diff": 11
+        },
+        "ok": {
+          "text": "箱子里是整整齐齐的香料和皮货，还没被水泡坏。",
+          "fx": [
+            "gold+75",
+            "str_exp+2",
+            "count:voyages+1"
+          ]
+        },
+        "fail": {
+          "text": "捞到一半，一个浪头把两个水手拍进了水里。你们折腾了半天，只拿回了一只。",
+          "fx": [
+            "gold+20",
+            "hp-4"
+          ]
+        },
+        "cond": "count.crew>=1",
+        "reason": "需要水手"
+      },
+      {
+        "label": "在箱子上做个记号，通知港务官",
+        "text": "港务官记下了你的名字。几天后，失主送来了一小笔谢礼。",
+        "fx": [
+          "gold+30",
+          "rep:harbor+3",
+          "hometown+1"
+        ],
+        "cond": "count.ship>=1"
+      },
+      {
+        "label": "不管，继续航行",
+        "text": "",
+        "fx": []
+      }
+    ],
+    "pool": "opportunity",
+    "weight": 8,
+    "scene": "sea",
+    "cond": "count.ship>=1"
+  },
+  {
+    "id": "v_old_sailor",
+    "kind": "random",
+    "title": "老水手的故事",
+    "text": "码头边，一个断了一条腿的老水手，靠着缆桩晒太阳。你路过时，他叫住你：“小子，坐下，我给你讲个故事。”\n故事讲的是他年轻时，如何在雾礁里，遇到了一艘没有船员的船。",
+    "options": [
+      {
+        "label": "坐下，认真听完",
+        "check": {
+          "attr": "int",
+          "diff": 10
+        },
+        "ok": {
+          "text": "故事的最后，他告诉你一个只有老船长才知道的暗流位置。你把它记在了心里。",
+          "fx": [
+            "count:charts+1",
+            "int_exp+3",
+            "rep:harbor+1"
+          ]
+        },
+        "fail": {
+          "text": "他讲着讲着睡着了，口水流了一下巴。",
+          "fx": [
+            "int_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "给他买一杯麦酒，再听",
+        "text": "老头笑得露出了缺了牙的嘴：“好孩子……”",
+        "fx": [
+          "gold-5",
+          "rep:harbor+1",
+          "cha_exp+2"
+        ],
+        "cond": "gold>=5"
+      },
+      {
+        "label": "说还有活儿，改天听",
+        "text": "你匆匆地走了。身后，老头继续对着空气讲。",
+        "fx": []
+      }
+    ],
+    "pool": "opportunity",
+    "weight": 8,
+    "scene": "harbor"
+  },
+  {
+    "id": "v_harbor_festival",
+    "kind": "random",
+    "title": "潮汛节",
+    "text": "潮汛节到了。整个港口都挂满了彩旗，渔民们把彩色的纸船放进海里，据说能保佑一年平安。\n孩子们挤在码头边，一边追着人群，一边偷吃摊上的糖。",
+    "options": [
+      {
+        "label": "帮忙搭台子，布置彩旗",
+        "text": "你一整天都在爬梯子、扯绳子。晚上，有人在你肩上拍了一下：“谢了。”",
+        "fx": [
+          "hometown+4",
+          "rep:harbor+2",
+          "str_exp+2"
+        ]
+      },
+      {
+        "label": "在人群里卖些小货",
+        "check": {
+          "attr": "cha",
+          "diff": 11
+        },
+        "ok": {
+          "text": "节日里，什么都好卖。你的货，在日落前就卖光了。",
+          "fx": [
+            "gold+55",
+            "cha_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "生意不太好，只卖了零星几样。",
+          "fx": [
+            "gold+12",
+            "cha_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "放一只纸船，许个愿",
+        "text": "你把纸船放进海里，看它一点点漂远。你许了什么愿，只有海知道。",
+        "fx": [
+          "wil_exp+2",
+          "luk_exp+2"
+        ]
+      }
+    ],
+    "pool": "world",
+    "weight": 7,
+    "cond": "season==summer",
+    "scene": "harbor"
+  },
+  {
+    "id": "v_bram_story",
+    "kind": "random",
+    "title": "布拉姆的家",
+    "text": "夜里，布拉姆坐在船头，晃着腿，一边啃着干面包，一边给你讲他的老家：一个只有三十几户人家的小渔村，每年冬天，都会被海水淹一次。\n“我想有一条自己的船，”他说，“让他们都不用再挨饿。”",
+    "options": [
+      {
+        "label": "认真听他说完",
+        "text": "你们一起坐到了天亮。他把最后一口面包，掰了一半给你。",
+        "fx": [
+          "rel:bram+2",
+          "cha_exp+2"
+        ]
+      },
+      {
+        "label": "给他一些钱，让他寄回家（30 金币）",
+        "text": "布拉姆愣住了，半天没说话。过了一会儿，他红着眼睛，用力地拍了拍你。",
+        "fx": [
+          "gold-30",
+          "rel:bram+3",
+          "hometown+1"
+        ],
+        "cond": "gold>=30",
+        "reason": "金币不足"
+      }
+    ],
+    "pool": "social",
+    "weight": 8,
+    "cond": "flag:met_bram",
+    "scene": "deck"
+  },
+  {
+    "id": "v_vel_stars",
+    "kind": "random",
+    "title": "薇尔的星表",
+    "text": "薇尔把一张手绘的星表摊在你面前，指着其中一条模糊的线：“这是我老师留下的。他说，潮汐之门，不是一扇门，而是……一个时间。”\n她抬眼看你，眼睛里有一点你从没见过的光。",
+    "options": [
+      {
+        "label": "请她讲得更清楚些",
+        "check": {
+          "attr": "int",
+          "diff": 12
+        },
+        "ok": {
+          "text": "她讲了一个多钟头，你听懂了其中的一半。那一半，就足够你重新画一遍航线。",
+          "fx": [
+            "int_exp+4",
+            "count:charts+1"
+          ]
+        },
+        "fail": {
+          "text": "你听得头晕，只记住了几个名词。",
+          "fx": [
+            "int_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "给她泡一杯热茶",
+        "text": "薇尔愣了一下，接过茶，小声说了句“谢谢”。",
+        "fx": [
+          "cha_exp+1",
+          "int_exp+1"
+        ]
+      }
+    ],
+    "pool": "social",
+    "weight": 8,
+    "cond": "flag:met_vel",
+    "scene": "deck"
+  },
+  {
+    "id": "v_scarlett_toast",
+    "kind": "random",
+    "title": "红鲨的酒",
+    "text": "酒馆里，一个熟悉的红色身影，在你对面坐了下来。\n斯嘉丽把两只杯子往桌上一磕，斟满：“别紧张，今晚，我不抢你。”",
+    "options": [
+      {
+        "label": "和她对饮，聊聊海上的事",
+        "check": {
+          "attr": "cha",
+          "diff": 13
+        },
+        "ok": {
+          "text": "你们聊到了半夜。她讲了几个关于她父亲的故事，讲得很轻。你们之间，有了一点不一样的东西。",
+          "fx": [
+            "rep:sea+3",
+            "cha_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "她喝得比你多，聊得也比你多。你什么也没套出来。",
+          "fx": [
+            "cha_exp+1",
+            "gold-10"
+          ]
+        }
+      },
+      {
+        "label": "只喝一杯，起身告辞",
+        "text": "她挑了挑眉，笑着说：“胆小鬼。”",
+        "fx": [
+          "rep:sea+1"
+        ]
+      }
+    ],
+    "pool": "social",
+    "weight": 7,
+    "cond": "flag:met_scarlett",
+    "scene": "tavern"
+  },
+  {
+    "id": "v_stowaway",
+    "kind": "random",
+    "title": "藏在货舱里的孩子",
+    "text": "出海第三天，一个瘦小的孩子，从货舱的缝隙里被搜了出来。他抱着一只破了洞的布袋，浑身发抖。\n“我……我想看海。”",
+    "options": [
+      {
+        "label": "给他一碗热汤，让他留下做事",
+        "text": "孩子眼睛亮得像两颗新磨的珠子。接下来的航程里，他成了船上最勤快的小水手。",
+        "fx": [
+          "hometown+2",
+          "cha_exp+2"
+        ],
+        "cond": "count.ship>=1"
+      },
+      {
+        "label": "下次靠港时，送他回家",
+        "text": "你们在下一个港口找到了他的母亲，她抱着孩子哭了很久。",
+        "fx": [
+          "hometown+3",
+          "rep:harbor+2",
+          "gold-10"
+        ],
+        "cond": "count.ship>=1"
+      },
+      {
+        "label": "把他扔上最近的渔船",
+        "text": "孩子没有哭，只是用力地盯着你看。",
+        "fx": [
+          "hometown-3"
+        ],
+        "cond": "count.ship>=1",
+        "avoid": true
+      }
+    ],
+    "pool": "social",
+    "weight": 7,
+    "scene": "deck",
+    "cond": "count.ship>=1&&age>=18"
+  },
+  {
+    "id": "v_haide_pipe",
+    "kind": "random",
+    "title": "烟斗里的故事",
+    "text": "海德坐在断了半截桅杆的旧船上，烟斗忽明忽暗。\n“我年轻时，”他说，“也想去看看那扇门。后来我老了，才明白，有些路，要年轻人走。”",
+    "options": [
+      {
+        "label": "问他：那你后悔吗？",
+        "text": "他吐了一口烟，慢吞吞地说：“后悔？没有。有些东西，没走到，反而更美。”",
+        "fx": [
+          "rel:haide+2",
+          "wil_exp+2"
+        ]
+      },
+      {
+        "label": "什么也没问，给他点上烟",
+        "text": "海德拍拍你的手：“你这孩子，不赖。”",
+        "fx": [
+          "rel:haide+2"
+        ]
+      }
+    ],
+    "pool": "social",
+    "weight": 8,
+    "cond": "flag:met_haide&&!flag:haide_gone",
+    "scene": "harbor_dusk",
+    "once": true
+  },
+  {
+    "id": "v_merchant_gossip",
+    "kind": "random",
+    "title": "商会的闲话",
+    "text": "商会的茶座里，几位会员压低声音，议论着一件事：北边的海路，这个冬天，似乎出了问题，好几艘商船失踪了。",
+    "options": [
+      {
+        "label": "凑过去，听听细节",
+        "check": {
+          "attr": "cha",
+          "diff": 12
+        },
+        "ok": {
+          "text": "他们把你当成了自己人，说得又多又快，其中有几条消息，对你的航线很有用。",
+          "fx": [
+            "count:charts+1",
+            "rep:guild+2",
+            "cha_exp+2"
+          ]
+        },
+        "fail": {
+          "text": "他们看了你一眼，话题换成了天气。",
+          "fx": [
+            "cha_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "不掺和，喝完茶就走",
+        "text": "",
+        "fx": []
+      }
+    ],
+    "pool": "social",
+    "weight": 6,
+    "cond": "rep.guild>=10",
+    "scene": "harbor"
+  },
+  {
+    "id": "v_storm_hit",
+    "kind": "random",
+    "title": "突来的风暴",
+    "text": "天空忽然黑了下来，海面起了白头浪。\n水手们慌忙地收帆，缆绳抽得嗖嗖响。",
+    "options": [
+      {
+        "label": "收帆，迎浪稳住船头",
+        "check": {
+          "attr": "wil",
+          "diff": 12,
+          "seasonDiff": {
+            "winter": 2
+          },
+          "memDiff": {
+            "id": "m_v_storm",
+            "diff": -2
+          }
+        },
+        "ok": {
+          "text": "你咬紧牙，一点一点把船头顶了回去。风暴过去，所有人都瘫在了甲板上，却笑了出来。",
+          "fx": [
+            "wil_exp+4",
+            "flag+:storm_survived",
+            "exp+12"
+          ]
+        },
+        "fail": {
+          "text": "一个浪头拍断了桅杆，船体裂开了一道缝。你们好不容易才保住了人。",
+          "fx": [
+            "hp-12",
+            "wil_exp+2",
+            "flag+:ship_damaged"
+          ]
+        }
+      },
+      {
+        "label": "放下锚，避开最凶的一阵",
+        "check": {
+          "attr": "int",
+          "diff": 12,
+          "seasonDiff": {
+            "winter": 2
+          }
+        },
+        "ok": {
+          "text": "你们躲在一座小岛的背风面，等了一夜。第二天，海面平静得像什么事也没发生过。",
+          "fx": [
+            "int_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "锚没有抓住，船被冲着打了几个旋。",
+          "fx": [
+            "hp-8",
+            "flag+:ship_damaged"
+          ]
+        }
+      }
+    ],
+    "pool": "calamity",
+    "weight": 11,
+    "cond": "count.ship>=1&&!flag:ship_damaged",
+    "scene": "sea"
+  },
+  {
+    "id": "v_pirate_raid",
+    "kind": "random",
+    "title": "海盗劫船",
+    "text": "瞭望台上的水手尖叫起来：“海盗！三点钟方向！”\n一条黑色的快船，从雾里冲了出来，船头的撞角，像一只张开的嘴。",
+    "options": [
+      {
+        "label": "下令迎战",
+        "text": "水手们抄起了刀。你深吸一口气，站在了甲板的最前面。",
+        "fx": [
+          {
+            "type": "combat",
+            "enemy": "pirate_raider",
+            "win": [
+              "exp+40",
+              "rep:sea+2",
+              "gold+60",
+              "log:海盗们被打退了，水手们高声欢呼。"
+            ],
+            "lose": [
+              "hp-12",
+              "gold-70",
+              "log:海盗们抢走了货，也抢走了你们的士气。"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "升满帆，试着甩开他们",
+        "check": {
+          "attr": "agi",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你借着风势，一路转了三个舵，把海盗甩进了雾里。",
+          "fx": [
+            "agi_exp+4"
+          ]
+        },
+        "fail": {
+          "text": "他们追了上来，在船尾钉了一排钩子。你不得不割断缆绳，丢了半条货。",
+          "fx": [
+            "gold-50",
+            "hp-6"
+          ]
+        }
+      },
+      {
+        "label": "交钱买路（60 金币）",
+        "text": "领头的海盗数了数钱，满意地挥了挥手：“识相。”",
+        "fx": [
+          "gold-60",
+          "rep:sea-1"
+        ],
+        "cond": "gold>=60",
+        "reason": "金币不足"
+      }
+    ],
+    "pool": "calamity",
+    "weight": 10,
+    "cond": "count.ship>=2",
+    "scene": "sea"
+  },
+  {
+    "id": "v_sea_serpent",
+    "kind": "random",
+    "title": "海蛇",
+    "text": "水面下，一条粗得像桅杆的暗影，缓缓地从船底游过。\n水手们的脸都白了：“是……是海蛇。”",
+    "options": [
+      {
+        "label": "用鱼叉迎击",
+        "text": "你们抓起鱼叉，站在了船舷上。",
+        "fx": [
+          {
+            "type": "combat",
+            "enemy": "sea_serpent",
+            "win": [
+              "exp+50",
+              "rep:sea+2",
+              "log:海蛇受了伤，翻着浪游走了。"
+            ],
+            "lose": [
+              "hp-14",
+              "flag+:ship_damaged",
+              "log:海蛇的尾巴扫断了你的舵。"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "熄灭灯火，让它自己游过去",
+        "check": {
+          "attr": "wil",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你们在黑暗里屏息了一刻钟，直到那条暗影彻底消失在海里。",
+          "fx": [
+            "wil_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "一个水手没忍住，叫出了声。海蛇猛地转了头。",
+          "fx": [
+            "hp-10",
+            "flag+:ship_damaged"
+          ]
+        }
+      }
+    ],
+    "pool": "calamity",
+    "weight": 8,
+    "cond": "count.ship>=2&&level>=6",
+    "scene": "sea"
+  },
+  {
+    "id": "v_rats",
+    "kind": "random",
+    "title": "船舱里的老鼠",
+    "text": "货舱里传来细碎的啃咬声。你下去一看，一整麻袋的粮食，已经被咬得千疮百孔。",
+    "options": [
+      {
+        "label": "花钱请人灭鼠（30 金币）",
+        "text": "灭鼠人一边收钱一边摇头：“船都这么脏，还怪老鼠？”",
+        "fx": [
+          "gold-30",
+          "hometown-1"
+        ],
+        "cond": "gold>=30"
+      },
+      {
+        "label": "自己动手，抓一晚上",
+        "check": {
+          "attr": "agi",
+          "diff": 11
+        },
+        "ok": {
+          "text": "你和水手们抓了一整夜，天亮的时候，舱里终于清静了。",
+          "fx": [
+            "agi_exp+2",
+            "hp-2"
+          ]
+        },
+        "fail": {
+          "text": "老鼠没抓到多少，倒把几个人咬得鼻青脸肿。",
+          "fx": [
+            "hp-5",
+            "gold-15"
+          ]
+        }
+      }
+    ],
+    "pool": "calamity",
+    "weight": 7,
+    "cond": "count.ship>=1",
+    "scene": "deck"
+  },
+  {
+    "id": "v_fever",
+    "kind": "random",
+    "title": "船上热病",
+    "text": "一场热病，在船上悄悄蔓延。先是一个水手发烧，接着是两个，三个。\n你的额头，也开始发烫。",
+    "options": [
+      {
+        "label": "靠岸，请牧师治病（40 金币）",
+        "text": "牧师在你们的船上点了三天的艾草。热病渐渐退了。",
+        "fx": [
+          "gold-40",
+          "hp-3"
+        ],
+        "cond": "gold>=40",
+        "reason": "金币不足"
+      },
+      {
+        "label": "硬扛",
+        "check": {
+          "attr": "wil",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你一个人撑了三天，热退了。",
+          "fx": [
+            "wil_exp+4",
+            "hp-8"
+          ]
+        },
+        "fail": {
+          "text": "你病得很重，足足躺了半个月。",
+          "fx": [
+            "hp-16",
+            "status+:fatigue:2",
+            "gold-10"
+          ]
+        }
+      }
+    ],
+    "pool": "calamity",
+    "weight": 7,
+    "scene": "harbor_storm",
+    "cond": "season==winter"
+  },
+  {
+    "id": "v_mutiny",
+    "kind": "random",
+    "title": "不稳的人心",
+    "text": "几个水手在夜里聚在一起，压低声音说着什么。你路过的时候，他们立刻闭了嘴。\n你知道，那是对工钱、对航线、对你这个船长，不太满意。",
+    "options": [
+      {
+        "label": "把话说开，让每个人都听到",
+        "check": {
+          "attr": "cha",
+          "diff": 13
+        },
+        "ok": {
+          "text": "你把账本摊开，一笔一笔地讲。有几个人红了脸。当天夜里，所有人都回到了岗位。",
+          "fx": [
+            "rep:harbor+1",
+            "cha_exp+4",
+            "rel:bram+1"
+          ]
+        },
+        "fail": {
+          "text": "你越讲越乱，场面更尴尬了。",
+          "fx": [
+            "cha_exp+1",
+            "count:crew-1"
+          ]
+        }
+      },
+      {
+        "label": "给每个人加一点工钱（30 金币）",
+        "text": "人群散了，所有人都不说话了。",
+        "fx": [
+          "gold-30"
+        ],
+        "cond": "gold>=30"
+      },
+      {
+        "label": "强硬压下去",
+        "text": "你把鞭子拍在桌上，大家都安静了。但那天以后，船上的气氛不一样了。",
+        "fx": [
+          "hometown-2",
+          "wil_exp+2"
+        ]
+      }
+    ],
+    "pool": "calamity",
+    "weight": 8,
+    "cond": "count.crew>=3",
+    "scene": "deck"
+  },
+  {
+    "id": "v_tax",
+    "kind": "random",
+    "title": "港务官的税单",
+    "text": "港务官带着一队人，挨船登记。轮到你时，他翻开本子，笑眯眯地说：“船长，今年的泊位税，涨了。”",
+    "options": [
+      {
+        "label": "照付（50 金币）",
+        "text": "你数出钱，递过去。他眯着眼，把钱收进了怀里。",
+        "fx": [
+          "gold-50"
+        ],
+        "cond": "gold>=50"
+      },
+      {
+        "label": "据理力争",
+        "check": {
+          "attr": "cha",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你把去年的税单拍在桌上，一条一条地指出来。港务官的笑容越来越僵，最后只收了一半。",
+          "fx": [
+            "gold-25",
+            "cha_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "他“哼”了一声，在你的船尾，贴了一张写着“待查”的封条。",
+          "fx": [
+            "gold-50",
+            "flag+:ship_damaged"
+          ]
+        }
+      },
+      {
+        "label": "没钱，只能拖着",
+        "text": "港务官记在了本子上：“拖一天，加一成。”",
+        "fx": [
+          "rep:harbor-1",
+          "hometown-2"
+        ],
+        "cond": "gold<50"
+      }
+    ],
+    "pool": "calamity",
+    "weight": 8,
+    "cond": "count.ship>=2",
+    "scene": "harbor"
+  },
+  {
+    "id": "v_fog",
+    "kind": "random",
+    "title": "雾中迷航",
+    "text": "海雾像牛奶一样涌了上来。三步之外，什么也看不见。\n水手们开始小声地说话，有人说，听见了远处的钟声，有人说，听见了船上不该有的歌。",
+    "options": [
+      {
+        "label": "靠罗盘和星表，一寸一寸地摸出去",
+        "check": {
+          "attr": "int",
+          "diff": 13
+        },
+        "ok": {
+          "text": "你盯着罗盘上颤抖的指针，一点一点地修正方向。雾散的时候，你们离预定的航线，只偏了一指。",
+          "fx": [
+            "int_exp+4",
+            "count:charts+1"
+          ]
+        },
+        "fail": {
+          "text": "你们绕了整整一天，才从雾里出来。物资用掉了一大半。",
+          "fx": [
+            "gold-30",
+            "hp-4"
+          ]
+        }
+      },
+      {
+        "label": "把锚抛下，原地等雾散",
+        "text": "你们在雾里干等了一天一夜。水手们的情绪，一点点变得诡异。",
+        "fx": [
+          "gold-15",
+          "wil_exp+2"
+        ]
+      }
+    ],
+    "pool": "calamity",
+    "weight": 8,
+    "cond": "count.ship>=1",
+    "scene": "reef"
+  },
+  {
+    "id": "v_rope_snap",
+    "kind": "random",
+    "title": "崩断的缆绳",
+    "text": "缆绳在你手里“嘣”地一声断了。\n反弹的绳头抽在你的肩膀上，疼得你眼前发黑。",
+    "options": [
+      {
+        "label": "咬牙，继续干活",
+        "check": {
+          "attr": "wil",
+          "diff": 11
+        },
+        "ok": {
+          "text": "你硬是撑着，把缆绳重新接好。",
+          "fx": [
+            "wil_exp+3",
+            "hp-5"
+          ]
+        },
+        "fail": {
+          "text": "肩膀肿得抬不起来，只能躺两天。",
+          "fx": [
+            "hp-10",
+            "status+:injured:2"
+          ]
+        }
+      },
+      {
+        "label": "停下，请船医看看（20 金币）",
+        "text": "船医冷着脸把你的肩膀一扳一推，疼得你差点叫出声，但接下来几乎不疼了。",
+        "fx": [
+          "gold-20",
+          "hp-3"
+        ],
+        "cond": "gold>=20"
+      }
+    ],
+    "pool": "calamity",
+    "weight": 7,
+    "scene": "deck",
+    "cond": "age>=16"
+  },
+  {
+    "id": "v_north_rumor",
+    "kind": "random",
+    "title": "北方的传闻",
+    "text": "酒馆里有人说，北方的边境，魔物的踪迹越来越多。\n有人说是谣言，有人说，百年一醒的东西，又要醒了。\n你听了一耳朵，没怎么在意：大海比陆地，更靠近传说。",
+    "options": [
+      {
+        "label": "多听两句，打听消息",
+        "text": "你听到了几条杂乱的消息，有一条，隐隐约约和海上的商路有关。",
+        "fx": [
+          "count:charts+1",
+          "int_exp+2"
+        ]
+      },
+      {
+        "label": "不关心，继续喝酒",
+        "text": "与你有什么关系呢？",
+        "fx": []
+      }
+    ],
+    "pool": "world",
+    "weight": 6,
+    "cond": "age>=20",
+    "scene": "tavern"
+  },
+  {
+    "id": "v_navy_press",
+    "kind": "random",
+    "title": "海军征召",
+    "text": "海军的军官，带着一队士兵，挨船登记：“北方的海岸告急，凡持船者，须出一艘小艇，为王国效力。”",
+    "options": [
+      {
+        "label": "出一艘小艇，为王国效力",
+        "text": "军官在文书上盖了章：“王国记得你。”",
+        "fx": [
+          "rep:kingdom+5",
+          "gold-40",
+          "hometown+2"
+        ],
+        "cond": "count.ship>=2&&gold>=40",
+        "reason": "需要单桅帆船及以上，且金币 ≥ 40"
+      },
+      {
+        "label": "用钱免役（100 金币）",
+        "text": "军官数了数钱，点点头：“识相。”",
+        "fx": [
+          "gold-100",
+          "rep:kingdom-1"
+        ],
+        "cond": "gold>=100&&count.ship>=2"
+      },
+      {
+        "label": "躲开，装作没看见",
+        "text": "船登记册上，你的名字被悄悄跳了过去。",
+        "fx": [
+          "rep:kingdom-2"
+        ],
+        "cond": "count.ship>=2"
+      }
+    ],
+    "pool": "world",
+    "weight": 7,
+    "cond": "count.ship>=2&&age>=22",
+    "scene": "harbor"
+  },
+  {
+    "id": "v_clue_log",
+    "kind": "random",
+    "title": "泡烂的航海日志",
+    "text": "你在一条被冲上岸的旧船里，翻到了一本泡烂的航海日志。大部分字都糊成了一团，只有最后一页，用红笔写着：“深渊在叫我们的名字。”",
+    "options": [
+      {
+        "label": "把那一页小心撕下来",
+        "check": {
+          "attr": "int",
+          "diff": 12
+        },
+        "ok": {
+          "text": "纸边的字迹依稀可辨：船长们都记着同一个坐标，也都在同一个坐标上，听见了同一个声音。",
+          "fx": [
+            "count:abyss_clue+1",
+            "int_exp+3",
+            "flag+:v_clue_1"
+          ]
+        },
+        "fail": {
+          "text": "纸一碰就碎。",
+          "fx": [
+            "int_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "把日志放回去",
+        "text": "",
+        "fx": []
+      }
+    ],
+    "pool": "opportunity",
+    "weight": 7,
+    "cond": "count.ship>=1&&age>=20&&!flag:v_clue_1",
+    "scene": "wreck",
+    "once": true
+  },
+  {
+    "id": "v_clue_song",
+    "kind": "random",
+    "title": "鲸与歌声",
+    "text": "夜里，一头灰色的鲸，一路跟着你的船，唱着一首很古老的歌。\n歌里，有一个词，反复出现，你听不懂，却觉得耳熟。",
+    "options": [
+      {
+        "label": "把那个词记下来",
+        "check": {
+          "attr": "wil",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你一连记了很多遍，那个词的尾音，竟和你在船舱里读到的某段古语吻合。",
+          "fx": [
+            "count:abyss_clue+1",
+            "wil_exp+3",
+            "flag+:v_clue_2"
+          ]
+        },
+        "fail": {
+          "text": "歌太远了，你只听到了一个模糊的尾音。",
+          "fx": [
+            "wil_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "只听，不记",
+        "text": "你把耳朵贴在船舷上，听了很久，直到歌声消失。",
+        "fx": [
+          "wil_exp+2"
+        ]
+      }
+    ],
+    "pool": "opportunity",
+    "weight": 7,
+    "cond": "count.ship>=1&&age>=21&&!flag:v_clue_2",
+    "scene": "sea",
+    "once": true
+  },
+  {
+    "id": "v_clue_tide",
+    "kind": "random",
+    "title": "潮汐表上的缺页",
+    "text": "港务署的旧档案里，保存着过去一千年的潮汐表。但其中，有四页被人整整齐齐地撕走了。",
+    "options": [
+      {
+        "label": "比对前后的数据，推算缺页的内容",
+        "check": {
+          "attr": "int",
+          "diff": 13
+        },
+        "ok": {
+          "text": "你花了三天，算出了那四页的大致走势：每一次缺页的位置，都对应着一次“潮汐之门”。",
+          "fx": [
+            "count:abyss_clue+1",
+            "int_exp+4",
+            "flag+:v_clue_3"
+          ]
+        },
+        "fail": {
+          "text": "数字太乱，你什么也没算出来。",
+          "fx": [
+            "int_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "不碰，放回原位",
+        "text": "",
+        "fx": []
+      }
+    ],
+    "pool": "opportunity",
+    "weight": 7,
+    "cond": "age>=22&&!flag:v_clue_3",
+    "scene": "harbor",
+    "once": true
+  }
+]

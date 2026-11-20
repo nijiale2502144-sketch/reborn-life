@@ -1,0 +1,1406 @@
+[
+  {
+    "id": "v_meet_haide",
+    "kind": "special",
+    "title": "断桅的旧船",
+    "text": "码头尽头停着一条断了半截桅杆的旧船。船上的老人叼着烟斗，正对着一堆缆绳发愁。\n“小子，”他头也不抬，“会打水手结吗？”\n你看了一眼，说：“会一点。”\n老人这才抬头，眯着眼睛看你。他就是海德老船长。",
+    "options": [
+      {
+        "label": "帮他把缆绳理好",
+        "text": "你一圈一圈地理，海德没说话，只是在你理完的时候，从口袋里摸出一枚被磨得发亮的铜币。\n“明天早上，别迟到。”",
+        "fx": [
+          "flag+:met_haide",
+          "rel:haide+3",
+          "agi_exp+2",
+          "hometown+2"
+        ]
+      },
+      {
+        "label": "说自己只会一点，请他教教",
+        "check": {
+          "attr": "cha",
+          "diff": 10
+        },
+        "ok": {
+          "text": "海德哈哈一笑，把烟斗往旁边一搁：“有意思，上来吧。”",
+          "fx": [
+            "flag+:met_haide",
+            "rel:haide+3",
+            "cha_exp+2"
+          ]
+        },
+        "fail": {
+          "text": "海德摆摆手：“嘴上会的，我见得多了。”但他还是让你留下来打杂。",
+          "fx": [
+            "flag+:met_haide",
+            "rel:haide+1",
+            "cha_exp+1"
+          ]
+        },
+        "fx": []
+      },
+      {
+        "label": "不敢上去，说声打扰了转身走",
+        "text": "你走出老远，才听见身后传来一声笑：“胆子这么小，出不了海。”\n你回头，海德已经转过身去了。",
+        "fx": [
+          "flag+:met_haide",
+          "rel:haide+1"
+        ]
+      }
+    ],
+    "when": {
+      "age": 16,
+      "season": "spring"
+    },
+    "priority": 70,
+    "portrait": "haide",
+    "scene": "harbor"
+  },
+  {
+    "id": "v_first_storm",
+    "kind": "special",
+    "title": "第一场风暴",
+    "text": "海德带你出海的第一个秋天，天边的云在一刻钟里就黑了下来。\n“收帆！”他吼。浪头像一堵墙，扑过来的时候，整条船像一片树叶。\n你的手在发抖，嗓子里有什么东西卡着。",
+    "options": [
+      {
+        "label": "抓牢舵，死也不松手",
+        "check": {
+          "attr": "wil",
+          "diff": 11
+        },
+        "ok": {
+          "text": "你咬紧牙，硬生生把船头顶住了浪。风暴过去的时候，海德靠在桅杆上，喘着气笑：“你小子……行。”",
+          "fx": [
+            "flag+:storm_survived",
+            "wil_exp+5",
+            "rel:haide+2",
+            "count:voyages+1",
+            "exp+20"
+          ]
+        },
+        "fail": {
+          "text": "一个浪头把你从舵边掀翻，海德骂着娘接过了舵。你趴在甲板上，吐得天昏地暗。",
+          "fx": [
+            "hp-10",
+            "wil_exp+2",
+            "rel:haide+1",
+            "count:voyages+1"
+          ]
+        },
+        "fx": []
+      },
+      {
+        "label": "照海德说的收帆",
+        "text": "你和他配合着，把帆一面一面地收了下来。船安静了一些。",
+        "fx": [
+          "agi_exp+3",
+          "rel:haide+1",
+          "count:voyages+1",
+          "flag+:storm_survived"
+        ]
+      },
+      {
+        "label": "缩在舱里，等风暴过去",
+        "text": "风暴过去之后，海德把你从舱里拎出来：“记住，船上没有观众。”",
+        "fx": [
+          "rel:haide-1",
+          "count:voyages+1"
+        ]
+      }
+    ],
+    "when": {
+      "age": 16,
+      "season": "autumn"
+    },
+    "priority": 65,
+    "portrait": "haide",
+    "scene": "sea"
+  },
+  {
+    "id": "v_meet_bram",
+    "kind": "special",
+    "title": "码头上的布拉姆",
+    "text": "一个红头发的年轻人，在码头上和你一起抢活儿。两个人同时伸手去抓一捆货，又同时松开。\n“你先。”他说。\n“你先。”你说。\n两个人都笑了。他叫布拉姆，是个跟你一样，什么都缺，却什么都敢干的家伙。",
+    "options": [
+      {
+        "label": "请他喝一杯麦酒",
+        "text": "他一口干了：“交个朋友。以后你有船，我给你当大副。”",
+        "fx": [
+          "flag+:met_bram",
+          "rel:bram+3",
+          "cha_exp+2",
+          "gold-5"
+        ]
+      },
+      {
+        "label": "和他比谁扛得更多",
+        "check": {
+          "attr": "str",
+          "diff": 11
+        },
+        "ok": {
+          "text": "你们比到最后，一个人扛了三袋，另一个人扛了两袋半。他哈哈大笑：“服了，你赢了。”",
+          "fx": [
+            "flag+:met_bram",
+            "rel:bram+2",
+            "str_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "你扛到第二袋就踉跄了。他拍拍你的肩：“不急，多吃点。”",
+          "fx": [
+            "flag+:met_bram",
+            "rel:bram+2",
+            "str_exp+1"
+          ]
+        },
+        "fx": []
+      },
+      {
+        "label": "点点头，各干各的",
+        "text": "他看了你一眼，耸耸肩，转身去了另一个码头。",
+        "fx": [
+          "flag+:met_bram",
+          "rel:bram+1"
+        ]
+      }
+    ],
+    "when": {
+      "age": 17,
+      "season": "spring"
+    },
+    "priority": 65,
+    "portrait": "bram",
+    "scene": "harbor"
+  },
+  {
+    "id": "v_meet_vel",
+    "kind": "special",
+    "title": "带着六分仪的陌生人",
+    "text": "一个外乡人，带着一只被海水泡得发白的皮箱，在码头上拦住了你。\n“你认识海德老船长吗？”她问，“我是领航员薇尔，听说他手里，有一张没画完的星图。”\n她的眼神认真，认真得像在看一页没写完的字。",
+    "options": [
+      {
+        "label": "带她去找海德",
+        "text": "海德看见她，沉默了很久，最后只说：“……坐吧。”这一夜，你在门外守着，听里面说了很久的话。",
+        "fx": [
+          "flag+:met_vel",
+          "rel:haide+1",
+          "int_exp+2"
+        ]
+      },
+      {
+        "label": "先问她为什么要找那张图",
+        "check": {
+          "attr": "int",
+          "diff": 12
+        },
+        "ok": {
+          "text": "薇尔把一张手绘的星表摊开：“我的老师，也在找同样的东西。”你们彼此看了很久。",
+          "fx": [
+            "flag+:met_vel",
+            "int_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "她笑了笑，没有回答，只是把皮箱抱得更紧了。",
+          "fx": [
+            "flag+:met_vel"
+          ]
+        },
+        "fx": []
+      },
+      {
+        "label": "说不认识，请她另找别人",
+        "text": "薇尔点点头，没有勉强。第二天，你在码头上又看见了她，坐在最远的一个缆桩上。",
+        "fx": [
+          "flag+:met_vel"
+        ]
+      }
+    ],
+    "when": {
+      "age": 18,
+      "season": "autumn"
+    },
+    "priority": 60,
+    "portrait": "vel",
+    "scene": "harbor_dusk"
+  },
+  {
+    "id": "v_scarlett_first",
+    "kind": "special",
+    "title": "红帆",
+    "text": "一片红色的帆，从海平线上冒了出来。\n红鲨斯嘉丽的船，围着你的船转了一圈。她站在船头，披着血红的披风，朝你抛来一个酒瓶。\n“小子，”她笑，“听说你在找星图？”",
+    "options": [
+      {
+        "label": "接住酒瓶，也敬她一杯",
+        "text": "你一口干了。烈酒烧得喉咙发疼。斯嘉丽哈哈大笑：“有胆子！下次，我请你吃饭。”",
+        "fx": [
+          "flag+:met_scarlett",
+          "rep:sea+3",
+          "cha_exp+3",
+          "quest:start:scarlett_deal"
+        ]
+      },
+      {
+        "label": "下令戒备，不理她",
+        "check": {
+          "attr": "cha",
+          "diff": 12
+        },
+        "ok": {
+          "text": "她看着你的船员，看了一会儿，吹了声口哨：“有意思。”她的船转了个方向，走了。",
+          "fx": [
+            "flag+:met_scarlett",
+            "rep:sea+1",
+            "quest:start:scarlett_deal"
+          ]
+        },
+        "fail": {
+          "text": "她的人把弓箭瞄了过来，你的水手们都屏住了呼吸。她笑了笑，才让人收了弓。",
+          "fx": [
+            "flag+:met_scarlett",
+            "hp-3",
+            "quest:start:scarlett_deal"
+          ]
+        },
+        "fx": []
+      },
+      {
+        "label": "把酒瓶扔回去：“我不喝海盗的酒。”",
+        "text": "你的话音刚落，海盗们就冲了上来。",
+        "fx": [
+          {
+            "type": "combat",
+            "enemy": "pirate_raider",
+            "win": [
+              "flag+:met_scarlett",
+              "rep:sea+3",
+              "exp+30",
+              "quest:start:scarlett_deal",
+              "log:海盗们被你的船打退了，斯嘉丽在远处鼓了鼓掌。"
+            ],
+            "lose": [
+              "flag+:met_scarlett",
+              "hp-12",
+              "gold-40",
+              "quest:start:scarlett_deal",
+              "log:海盗们劫走了一半货，斯嘉丽把一枚鲨鱼牙留在了你的甲板上。"
+            ]
+          }
+        ]
+      }
+    ],
+    "when": {
+      "age": 20,
+      "season": "summer"
+    },
+    "priority": 60,
+    "portrait": "scarlett",
+    "scene": "sea"
+  },
+  {
+    "id": "v_haide_farewell",
+    "kind": "special",
+    "title": "老船长的告别",
+    "text": "冬天最冷的那个早晨，海德把你叫到了码头尽头。\n老人比去年瘦了很多，披着一件旧大衣，手里攥着一卷被海水浸得发黄的图。\n“我跑不动了，”他说，“这条船，这张图，我想留给一个不会把它们卖掉的人。”",
+    "options": [
+      {
+        "label": "接过海图和钥匙",
+        "text": "你的手有点抖。老人笑了，笑得像个孩子：“去吧。海那边，比图上画的大。”",
+        "fx": [
+          "flag+:haide_gone",
+          "flag+:fragment_1",
+          "count:ship+1",
+          "item:ship_shield",
+          "rel:haide+2",
+          "hometown+3",
+          "rank:2"
+        ],
+        "cond": "rel.haide>=5",
+        "reason": "海德还没有那么信任你（好感 ≥ 5）"
+      },
+      {
+        "label": "收下旧船，海图却被他当掉了",
+        "text": "海德叹了口气：“海图押在了当铺。有钱的时候，你去赎吧。”",
+        "fx": [
+          "flag+:haide_gone",
+          "count:ship+1",
+          "item:ship_shield",
+          "flag+:chart_pawned",
+          "rel:haide+1"
+        ]
+      },
+      {
+        "label": "不收，说你自己会走出路",
+        "text": "海德看了你很久，把那卷图放回了大衣里。“……也好。”他说，“愿海给你多一点运气。”",
+        "fx": [
+          "flag+:haide_gone",
+          "flag+:chart_pawned",
+          "rel:haide-1",
+          "wil_exp+3"
+        ]
+      }
+    ],
+    "when": {
+      "age": 21,
+      "season": "winter"
+    },
+    "priority": 75,
+    "portrait": "haide",
+    "scene": "harbor_storm"
+  },
+  {
+    "id": "v_nerea",
+    "kind": "special",
+    "title": "渔网里的歌声",
+    "text": "拖网上来的时候，所有的水手都愣住了。\n网里是一个有着蓝色长发的少女，鱼尾上缠着绳，眼神里没有恐惧，只有一种很疲倦的、很古老的神色。\n水手们交头接耳：“人鱼……卖给魔法师，能换一座房子。”",
+    "options": [
+      {
+        "label": "割开网，放她走",
+        "text": "她入水前回头，看了你一眼：“……我记住你了。”",
+        "fx": [
+          "flag+:met_nerea",
+          "rep:sea+3",
+          "rep:harbor-2",
+          "wil_exp+3",
+          "quest:start:nerea_song"
+        ]
+      },
+      {
+        "label": "把她带去港口，请牧师治伤",
+        "check": {
+          "attr": "cha",
+          "diff": 12
+        },
+        "ok": {
+          "text": "港口的牧师沉默了一会儿，给她包扎了伤口。三天后，你把她送回了海里。她留下了一枚珍珠。",
+          "fx": [
+            "flag+:met_nerea",
+            "rep:harbor+3",
+            "gold+50",
+            "quest:start:nerea_song"
+          ]
+        },
+        "fail": {
+          "text": "消息传开，港口的人围了过来，有人伸手去抢。混乱里，她挣开了。",
+          "fx": [
+            "flag+:met_nerea",
+            "rep:harbor-3",
+            "hp-5",
+            "quest:start:nerea_song"
+          ]
+        },
+        "fx": []
+      },
+      {
+        "label": "把她卖了",
+        "text": "你拿到了一大袋金币。夜里，你听见海面下，有人在唱一首很悲伤的歌。",
+        "fx": [
+          "gold+400",
+          "flag+:sold_nerea",
+          "rep:sea-8"
+        ],
+        "avoid": true
+      }
+    ],
+    "when": {
+      "age": 22,
+      "season": "summer"
+    },
+    "priority": 60,
+    "portrait": "nerea",
+    "scene": "sea"
+  },
+  {
+    "id": "v_merchant_offer",
+    "kind": "special",
+    "title": "商会会长的邀约",
+    "text": "一张烫金的请柬，送到了你的甲板上。\n商会会长在顶楼的办公室里等你。窗外，是整个潮湾港的船桅，像一片光秃秃的森林。\n“年轻人，”他说，“潮湾港需要新的船长。”",
+    "options": [
+      {
+        "label": "听听他的条件",
+        "text": "他递来一份厚厚的合同。你没有马上签，只是接了过来。",
+        "fx": [
+          "flag+:merchant_offer",
+          "rep:guild+5",
+          "quest:start:merchant_contract"
+        ]
+      },
+      {
+        "label": "客气地拒绝，说你想自己闯",
+        "check": {
+          "attr": "cha",
+          "diff": 13
+        },
+        "ok": {
+          "text": "会长笑了：“好，有骨气。记住，商会的门，永远为你开着。”",
+          "fx": [
+            "rep:guild+3",
+            "cha_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "他的笑容淡了一点：“年轻人，海上的风，可不是靠骨气就能挡住的。”",
+          "fx": [
+            "rep:guild-2"
+          ]
+        }
+      },
+      {
+        "label": "趁机多要一些预付金",
+        "check": {
+          "attr": "cha",
+          "diff": 14
+        },
+        "ok": {
+          "text": "会长皱了皱眉，但还是让秘书取来了一小袋金币。",
+          "fx": [
+            "gold+120",
+            "flag+:merchant_offer",
+            "rep:guild+2",
+            "quest:start:merchant_contract"
+          ]
+        },
+        "fail": {
+          "text": "会长一挥手：“出去吧，下次谈。”",
+          "fx": [
+            "rep:guild-3"
+          ]
+        }
+      }
+    ],
+    "when": {
+      "age": 23,
+      "season": "spring"
+    },
+    "priority": 55,
+    "portrait": "merchant",
+    "scene": "harbor"
+  },
+  {
+    "id": "v_last_call",
+    "kind": "special",
+    "title": "靠岸的诱惑",
+    "text": "你的船已经很久没有回过港口了，舱里装满了货，也装满了疲倦。\n潮湾港那家最老的酒馆，要转让了。\n“找个地方停下来吧，”布拉姆说，“你已经走得够远了。”",
+    "options": [
+      {
+        "label": "用积蓄把酒馆买下来，余生靠岸",
+        "text": "你把船停在了最老的那个泊位，在酒馆的门口，挂上了第一盏灯。",
+        "fx": [
+          "flag+:retired_sea",
+          "end:auto"
+        ],
+        "cond": "gold>=1000&&hometown>=30",
+        "reason": "需要金币 ≥ 1000，港口人望 ≥ 30",
+        "avoid": true
+      },
+      {
+        "label": "再走一程，把这趟走完",
+        "text": "布拉姆叹了口气，拍了拍你的肩，没再劝。",
+        "fx": [
+          "wil_exp+1"
+        ]
+      },
+      {
+        "label": "不，我要去潮汐之门",
+        "text": "布拉姆沉默了一会儿：“……那就一起去。”",
+        "fx": [
+          "wil_exp+2",
+          "rel:bram+1"
+        ]
+      }
+    ],
+    "when": {
+      "age": 25,
+      "season": "spring"
+    },
+    "priority": 50,
+    "portrait": "bram",
+    "scene": "harbor_dusk"
+  },
+  {
+    "id": "v_tide_warn",
+    "kind": "special",
+    "title": "月与潮",
+    "text": "秋天的第一场大潮，比往年早了很多。\n港口的老人们蹲在码头边，望着海面，谁也没有说话。\n薇尔把六分仪架在你的甲板上，数着星辰之间的夹角：“还有一年。”",
+    "options": [
+      {
+        "label": "清点准备：船、水手、星图",
+        "text": "你把能用的东西一件一件地摆开，用手指点了点。\n心里有数了。",
+        "fx": [
+          "int_exp+2",
+          "wil_exp+2"
+        ]
+      },
+      {
+        "label": "一个人去灯塔顶上，看一夜的海",
+        "text": "风很大，月亮很亮。你想起了海德，想起了第一次出海的那个下午。",
+        "fx": [
+          "wil_exp+4"
+        ]
+      },
+      {
+        "label": "找斯嘉丽，探探她的口风",
+        "check": {
+          "attr": "cha",
+          "diff": 13
+        },
+        "ok": {
+          "text": "她把酒杯往桌上一磕：“潮汐之门那天，我也去。你要是赢了，我服；输了，我替你收尸。”",
+          "fx": [
+            "rep:sea+2",
+            "cha_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "她笑着摇头：“想套我的话？还嫩点。”",
+          "fx": [
+            "cha_exp+1"
+          ]
+        },
+        "cond": "flag:met_scarlett",
+        "reason": "还没认识斯嘉丽"
+      }
+    ],
+    "when": {
+      "age": 26,
+      "season": "autumn"
+    },
+    "priority": 50,
+    "portrait": "vel",
+    "scene": "harbor_dusk"
+  },
+  {
+    "id": "v_tide_gate",
+    "kind": "special",
+    "title": "潮汐之门",
+    "text": "月亮和潮水，在同一夜里，把海推到了一个从没有人到过的高度。\n你站在船头。远处，海平线像一道被撕开的口子，里面有光。\n布拉姆站在你的身后，薇尔把最后一张星图铺在舵台上。每个人都在看你。\n你知道，这一次，不会再有“原来的你”。",
+    "options": [
+      {
+        "label": "启航，驶向潮汐之门",
+        "text": "缆绳被一根一根解开。船离港的那一刻，整个潮湾港的灯，同时亮了一下。",
+        "fx": [
+          "goto:ev_gate_1"
+        ],
+        "cond": "flag:fragment_1&&flag:fragment_2&&flag:fragment_3&&count.ship>=3",
+        "reason": "需要三块星图残片，以及一艘三桅商船"
+      },
+      {
+        "label": "凭着残缺的星图，硬闯一次",
+        "text": "没有完整的星图，没有足够大的船。你只有一股不肯回头的劲儿。",
+        "fx": [
+          "goto:ev_gate_1"
+        ],
+        "cond": "count.ship>=1",
+        "reason": "至少需要一条船"
+      },
+      {
+        "label": "留在港口",
+        "text": "你看着船队离港，又缓缓消失在海平线上。身后，海潮涨了又落。",
+        "fx": [
+          "flag+:gate_lost",
+          "end:auto"
+        ]
+      }
+    ],
+    "when": {
+      "age": 28,
+      "season": "autumn"
+    },
+    "priority": 200,
+    "finale": true,
+    "portrait": "sailor",
+    "scene": "sea"
+  },
+  {
+    "id": "ev_sea_market",
+    "kind": "chain",
+    "title": "港口集市",
+    "text": "码头旁的集市，一年四季都挤满了人。卖鱼的、卖绳的、卖海图的，吆喝声此起彼伏。\n一个卖药的老太太朝你招手：“年轻人，出海前，带点药。”",
+    "options": [
+      {
+        "label": "买一瓶伤药（30 金币）",
+        "text": "苦得你直皱眉，伤口却很快不疼了。",
+        "fx": [
+          "gold-30",
+          "heal:0.6"
+        ],
+        "cond": "gold>=30",
+        "reason": "金币不足"
+      },
+      {
+        "label": "买一瓶魔力药剂（40 金币）",
+        "text": "带着咸味的蓝色药剂，一口下去，胸口的空虚被慢慢填满。",
+        "fx": [
+          "gold-40",
+          "mpheal:0.8"
+        ],
+        "cond": "gold>=40",
+        "reason": "金币不足"
+      },
+      {
+        "label": "买一本旧航海志（50 金币）",
+        "text": "书页被水泡得发皱，边角上，有前人的批注：“此处，勿近。”",
+        "fx": [
+          "gold-50",
+          "int_exp+8",
+          "count:charts+1"
+        ],
+        "cond": "gold>=50",
+        "reason": "金币不足"
+      },
+      {
+        "label": "请老水手指点跳帮战（60 金币）",
+        "text": "老水手一边收钱一边嫌你的姿势难看，最后还是教了你三个你没见过的动作。",
+        "fx": [
+          "gold-60",
+          "agi_exp+4",
+          "str_exp+3",
+          "exp+10"
+        ],
+        "cond": "gold>=60",
+        "reason": "金币不足"
+      },
+      {
+        "label": "请港务官看看你的船（40 金币）",
+        "text": "港务官围着你的船转了一圈，在登记簿上写了几个字。",
+        "fx": [
+          "gold-40",
+          "rep:harbor+3",
+          "flag-:ship_damaged"
+        ],
+        "cond": "gold>=40&&count.ship>=1",
+        "reason": "金币不足，或还没有船"
+      },
+      {
+        "label": "看看「贵客」才能进的货架",
+        "text": "摊主抬眼看了你一眼，把后面的布帘掀开了。",
+        "fx": [
+          "goto:ev_sea_market_vip"
+        ],
+        "cond": "rep.harbor>=10",
+        "reason": "港口声望 ≥ 10，才有资格看"
+      },
+      {
+        "label": "什么也不买，转身离开",
+        "text": "",
+        "fx": []
+      }
+    ],
+    "scene": "harbor"
+  },
+  {
+    "id": "ev_sea_market_vip",
+    "kind": "chain",
+    "title": "集市·贵客货架",
+    "text": "布帘后面是一间小小的库房，货架上的东西，每一样都用油布包着。\n摊主压低声音：“这些货，只卖给有名望的船长。魅力不够的，我连价都不报。”",
+    "options": [
+      {
+        "label": "海军弯刀（200 金币）",
+        "text": "护手上还留着军港的号码，握在手里，沉得刚好。",
+        "fx": [
+          "gold-200",
+          "item:cutlass",
+          "flag+:own_cutlass"
+        ],
+        "cond": "cha>=10&&gold>=200&&!flag:own_cutlass",
+        "reason": "需要魅力 ≥ 10、200 金币，且尚未拥有"
+      },
+      {
+        "label": "海豹皮大衣（280 金币）",
+        "text": "港口老裁缝缝的，下雨天也不透水。",
+        "fx": [
+          "gold-280",
+          "item:sealskin_coat",
+          "flag+:own_sealskin_coat"
+        ],
+        "cond": "cha>=10&&gold>=280&&!flag:own_sealskin_coat",
+        "reason": "需要魅力 ≥ 10、280 金币，且尚未拥有"
+      },
+      {
+        "label": "海女神护符（220 金币）",
+        "text": "港口的老妇人说，戴着它，海浪会客气一点。",
+        "fx": [
+          "gold-220",
+          "item:sea_charm",
+          "flag+:own_sea_charm"
+        ],
+        "cond": "cha>=10&&gold>=220&&!flag:own_sea_charm",
+        "reason": "需要魅力 ≥ 10、220 金币，且尚未拥有"
+      },
+      {
+        "label": "登船斧（520 金币）",
+        "text": "一斧劈断缆绳，一斧劈开舱门，跳帮战的老伙计。",
+        "fx": [
+          "gold-520",
+          "item:boarding_axe",
+          "flag+:own_boarding_axe"
+        ],
+        "cond": "cha>=14&&gold>=520&&!flag:own_boarding_axe",
+        "reason": "需要魅力 ≥ 14、520 金币，且尚未拥有"
+      },
+      {
+        "label": "珍珠护身符（500 金币）",
+        "text": "一颗大得不像话的珍珠，在黑暗里微微发光。",
+        "fx": [
+          "gold-500",
+          "item:pearl_amulet",
+          "flag+:own_pearl_amulet"
+        ],
+        "cond": "cha>=14&&gold>=500&&!flag:own_pearl_amulet",
+        "reason": "需要魅力 ≥ 14、500 金币，且尚未拥有"
+      },
+      {
+        "label": "海龟盾（560 金币）",
+        "text": "巨龟的甲壳打磨而成，沉得像一块礁石。",
+        "fx": [
+          "gold-560",
+          "item:turtle_shield",
+          "flag+:own_turtle_shield"
+        ],
+        "cond": "cha>=14&&gold>=560&&!flag:own_turtle_shield",
+        "reason": "需要魅力 ≥ 14、560 金币，且尚未拥有"
+      },
+      {
+        "label": "潮汐三叉戟（1100 金币）",
+        "text": "人鱼族打造的短叉，握着它，脚下的甲板仿佛也有了潮汐。",
+        "fx": [
+          "gold-1100",
+          "item:tidal_trident",
+          "flag+:own_tidal_trident"
+        ],
+        "cond": "cha>=18&&gold>=1100&&!flag:own_tidal_trident",
+        "reason": "需要魅力 ≥ 18、1100 金币，且尚未拥有"
+      },
+      {
+        "label": "珊瑚鳞甲（1300 金币）",
+        "text": "一片片珊瑚薄得像鱼鳞，却比钢硬。",
+        "fx": [
+          "gold-1300",
+          "item:coral_mail",
+          "flag+:own_coral_mail"
+        ],
+        "cond": "cha>=18&&gold>=1300&&!flag:own_coral_mail",
+        "reason": "需要魅力 ≥ 18、1300 金币，且尚未拥有"
+      },
+      {
+        "label": "海妖之牙（1200 金币）",
+        "text": "一直有点凉，贴着胸口，像是还有心跳。",
+        "fx": [
+          "gold-1200",
+          "item:kraken_tooth",
+          "flag+:own_kraken_tooth"
+        ],
+        "cond": "cha>=18&&gold>=1200&&!flag:own_kraken_tooth",
+        "reason": "需要魅力 ≥ 18、1200 金币，且尚未拥有"
+      },
+      {
+        "label": "风暴之刃（1500 金币）",
+        "text": "据说是从风暴里捞出来的，剑身永远带着一层水汽。",
+        "fx": [
+          "gold-1500",
+          "item:storm_blade",
+          "flag+:own_storm_blade"
+        ],
+        "cond": "cha>=18&&gold>=1500&&!flag:own_storm_blade",
+        "reason": "需要魅力 ≥ 18、1500 金币，且尚未拥有"
+      },
+      {
+        "label": "先到这里",
+        "text": "",
+        "fx": []
+      }
+    ],
+    "scene": "harbor"
+  },
+  {
+    "id": "ev_sea_tavern",
+    "kind": "chain",
+    "title": "海鸥酒馆",
+    "text": "酒馆里，水手们一边唱着走调的歌，一边用拳头敲着桌子打拍子。\n老板娘笑眯眯地擦着杯子：“今晚想玩点什么？”",
+    "options": [
+      {
+        "label": "坐上赌桌，押 40 金币",
+        "check": {
+          "attr": "luk",
+          "diff": 12
+        },
+        "ok": {
+          "text": "骰子在碗里转了很久，最后停在你想要的那一面。满桌的水手都在起哄。",
+          "fx": [
+            "gold+85",
+            "exp+4"
+          ]
+        },
+        "fail": {
+          "text": "骰子冷冰冰地落在了另一面。对面的水手收走了你的钱，笑得很和气。",
+          "fx": [
+            "gold-40"
+          ]
+        },
+        "cond": "gold>=40",
+        "reason": "金币不足"
+      },
+      {
+        "label": "请一圈酒，听水手们讲海上的事（20 金币）",
+        "check": {
+          "attr": "cha",
+          "diff": 12
+        },
+        "ok": {
+          "text": "三杯下去，几个老水手争先恐后地讲起各自见过的怪事：沉船、海妖、会唱歌的雾。你记下了几条有用的。",
+          "fx": [
+            "gold-20",
+            "count:charts+1",
+            "cha_exp+3",
+            "int_exp+2"
+          ]
+        },
+        "fail": {
+          "text": "酒喝了，故事没听到，只被灌了个半醉。",
+          "fx": [
+            "gold-20",
+            "status+:fatigue:1"
+          ]
+        },
+        "cond": "gold>=20",
+        "reason": "金币不足"
+      },
+      {
+        "label": "唱一首船歌",
+        "text": "你扯开嗓子，跟着众人吼了一整夜。第二天，好几个水手朝你点头。",
+        "fx": [
+          "rep:harbor+2",
+          "cha_exp+3",
+          "hometown+1"
+        ]
+      },
+      {
+        "label": "只喝一杯，听听传闻",
+        "text": "酒很烈，传闻很杂。你带走了一句：“最近，雾礁那边，船总是一艘一艘不见。”",
+        "fx": [
+          "int_exp+1",
+          "heal:0.2"
+        ]
+      },
+      {
+        "label": "离开",
+        "text": "",
+        "fx": []
+      }
+    ],
+    "scene": "tavern"
+  },
+  {
+    "id": "ev_scarlett_meet",
+    "kind": "chain",
+    "title": "红鲨的锚地",
+    "text": "红鲨的锚地，是远海上一座被浪冲得只剩半边的小岛。几十艘船静静地泊在那儿，每一艘都挂着红帆。\n斯嘉丽坐在一张从沉船上拆下来的桌子后面，手里转着一枚鲨鱼牙。\n“来了，”她笑，“罗盘，我这儿有。想要，你拿什么换？”",
+    "options": [
+      {
+        "label": "拔刀，与她一对一",
+        "text": "你把剑往桌上一拍。\n“有意思，”她站了起来，“很久没有人这么对我说话了。”",
+        "fx": [
+          {
+            "type": "combat",
+            "enemy": "scarlett",
+            "noFlee": true,
+            "win": [
+              "flag+:scarlett_resolved",
+              "flag+:fragment_2",
+              "rep:sea+10",
+              "exp+60",
+              "log:斯嘉丽把罗盘扔给你：“拿去，你配得上。”"
+            ],
+            "lose": [
+              "hp-15",
+              "gold-60",
+              "log:斯嘉丽把剑尖抵在你的喉咙上，又收了回去：“回去练练。”"
+            ]
+          }
+        ],
+        "avoid": true
+      },
+      {
+        "label": "用金币买下罗盘（400 金币）",
+        "text": "斯嘉丽数了数金币，往空中抛了抛，笑了笑：“成交。”",
+        "fx": [
+          "gold-400",
+          "flag+:scarlett_resolved",
+          "flag+:fragment_2",
+          "rep:sea+3"
+        ],
+        "cond": "gold>=400",
+        "reason": "金币不足"
+      },
+      {
+        "label": "跟她赌一把，赌注是罗盘",
+        "check": {
+          "attr": "luk",
+          "diff": 14,
+          "memDiff": {
+            "id": "m_v_scarlett",
+            "diff": -2
+          }
+        },
+        "ok": {
+          "text": "骰子落下。斯嘉丽愣了一下，笑出了声：“运气比我还好！”她把罗盘扔了过来。",
+          "fx": [
+            "flag+:scarlett_resolved",
+            "flag+:fragment_2",
+            "rep:sea+5",
+            "exp+30"
+          ]
+        },
+        "fail": {
+          "text": "骰子落下。斯嘉丽耸耸肩：“运气不够。回去吧，下次再来。”",
+          "fx": [
+            "gold-100"
+          ]
+        }
+      },
+      {
+        "label": "亮出你的船队，表示合作的诚意",
+        "check": {
+          "attr": "cha",
+          "diff": 14
+        },
+        "ok": {
+          "text": "斯嘉丽看着你的水手们，笑得像一头餍足的猫：“好，我们一起去。”她把罗盘交给了你。",
+          "fx": [
+            "flag+:scarlett_resolved",
+            "flag+:fragment_2",
+            "flag+:scarlett_ally",
+            "rep:sea+8",
+            "exp+40"
+          ]
+        },
+        "fail": {
+          "text": "她看着你的船队，不置可否：“光有人，没用。”",
+          "fx": [
+            "cha_exp+1"
+          ]
+        },
+        "cond": "count.crew>=3&&count.ship>=2",
+        "reason": "需要至少 3 个水手和一艘单桅帆船"
+      },
+      {
+        "label": "先回去，再做准备",
+        "text": "你转身走了。斯嘉丽在身后慢悠悠地说：“我等你。”",
+        "fx": []
+      }
+    ],
+    "scene": "island"
+  },
+  {
+    "id": "ev_gate_1",
+    "kind": "chain",
+    "title": "暴风之海",
+    "text": "驶向潮汐之门的海面，被一堵黑色的风墙封住。\n浪头比桅杆还高，每一次砸下来，整条船都在呻吟。水手们面色发白。",
+    "options": [
+      {
+        "label": "把舵交给领航员薇尔",
+        "check": {
+          "attr": "int",
+          "diff": 14,
+          "fateDiff": 1
+        },
+        "ok": {
+          "text": "薇尔接过舵，一句话也没说，眼睛盯着罗盘，在每一道浪的间隙里，把船一寸一寸地挪了过去。",
+          "fx": [
+            "int_exp+3",
+            "goto:ev_gate_2"
+          ]
+        },
+        "fail": {
+          "text": "薇尔算错了一个浪的周期，船被抛上浪尖又砸了下来。",
+          "fx": [
+            "hp-10",
+            "flag+:ship_damaged",
+            "count:hfail+1",
+            "goto:ev_gate_2"
+          ]
+        },
+        "cond": "flag:vel_navigator",
+        "reason": "需要薇尔作为专属领航员"
+      },
+      {
+        "label": "亲自掌舵，咬牙顶住",
+        "check": {
+          "attr": "wil",
+          "diff": 18,
+          "fateDiff": 1,
+          "memDiff": {
+            "id": "m_v_gate",
+            "diff": -2
+          }
+        },
+        "ok": {
+          "text": "你的手臂酸得像要断掉，但你一寸也没有松。风暴过去的时候，天边裂开了一道光。",
+          "fx": [
+            "wil_exp+5",
+            "goto:ev_gate_2"
+          ]
+        },
+        "fail": {
+          "text": "一个浪头把船打得侧翻，缆绳崩断，两个水手落了水。你们花了很久才把他们捞起来。",
+          "fx": [
+            "hp-12",
+            "flag+:ship_damaged",
+            "count:hfail+1",
+            "goto:ev_gate_2"
+          ]
+        }
+      },
+      {
+        "label": "收帆下锚，躲过最凶的一阵",
+        "check": {
+          "attr": "int",
+          "diff": 17,
+          "fateDiff": 1,
+          "memDiff": {
+            "id": "m_v_gate",
+            "diff": -2
+          }
+        },
+        "ok": {
+          "text": "你让所有人伏在甲板上，等了整整三个时辰。风暴像一头暴怒的兽，从头顶一寸一寸地擦了过去。",
+          "fx": [
+            "int_exp+4",
+            "goto:ev_gate_2"
+          ]
+        },
+        "fail": {
+          "text": "锚链在最凶的那一刻断了。船被浪裹着打了好几个旋才稳住。",
+          "fx": [
+            "hp-10",
+            "count:hfail+1",
+            "goto:ev_gate_2"
+          ]
+        }
+      }
+    ],
+    "scene": "sea"
+  },
+  {
+    "id": "ev_gate_2",
+    "kind": "chain",
+    "title": "溺亡骑士",
+    "text": "风暴的尽头，海面忽然安静下来。\n一队披着海藻与铁锈的骑士，从水里一个个站了起来。他们的盔甲上还刻着千年前的纹章。\n领头的那个，缓缓举起了手里已经锈蚀的剑。",
+    "options": [
+      {
+        "label": "与溺亡骑士们一战",
+        "text": "你拔出了剑。",
+        "fx": [
+          {
+            "type": "combat",
+            "enemy": "drowned_knight",
+            "noFlee": true,
+            "win": [
+              {
+                "if": "count.hfail>=2",
+                "then": [
+                  "log:船已经千疮百孔，再也没有力量继续了。",
+                  "flag+:gate_lost",
+                  "end:auto"
+                ],
+                "else": [
+                  "goto:ev_gate_3"
+                ]
+              }
+            ],
+            "lose": [
+              "hp-16",
+              "count:hfail+2",
+              {
+                "if": "count.hfail>=2",
+                "then": [
+                  "log:船已经千疮百孔，再也没有力量继续了。",
+                  "flag+:gate_lost",
+                  "end:auto"
+                ],
+                "else": [
+                  "goto:ev_gate_3"
+                ]
+              }
+            ]
+          }
+        ],
+        "avoid": true
+      },
+      {
+        "label": "请奈蕾雅出面",
+        "check": {
+          "attr": "cha",
+          "diff": 14,
+          "fateDiff": 1
+        },
+        "ok": {
+          "text": "奈蕾雅从浪里浮了上来，用一种你听不懂的语言，对骑士们说了几句话。骑士们沉默了一会儿，缓缓退入了海里。",
+          "fx": [
+            "cha_exp+3",
+            {
+              "if": "count.hfail>=2",
+              "then": [
+                "log:船已经千疮百孔，再也没有力量继续了。",
+                "flag+:gate_lost",
+                "end:auto"
+              ],
+              "else": [
+                "goto:ev_gate_3"
+              ]
+            }
+          ]
+        },
+        "fail": {
+          "text": "骑士们不为所动，奈蕾雅也被他们逼退。你们不得不强行突围。",
+          "fx": [
+            "hp-12",
+            "count:hfail+1",
+            {
+              "if": "count.hfail>=2",
+              "then": [
+                "log:船已经千疮百孔，再也没有力量继续了。",
+                "flag+:gate_lost",
+                "end:auto"
+              ],
+              "else": [
+                "goto:ev_gate_3"
+              ]
+            }
+          ]
+        },
+        "cond": "flag:nerea_friend",
+        "reason": "需要得到人鱼的信任"
+      },
+      {
+        "label": "举起三块星图，让它们的光指引亡魂",
+        "check": {
+          "attr": "wil",
+          "diff": 17,
+          "fateDiff": 1
+        },
+        "ok": {
+          "text": "三块残片，在你手里一同亮了起来。骑士们抬着头，像是看见了很久以前的星光，一个一个地沉了下去。",
+          "fx": [
+            "wil_exp+4",
+            {
+              "if": "count.hfail>=2",
+              "then": [
+                "log:船已经千疮百孔，再也没有力量继续了。",
+                "flag+:gate_lost",
+                "end:auto"
+              ],
+              "else": [
+                "goto:ev_gate_3"
+              ]
+            }
+          ]
+        },
+        "fail": {
+          "text": "光很弱。骑士们摇摇晃晃地围了上来，你们拼死杀出了一条路。",
+          "fx": [
+            "hp-12",
+            "count:hfail+1",
+            {
+              "if": "count.hfail>=2",
+              "then": [
+                "log:船已经千疮百孔，再也没有力量继续了。",
+                "flag+:gate_lost",
+                "end:auto"
+              ],
+              "else": [
+                "goto:ev_gate_3"
+              ]
+            }
+          ]
+        },
+        "cond": "flag:fragment_1&&flag:fragment_2&&flag:fragment_3",
+        "reason": "需要集齐三块残片"
+      }
+    ],
+    "scene": "wreck"
+  },
+  {
+    "id": "ev_gate_3",
+    "kind": "chain",
+    "title": "门前的巨兽",
+    "text": "海水忽然向两边分开，一座巨大的、刻满纹路的石门，从水底缓缓升起。\n门前，一只比你的船还大的怪物，睁开了眼睛。它的鳞片在月光下，像一整片倒映的星空。",
+    "options": [
+      {
+        "label": "借潮之势，让海水替你说话",
+        "check": {
+          "attr": "wil",
+          "diff": 18,
+          "fateDiff": 1
+        },
+        "ok": {
+          "text": "潮水在你脚下涌起，像一匹温顺的马。怪物低头看了你很久，缓缓让开了路。",
+          "fx": [
+            "wil_exp+5",
+            {
+              "if": "count.hfail>=2",
+              "then": [
+                "log:船已经千疮百孔，再也没有力量继续了。",
+                "flag+:gate_lost",
+                "end:auto"
+              ],
+              "else": [
+                "goto:ev_gate_end"
+              ]
+            }
+          ]
+        },
+        "fail": {
+          "text": "潮水只涌了半寸便散开了。怪物摆了摆尾，把你的船打得转了一圈。",
+          "fx": [
+            "hp-14",
+            "count:hfail+1",
+            {
+              "if": "count.hfail>=2",
+              "then": [
+                "log:船已经千疮百孔，再也没有力量继续了。",
+                "flag+:gate_lost",
+                "end:auto"
+              ],
+              "else": [
+                "goto:ev_gate_end"
+              ]
+            }
+          ]
+        },
+        "cond": "flag:sk_tide_surge",
+        "reason": "需要学会借潮之势"
+      },
+      {
+        "label": "用星图和领航员的指引，找到绕开它的航道",
+        "check": {
+          "attr": "int",
+          "diff": 18,
+          "fateDiff": 1
+        },
+        "ok": {
+          "text": "薇尔指着星图上一个微不可见的缺口：“那里。”你们从巨兽的鳍边擦了过去。",
+          "fx": [
+            "int_exp+5",
+            {
+              "if": "count.hfail>=2",
+              "then": [
+                "log:船已经千疮百孔，再也没有力量继续了。",
+                "flag+:gate_lost",
+                "end:auto"
+              ],
+              "else": [
+                "goto:ev_gate_end"
+              ]
+            }
+          ]
+        },
+        "fail": {
+          "text": "航道在最后一步偏了半尺。船擦着鳞片过去，木板吱呀作响。",
+          "fx": [
+            "hp-12",
+            "count:hfail+1",
+            {
+              "if": "count.hfail>=2",
+              "then": [
+                "log:船已经千疮百孔，再也没有力量继续了。",
+                "flag+:gate_lost",
+                "end:auto"
+              ],
+              "else": [
+                "goto:ev_gate_end"
+              ]
+            }
+          ]
+        },
+        "cond": "flag:vel_navigator&&flag:fragment_1&&flag:fragment_2&&flag:fragment_3",
+        "reason": "需要领航员和完整的星图"
+      },
+      {
+        "label": "硬闯，与深渊巨兽一战",
+        "text": "你站在船头，把剑指向了巨兽。",
+        "fx": [
+          {
+            "type": "combat",
+            "enemy": "leviathan",
+            "noFlee": true,
+            "win": [
+              {
+                "if": "count.hfail>=2",
+                "then": [
+                  "log:船已经千疮百孔，再也没有力量继续了。",
+                  "flag+:gate_lost",
+                  "end:auto"
+                ],
+                "else": [
+                  "goto:ev_gate_end"
+                ]
+              }
+            ],
+            "lose": [
+              "flag+:gate_lost",
+              "end:auto"
+            ]
+          }
+        ],
+        "avoid": true
+      }
+    ],
+    "scene": "abyss"
+  },
+  {
+    "id": "ev_gate_end",
+    "kind": "chain",
+    "title": "门开了",
+    "text": "石门缓缓地向两边打开。\n门后，是一座沉在光里的城，街道还保持着千年前的样子。城的中心，一颗巨大的、有节律地一明一灭的心脏，悬在海水里。\n那是「星海之心」。它在呼吸。",
+    "options": [
+      {
+        "label": "取走它，带回港口",
+        "text": "你把手放在那颗心上。它没有躲，只是安静地，落进了你的怀里。",
+        "fx": [
+          "flag+:returned_heart",
+          "rank:6",
+          "end:auto"
+        ]
+      },
+      {
+        "label": "把它留在原处，跟奈蕾雅走进这座城",
+        "text": "奈蕾雅朝你伸出手：“欢迎回家。”",
+        "fx": [
+          "flag+:star_end",
+          "rank:6",
+          "end:auto"
+        ],
+        "cond": "flag:nerea_friend",
+        "reason": "需要得到人鱼的信任"
+      },
+      {
+        "label": "与斯嘉丽分享，让她的舰队护送你们称王",
+        "text": "斯嘉丽哈哈大笑，血红的披风在风里猎猎地抖：“我就知道，我没看错人。”",
+        "fx": [
+          "flag+:pirate_end",
+          "rank:6",
+          "end:auto"
+        ],
+        "cond": "flag:scarlett_ally",
+        "reason": "需要斯嘉丽成为盟友"
+      },
+      {
+        "label": "合上门，把心沉回深渊",
+        "text": "你闭上眼，用力把石门推了回去。深处，有什么东西，轻轻叹了口气。",
+        "fx": [
+          "flag+:guardian_end",
+          "rank:6",
+          "end:auto"
+        ],
+        "cond": "flag:abyss_truth",
+        "reason": "需要知道深渊的真相"
+      }
+    ],
+    "scene": "abyss",
+    "enter": [
+      "flag+:gate_opened"
+    ]
+  }
+]

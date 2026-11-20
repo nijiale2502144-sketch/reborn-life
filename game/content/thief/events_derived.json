@@ -1,0 +1,441 @@
+[
+  {
+    "id": "t_dv_pick_mark",
+    "kind": "derived",
+    "title": "好看的钱袋",
+    "text": "人群里，一只绣着金线的钱袋格外显眼，它的主人正低头看着摊上的小玩意儿。",
+    "options": [
+      {
+        "label": "下手",
+        "text": "你的指尖像蜻蜓点水，轻轻一点，就换了手。",
+        "fx": [
+          "gold+22",
+          "agi_exp+2",
+          "count:heat+3"
+        ]
+      }
+    ],
+    "parent": "pickpocket",
+    "weight": 8
+  },
+  {
+    "id": "t_dv_pick_cop",
+    "kind": "derived",
+    "title": "不远处的制服",
+    "text": "你刚得手，一抬头，不远处有一件深蓝色的制服，正朝这个方向看来。",
+    "options": [
+      {
+        "label": "不慌，慢慢走开",
+        "check": {
+          "attr": "cha",
+          "diff": 11
+        },
+        "ok": {
+          "text": "你装作路人，和对方擦肩而过。他什么也没发现。",
+          "fx": [
+            "cha_exp+2",
+            "agi_exp+1"
+          ]
+        },
+        "fail": {
+          "text": "你走得太快，他喊了一声：“站住！”",
+          "fx": [
+            "count:heat+6",
+            "hp-3"
+          ]
+        }
+      },
+      {
+        "label": "把钱袋扔进水沟",
+        "text": "钱袋沉进了水里。你空着手，慢慢走开了。",
+        "fx": [
+          "gold-10",
+          "count:heat-2"
+        ]
+      }
+    ],
+    "parent": "pickpocket",
+    "weight": 8
+  },
+  {
+    "id": "t_dv_pick_child",
+    "kind": "derived",
+    "title": "孩子的手",
+    "text": "你得手后，被一只小手抓住了衣角。一个瘦瘦的孩子，盯着你手里的钱袋。\n“你偷了我哥的钱。”",
+    "options": [
+      {
+        "label": "把钱袋还给他",
+        "text": "孩子一愣，抱着钱袋跑了。你的心里，有一点说不清的东西。",
+        "fx": [
+          "gold-20",
+          "hometown+3",
+          "cha_exp+2"
+        ]
+      },
+      {
+        "label": "塞给他几个铜板，让他闭嘴",
+        "text": "孩子接了钱，没吭声。他看你的眼神，有点失望。",
+        "fx": [
+          "gold-5",
+          "hometown-1"
+        ]
+      },
+      {
+        "label": "甩开他的手，走掉",
+        "text": "你没回头。有些东西，你不想看。",
+        "fx": [
+          "count:heat+2"
+        ]
+      }
+    ],
+    "parent": "pickpocket",
+    "weight": 6
+  },
+  {
+    "id": "t_dv_burgle_diary",
+    "kind": "derived",
+    "title": "抽屉里的日记",
+    "text": "你在一间书房里撬开了抽屉，里面除了首饰，还有一本日记。翻开第一页，写着：“今年的冬天，不知道父亲还能不能熬过去。”",
+    "options": [
+      {
+        "label": "合上，原样放回去",
+        "text": "你把首饰拿了，把日记放回了原处。",
+        "fx": [
+          "gold+20",
+          "hometown+2"
+        ]
+      },
+      {
+        "label": "带走，当作情报",
+        "check": {
+          "attr": "int",
+          "diff": 12
+        },
+        "ok": {
+          "text": "日记里记着几位朝臣的往来。你把它抄了下来，又悄悄放回去。",
+          "fx": [
+            "count:intel+1",
+            "int_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "日记里全是家长里短，毫无价值。",
+          "fx": [
+            "int_exp+1"
+          ]
+        }
+      }
+    ],
+    "parent": "burgle",
+    "weight": 8
+  },
+  {
+    "id": "t_dv_burgle_dog",
+    "kind": "derived",
+    "title": "看家狗",
+    "text": "你刚翻过墙，一条黑背大狗就从暗处缓缓走了出来，喉咙里发出低低的咕噜声。",
+    "options": [
+      {
+        "label": "丢一块肉过去",
+        "check": {
+          "attr": "luk",
+          "diff": 10
+        },
+        "ok": {
+          "text": "大狗叼着肉，满足地趴在了地上。你顺利地进了屋。",
+          "fx": [
+            "gold+15",
+            "agi_exp+1"
+          ]
+        },
+        "fail": {
+          "text": "它对肉不感兴趣，直接扑了过来。",
+          "fx": [
+            "hp-10",
+            "count:heat+6"
+          ]
+        }
+      },
+      {
+        "label": "翻墙退走",
+        "text": "你悄悄退到了墙外。今晚，不适合进这户人家。",
+        "fx": [
+          "agi_exp+1"
+        ]
+      }
+    ],
+    "parent": "burgle",
+    "weight": 8
+  },
+  {
+    "id": "t_dv_burgle_servant",
+    "kind": "derived",
+    "title": "没睡着的仆人",
+    "text": "你推开书房的门时，一盏小灯忽然亮了。一个年迈的仆人坐在角落里，看着你，没有喊。\n“少爷们都睡了，”他轻声说，“你想拿什么，快拿吧。”",
+    "options": [
+      {
+        "label": "只拿一点，鞠躬离开",
+        "text": "老人点点头，没有拦你。“这家人，不值得你冒这么大的险。”",
+        "fx": [
+          "gold+25",
+          "cha_exp+2",
+          "count:heat+3"
+        ]
+      },
+      {
+        "label": "把能拿的全拿走",
+        "text": "你装满了口袋。老人没有动，只是静静看着你的背影。",
+        "fx": [
+          "gold+70",
+          "count:heat+8",
+          "hometown-2"
+        ]
+      },
+      {
+        "label": "悄悄退走，什么也不拿",
+        "text": "老人看着你，什么也没说。第二天，你在门口的台阶上，发现了一只包好的面包。",
+        "fx": [
+          "hometown+2",
+          "wil_exp+2"
+        ]
+      }
+    ],
+    "parent": "burgle",
+    "weight": 7
+  },
+  {
+    "id": "t_dv_scout_whisper",
+    "kind": "derived",
+    "title": "酒馆里的耳语",
+    "text": "你坐在酒馆的角落里，隔壁桌的两个人，正压低声音说话。\n“王城的结界……今年松得比往年快。”",
+    "options": [
+      {
+        "label": "假装喝酒，竖起耳朵",
+        "check": {
+          "attr": "int",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你听到了结界松动的大致日期，和一位守卫队长的名字。",
+          "fx": [
+            "count:intel+1",
+            "int_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "他们忽然换了话题。",
+          "fx": [
+            "int_exp+1"
+          ]
+        }
+      }
+    ],
+    "parent": "scout",
+    "weight": 8
+  },
+  {
+    "id": "t_dv_scout_guard",
+    "kind": "derived",
+    "title": "喝醉的卫兵",
+    "text": "一个王城卫兵，喝得面红耳赤，正拍着桌子骂他的上司。\n你在他旁边坐下，给他倒了一杯。",
+    "options": [
+      {
+        "label": "请他喝酒，让他骂个够",
+        "text": "他骂了一个钟头，期间，漏出了三条有用的消息。",
+        "fx": [
+          "gold-10",
+          "count:intel+1",
+          "cha_exp+2"
+        ]
+      },
+      {
+        "label": "顺手摸走他的钥匙环",
+        "check": {
+          "attr": "agi",
+          "diff": 12
+        },
+        "ok": {
+          "text": "钥匙环在你的怀里，沉甸甸的。你记下了几把钥匙的形状，把环放回了他的腰上。",
+          "fx": [
+            "count:intel+1",
+            "agi_exp+3",
+            "count:heat+4"
+          ]
+        },
+        "fail": {
+          "text": "他正好伸手摸腰，抓到了你的手。",
+          "fx": [
+            "hp-4",
+            "count:heat+8"
+          ]
+        }
+      }
+    ],
+    "parent": "scout",
+    "weight": 7
+  },
+  {
+    "id": "t_dv_laylow_dream",
+    "kind": "derived",
+    "title": "阁楼里的梦",
+    "text": "阁楼里的第三个夜晚，你做了一个梦：很多年前，你还是个孩子，被一个陌生人从一条冰冷的河边抱起来。\n他没有留名字，只在你怀里塞了半块面包。",
+    "options": [
+      {
+        "label": "醒来，对着窗外发了很久的呆",
+        "text": "你记不得那个人的脸。但你记得，那半块面包，很暖。",
+        "fx": [
+          "wil_exp+2",
+          "hometown+1"
+        ]
+      }
+    ],
+    "parent": "lay_low",
+    "weight": 6
+  },
+  {
+    "id": "t_dv_laylow_visit",
+    "kind": "derived",
+    "title": "不速之客",
+    "text": "阁楼里，有人敲了敲你的门。是莉拉，手里提着一小罐热汤。\n“你躲了三天，”她说，“我以为你死了。”",
+    "options": [
+      {
+        "label": "请她进来，一起喝汤",
+        "text": "你们谁也没说话。一罐汤，两个人，一盏灯。",
+        "fx": [
+          "rel:lila+2",
+          "hp+0",
+          "heal:0.2"
+        ]
+      },
+      {
+        "label": "隔着门说谢谢，不开门",
+        "text": "莉拉在门口站了一会儿，把汤放在地上，走了。",
+        "fx": [
+          "rel:lila+1"
+        ]
+      }
+    ],
+    "parent": "lay_low",
+    "weight": 6,
+    "cond": "flag:met_lila"
+  },
+  {
+    "id": "t_dv_rat_lesson",
+    "kind": "derived",
+    "title": "灰鼠的考题",
+    "text": "灰鼠把一枚硬币藏在了掌心，让你猜在哪只手里。你猜了十次，十次都猜错。\n“你不是笨，”他说，“你只是在看我的手。看人，要看肩。”",
+    "options": [
+      {
+        "label": "再试一次",
+        "text": "这一次，你盯着他的肩。肩一抖，你猜中了。",
+        "fx": [
+          "agi_exp+4",
+          "int_exp+2",
+          "exp+8"
+        ]
+      }
+    ],
+    "parent": "learn_rat",
+    "weight": 9
+  },
+  {
+    "id": "t_dv_rat_tip",
+    "kind": "derived",
+    "title": "关于锁的三句话",
+    "text": "灰鼠说，开锁有三句话：\n“耳朵比手重要。耐心比耳朵重要。运气，比所有东西都重要，但你不能靠它。”",
+    "options": [
+      {
+        "label": "默念三遍，记在心里",
+        "text": "你闭上眼睛，在脑子里又过了一遍那三句话。",
+        "fx": [
+          "agi_exp+3",
+          "wil_exp+2",
+          "count:knife+1"
+        ]
+      }
+    ],
+    "parent": "learn_rat",
+    "weight": 8
+  },
+  {
+    "id": "t_dv_orphan_kids",
+    "kind": "derived",
+    "title": "孩子们的涂鸦",
+    "text": "你把米放在孤儿院的门口，一个小姑娘拉住你，递给你一张被攥得皱巴巴的纸。\n纸上，是一个歪歪扭扭的人，戴着一顶高高的帽子。“这是你，”她说。",
+    "options": [
+      {
+        "label": "收下，说谢谢",
+        "text": "你把那张纸叠好，放进了口袋的最深处。",
+        "fx": [
+          "hometown+3",
+          "cha_exp+2",
+          "rel:lila+1"
+        ]
+      }
+    ],
+    "parent": "help_orphans",
+    "weight": 8
+  },
+  {
+    "id": "t_dv_orphan_matron",
+    "kind": "derived",
+    "title": "嬷嬷的话",
+    "text": "老嬷嬷握着你的手，手很粗糙，掌心全是茧。\n“孩子，我知道这些钱从哪来的。”她轻声说，“但我也知道，这些钱用在了哪里。”",
+    "options": [
+      {
+        "label": "低头，什么也没说",
+        "text": "你想说点什么，嗓子却发紧。",
+        "fx": [
+          "wil_exp+2",
+          "hometown+2"
+        ]
+      }
+    ],
+    "parent": "help_orphans",
+    "weight": 7
+  },
+  {
+    "id": "t_dv_dock_rumor",
+    "kind": "derived",
+    "title": "码头上的传闻",
+    "text": "码头上的工人们一边扛包，一边低声说着话：“……下个月，王城的粮船会提前到港。”\n“听说守卫队要调去北边了。”",
+    "options": [
+      {
+        "label": "假装没听见，继续干活",
+        "text": "你把一麻袋盐扛上肩，耳朵却一直竖着。",
+        "fx": [
+          "count:intel+1",
+          "str_exp+2"
+        ]
+      }
+    ],
+    "parent": "dock_work",
+    "weight": 8
+  },
+  {
+    "id": "t_dv_recruit_doubt",
+    "kind": "derived",
+    "title": "新同伙的犹豫",
+    "text": "新入伙的同伴在半夜把你叫到一边，压低声音：“你说实话，月蚀之夜之后，我们……还能回到原来的生活吗？”",
+    "options": [
+      {
+        "label": "老实说：不能",
+        "text": "他沉默了很久，点点头：“……那我陪你到底。”",
+        "fx": [
+          "rel:lila+0",
+          "cha_exp+2",
+          "wil_exp+2"
+        ]
+      },
+      {
+        "label": "笑笑，说一切都会好",
+        "text": "他没再问。但你们之间，多了一点不一样的东西。",
+        "fx": [
+          "cha_exp+1"
+        ]
+      }
+    ],
+    "parent": "recruit",
+    "weight": 7
+  }
+]

@@ -1,0 +1,353 @@
+[
+  {
+    "id": "main_star",
+    "type": "main",
+    "name": "潮汐之门",
+    "start": "age>=16",
+    "score": 100,
+    "onFail": [
+      "flag+:main_failed",
+      "log:通往潮汐之门的准备，没能赶上。"
+    ],
+    "stages": [
+      {
+        "desc": "第一章·出海：完成至少 3 次航次，通过船长考试，拿到船长执照（行动：参加船长考试）",
+        "done": "flag:captain_license",
+        "score": 20,
+        "deadlineAge": 21,
+        "fx": [
+          "rank:2"
+        ],
+        "checks": [
+          {
+            "label": "航次 ≥ 3",
+            "cond": "count.voyages>=3",
+            "cur": "count.voyages"
+          },
+          {
+            "label": "年满 18 岁",
+            "cond": "age>=18",
+            "cur": "age"
+          }
+        ],
+        "story": {
+          "title": "第一章 完 · 船长执照",
+          "portrait": "haide",
+          "text": "海事官盖章的那一刻，海德在码头另一头摘下了帽子。\n老头什么也没说，只是用烟斗，轻轻敲了敲栏杆，三下。\n那是港口的老规矩：给新船长的敬礼。\n——第二章：第一条船"
+        }
+      },
+      {
+        "desc": "第二章·第一条船：拥有一条单桅帆船（船 ≥ 2），并有至少 2 名水手",
+        "done": "count.ship>=2&&count.crew>=2",
+        "score": 20,
+        "deadlineAge": 24,
+        "fx": [
+          "rank:3"
+        ],
+        "checks": [
+          {
+            "label": "船 ≥ 2（单桅帆船）",
+            "cond": "count.ship>=2",
+            "cur": "count.ship"
+          },
+          {
+            "label": "水手 ≥ 2",
+            "cond": "count.crew>=2",
+            "cur": "count.crew"
+          }
+        ],
+        "story": {
+          "title": "第二章 完 · 属于自己的船",
+          "portrait": "bram",
+          "text": "帆被风鼓满的那一刻，布拉姆在甲板上大叫了一声。\n你站在舵前，掌心全是汗。\n这是你的船，你的水手，你的海。\n——第三章：三块残片"
+        }
+      },
+      {
+        "desc": "第三章·三块残片：集齐星图的三块残片（老船长的海图、红鲨的罗盘、沉船里的星盘）",
+        "done": "flag:fragment_1&&flag:fragment_2&&flag:fragment_3",
+        "score": 20,
+        "deadlineAge": 27,
+        "fx": [
+          "rank:4"
+        ],
+        "checks": [
+          {
+            "label": "老船长的海图",
+            "cond": "flag:fragment_1"
+          },
+          {
+            "label": "红鲨的罗盘",
+            "cond": "flag:fragment_2"
+          },
+          {
+            "label": "沉船里的星盘（通关沉船墓场）",
+            "cond": "flag:fragment_3"
+          }
+        ],
+        "story": {
+          "title": "第三章 完 · 星图合一",
+          "portrait": "vel",
+          "text": "三块残片，在桌上被一点点拼起来。\n灯光下，一条蓝色的细线，从港口出发，穿过雾礁，穿过沉船，绕过海妖的巢，直指深渊的最深处。\n薇尔屏住了呼吸：“就是这里……”\n——终章：潮汐之门"
+        }
+      },
+      {
+        "desc": "第四章·潮汐之门：28 岁的秋天，驶向潮汐之门",
+        "done": "flag:gate_opened",
+        "score": 20
+      }
+    ],
+    "doneStory": {
+      "title": "终章 · 潮汐",
+      "text": "海水从你的脚边退去，一座沉睡千年的城，在月光下缓缓浮出水面。\n你站在船头，身后是你的船，你的水手，你一路走来的每一道浪。\n而属于你的故事，才刚刚被写成。"
+    }
+  },
+  {
+    "id": "haide_chart",
+    "type": "side",
+    "name": "老船长的海图",
+    "start": "flag:met_haide",
+    "deadlineAge": 22,
+    "score": 25,
+    "intro": {
+      "portrait": "haide",
+      "title": "那半张图",
+      "text": "海德的床头，永远摊着一张画不完的海图。\n你问他那是什么，他吐着烟圈：“一个年轻时候没走完的梦。”\n他没有再多说。"
+    },
+    "onFail": [
+      "flag+:chart_pawned",
+      "log:海德的海图，不知什么时候被抵押进了当铺。"
+    ],
+    "reward": [
+      "rep:harbor+5",
+      "flag+:haide_trust",
+      "log:海德的海图，终于有人继承了。"
+    ],
+    "stages": [
+      {
+        "desc": "多陪陪老船长，让他愿意说出海图的来历（好感 ≥ 5，行动：向老船长学艺）",
+        "done": "rel.haide>=5",
+        "checks": [
+          {
+            "label": "海德好感 ≥ 5",
+            "cond": "rel.haide>=5",
+            "cur": "rel.haide"
+          }
+        ]
+      },
+      {
+        "desc": "收下老船长的海图（他的告别在 21 岁的冬天）",
+        "done": "flag:fragment_1"
+      }
+    ],
+    "snag": {
+      "p": 0.25,
+      "text": "海德病倒了，那卷海图被他的侄子抵押给了当铺。"
+    }
+  },
+  {
+    "id": "scarlett_deal",
+    "type": "side",
+    "name": "红鲨的挑战",
+    "start": "flag:met_scarlett",
+    "deadlineAge": 26,
+    "score": 30,
+    "intro": {
+      "portrait": "scarlett",
+      "title": "红鲨的邀请",
+      "text": "斯嘉丽把一枚染红的鲨鱼牙，留在了你的甲板上。\n牙齿下面压着一张纸条：“想要我手里那块罗盘，来我的锚地谈。”"
+    },
+    "onFail": [
+      "flag+:scarlett_foe",
+      "log:红鲨把你的名字，写进了她的黑名单。"
+    ],
+    "reward": [
+      "rep:sea+8",
+      "gold+150",
+      "log:红鲨在你的甲板上，留下了一杯酒。"
+    ],
+    "stages": [
+      {
+        "desc": "前往红鲨的锚地，与她了断（行动：前往红鲨的锚地）",
+        "done": "flag:scarlett_resolved"
+      }
+    ]
+  },
+  {
+    "id": "nerea_song",
+    "type": "side",
+    "name": "人鱼的歌",
+    "start": "flag:met_nerea",
+    "deadlineAge": 26,
+    "score": 30,
+    "intro": {
+      "portrait": "nerea",
+      "title": "海面下的眼睛",
+      "text": "那个被你放走的人鱼，隔了几天，又在礁石边浮了上来。\n她没有说话，只是用一只湿漉漉的手，指了指雾礁的方向。"
+    },
+    "onFail": [
+      "log:奈蕾雅不再出现在礁石边了。"
+    ],
+    "reward": [
+      "rep:sea+6",
+      "wil_exp+8",
+      "log:你听懂了海的另一种语言。"
+    ],
+    "stages": [
+      {
+        "desc": "通关雾礁海域，替奈蕾雅找回被抢走的珍珠",
+        "done": "flag:reef_cleared",
+        "checks": [
+          {
+            "label": "通关雾礁海域",
+            "cond": "flag:reef_cleared"
+          }
+        ]
+      },
+      {
+        "desc": "在新月夜，听她唱完那首歌（行动：在新月夜听人鱼的歌）",
+        "done": "flag:nerea_song"
+      }
+    ]
+  },
+  {
+    "id": "bram_crew",
+    "type": "side",
+    "name": "布拉姆的家",
+    "start": "flag:met_bram&&age>=18",
+    "deadlineAge": 25,
+    "score": 25,
+    "intro": {
+      "portrait": "bram",
+      "title": "布拉姆的父亲",
+      "text": "布拉姆今天没有笑。他的父亲留下的那条小船，被商会抵押了，下个月，就要被拍卖。\n他站在码头上，一句话也没说，只是盯着那条船看。"
+    },
+    "onFail": [
+      "flag+:bram_lost",
+      "rel:bram-2",
+      "log:拍卖那天，布拉姆没有去。"
+    ],
+    "reward": [
+      "count:crew+2",
+      "rel:bram+2",
+      "flag+:bram_crew",
+      "log:布拉姆带着他的几个兄弟，登上了你的船。"
+    ],
+    "stages": [
+      {
+        "desc": "凑够 200 金币，赎回布拉姆父亲的船（行动：替布拉姆赎回父亲的船）",
+        "done": "flag:bram_boat"
+      }
+    ],
+    "snag": {
+      "p": 0.25,
+      "text": "布拉姆的父亲在一场风浪里出了事，那条小船，也沉了。"
+    }
+  },
+  {
+    "id": "vel_chart",
+    "type": "side",
+    "name": "领航员的星位",
+    "start": "flag:met_vel",
+    "deadlineAge": 26,
+    "score": 25,
+    "intro": {
+      "portrait": "vel",
+      "title": "薇尔的请求",
+      "text": "薇尔把一卷星图摊在你面前：“我需要三个夜晚，三个不同的星位。你有船，我有六分仪。”\n她的眼神认真得有点可怕。"
+    },
+    "onFail": [
+      "log:薇尔登上了另一艘船，没有告别。"
+    ],
+    "reward": [
+      "flag+:vel_navigator",
+      "rel:bram+0",
+      "log:薇尔收起了六分仪：“船长，从今天起，航线由我来画。”"
+    ],
+    "stages": [
+      {
+        "desc": "陪薇尔观测三个星位（行动：观测星位）",
+        "done": "count.stars>=3",
+        "checks": [
+          {
+            "label": "观测到的星位",
+            "cond": "count.stars>=3",
+            "cur": "count.stars"
+          }
+        ]
+      }
+    ],
+    "snag": {
+      "p": 0.4,
+      "text": "薇尔收到一封家信，匆匆搭上了另一艘船，离开了潮湾港。"
+    }
+  },
+  {
+    "id": "merchant_contract",
+    "type": "side",
+    "name": "商会的委托",
+    "start": "flag:merchant_offer",
+    "deadlineAge": 26,
+    "score": 20,
+    "intro": {
+      "portrait": "merchant",
+      "title": "商会会长的合同",
+      "text": "商会会长把一份盖着火漆的合同推到你面前：“三批货，三个港口，三次准时。你若做到，我保你一个商会的位子。”"
+    },
+    "onFail": [
+      "log:商会会长把合同收回了抽屉。"
+    ],
+    "reward": [
+      "rep:guild+15",
+      "gold+300",
+      "flag+:guild_friend",
+      "log:会长在合同上盖了第二枚章，笑了：“欢迎入会。”"
+    ],
+    "stages": [
+      {
+        "desc": "准时送达三批货（行动：递送商会的货，需要单桅帆船以上）",
+        "done": "count.cargo>=3",
+        "checks": [
+          {
+            "label": "已送达",
+            "cond": "count.cargo>=3",
+            "cur": "count.cargo"
+          }
+        ]
+      }
+    ],
+    "snag": {
+      "p": 0.3,
+      "text": "商会换了会长，那份合同，被新会长随手收进了抽屉。"
+    }
+  },
+  {
+    "id": "abyss_secret",
+    "type": "hidden",
+    "name": "深渊的低语",
+    "start": "count.abyss_clue>=1&&age>=21",
+    "deadlineAge": 28,
+    "score": 40,
+    "reward": [
+      "flag+:abyss_truth",
+      "log:你知道了深渊之下沉睡的是什么。这知识，沉得像锚。"
+    ],
+    "stages": [
+      {
+        "desc": "沉船、海妖的巢、礁石的刻痕，都指向同一件事（线索 ≥ 3）",
+        "done": "count.abyss_clue>=3",
+        "checks": [
+          {
+            "label": "收集到的线索",
+            "cond": "count.abyss_clue>=3",
+            "cur": "count.abyss_clue"
+          }
+        ],
+        "story": {
+          "title": "深渊的低语",
+          "portrait": "nerea",
+          "text": "三条线索，在你脑子里渐渐拼成了一幅图：\n潮汐之门后面，不是宝藏，不是城，而是一颗沉睡的心，海的心。\n千年前，有人把它沉下去，是为了让陆地上的人，永远不要听见它的呼吸。"
+        }
+      }
+    ]
+  }
+]

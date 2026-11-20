@@ -1,0 +1,12 @@
+{
+  "name": "reborn-life-prototype",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "serve": "python3 -m http.server 8765 --directory ..",
+    "lint": "node tests/lint.mjs",
+    "sim": "node sim/simulate.js --bot balanced --runs 1000",
+    "test": "node tests/lint.mjs && node sim/simulate.js --bot balanced --runs 200 && node sim/simulate.js --bot random --runs 200 && node sim/simulate.js --script noble_heir --bot balanced --runs 200 && node sim/simulate.js --script noble_heir --bot random --runs 200",
+    "build": "node tools/build-single.mjs"
+  }
+}

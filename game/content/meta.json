@@ -1,0 +1,907 @@
+{
+  "talents": [
+    {
+      "id": "early_bloom",
+      "name": "早熟",
+      "desc": "22 岁前智力、意志成长额外 +30%，智力、意志起始 +1",
+      "cost": 150,
+      "mods": {
+        "youngMentalExp": 0.3,
+        "start_int": 1,
+        "start_wil": 1
+      }
+    },
+    {
+      "id": "late_bloom",
+      "name": "大器晚成",
+      "desc": "22 岁后所有成长额外 +35%（所有剧本都在 27、28 岁迎来终局，所以后半程更关键）",
+      "cost": 130,
+      "mods": {
+        "lateExp": 0.35,
+        "lateAge": 22
+      }
+    },
+    {
+      "id": "photographic",
+      "name": "过目不忘",
+      "desc": "读书类行动的经验 +40%",
+      "cost": 130,
+      "mods": {
+        "studyExp": 0.4
+      }
+    },
+    {
+      "id": "diligent",
+      "name": "勤勉",
+      "desc": "所有行动的经验 +15%",
+      "cost": 260,
+      "mods": {
+        "studyExp": 0.15,
+        "otherExp": 0.15
+      }
+    },
+    {
+      "id": "unyielding",
+      "name": "不屈",
+      "desc": "濒死判定多一次机会，战力 +2",
+      "cost": 200,
+      "mods": {
+        "deathChecks": 1,
+        "powerBonus": 2
+      }
+    },
+    {
+      "id": "veteran",
+      "name": "身经百战",
+      "desc": "战力 +4",
+      "cost": 220,
+      "mods": {
+        "powerBonus": 4
+      }
+    },
+    {
+      "id": "lucky",
+      "name": "天生幸运",
+      "desc": "幸运起始 +4，转生点收益 +5%",
+      "cost": 160,
+      "mods": {
+        "start_luk": 4,
+        "rpBonus": 0.05
+      }
+    },
+    {
+      "id": "mana_affinity",
+      "name": "魔力亲和",
+      "desc": "魔力上限 +15，魔法技能的威力 +30%",
+      "cost": 130,
+      "mods": {
+        "mpBonus": 15,
+        "magicPower": 0.3
+      }
+    },
+    {
+      "id": "nest_egg",
+      "name": "家底",
+      "desc": "开局多 200 金币",
+      "cost": 100,
+      "mods": {
+        "startGold": 200
+      }
+    }
+  ],
+  "relics": [
+    {
+      "id": "r_sickle",
+      "name": "先祖的镰刀",
+      "script": [
+        "farmer_son"
+      ],
+      "desc": "开局携带，战力 +2，故乡值 +3。",
+      "unlock": {
+        "cond": "flag:recommend_letter",
+        "text": "在《麦田上的誓言》里取得教会的推荐信"
+      },
+      "start": {
+        "gear": [
+          "ancestral_sickle"
+        ],
+        "hometown": 3
+      }
+    },
+    {
+      "id": "r_holy_shard",
+      "name": "圣徽残片",
+      "script": [
+        "farmer_son"
+      ],
+      "desc": "开局教会声望 +10，濒死判定多一次机会。",
+      "unlock": {
+        "cond": "flag:sk_holy_shield",
+        "text": "在《麦田上的誓言》里学会「圣盾」"
+      },
+      "start": {
+        "rep": {
+          "church": 10
+        }
+      },
+      "mods": {
+        "deathChecks": 1
+      }
+    },
+    {
+      "id": "r_flask",
+      "name": "老兵的酒壶",
+      "script": [
+        "farmer_son"
+      ],
+      "desc": "开局与格伦的好感 +2，向老兵学艺的进度 +2。",
+      "unlock": {
+        "cond": "flag:glen_cleared",
+        "text": "在《麦田上的誓言》里为格伦翻案"
+      },
+      "start": {
+        "rel": {
+          "glen": 2
+        },
+        "counters": {
+          "sword": 2
+        }
+      }
+    },
+    {
+      "id": "r_letter",
+      "name": "褪色的推荐信",
+      "script": [
+        "farmer_son"
+      ],
+      "desc": "开局即持有教会的推荐信，教会声望 +5（第一章只剩等级的门槛）。",
+      "unlock": {
+        "cond": "flag:paladin",
+        "text": "在《麦田上的誓言》里成为圣骑士"
+      },
+      "start": {
+        "flags": {
+          "recommend_letter": true
+        },
+        "rep": {
+          "church": 5
+        }
+      }
+    },
+    {
+      "id": "r_horn",
+      "name": "魔王的碎角",
+      "script": [
+        "farmer_son"
+      ],
+      "desc": "战力 +2。",
+      "unlock": {
+        "cond": "flag:demon_slain",
+        "text": "在《麦田上的誓言》里斩杀魔王"
+      },
+      "mods": {
+        "powerBonus": 2
+      }
+    },
+    {
+      "id": "r_wheel",
+      "name": "洛恩的车轮",
+      "script": [
+        "farmer_son"
+      ],
+      "desc": "开局金币 +60，与洛恩的好感 +2。",
+      "unlock": {
+        "cond": "quest.lorn_caravan==done",
+        "text": "在《麦田上的誓言》里完成洛恩的商队"
+      },
+      "start": {
+        "gold": 60,
+        "rel": {
+          "lorn": 2
+        }
+      }
+    },
+    {
+      "id": "r_brooch",
+      "name": "白玫瑰胸针",
+      "script": [
+        "noble_heir"
+      ],
+      "desc": "开局家族名望 +10。",
+      "unlock": {
+        "cond": "flag:trial_won",
+        "text": "在《灰烬中的家徽》里于复议日胜诉"
+      },
+      "start": {
+        "hometown": 10
+      }
+    },
+    {
+      "id": "r_letter_father",
+      "name": "父亲的旧信",
+      "script": [
+        "noble_heir"
+      ],
+      "desc": "开局即持有父亲的密信（可以直接破译），证据 +1。",
+      "unlock": {
+        "cond": "flag:letters_decoded",
+        "text": "在《灰烬中的家徽》里破译父亲的密信"
+      },
+      "start": {
+        "flags": {
+          "father_letter": true
+        },
+        "counters": {
+          "evidence": 1
+        }
+      }
+    },
+    {
+      "id": "r_watch",
+      "name": "墨提斯的怀表",
+      "script": [
+        "noble_heir"
+      ],
+      "desc": "魔力上限 +10，研读奥术的进度 +2。",
+      "unlock": {
+        "cond": "flag:metis_gift",
+        "text": "在《灰烬中的家徽》里通过墨提斯的三道题"
+      },
+      "mods": {
+        "mpBonus": 10
+      },
+      "start": {
+        "counters": {
+          "arcana": 2
+        }
+      }
+    },
+    {
+      "id": "r_bookmark",
+      "name": "艾琳的书签",
+      "script": [
+        "noble_heir"
+      ],
+      "desc": "开局已经认识艾琳，好感 +2。",
+      "unlock": {
+        "cond": "flag:ally_elin",
+        "text": "在《灰烬中的家徽》里得到艾琳的帮助"
+      },
+      "start": {
+        "flags": {
+          "met_elin": true
+        },
+        "rel": {
+          "elin": 2
+        }
+      }
+    },
+    {
+      "id": "r_coin",
+      "name": "幸运硬币",
+      "desc": "幸运 +2。",
+      "unlock": {
+        "cond": "gold>=1000",
+        "text": "任意剧本结束时持有 1000 金币"
+      },
+      "mods": {
+        "start_luk": 2
+      }
+    },
+    {
+      "id": "r_rat_knife",
+      "name": "灰鼠的小刀",
+      "script": [
+        "thief"
+      ],
+      "desc": "开局携带一把细长匕首（战力 +6），灰鼠好感 +2。",
+      "unlock": {
+        "cond": "flag:guild_member",
+        "text": "在《暗巷里的钥匙》里通过三手试炼"
+      },
+      "start": {
+        "gear": [
+          "stiletto"
+        ],
+        "rel": {
+          "rat": 2
+        }
+      }
+    },
+    {
+      "id": "r_lila_ribbon",
+      "name": "莉拉的发带",
+      "script": [
+        "thief"
+      ],
+      "desc": "开局街区人望 +10，莉拉好感 +2，金币 +40。",
+      "unlock": {
+        "cond": "flag:orphan_safe",
+        "text": "在《暗巷里的钥匙》里守住孤儿院"
+      },
+      "start": {
+        "hometown": 10,
+        "rel": {
+          "lila": 2
+        },
+        "gold": 40
+      }
+    },
+    {
+      "id": "r_cass_badge",
+      "name": "卡斯的警徽扣",
+      "script": [
+        "thief"
+      ],
+      "desc": "开局情报 +2，卡斯好感 +2，濒死判定多一次机会。",
+      "unlock": {
+        "cond": [
+          "flag:cass_trust",
+          "flag:returned_crystal"
+        ],
+        "text": "在《暗巷里的钥匙》里取得卡斯的信任"
+      },
+      "start": {
+        "counters": {
+          "intel": 2
+        },
+        "rel": {
+          "cass": 2
+        }
+      },
+      "mods": {
+        "deathChecks": 1
+      }
+    },
+    {
+      "id": "r_blank_mask",
+      "name": "空白的面具",
+      "script": [
+        "thief"
+      ],
+      "desc": "开局影子公会声望 +15，金币 +100，同伙 +1。",
+      "unlock": {
+        "cond": [
+          "flag:mask_defeated",
+          "flag:gave_crystal"
+        ],
+        "text": "在《暗巷里的钥匙》里与面具先生做出了了断"
+      },
+      "start": {
+        "rep": {
+          "shadow": 15
+        },
+        "gold": 100,
+        "counters": {
+          "crew": 1
+        }
+      }
+    },
+    {
+      "id": "r_ghost_cloak",
+      "name": "无影斗篷",
+      "script": [
+        "thief"
+      ],
+      "desc": "开局暗纹软甲（战力 +8），敏捷 +1。",
+      "unlock": {
+        "cond": "flag:ghosted",
+        "text": "在《暗巷里的钥匙》里带着水晶消失在夜里"
+      },
+      "start": {
+        "gear": [
+          "shadow_leathers"
+        ],
+        "attrs": {
+          "agi": 1
+        }
+      }
+    },
+    {
+      "id": "r_haide_pipe",
+      "name": "海德的烟斗",
+      "script": [
+        "voyager"
+      ],
+      "desc": "开局意志 +1，金币 +30，海德好感 +2。",
+      "unlock": {
+        "cond": "flag:fragment_1",
+        "text": "在《远海的星图》里收下老船长的海图"
+      },
+      "start": {
+        "attrs": {
+          "wil": 1
+        },
+        "gold": 30,
+        "rel": {
+          "haide": 2
+        }
+      }
+    },
+    {
+      "id": "r_red_tooth",
+      "name": "红鲨的鲨鱼牙",
+      "script": [
+        "voyager"
+      ],
+      "desc": "开局海上声望 +10，附赠一把海军弯刀（战力 +6）。",
+      "unlock": {
+        "cond": "flag:scarlett_resolved",
+        "text": "在《远海的星图》里与红鲨了断"
+      },
+      "start": {
+        "rep": {
+          "sea": 10
+        },
+        "gear": [
+          "cutlass"
+        ]
+      }
+    },
+    {
+      "id": "r_nerea_pearl",
+      "name": "奈蕾雅的珍珠",
+      "script": [
+        "voyager"
+      ],
+      "desc": "开局携带海女神护符（战力 +6），濒死判定多一次机会。",
+      "unlock": {
+        "cond": "flag:nerea_friend",
+        "text": "在《远海的星图》里得到人鱼的信任"
+      },
+      "start": {
+        "gear": [
+          "sea_charm"
+        ]
+      },
+      "mods": {
+        "deathChecks": 1
+      }
+    },
+    {
+      "id": "r_vel_sextant",
+      "name": "薇尔的六分仪",
+      "script": [
+        "voyager"
+      ],
+      "desc": "开局智力 +1，已经读过 3 张海图。",
+      "unlock": {
+        "cond": "flag:vel_navigator",
+        "text": "在《远海的星图》里让薇尔成为专属领航员"
+      },
+      "start": {
+        "attrs": {
+          "int": 1
+        },
+        "counters": {
+          "charts": 3
+        }
+      }
+    },
+    {
+      "id": "r_star_heart",
+      "name": "星海之心的碎片",
+      "script": [
+        "voyager"
+      ],
+      "desc": "开局金币 +150，港口人望 +10，一名老水手愿意跟你出海。",
+      "unlock": {
+        "cond": [
+          "flag:returned_heart",
+          "flag:star_end",
+          "flag:guardian_end",
+          "flag:pirate_end"
+        ],
+        "text": "在《远海的星图》里打开潮汐之门"
+      },
+      "start": {
+        "gold": 150,
+        "hometown": 10,
+        "counters": {
+          "crew": 1
+        }
+      }
+    }
+  ],
+  "shards": [
+    {
+      "id": "m_seal",
+      "name": "封印的传闻",
+      "script": [
+        "farmer_son"
+      ],
+      "text": "神父的旧信与石室里的残卷：百年前，北境封印过一件东西。",
+      "use": "只要找到一条封印线索，就能直接开启隐藏任务「教会的阴影」。",
+      "unlock": {
+        "cond": [
+          "flag:church_clue_1",
+          "flag:church_clue_2"
+        ],
+        "text": "在一世里发现关于「封印」的线索（圣物箱里的旧信、石门后的卷轴、教会档案室）"
+      }
+    },
+    {
+      "id": "m_efna",
+      "name": "月光下的约定",
+      "script": [
+        "farmer_son"
+      ],
+      "text": "艾芙娜窗台上那束干花，和一句没来得及说的话。",
+      "use": "「寻找月华草」的检定难度 -3。",
+      "unlock": {
+        "cond": [
+          "flag:efna_lost",
+          "quest.efna_wish==failed"
+        ],
+        "text": "一世里错过艾芙娜的心愿（没能在期限内治好她）"
+      }
+    },
+    {
+      "id": "m_glen",
+      "name": "空了的剑鞘",
+      "script": [
+        "farmer_son"
+      ],
+      "text": "格伦不辞而别的那个清晨，只留下一把空剑鞘。",
+      "use": "「向老兵学艺」额外获得敏捷与体魄经验。",
+      "unlock": {
+        "cond": [
+          "flag:glen_left",
+          "quest.glen_regret==failed"
+        ],
+        "text": "一世里错过老兵格伦的遗憾（他不辞而别）"
+      }
+    },
+    {
+      "id": "m_ruins",
+      "name": "石门后的符文",
+      "script": [
+        "farmer_son"
+      ],
+      "text": "符文亮起的顺序，你已经记在了骨头里。",
+      "use": "「探索遗迹」的检定难度 -3。",
+      "unlock": {
+        "cond": "flag:ruins_open",
+        "text": "一世里解开石门后遗迹的符文"
+      }
+    },
+    {
+      "id": "m_final",
+      "name": "魔王的等待",
+      "script": [
+        "farmer_son"
+      ],
+      "text": "你倒在魔王面前的时候，它其实等了你很久。",
+      "use": "终战时，可以在大殿门边调整呼吸，恢复全部生命与魔力。",
+      "unlock": {
+        "cond": [
+          "flag:demon_wounded",
+          "flag:final_lost"
+        ],
+        "text": "一世里闯进魔王城，击败近卫或倒在魔王面前"
+      }
+    },
+    {
+      "id": "m_truth",
+      "name": "圣剑与锁",
+      "script": [
+        "farmer_son"
+      ],
+      "text": "圣剑不是剑，是锁；魔王是第一个持剑的人。",
+      "use": "22 岁起自动开启「教会的阴影」，神父主动告知真相，潜入圣库更容易。（跨剧本：在《灰烬中的家徽》里还会开启隐藏任务「高塔的禁书」。）",
+      "unlock": {
+        "cond": "flag:shadow_known",
+        "text": "一世里读懂某本没有标题的册子"
+      },
+      "shared": true
+    },
+    {
+      "id": "m_n_letter",
+      "name": "父亲的笔迹",
+      "script": [
+        "noble_heir"
+      ],
+      "text": "那些被药水熏黄的信纸，每一个转折你都认得。",
+      "use": "「破译父亲的密信」的检定难度 -3。",
+      "unlock": {
+        "cond": [
+          "flag:letters_decoded",
+          "flag:father_letter"
+        ],
+        "text": "一世里找到父亲留下的密信"
+      }
+    },
+    {
+      "id": "m_n_witness",
+      "name": "旧案的证人",
+      "script": [
+        "noble_heir"
+      ],
+      "text": "档案室里被撕去的那一页，你记得它原本的位置。",
+      "use": "「调查旧案档案」的检定难度 -3。",
+      "unlock": {
+        "cond": [
+          "flag:old_witness",
+          "flag:archive_hint"
+        ],
+        "text": "一世里在档案或证人那里找到旧案的线索"
+      }
+    },
+    {
+      "id": "m_n_trial",
+      "name": "法庭的回响",
+      "script": [
+        "noble_heir"
+      ],
+      "text": "红毯、窃窃私语、洛克伍德那一点微不可察的颔首。",
+      "use": "旧案复议日陈词的检定难度 -2。",
+      "unlock": {
+        "cond": [
+          "flag:trial_lost",
+          "flag:final_lost"
+        ],
+        "text": "一世里在法庭上败诉，或在最后一搏中倒下"
+      }
+    },
+    {
+      "id": "m_t_rat",
+      "name": "灰鼠的手法",
+      "script": [
+        "thief"
+      ],
+      "text": "他按住你的手腕：“看人，要看肩。”",
+      "use": "「参加三手试炼」的检定难度 -2。",
+      "unlock": {
+        "cond": "flag:guild_member",
+        "text": "一世里通过影子公会的试炼"
+      }
+    },
+    {
+      "id": "m_t_mask",
+      "name": "面具的口音",
+      "script": [
+        "thief"
+      ],
+      "text": "沙哑的嗓音底下，是另一种更体面的口音。",
+      "use": "「窃取魔晶库图纸」的检定难度 -2。",
+      "unlock": {
+        "cond": "count.mask_clue>=1",
+        "text": "一世里察觉到面具先生的破绽"
+      }
+    },
+    {
+      "id": "m_t_lila",
+      "name": "熄灭的灯",
+      "script": [
+        "thief"
+      ],
+      "text": "冬天，孤儿院的窗口，那盏灯没有亮。",
+      "use": "「接济孤儿院」额外提高街区人望。",
+      "unlock": {
+        "cond": [
+          "flag:orphan_cold",
+          "quest.orphan_light==failed"
+        ],
+        "text": "一世里没能守住孤儿院"
+      }
+    },
+    {
+      "id": "m_t_cass",
+      "name": "捕快的背影",
+      "script": [
+        "thief"
+      ],
+      "text": "她站在巷口，手里的火把照着你的背影。",
+      "use": "第一次被卡斯追捕时的逃跑检定难度 -2。",
+      "unlock": {
+        "cond": [
+          "flag:heist_caught",
+          "flag:jailed_end",
+          "rel.cass>=3"
+        ],
+        "text": "一世里被卡斯抓住，或和她有了交集"
+      }
+    },
+    {
+      "id": "m_t_vault",
+      "name": "水晶的心跳",
+      "script": [
+        "thief"
+      ],
+      "text": "悬浮的水晶，一明一灭，像一颗心。",
+      "use": "月蚀之夜里开门的两个检定难度 -2。",
+      "unlock": {
+        "cond": [
+          "flag:heist_caught",
+          "flag:heist_done"
+        ],
+        "text": "一世里走进了魔晶库的深处"
+      }
+    },
+    {
+      "id": "m_t_betrayal",
+      "name": "面具下的名字",
+      "script": [
+        "thief"
+      ],
+      "text": "税务署的旧账、赌场的流水、那枚家徽。",
+      "use": "19 岁起，只要情报 ≥ 2，就能开启隐藏任务「面具之下」。",
+      "unlock": {
+        "cond": "flag:mask_unmasked",
+        "text": "一世里看清了某个人的真面目"
+      }
+    },
+    {
+      "id": "m_v_haide",
+      "name": "老船长的口诀",
+      "script": [
+        "voyager"
+      ],
+      "text": "“看云，看浪，看人。三样看清了，海就是自家后院。”",
+      "use": "「参加船长考试」的检定难度 -2。",
+      "unlock": {
+        "cond": "flag:haide_gone",
+        "text": "一世里送走了老船长"
+      }
+    },
+    {
+      "id": "m_v_scarlett",
+      "name": "红鲨的骰子",
+      "script": [
+        "voyager"
+      ],
+      "text": "她把骰子往桌上一磕：“赌，还是不赌？”",
+      "use": "与红鲨赌骰子的检定难度 -2。",
+      "unlock": {
+        "cond": "flag:met_scarlett",
+        "text": "一世里与红鲨打过交道"
+      }
+    },
+    {
+      "id": "m_v_storm",
+      "name": "风暴的节拍",
+      "script": [
+        "voyager"
+      ],
+      "text": "每一道浪的间隙，都像心跳。",
+      "use": "突来风暴的检定难度 -2。",
+      "unlock": {
+        "cond": [
+          "flag:storm_survived",
+          "flag:ship_damaged"
+        ],
+        "text": "一世里经历过风暴"
+      }
+    },
+    {
+      "id": "m_v_song",
+      "name": "人鱼的歌谣",
+      "script": [
+        "voyager"
+      ],
+      "text": "海的另一种语言。",
+      "use": "「在新月夜听人鱼的歌」的检定难度 -2。",
+      "unlock": {
+        "cond": [
+          "flag:nerea_song",
+          "flag:v_clue_2"
+        ],
+        "text": "一世里听过鲸或人鱼的歌"
+      }
+    },
+    {
+      "id": "m_v_chart",
+      "name": "星位的轮廓",
+      "script": [
+        "voyager"
+      ],
+      "text": "三颗星的夹角，你已经能闭着眼睛算出来。",
+      "use": "「观测星位」的检定难度 -2。",
+      "unlock": {
+        "cond": [
+          "flag:fragment_1",
+          "flag:fragment_2",
+          "flag:fragment_3"
+        ],
+        "text": "一世里找到过任一块星图残片"
+      }
+    },
+    {
+      "id": "m_v_gate",
+      "name": "门后的光",
+      "script": [
+        "voyager"
+      ],
+      "text": "石门打开的那一刻，海水一寸一寸地让出了路。",
+      "use": "驶向潮汐之门的两个风暴检定难度 -2。",
+      "unlock": {
+        "cond": [
+          "flag:gate_opened",
+          "flag:gate_lost"
+        ],
+        "text": "一世里走到了潮汐之门前"
+      }
+    },
+    {
+      "id": "m_n_alfred",
+      "name": "老管家的茶",
+      "script": [
+        "noble_heir"
+      ],
+      "text": "阿尔弗把茶杯放在你手边：“老爷当年也爱这么喝。”",
+      "use": "「开启书房暗格」的检定难度 -3。",
+      "unlock": {
+        "cond": "flag:safe_opened",
+        "text": "一世里打开了书房的暗格"
+      }
+    },
+    {
+      "id": "m_n_valen",
+      "name": "金鹰的约定",
+      "script": [
+        "noble_heir"
+      ],
+      "text": "瓦伦别过脸：“复议日，我会在旁听席上。”",
+      "use": "请求瓦伦的支持时，魅力检定难度 -3。",
+      "unlock": {
+        "cond": "flag:ally_valen",
+        "text": "一世里与瓦伦有了了断，并读懂了他的想法"
+      }
+    },
+    {
+      "id": "m_n_debt",
+      "name": "账本上的红字",
+      "script": [
+        "noble_heir"
+      ],
+      "text": "每一行数字，都像一道看不见的锁链。",
+      "use": "每年的债务利息少 10 金币。",
+      "unlock": {
+        "cond": "count.debt>=900",
+        "text": "一世里被债务压得喘不过气"
+      }
+    },
+    {
+      "id": "m_n_lockwood",
+      "name": "宰相的木匣",
+      "script": [
+        "noble_heir"
+      ],
+      "text": "一只黑檀木匣，一纸撤诉文书，一句“令尊也许会理解”。",
+      "use": "「宰相的交易」里，假装考虑、套他话的检定难度 -3。",
+      "unlock": {
+        "cond": [
+          "flag:bought_off",
+          "flag:refused_offer"
+        ],
+        "text": "一世里面对过宰相的交易"
+      }
+    },
+    {
+      "id": "m_n_cellar",
+      "name": "地窖的石阶",
+      "script": [
+        "noble_heir"
+      ],
+      "text": "潮湿的石阶，暗门后，一盏没有熄的灯。",
+      "use": "「探索旧宅的地窖」的检定难度 -3。",
+      "unlock": {
+        "cond": "flag:cellar_done",
+        "text": "一世里找到了父亲的实验室"
+      }
+    },
+    {
+      "id": "m_n_spy",
+      "name": "宅子里的眼睛",
+      "script": [
+        "noble_heir"
+      ],
+      "text": "每一条消息，都在当天夜里，出现在宰相府的侧门。",
+      "use": "「盯梢宰相府的出入」的检定难度 -3。",
+      "unlock": {
+        "cond": "flag:spy_found",
+        "text": "一世里揪出了泄露消息的人"
+      }
+    }
+  ]
+}

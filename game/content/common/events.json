@@ -1,0 +1,535 @@
+[
+  {
+    "id": "ev_traveler",
+    "kind": "random",
+    "pool": "opportunity",
+    "weight": 10,
+    "title": "路过的旅人",
+    "text": "一位风尘仆仆的旅人在你家门口讨水喝。你递过水囊，他笑着留下几枚铜币。",
+    "options": [
+      {
+        "label": "收下，道声谢",
+        "fx": [
+          "gold+20"
+        ],
+        "text": "铜币不多，但今晚能加个菜。"
+      },
+      {
+        "label": "推辞，再请他吃顿饭（1 体力）",
+        "cost": 1,
+        "fx": [
+          "cha_exp+3",
+          "hometown+1"
+        ],
+        "text": "旅人吃得很满足，临走时说你会有好运。"
+      }
+    ]
+  },
+  {
+    "id": "ev_old_book",
+    "kind": "random",
+    "pool": "opportunity",
+    "weight": 8,
+    "cond": "age<30",
+    "title": "一本旧书",
+    "text": "你在谷仓的草垛里翻到一本被虫蛀的旧书，封面上画着看不懂的星图。",
+    "options": [
+      {
+        "label": "当场读一读（1 体力）",
+        "cost": 1,
+        "fx": [
+          "int_exp+6"
+        ],
+        "text": "半懂不懂，但有几页你确实读进去了。"
+      },
+      {
+        "label": "拿去集市卖",
+        "fx": [
+          "gold+15"
+        ],
+        "text": "书商给了个公道价。"
+      }
+    ],
+    "only": [
+      "farmer_son"
+    ]
+  },
+  {
+    "id": "ev_festival",
+    "kind": "random",
+    "pool": "opportunity",
+    "weight": 14,
+    "cond": "season==autumn",
+    "title": "丰收祭",
+    "text": "村里的丰收祭开始了，广场上飘着烤肉和麦酒的香气。",
+    "options": [
+      {
+        "label": "加入舞圈（1 体力）",
+        "cost": 1,
+        "fx": [
+          "cha_exp+4",
+          "hometown+2",
+          "rel:efna+1"
+        ],
+        "text": "你被拉进舞圈，转晕了头，笑声却停不下来。"
+      },
+      {
+        "label": "帮着摆桌子",
+        "fx": [
+          "hometown+1",
+          "str_exp+2"
+        ],
+        "text": "累是累，村里人记住了你的好。"
+      }
+    ],
+    "only": [
+      "farmer_son"
+    ]
+  },
+  {
+    "id": "ev_peddler",
+    "kind": "random",
+    "pool": "opportunity",
+    "weight": 8,
+    "title": "行脚商人",
+    "text": "一位推着独轮车的行商在村口摆开了摊子，车上有刀剑和药水。",
+    "options": [
+      {
+        "label": "买一把铁剑（80 金币）",
+        "cond": "gold>=80&&!flag:has_iron_sword",
+        "reason": "金币不足或已拥有",
+        "fx": [
+          "gold-80",
+          "item:iron_sword",
+          "flag+:has_iron_sword"
+        ],
+        "text": "剑身有点歪，但磨得很利。"
+      },
+      {
+        "label": "买一瓶伤药（30 金币）",
+        "cond": "gold>=30",
+        "reason": "金币不足",
+        "fx": [
+          "gold-30",
+          "heal:0.6"
+        ],
+        "text": "药汁苦得直吐舌头，伤口却很快不疼了。"
+      },
+      {
+        "label": "随便看看",
+        "text": "你把摊子上的东西摸了个遍，什么也没买。"
+      }
+    ],
+    "only": [
+      "farmer_son"
+    ]
+  },
+  {
+    "id": "ev_sickness",
+    "kind": "random",
+    "pool": "calamity",
+    "weight": 9,
+    "title": "一场风寒",
+    "text": "你一早醒来头昏脑涨，嗓子像吞了沙子。",
+    "options": [
+      {
+        "label": "硬扛着干活",
+        "check": {
+          "attr": "wil",
+          "diff": 10
+        },
+        "ok": {
+          "text": "你咬牙撑了过去，到了晚上居然好了大半。",
+          "fx": [
+            "hp-4"
+          ]
+        },
+        "fail": {
+          "text": "越撑越重，到傍晚已经站不稳了。",
+          "fx": [
+            "hp-10",
+            "status+:fatigue:2"
+          ]
+        }
+      },
+      {
+        "label": "老老实实躺下休养（1 体力）",
+        "cost": 1,
+        "fx": [
+          "hp-3"
+        ],
+        "text": "躺了一天，母亲熬的姜汤很管用。"
+      }
+    ]
+  },
+  {
+    "id": "ev_thief",
+    "kind": "random",
+    "pool": "calamity",
+    "weight": 8,
+    "cond": "gold>=40",
+    "title": "手脚不干净的人",
+    "text": "半夜里，你听见屋外有窸窣的脚步声——有人在翻你放钱的柜子。",
+    "options": [
+      {
+        "label": "冲出去追（1 体力）",
+        "cost": 1,
+        "check": {
+          "attr": "agi",
+          "diff": 10
+        },
+        "ok": {
+          "text": "你一个飞扑把贼按在地上，钱袋也追了回来。",
+          "fx": [
+            "str_exp+2",
+            "agi_exp+2"
+          ]
+        },
+        "fail": {
+          "text": "贼翻墙跑了，你只捡回一只鞋。",
+          "fx": [
+            "gold-25"
+          ]
+        }
+      },
+      {
+        "label": "装作没听见",
+        "text": "第二天早上，柜子里少了一小把铜币。",
+        "fx": [
+          "gold-15"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ev_bad_harvest",
+    "kind": "random",
+    "pool": "calamity",
+    "weight": 10,
+    "cond": "season==summer",
+    "title": "旱风",
+    "text": "连着十几天没下雨，田里的麦子叶子发了黄。",
+    "options": [
+      {
+        "label": "挑水浇田（2 体力）",
+        "cost": 2,
+        "fx": [
+          "hometown-1",
+          "str_exp+3"
+        ],
+        "text": "你来回挑了几十趟水，总算保住了大半。"
+      },
+      {
+        "label": "听天由命",
+        "fx": [
+          "hometown-5"
+        ],
+        "text": "秋天的收成眼看着要减了。"
+      }
+    ],
+    "only": [
+      "farmer_son"
+    ]
+  },
+  {
+    "id": "ev_tax",
+    "kind": "random",
+    "pool": "calamity",
+    "weight": 8,
+    "cond": "season==winter",
+    "title": "收税官",
+    "text": "领主的收税官带着两名卫兵敲开了你家的门，要求补缴“战备税”。",
+    "options": [
+      {
+        "label": "老实交钱",
+        "cond": "gold>=25",
+        "reason": "金币不足",
+        "fx": [
+          "gold-25"
+        ],
+        "text": "他点了点钱，满意地走了。"
+      },
+      {
+        "label": "据理力争",
+        "check": {
+          "attr": "cha",
+          "diff": 10
+        },
+        "ok": {
+          "text": "你搬出了去年的税单，收税官咳了两声，只收了一半。",
+          "fx": [
+            "gold-10",
+            "cha_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "他不耐烦地挥手，卫兵拿走了双倍的东西。",
+          "fx": [
+            "gold-40"
+          ]
+        }
+      }
+    ],
+    "only": [
+      "farmer_son"
+    ]
+  },
+  {
+    "id": "ev_neighbor",
+    "kind": "random",
+    "pool": "social",
+    "weight": 10,
+    "title": "邻居借工具",
+    "text": "隔壁的老农来借犁，说他家的断了，眼看就要误了农时。",
+    "options": [
+      {
+        "label": "借给他",
+        "fx": [
+          "hometown+2"
+        ],
+        "text": "老农感激不尽，改天扛来一袋豆子。"
+      },
+      {
+        "label": "借是借，但要他帮你干半天活（1 体力）",
+        "cost": 1,
+        "fx": [
+          "hometown+1",
+          "gold+8"
+        ],
+        "text": "两家各取所需。"
+      }
+    ],
+    "only": [
+      "farmer_son"
+    ]
+  },
+  {
+    "id": "ev_rival",
+    "kind": "random",
+    "pool": "social",
+    "weight": 8,
+    "cond": "age<26",
+    "title": "村口的挑战",
+    "text": "村东头的小子带着几个跟班拦住你，说要比一比谁的力气大。",
+    "options": [
+      {
+        "label": "比腕力",
+        "check": {
+          "attr": "str",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你一把压倒了他，围观的人叫起好来。",
+          "fx": [
+            "cha_exp+3",
+            "hometown+1"
+          ]
+        },
+        "fail": {
+          "text": "他赢了，还嘲笑了你一句。",
+          "fx": [
+            "hp-5"
+          ]
+        }
+      },
+      {
+        "label": "笑笑走开",
+        "fx": [
+          "wil_exp+2"
+        ],
+        "text": "你拍拍衣角走了，背后的起哄声你一点也不在意。"
+      }
+    ],
+    "only": [
+      "farmer_son"
+    ]
+  },
+  {
+    "id": "ev_monster_sign",
+    "kind": "random",
+    "pool": "world",
+    "weight": 12,
+    "cond": "age>=22&&age<30",
+    "title": "魔物的征兆",
+    "text": "最近夜里总能听到远处的嚎叫，村口的牲口也不安分。商人说，北面又有魔物出没。",
+    "options": [
+      {
+        "label": "通宵守夜（2 体力）",
+        "cost": 2,
+        "fx": [
+          "exp+14",
+          "wil_exp+3",
+          "hometown+1"
+        ],
+        "text": "你拿着武器守了一夜，天亮时远处的影子退去了。"
+      },
+      {
+        "label": "关紧门窗",
+        "fx": [
+          "hometown-3"
+        ],
+        "text": "一夜无事，但第二天有户人家的鸡少了几只。"
+      }
+    ],
+    "only": [
+      "farmer_son"
+    ]
+  },
+  {
+    "id": "ev_refugees",
+    "kind": "random",
+    "pool": "world",
+    "weight": 9,
+    "cond": "age>=26",
+    "title": "北方来的难民",
+    "text": "一队衣衫褴褛的难民经过村子，孩子们饿得没有哭声。",
+    "options": [
+      {
+        "label": "分一些口粮（20 金币）",
+        "cond": "gold>=20",
+        "reason": "金币不足",
+        "fx": [
+          "gold-20",
+          "rep:church+3",
+          "hometown+1"
+        ],
+        "text": "神父看见了，默默在胸口画了个圣印。"
+      },
+      {
+        "label": "指路去最近的教堂",
+        "fx": [
+          "rep:church+1"
+        ],
+        "text": "你只能做到这些。"
+      }
+    ]
+  },
+  {
+    "id": "ev_veteran_hint",
+    "kind": "derived",
+    "parent": "train",
+    "weight": 10,
+    "title": "路过的老兵",
+    "text": "你练到一半，路过的老兵停下脚步，摇头说：“腰沉一点，别光用手臂。”",
+    "options": [
+      {
+        "label": "照他说的试一遍",
+        "fx": [
+          "str_exp+4",
+          "agi_exp+2"
+        ],
+        "text": "果然，同样的动作省力了不少。"
+      }
+    ],
+    "only": [
+      "farmer_son"
+    ]
+  },
+  {
+    "id": "ev_deep_read",
+    "kind": "derived",
+    "parent": "study",
+    "weight": 10,
+    "title": "豁然开朗",
+    "text": "困扰了你好几天的一段注解，忽然就想通了。",
+    "options": [
+      {
+        "label": "赶紧把思路记下来",
+        "fx": [
+          "int_exp+6",
+          "wil_exp+2"
+        ],
+        "text": "你一口气写满了三页。"
+      }
+    ]
+  },
+  {
+    "id": "de_trap",
+    "kind": "dungeon",
+    "weight": 10,
+    "title": "机关陷阱",
+    "text": "通道里的一块石板被你踩得微微下沉，墙里传来机括转动的声音。",
+    "options": [
+      {
+        "label": "向后翻滚",
+        "check": {
+          "attr": "agi",
+          "diff": 11
+        },
+        "ok": {
+          "text": "几支箭擦着你的头皮钉进了对面的墙里。",
+          "fx": [
+            "agi_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "一支箭擦过你的肩膀。",
+          "fx": [
+            "hp-10"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "de_shrine",
+    "kind": "dungeon",
+    "weight": 8,
+    "title": "残破的祭坛",
+    "text": "石室中央立着一座布满青苔的祭坛，上面刻着早已无人祭拜的神徽。",
+    "options": [
+      {
+        "label": "静心祈祷",
+        "check": {
+          "attr": "wil",
+          "diff": 10
+        },
+        "ok": {
+          "text": "一缕暖意从掌心涌入，伤痛淡了。",
+          "fx": [
+            "heal:0.25",
+            "status+:blessed:3"
+          ]
+        },
+        "fail": {
+          "text": "什么也没发生，只觉得有些冷。",
+          "fx": [
+            "wil_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "撬下祭坛上的宝石",
+        "fx": [
+          "gold+30",
+          "rep:church-1"
+        ],
+        "text": "宝石沉甸甸的，你心里有点发虚。"
+      }
+    ]
+  },
+  {
+    "id": "de_stranger",
+    "kind": "dungeon",
+    "weight": 8,
+    "title": "受伤的冒险者",
+    "text": "墙角坐着一名腿部受伤的冒险者，见到你，勉强挤出一个笑。",
+    "options": [
+      {
+        "label": "给他包扎伤口",
+        "fx": [
+          "rep:guild+3",
+          "cha_exp+2"
+        ],
+        "text": "他一再道谢，说回公会后一定替你美言。"
+      },
+      {
+        "label": "问他有没有出路的线索",
+        "fx": [
+          "exp+15"
+        ],
+        "text": "他指了一条近路，你少绕了许多弯。"
+      }
+    ]
+  }
+]

@@ -1,0 +1,66 @@
+[
+  {"id":"de_bats","kind":"dungeon","dungeons":["cave"],"weight":10,"title":"蝙蝠群","text":"头顶传来细碎的扇翅声，成百上千只蝙蝠被你的火把惊醒，尖叫着扑下来。",
+   "options":[
+     {"label":"趴下护头","check":{"attr":"wil","diff":9},"ok":{"text":"蝙蝠群擦着你的背脊掠过，你一点伤也没受。","fx":["wil_exp+2"]},"fail":{"text":"你被抓出几道血痕。","fx":["hp-7"]}},
+     {"label":"挥动火把驱赶","fx":["agi_exp+2","hp-3"],"text":"蝙蝠散了，你的袖子被烧焦了一角。"}]},
+  {"id":"de_goblin_stash","kind":"dungeon","dungeons":["cave"],"weight":9,"title":"哥布林的藏宝","text":"一块松动的石头后面，藏着哥布林们偷来的东西：破皮鞋、生锈的剪刀，还有一小袋铜币。",
+   "options":[
+     {"label":"全拿走","fx":["gold+26"],"text":"够吃好几顿的了。"},
+     {"label":"只拿铜币，把其他东西放回去","fx":["gold+16","rep:guild+2"],"text":"这些东西是附近村民丢的，你回头会通知公会。"}]},
+  {"id":"de_cave_spring","kind":"dungeon","dungeons":["cave"],"weight":8,"title":"地下泉","text":"洞穴深处有一汪清澈的泉水，水面倒映着头顶的钟乳石。",
+   "options":[
+     {"label":"痛快喝一口","fx":["heal:0.3","status-:fatigue"],"text":"泉水冰凉，连疲劳都洗去了。"},
+     {"label":"灌满水囊","fx":["heal:0.15","int_exp+1"],"text":"这趟没白来。"}]},
+  {"id":"de_cave_painting","kind":"dungeon","dungeons":["cave"],"weight":6,"once":true,"title":"洞壁上的壁画","text":"洞壁上有人用红色颜料画了一幅壁画：一个人举着剑，站在一座黑色的城前。",
+   "options":[
+     {"label":"盯着看了很久","fx":["wil_exp+3","exp+12","flag+:cave_painting"],"text":"画里的人看不清脸，却让你觉得熟悉。"},
+     {"label":"拓一份带走","fx":["int_exp+3"],"text":"也许学者们看得懂。"}]},
+  {"id":"de_collapse","kind":"dungeon","dungeons":["mine"],"weight":10,"title":"落石","text":"头顶传来一阵隆隆声，碎石和灰尘簌簌落下，整条坑道都在摇晃。",
+   "options":[
+     {"label":"冲向出口","check":{"attr":"agi","diff":11},"ok":{"text":"你在最后一刻冲了出去，身后的坑道被石头填满了。","fx":["agi_exp+3","exp+10"]},"fail":{"text":"碎石砸在你的背上，你狼狈地爬了出来。","fx":["hp-14"]}},
+     {"label":"蜷缩在岩壁凹处","check":{"attr":"wil","diff":10},"ok":{"text":"你靠着岩壁撑到了最后。","fx":["wil_exp+3"]},"fail":{"text":"一块碎石砸中了你的肩膀。","fx":["hp-10"]}}]},
+  {"id":"de_gem_vein","kind":"dungeon","dungeons":["mine"],"weight":9,"title":"宝石矿脉","text":"岩壁里嵌着一线发亮的东西，是没被人挖干净的宝石。",
+   "options":[
+     {"label":"用战镐撬出来（1 体力）","cost":1,"check":{"attr":"str","diff":12},"ok":{"text":"几颗拇指大的宝石应声落地。","fx":["gold+55","str_exp+3"]},"fail":{"text":"镐头崩了口，只撬下几粒碎屑。","fx":["gold+10","str_exp+1"]}},
+     {"label":"留着，下次再来","fx":["exp+8"],"text":"你在岩壁上做了记号。"}]},
+  {"id":"de_lost_miner","kind":"dungeon","dungeons":["mine"],"weight":8,"title":"迷路的矿工","text":"一个满脸煤灰的老矿工靠在岔路口，说他在这里转了两天，水和灯油都用完了。",
+   "options":[
+     {"label":"分给他水和灯油，带他出去","fx":["rep:guild+4","cha_exp+3","exp+15"],"text":"他一路上都在道谢，还指给你一条没去过的近路。"},
+     {"label":"给他指路，自己继续前进","fx":["rep:guild+1"],"text":"他勉强点头，扶着墙走了。"}]},
+  {"id":"de_gas","kind":"dungeon","dungeons":["mine"],"weight":8,"title":"可疑的气味","text":"坑道里飘着一股甜腥味，你的火把火焰忽然变成了诡异的蓝色。",
+   "options":[
+     {"label":"捂住口鼻快速通过","check":{"attr":"wil","diff":11},"ok":{"text":"你屏住呼吸冲了过去。","fx":["wil_exp+3"]},"fail":{"text":"你吸进一口，头晕目眩，扶着墙吐了好一阵。","fx":["hp-8","status+:fatigue:1"]}},
+     {"label":"原路退出，换条路（1 体力）","cost":1,"fx":["int_exp+2"],"text":"保险起见。"}]},
+  {"id":"de_whispers","kind":"dungeon","dungeons":["grave"],"weight":10,"title":"耳边的低语","text":"空无一人的墓道里，你分明听见有人在耳边叫你的名字，一声又一声。",
+   "options":[
+     {"label":"不理，默念祷词","check":{"attr":"wil","diff":12},"ok":{"text":"低语渐渐远去，你的心反而更静了。","fx":["wil_exp+4","rep:church+1"]},"fail":{"text":"你不由自主回了头，什么也没看见，却冷汗涔涔。","fx":["hp-9","wil_exp+1"]}},
+     {"label":"大声喝问","fx":["wil_exp+2"],"text":"声音在墓道里回荡，低语停了一瞬，又继续。"}]},
+  {"id":"de_grave_robber","kind":"dungeon","dungeons":["grave"],"weight":8,"title":"同行的盗墓贼","text":"一个穿黑斗篷的人蹲在石棺边翻找，听见动静，迅速亮出短刃：“别误会，我们是同行。”",
+   "options":[
+     {"label":"和他分赃","fx":["gold+40","rep:church-3"],"text":"棺里的东西被拆成了两份。你没敢抬头看对方的眼睛。"},
+     {"label":"制服他，交给公会","check":{"attr":"agi","diff":11},"ok":{"text":"你一脚踢开短刃，把他绑成了粽子。公会的赏金很可观。","fx":["gold+30","rep:guild+4","rep:church+3"]},"fail":{"text":"他滑得像鱼，一个烟雾弹后不见了。","fx":["hp-5"]}}]},
+  {"id":"de_holy_water","kind":"dungeon","dungeons":["grave"],"weight":8,"title":"圣水池","text":"石室里有一方干净的水池，池沿刻着教会的神徽，水面泛着淡淡的光。",
+   "options":[
+     {"label":"掬一捧洗手洗脸","fx":["heal:0.35","status+:blessed:3"],"text":"一股暖流涌遍全身。"},
+     {"label":"取一瓶带走","fx":["heal:0.15","rep:church+2"],"text":"回去后可以交给神父。"}]},
+  {"id":"de_cursed_coffin","kind":"dungeon","dungeons":["grave"],"weight":7,"title":"贴着符纸的石棺","text":"一口石棺被七道符纸封得严严实实，棺盖上刻着“不可开启”。",
+   "options":[
+     {"label":"撕开符纸","check":{"attr":"luk","diff":11},"ok":{"text":"棺里是一柄擦得发亮的短剑，没有任何诅咒。","fx":["gold+50","exp+20"]},"fail":{"text":"一股阴风灌进你的衣领，你打了个寒颤，手臂上多了一道青印。","fx":["hp-10","status+:fatigue:2"]}},
+     {"label":"在棺前默哀，转身离开","fx":["rep:church+2","wil_exp+2"],"text":"有些东西，让它安息就好。"}]},
+  {"id":"de_wounded_knight","kind":"dungeon","dungeons":["fortress"],"weight":10,"title":"重伤的骑士","text":"废墟里，一名王国骑士倚着墙，铠甲裂了，他认出你的徽记：“……带话给王都……魔潮……不止这一座……”",
+   "options":[
+     {"label":"替他包扎，答应带话","fx":["rep:kingdom+5","rep:church+2","cha_exp+2","exp+25"],"text":"他把一枚带血的徽章按进你手里，闭上了眼。"},
+     {"label":"听完就走，时间紧迫","fx":["rep:kingdom+1","exp+10"],"text":"你记下了他说的每一个字。"}]},
+  {"id":"de_supply_cache","kind":"dungeon","dungeons":["fortress"],"weight":9,"title":"军需箱","text":"一只印着王国纹章的木箱被丢在墙角，里面是干粮、药水和一小袋军饷。",
+   "options":[
+     {"label":"拿药水和军饷","fx":["heal:0.35","gold+50"],"text":"这些东西，本来也是给人用的。"},
+     {"label":"只拿药水","fx":["heal:0.35","rep:kingdom+2"],"text":"军饷留给后来的人。"}]},
+  {"id":"de_demon_sigil","kind":"dungeon","dungeons":["fortress"],"weight":8,"title":"魔王的印记","text":"地上刻着一枚暗红色的魔法阵，正在缓缓转动，散发着令人头晕的气息。",
+   "options":[
+     {"label":"用意志力抵抗并记下它的结构","check":{"attr":"wil","diff":13},"ok":{"text":"你顶着压力记下了阵纹的走向，这也许能在最终一战里派上用场。","fx":["int_exp+5","wil_exp+4","exp+30","flag+:sigil_studied"]},"fail":{"text":"魔力像潮水一样冲击着你的意识，你踉跄后退。","fx":["hp-14","wil_exp+2"]}},
+     {"label":"绕开魔法阵","fx":["agi_exp+2"],"text":"你从边缘擦过，没有触发它。"}]},
+  {"id":"de_war_horn","kind":"dungeon","dungeons":["fortress"],"weight":8,"title":"号角声","text":"远处的城墙上响起了低沉的号角，那是魔潮的号令，整座要塞的敌人都被惊动了。",
+   "options":[
+     {"label":"趁乱突进","check":{"attr":"agi","diff":12},"ok":{"text":"你利用混乱，一路悄无声息地穿过了守卫。","fx":["agi_exp+4","exp+25"]},"fail":{"text":"你被发现，一路杀出重围。","fx":["hp-14","str_exp+2"]}},
+     {"label":"找掩体先躲一躲（1 体力）","cost":1,"fx":["heal:0.15","wil_exp+2"],"text":"号角声平息后，你才继续前进。"}]}
+]

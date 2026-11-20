@@ -1,0 +1,580 @@
+[
+  {
+    "id": "n_20sp",
+    "kind": "special",
+    "when": {
+      "age": 20,
+      "season": "spring"
+    },
+    "priority": 40,
+    "title": "二十岁的信",
+    "text": "生日那天，旧宅的信箱里多了一封没有署名的信，信纸上只有一句话：“王家档案馆的第七排，从下数第三层，有些东西被人搬过。”",
+    "options": [
+      {
+        "label": "记下这句话，暂时不声张",
+        "text": "你把信折成极小的一块，塞进了怀表后面。",
+        "fx": [
+          "flag+:archive_hint",
+          "int_exp+2",
+          "wil_exp+1"
+        ]
+      },
+      {
+        "label": "拿给阿尔弗看",
+        "text": "阿尔弗看完，沉默了很久：“少爷，这件事，您自己拿主意。”",
+        "fx": [
+          "flag+:archive_hint",
+          "rel:alfred+1",
+          "wil_exp+1"
+        ]
+      }
+    ],
+    "scene": "manor_spring",
+    "portrait": "alfred"
+  },
+  {
+    "id": "n_24au",
+    "kind": "special",
+    "when": {
+      "age": 24,
+      "season": "autumn"
+    },
+    "priority": 40,
+    "title": "宰相的演讲",
+    "text": "秋季庆典上，宰相洛克伍德站在高台上演讲，台下掌声雷动。他说到“忠诚”这个词时，目光恰好落在人群里的你身上，停留了一瞬。",
+    "options": [
+      {
+        "label": "直视他，不躲",
+        "text": "他的眼神像水面一样平静。但你注意到，他握着稿纸的手指，稍微紧了一下。",
+        "fx": [
+          "wil_exp+3",
+          "cha_exp+2"
+        ]
+      },
+      {
+        "label": "在人群里悄悄后退",
+        "text": "你退到了灯光照不到的地方，看着他讲完每一个字。",
+        "fx": [
+          "wil_exp+2",
+          "int_exp+2"
+        ]
+      }
+    ],
+    "scene": "street",
+    "portrait": "lockwood"
+  },
+  {
+    "id": "n_18wi",
+    "kind": "special",
+    "priority": 40,
+    "title": "雪夜的访客",
+    "text": "大雪封了半座城。深夜，门铃响了，阿尔弗披着衣服去开门，回来时手里捧着一只湿透的油纸包：“少爷，有人把它放在了门口，没留名字。”\n你拆开，里面是一小袋金币，和一张纸条：“令尊从前帮过我。”",
+    "options": [
+      {
+        "label": "把金币记在账上，纸条收好",
+        "text": "你把纸条夹进了日记，一整夜都没睡着。",
+        "fx": [
+          "gold+60",
+          "hometown+1",
+          "wil_exp+1"
+        ]
+      },
+      {
+        "label": "把一半分给最近冻得最厉害的邻居",
+        "text": "第二天，隔壁的老太太悄悄给你家门口放了一篮炖菜。",
+        "fx": [
+          "gold+30",
+          "hometown+3",
+          "rep:church+1"
+        ]
+      }
+    ],
+    "when": {
+      "age": 18,
+      "season": "winter"
+    },
+    "scene": "manor_winter",
+    "portrait": "alfred"
+  },
+  {
+    "id": "n_19au",
+    "kind": "special",
+    "priority": 40,
+    "title": "高塔的入学礼",
+    "text": "秋季入学礼上，新生们按成绩依次上台。第一个被叫到名字的，是瓦伦·洛克伍德。\n掌声很响。你站在人群的边缘，看着那个金发少年面无表情地接过徽章，忽然觉得，他的背挺得有点太直了。",
+    "options": [
+      {
+        "label": "鼓掌，礼貌而克制",
+        "text": "你不想给任何人留下把柄。",
+        "fx": [
+          "cha_exp+2",
+          "wil_exp+1"
+        ]
+      },
+      {
+        "label": "低头记下他身后站着的几位大人物",
+        "text": "你把名字和站位一个个记在了脑子里。",
+        "fx": [
+          "int_exp+2",
+          "exp+10"
+        ]
+      }
+    ],
+    "when": {
+      "age": 19,
+      "season": "autumn"
+    },
+    "scene": "tower",
+    "portrait": "valen"
+  },
+  {
+    "id": "n_20au",
+    "kind": "special",
+    "priority": 40,
+    "title": "母亲的生日",
+    "text": "母亲的生日快到了。往年这一天，旧宅里都会摆上一桌清淡的素菜，请几个老仆一起吃。\n今年，阿尔弗悄悄把你拉到一边：“少爷，夫人问您，能不能带她出去走走。”",
+    "options": [
+      {
+        "label": "买一束花，推她去公园（30 金币）",
+        "text": "她在长椅上坐了很久，手里捏着那束花，一句话也没说，笑得很满足。",
+        "fx": [
+          "gold-30",
+          "rel:vera+3",
+          "hometown+1"
+        ],
+        "cond": "flag:vera_alive&&gold>=30",
+        "reason": "金币不足或母亲不在了"
+      },
+      {
+        "label": "在家为她读一整天的诗",
+        "text": "她闭着眼听着，偶尔跟着轻轻念两句。",
+        "fx": [
+          "rel:vera+2",
+          "cha_exp+2",
+          "wil_exp+1"
+        ],
+        "cond": "flag:vera_alive",
+        "reason": "母亲不在了"
+      },
+      {
+        "label": "在父亲的画像前独自站一会儿",
+        "text": "画像里的人笑着，眉眼和你一模一样。",
+        "fx": [
+          "wil_exp+3"
+        ],
+        "cond": "!flag:vera_alive",
+        "reason": "母亲还在世"
+      }
+    ],
+    "when": {
+      "age": 20,
+      "season": "autumn"
+    },
+    "scene": "manor_autumn",
+    "portrait": "vera"
+  },
+  {
+    "id": "n_21sp",
+    "kind": "special",
+    "priority": 40,
+    "title": "瓦伦的邀约",
+    "text": "瓦伦把你拦在高塔的回廊里，语气生硬：“我父亲想请你喝茶。别误会，是正式邀请。”\n他停顿了一下，补了一句：“你可以不去。”",
+    "options": [
+      {
+        "label": "答应去，暗中观察",
+        "check": {
+          "attr": "cha",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你在宰相府的会客厅里坐了一个钟头，把每一个路过的仆人、每一幅挂画都记了下来。离开时，瓦伦在门口低声说：“……你比我想的镇定。”",
+          "fx": [
+            "count:evidence+1",
+            "cha_exp+3",
+            "exp+30"
+          ]
+        },
+        "fail": {
+          "text": "宰相没有出现，管家把茶端了上来，你什么也没问到，倒是被客客气气地送了出来。",
+          "fx": [
+            "cha_exp+2",
+            "hometown+1"
+          ]
+        },
+        "cond": "flag:met_valen",
+        "reason": "还没有见过瓦伦"
+      },
+      {
+        "label": "婉拒",
+        "text": "瓦伦轻轻舒了一口气：“好。”他转身走了，像是松了口气，又像是失望。",
+        "fx": [
+          "wil_exp+2",
+          "rel:valen+1"
+        ],
+        "cond": "flag:met_valen"
+      }
+    ],
+    "when": {
+      "age": 21,
+      "season": "spring"
+    },
+    "scene": "tower",
+    "portrait": "valen"
+  },
+  {
+    "id": "n_21au",
+    "kind": "special",
+    "priority": 40,
+    "title": "墨提斯缺席的一个月",
+    "text": "墨提斯连续一个月没有出现在塔里。助教们说他出了远门，神色躲闪。\n你在他的办公室门口站了一会儿，门缝里压着一张纸条：“若有急事，找艾琳。”",
+    "options": [
+      {
+        "label": "去找艾琳",
+        "text": "艾琳盯着你看了很久：“……他去了王家档案馆，被扣了三天。”",
+        "fx": [
+          "rel:elin+1",
+          "exp+20",
+          "wil_exp+1"
+        ],
+        "cond": "flag:met_elin",
+        "reason": "还不认识艾琳"
+      },
+      {
+        "label": "在门口留下一封信",
+        "text": "你把自己这些年的疑问都写了进去，没有署名。",
+        "fx": [
+          "int_exp+3",
+          "rel:metis+1"
+        ],
+        "cond": "flag:met_metis",
+        "reason": "还没有见过墨提斯"
+      }
+    ],
+    "when": {
+      "age": 21,
+      "season": "autumn"
+    },
+    "scene": "tower",
+    "portrait": "metis"
+  },
+  {
+    "id": "n_22wi",
+    "kind": "special",
+    "priority": 40,
+    "title": "阿尔弗病倒了",
+    "text": "阿尔弗在厨房里晕倒了。你把他背到床上，才发现他的手腕细得像一根枯枝。\n大夫摇头：“年纪大了，又长期劳累，需要静养。”",
+    "options": [
+      {
+        "label": "请最好的医生，让他好好休息（80 金币）",
+        "text": "你把他的活都揽了下来，一个月后，他的脸色才终于好看了一些。",
+        "fx": [
+          "gold-80",
+          "rel:alfred+3",
+          "hometown+1"
+        ],
+        "cond": "gold>=80",
+        "reason": "金币不足"
+      },
+      {
+        "label": "亲自照顾他（2 体力）",
+        "text": "你熬了几个夜，学会了煮粥和熬药。",
+        "fx": [
+          "rel:alfred+3",
+          "wil_exp+3"
+        ],
+        "cost": 2
+      },
+      {
+        "label": "让他自己撑着",
+        "text": "他睡了三天，起来之后，什么也没提。",
+        "fx": [
+          "rel:alfred-1"
+        ]
+      }
+    ],
+    "when": {
+      "age": 22,
+      "season": "winter"
+    },
+    "scene": "manor_winter",
+    "portrait": "alfred"
+  },
+  {
+    "id": "n_23sp",
+    "kind": "special",
+    "priority": 40,
+    "title": "艾琳的店被砸了",
+    "text": "清晨，艾琳气喘吁吁地冲到旧宅门口：“书店被人砸了，什么都没偷，只把关于十二年前的几本旧志全撕了。”",
+    "options": [
+      {
+        "label": "立刻赶去帮忙（1 体力）",
+        "text": "满地碎纸。你们蹲在地上，一页一页地拼，拼到天黑。",
+        "fx": [
+          "rel:elin+2",
+          "wil_exp+2",
+          "count:evidence+0"
+        ],
+        "cost": 1,
+        "cond": "flag:met_elin",
+        "reason": "还不认识艾琳"
+      },
+      {
+        "label": "安慰她，但不去",
+        "text": "艾琳点点头，什么也没说，转身走了。",
+        "fx": [
+          "rel:elin-1"
+        ],
+        "cond": "flag:met_elin",
+        "reason": "还不认识艾琳"
+      }
+    ],
+    "when": {
+      "age": 23,
+      "season": "spring"
+    },
+    "scene": "street",
+    "portrait": "elin"
+  },
+  {
+    "id": "n_25au",
+    "kind": "special",
+    "priority": 40,
+    "title": "耳目",
+    "text": "这几个月，你总觉得有人在盯着你。昨晚，你确认了：街角有个戴灰帽的男人，已经连续三天出现在同一个位置。",
+    "options": [
+      {
+        "label": "绕道，甩掉他",
+        "check": {
+          "attr": "agi",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你穿过两条小巷，在拐角处躲进一家面包店。那人走过去的时候，皱着眉头，一脸疑惑。",
+          "fx": [
+            "agi_exp+3",
+            "wil_exp+1"
+          ]
+        },
+        "fail": {
+          "text": "你被他一路跟到了旧宅门口。他摘了摘帽子，微微一笑，转身离开。",
+          "fx": [
+            "hometown-2",
+            "wil_exp+2"
+          ]
+        }
+      },
+      {
+        "label": "直接走过去，当面问他",
+        "text": "那人愣了一下，丢下一句“我只是路过”，快步消失在人群里。",
+        "fx": [
+          "cha_exp+3",
+          "wil_exp+2"
+        ]
+      }
+    ],
+    "when": {
+      "age": 25,
+      "season": "autumn"
+    },
+    "scene": "street",
+    "portrait": "lockwood"
+  },
+  {
+    "id": "n_26au",
+    "kind": "special",
+    "priority": 90,
+    "title": "宰相的交易",
+    "text": "秋天，洛克伍德亲自来到旧宅。他没有带随从，只带了一只黑檀木匣。\n“请原谅我的唐突。”他在客厅里坐下，“我是来做一笔交易的。”\n匣子里，是一纸文书：撤诉，恢复爵位名义，清偿全部债务。条件只有一个：复议日那天，别出现。",
+    "options": [
+      {
+        "label": "接受他的条件",
+        "text": "你的手在文书上悬了很久，最后落了下去。\n他起身，把文书收好：“令尊如果知道，也许会理解。”",
+        "fx": [
+          "flag+:bought_off",
+          "count:debt-9999",
+          "hometown+10",
+          "wil_exp-0"
+        ],
+        "cond": "true",
+        "avoid": true
+      },
+      {
+        "label": "拒绝，请他离开",
+        "text": "洛克伍德站起身，没有愤怒，也没有意外：“我就知道。”\n他在门口停了停：“那就复议日见。”",
+        "fx": [
+          "flag+:refused_offer",
+          "wil_exp+5",
+          "hometown+2",
+          "exp+40"
+        ]
+      },
+      {
+        "label": "假装考虑，套他的话",
+        "check": {
+          "attr": "cha",
+          "diff": 14,
+          "memDiff": {
+            "id": "m_n_lockwood",
+            "diff": -3
+          }
+        },
+        "ok": {
+          "text": "你一边犹豫，一边引他多说了几句。他离开时，你把刚才的每一个字，都在心里默了一遍。其中有一句话，足以让你在复议日上多一份底气。",
+          "fx": [
+            "flag+:refused_offer",
+            "count:evidence+1",
+            "cha_exp+4",
+            "exp+30"
+          ]
+        },
+        "fail": {
+          "text": "他看出了你的试探，微微一笑：“聪明。但还不够。”他合上木匣，转身离开。",
+          "fx": [
+            "flag+:refused_offer",
+            "cha_exp+2",
+            "wil_exp+2"
+          ]
+        }
+      }
+    ],
+    "when": {
+      "age": 26,
+      "season": "autumn"
+    },
+    "scene": "manor_autumn",
+    "portrait": "lockwood"
+  },
+  {
+    "id": "n_26wi",
+    "kind": "special",
+    "priority": 40,
+    "title": "最后一个冬天",
+    "text": "旧宅的炉火在冬夜里噼啪作响。窗外的雪下得很慢，一片一片，像是在数着日子。\n距离复议日，只剩不到两年。",
+    "options": [
+      {
+        "label": "和母亲坐在炉边，读她最喜欢的诗",
+        "text": "母亲靠在你肩上，轻声说：“你小时候也是这样。”",
+        "fx": [
+          "rel:vera+2",
+          "wil_exp+2",
+          "hometown+1"
+        ],
+        "cond": "flag:vera_alive",
+        "reason": "母亲不在了"
+      },
+      {
+        "label": "陪阿尔弗在厨房喝一杯",
+        "text": "阿尔弗倒了两杯红酒，举起来：“敬老爷。”",
+        "fx": [
+          "rel:alfred+2",
+          "wil_exp+2"
+        ]
+      },
+      {
+        "label": "一个人在书房整理笔记",
+        "text": "你把每一份证据读到了能背下来。",
+        "fx": [
+          "int_exp+3",
+          "wil_exp+3",
+          "exp+30"
+        ]
+      }
+    ],
+    "when": {
+      "age": 26,
+      "season": "winter"
+    },
+    "scene": "manor_winter",
+    "portrait": "alfred"
+  },
+  {
+    "id": "n_vera_last",
+    "kind": "special",
+    "priority": 60,
+    "title": "母亲的嘱托",
+    "text": "母亲把你叫到床边，握着你的手，认真地看着你：“如果有一天，你要在报仇和放下之间选择……”\n她停了一下，笑了：“我不替你选。你选哪一个，我都会骄傲。”",
+    "options": [
+      {
+        "label": "握紧她的手",
+        "text": "她的手很凉，你捂了很久。",
+        "fx": [
+          "rel:vera+3",
+          "wil_exp+4"
+        ]
+      },
+      {
+        "label": "“我会做出我不后悔的选择。”",
+        "text": "母亲点点头，闭上眼睛：“这就够了。”",
+        "fx": [
+          "rel:vera+2",
+          "wil_exp+3",
+          "exp+30"
+        ]
+      }
+    ],
+    "cond": "flag:vera_alive&&age>=25&&rel.vera>=6",
+    "scene": "manor_winter",
+    "portrait": "vera",
+    "once": true
+  },
+  {
+    "id": "n_valen_family",
+    "kind": "special",
+    "priority": 60,
+    "title": "瓦伦的坚持",
+    "text": "瓦伦在夜里敲响了旧宅的门，脸色苍白，衣领上沾着一点血：“我和我父亲吵了一架。”\n他拒绝说是怎么吵的，只把一只信封拍在桌上：“这是我能给你的最后一份。”",
+    "options": [
+      {
+        "label": "请他进来，给他包扎",
+        "text": "他靠着门框，疲惫地笑了笑：“我以为我不会后悔，原来会。”",
+        "fx": [
+          "rel:valen+2",
+          "count:evidence+1",
+          "wil_exp+2"
+        ]
+      },
+      {
+        "label": "收下信封，让他回去",
+        "text": "他点点头，转身走进了夜色。",
+        "fx": [
+          "count:evidence+1",
+          "wil_exp+1"
+        ]
+      }
+    ],
+    "cond": "flag:ally_valen&&age>=22",
+    "scene": "manor_winter",
+    "portrait": "valen",
+    "once": true
+  },
+  {
+    "id": "n_alfred_after",
+    "kind": "special",
+    "priority": 60,
+    "title": "阿尔弗的坦白",
+    "text": "证据一页页摊开在书桌上，阿尔弗站在一旁，沉默了很久，忽然开口：“少爷，十二年前那天夜里，我也在场。”\n他的声音很轻：“我没有告诉您，是因为我答应了老爷。”",
+    "options": [
+      {
+        "label": "请他把话讲完",
+        "text": "阿尔弗讲了半个钟头。你一边听，一边把关键的几句默默记下。",
+        "fx": [
+          "count:evidence+1",
+          "rel:alfred+3",
+          "wil_exp+3"
+        ]
+      },
+      {
+        "label": "“您不用说了。”",
+        "text": "阿尔弗愣了愣，眼眶红了：“少爷……”",
+        "fx": [
+          "rel:alfred+4",
+          "wil_exp+2"
+        ]
+      }
+    ],
+    "cond": "flag:ch3_open&&count.evidence>=3&&rel.alfred>=5",
+    "scene": "library",
+    "portrait": "alfred",
+    "once": true
+  }
+]

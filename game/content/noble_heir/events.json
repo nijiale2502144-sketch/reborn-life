@@ -1,0 +1,1729 @@
+[
+  {
+    "id": "n_market",
+    "kind": "chain",
+    "title": "王都集市",
+    "text": "集市里，魔法商人的摊位和旧书摊挤在同一条窄街上。卖药水的小贩嗓门最大，卖魔晶的老头最沉默。你摸了摸钱袋，里面的重量让你有点心虚。",
+    "options": [
+      {
+        "label": "买一根橡木法杖（120 金币）",
+        "text": "法杖握在手里有点凉，杖头的蓝晶在日光下闪了一下。",
+        "fx": [
+          "gold-120",
+          "item:oak_staff",
+          "flag+:has_staff"
+        ],
+        "cond": "gold>=120&&!flag:has_staff",
+        "reason": "金币不足或已拥有"
+      },
+      {
+        "label": "买一件学徒法袍（100 金币）",
+        "text": "深蓝色的袍子，袖口绣着星纹。穿上后，镜子里的人忽然像个像样的学徒。",
+        "fx": [
+          "gold-100",
+          "item:mage_robe",
+          "flag+:has_robe"
+        ],
+        "cond": "gold>=100&&!flag:has_robe",
+        "reason": "金币不足或已拥有"
+      },
+      {
+        "label": "买一瓶魔力药剂（40 金币）",
+        "text": "带着薄荷凉味的蓝色药剂，一口下去，胸口的空虚被慢慢填满。",
+        "fx": [
+          "gold-40",
+          "mpheal:0.8"
+        ],
+        "cond": "gold>=40",
+        "reason": "金币不足"
+      },
+      {
+        "label": "买一瓶伤药（30 金币）",
+        "text": "苦得你直皱眉，伤口却很快不疼了。",
+        "fx": [
+          "gold-30",
+          "heal:0.6"
+        ],
+        "cond": "gold>=30",
+        "reason": "金币不足"
+      },
+      {
+        "label": "买一本旧魔导书（50 金币）",
+        "text": "书脊上的烫金早已磨光，但里面有前人密密麻麻的批注。",
+        "fx": [
+          "gold-50",
+          "int_exp+8",
+          "count:arcana+1"
+        ],
+        "cond": "gold>=50",
+        "reason": "金币不足"
+      },
+      {
+        "label": "请高塔的高年级学徒指点（60 金币）",
+        "text": "对方一边收钱一边挑你的毛病，挑完又纠正了三个你一直没发觉的错。",
+        "fx": [
+          "gold-60",
+          "int_exp+5",
+          "wil_exp+3",
+          "exp+10"
+        ],
+        "cond": "gold>=60",
+        "reason": "金币不足"
+      },
+      {
+        "label": "向教会的施粥处捐一些钱（20 金币）",
+        "text": "没人知道你是谁。但粥铺的老太太把你的名字，写进了捐赠簿里。",
+        "fx": [
+          "gold-20",
+          "rep:church+3",
+          "hometown+1"
+        ],
+        "cond": "gold>=20",
+        "reason": "金币不足"
+      },
+      {
+        "label": "走进内间看看贵重货（只对有魅力的人开放）",
+        "fx": [
+          "goto:n_market_vip"
+        ],
+        "text": "店员看了看你的袖口，掀开了内间的帘子。"
+      },
+      {
+        "label": "什么也不买，转一圈",
+        "text": "你看了很久，最后只是买了一块糖，带回去给母亲。",
+        "fx": [
+          "cha_exp+1",
+          "rel:vera+1"
+        ]
+      }
+    ],
+    "scene": "street"
+  },
+  {
+    "id": "n_teahouse",
+    "kind": "chain",
+    "title": "茶馆",
+    "text": "茶馆里烟气氤氲，每一桌都在小声议论别人的事。你找了个靠窗的位置坐下，伙计很快端来了一壶茶。",
+    "options": [
+      {
+        "label": "喝一壶热茶，吃点点心（6 金币）",
+        "text": "热茶下肚，一整天的疲惫都散了。",
+        "fx": [
+          "gold-6",
+          "heal:0.4",
+          "mpheal:0.4",
+          "status-:fatigue"
+        ],
+        "cond": "gold>=6",
+        "reason": "金币不足"
+      },
+      {
+        "label": "请邻座喝一杯，打听消息（8 金币）",
+        "text": "邻座的人话匣子一打开，就收不住了。",
+        "fx": [
+          "gold-8",
+          "cha_exp+2",
+          {
+            "if": "count.rumor==0",
+            "then": [
+              "log:听说当年的会审书记官里，有一位后来回了乡下，据说一直留着一份抄本。",
+              "count:evidence+1"
+            ],
+            "else": [
+              {
+                "if": "count.rumor==1",
+                "then": [
+                  "log:听说高塔的下一轮考核，会特别看重“实操”，不是死背书。",
+                  "rep:tower+2"
+                ],
+                "else": [
+                  {
+                    "if": "count.rumor==2",
+                    "then": [
+                      "log:听说洛克伍德家的少爷，最近和他父亲吵了一架。",
+                      "count:valen_clash+1"
+                    ],
+                    "else": [
+                      {
+                        "if": "count.rumor==3",
+                        "then": [
+                          "log:听说债主们最近换了新的管事，对旧账“会宽限一些”。",
+                          "count:debt-40"
+                        ],
+                        "else": [
+                          "exp+8"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "count:rumor+1"
+        ],
+        "cond": "gold>=8",
+        "reason": "金币不足"
+      },
+      {
+        "label": "和人下一盘棋，押 20 金币",
+        "check": {
+          "attr": "int",
+          "diff": 11
+        },
+        "ok": {
+          "text": "你布了一个很长的局，对手落子越来越慢，最后推倒了自己的王。",
+          "fx": [
+            "gold+34",
+            "int_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "你输了半子，对手笑着把钱收了过去。",
+          "fx": [
+            "gold-20",
+            "int_exp+2"
+          ]
+        },
+        "cond": "gold>=20",
+        "reason": "金币不足"
+      },
+      {
+        "label": "坐一会儿就走",
+        "text": "你听了半个时辰的闲话，没有一句是新的。",
+        "fx": [
+          "wil_exp+1"
+        ]
+      }
+    ],
+    "scene": "street"
+  },
+  {
+    "id": "n_vera_recover",
+    "kind": "chain",
+    "title": "母亲的病情",
+    "text": "药煎了一服又一服。深冬的某个夜里，母亲忽然睁开眼，轻声叫了你的名字，声音很虚，却是清醒的。",
+    "options": [
+      {
+        "label": "守在床边，一夜没合眼",
+        "text": "你握着她的手，一直到天亮。她的手心渐渐有了温度。",
+        "fx": [
+          "flag+:vera_better",
+          "rel:vera+3",
+          "wil_exp+3"
+        ]
+      },
+      {
+        "label": "请城里最好的医生再来看一次（60 金币）",
+        "text": "医生诊了很久，说：“用药得当，能熬过这个冬天。”",
+        "fx": [
+          "gold-60",
+          "flag+:vera_better",
+          "rel:vera+2",
+          "hometown+2"
+        ],
+        "cond": "gold>=60",
+        "reason": "金币不足"
+      }
+    ],
+    "portrait": "vera",
+    "scene": "manor_winter"
+  },
+  {
+    "id": "n_alfred_safe",
+    "kind": "chain",
+    "title": "书房的暗格",
+    "text": "阿尔弗领你到书房最里面，推开一排书，露出一个锈迹斑斑的铁暗格。“老爷走之前，把钥匙交给我，说等少爷能自己守住秘密的时候，再打开。”他的手在抖。",
+    "options": [
+      {
+        "label": "用家徽戒指开启",
+        "text": "戒指的内圈正好嵌进了锁孔。咔哒一声，暗格里躺着一叠被油纸裹得严实的信件和一本账簿。",
+        "fx": [
+          "flag+:safe_opened",
+          "count:evidence+1",
+          "rel:alfred+2",
+          "exp+30"
+        ]
+      },
+      {
+        "label": "请阿尔弗一起打开",
+        "text": "两个人的手同时按在锁上。暗格里，是一本账簿和一叠被虫蛀的信。",
+        "fx": [
+          "flag+:safe_opened",
+          "count:evidence+1",
+          "rel:alfred+3",
+          "wil_exp+2"
+        ]
+      }
+    ],
+    "portrait": "alfred",
+    "scene": "library"
+  },
+  {
+    "id": "n_metis_gift",
+    "kind": "chain",
+    "title": "墨提斯的赠礼",
+    "text": "三道题全部答完，墨提斯把你叫到塔顶的露台上。风吹得他的白袍猎猎作响。“你父亲，是我最好的学生。”他说，“也是我没有保护好的人。”",
+    "options": [
+      {
+        "label": "接受他的怀表与支持",
+        "text": "怀表里的指针走得很慢，像一颗沉稳的心。墨提斯伸出手：“复议日那天，我会站在你身后。”",
+        "fx": [
+          "flag+:metis_gift",
+          "flag+:ally_metis",
+          "item:tower_cloak",
+          "rel:metis+3",
+          "rep:tower+5"
+        ]
+      },
+      {
+        "label": "道谢，但不想拖累他",
+        "text": "墨提斯长长地看了你一会儿，叹了口气：“你比他倔。”但还是把怀表塞进了你的口袋。",
+        "fx": [
+          "flag+:metis_gift",
+          "rel:metis+2",
+          "int_exp+4",
+          "wil_exp+2"
+        ]
+      }
+    ],
+    "portrait": "metis",
+    "scene": "tower"
+  },
+  {
+    "id": "n_elin_ally",
+    "kind": "chain",
+    "title": "艾琳的决定",
+    "text": "档案馆闭馆后，艾琳锁上了大门，转身对你说：“我替你查了两个月，才发现，这个案子牵涉的东西，比你以为的大得多。”她把一叠抄录的副本放在你手里，“我想帮你到底。”",
+    "options": [
+      {
+        "label": "接受她的帮助",
+        "text": "你看着她被烛光映红的脸，说不出话，只是握紧了那叠纸。",
+        "fx": [
+          "flag+:ally_elin",
+          "count:evidence+1",
+          "rel:elin+3"
+        ]
+      },
+      {
+        "label": "婉拒，不想牵连她",
+        "text": "“你一个人撑不住的。”她摇了摇头，“但没关系，我先替你收着这份东西，什么时候想要，来找我。”",
+        "fx": [
+          "flag+:ally_elin",
+          "rel:elin+2",
+          "cha_exp+2"
+        ]
+      }
+    ],
+    "portrait": "elin",
+    "scene": "library"
+  },
+  {
+    "id": "n_valen_truth",
+    "kind": "chain",
+    "title": "瓦伦的真相",
+    "text": "比试之后，瓦伦把你叫到了走廊尽头。他看起来第一次有些局促：“我不想成为我爸那样的人。”他把一份宰相府的出入记录推给你，“拿着，别问我为什么。”",
+    "options": [
+      {
+        "label": "接过记录，对他点头",
+        "text": "他侧过脸，不看你：“复议日，我会在旁听席上。”",
+        "fx": [
+          "flag+:ally_valen",
+          "count:evidence+1",
+          "rel:valen+3"
+        ]
+      },
+      {
+        "label": "不相信，先放在一边",
+        "text": "他苦笑了一下：“也对。你没有理由相信我。”",
+        "fx": [
+          "rel:valen+1",
+          "wil_exp+2",
+          "flag+:ally_valen"
+        ]
+      }
+    ],
+    "portrait": "valen",
+    "scene": "tower"
+  },
+  {
+    "id": "n_exam_apprentice",
+    "kind": "special",
+    "title": "入塔考试",
+    "text": "高塔每年两次招收学徒。考官把一枚星形的石片放在你面前：“让它亮起来。不用多，一瞬就够。”\n你深吸一口气。",
+    "options": [
+      {
+        "label": "接受考试",
+        "check": {
+          "attr": "int",
+          "diff": 11
+        },
+        "ok": {
+          "text": "石片从中心亮起，一圈蓝色的光渐渐漾开。考官点了点头：“合格。”\n你走出考场时，手心里全是汗。",
+          "fx": [
+            "flag+:tower_admitted",
+            "rank:2",
+            "rep:tower+5",
+            "exp+40",
+            "item:oak_staff"
+          ]
+        },
+        "fail": {
+          "text": "石片连闪都没闪。考官面无表情：“下一次吧。”",
+          "fx": [
+            "int_exp+3",
+            "wil_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "再准备一阵",
+        "text": "考官点点头：“门一直开着。”",
+        "fx": []
+      }
+    ],
+    "once": false,
+    "cooldown": 3,
+    "priority": 80,
+    "cond": "attr.int>=13&&level>=2&&count.arcana>=2&&rep.tower>=5&&!flag:tower_admitted&&!flag:main_failed",
+    "portrait": "metis",
+    "scene": "tower"
+  },
+  {
+    "id": "n_exam_junior",
+    "kind": "special",
+    "title": "初级魔法师考核",
+    "text": "学徒到初级，是高塔里淘汰最多的一关。考题只有一道：在三分钟里，同时维持两个不同属性的法术。",
+    "options": [
+      {
+        "label": "接受考核",
+        "check": {
+          "attr": "int",
+          "diff": 14
+        },
+        "ok": {
+          "text": "火与冰在你掌心同时亮起，彼此相安无事。考官的笔停在了半空，很久才落下一个“优”。",
+          "fx": [
+            "rank:3",
+            "rep:tower+8",
+            "exp+80",
+            "item:mage_robe"
+          ]
+        },
+        "fail": {
+          "text": "冰在火里化成了一滩水，你的手指烫红了一片。",
+          "fx": [
+            "int_exp+4",
+            "wil_exp+2",
+            "hp-3"
+          ]
+        }
+      },
+      {
+        "label": "再准备一阵",
+        "text": "考官点点头：“不急，别勉强。”",
+        "fx": []
+      }
+    ],
+    "once": false,
+    "cooldown": 3,
+    "priority": 80,
+    "cond": "rank>=2&&rank<3&&level>=8&&attr.int>=17&&rep.tower>=25",
+    "portrait": "metis",
+    "scene": "tower"
+  },
+  {
+    "id": "n_exam_mid",
+    "kind": "special",
+    "title": "中级魔法师考核",
+    "text": "高塔的大殿里，九位导师围坐成半圆。“中级魔法师，不是比谁的魔力更多，”首席导师说，“是看谁知道什么时候不该用。”",
+    "options": [
+      {
+        "label": "接受考核",
+        "check": {
+          "attr": "int",
+          "diff": 16
+        },
+        "ok": {
+          "text": "你没有放出一个攻击咒。你只是在导师设下的试炼幻象里，一步一步走到了最后一个房间。首席导师把一枚银色的星纹徽章放在你的掌心。",
+          "fx": [
+            "rank:4",
+            "rep:tower+10",
+            "exp+120"
+          ]
+        },
+        "fail": {
+          "text": "幻象把你困了很久，你最终选择了放弃。导师没有说话，只是把门打开了。",
+          "fx": [
+            "int_exp+5",
+            "wil_exp+3"
+          ]
+        }
+      },
+      {
+        "label": "再准备一阵",
+        "text": "首席导师点了点头：“那就再磨一磨。”",
+        "fx": []
+      }
+    ],
+    "once": false,
+    "cooldown": 3,
+    "priority": 80,
+    "cond": "rank>=3&&rank<4&&level>=14&&attr.int>=22&&rep.tower>=50",
+    "portrait": "metis",
+    "scene": "tower"
+  },
+  {
+    "id": "n_trial_day",
+    "kind": "special",
+    "title": "旧案复议日",
+    "text": "二十八岁的秋天。王国的法庭里，红毯一路铺到审判席前。旁听席坐满了人，窃窃私语声像潮水。\n宰相洛克伍德坐在右侧的席位上，神色平静，甚至对你微微颔首。\n书记官宣读：“格雷蒙特一案，申请复议。”\n你站了起来。\n（成功率 = 证据 + 盟友 + 名望为底，魅力为浮动；呈堂时会显示每一项的贡献。）",
+    "options": [
+      {
+        "label": "履行约定，缄口不言",
+        "text": "你站在门口，听见法官在身后宣布：“原告撤诉。”洛克伍德没有回头。",
+        "fx": [
+          "end:auto"
+        ],
+        "cond": "flag:bought_off",
+        "reason": "没有接受过宰相的条件"
+      },
+      {
+        "label": "凭完整的证据链与盟友，堂堂正正地陈词",
+        "check": {
+          "attr": "cha",
+          "diff": 0,
+          "fateDiff": 2,
+          "memDiff": {
+            "id": "m_n_trial",
+            "diff": -2
+          },
+          "compose": {
+            "base": 0.0,
+            "add": [
+              {
+                "key": "count.evidence",
+                "per": 0.03,
+                "max": 9,
+                "label": "证据"
+              },
+              {
+                "key": "count.allies",
+                "per": 0.06,
+                "max": 3,
+                "label": "盟友"
+              },
+              {
+                "key": "hometown",
+                "per": 0.001,
+                "max": 80,
+                "label": "名望"
+              }
+            ],
+            "from": 16,
+            "per": 0.015
+          },
+          "bonus": 0.12
+        },
+        "ok": {
+          "text": "你的声音在大厅里很稳。每一份证据被呈上去，每一位盟友被请出来作证。洛克伍德的辩词，一条一条被你驳了回去。\n最后，法官合上卷宗，长久地沉默。\n“本案，改判。”",
+          "fx": [
+            "flag+:trial_won",
+            "end:auto"
+          ]
+        },
+        "fail": {
+          "text": "证据被一一质疑。洛克伍德的律师提出了一个你没有想到的反驳，大厅里响起一片低语。法官摇了摇头：“证据链不完整，驳回。”",
+          "fx": [
+            "flag+:trial_lost",
+            "end:auto"
+          ]
+        },
+        "cond": "count.evidence>=9&&count.allies>=2&&!flag:bought_off",
+        "reason": "需要证据 ≥ 9 份、盟友 ≥ 2 位"
+      },
+      {
+        "label": "凭已有的证据陈词",
+        "check": {
+          "attr": "cha",
+          "diff": 0,
+          "fateDiff": 2,
+          "memDiff": {
+            "id": "m_n_trial",
+            "diff": -2
+          },
+          "compose": {
+            "base": 0.0,
+            "add": [
+              {
+                "key": "count.evidence",
+                "per": 0.03,
+                "max": 9,
+                "label": "证据"
+              },
+              {
+                "key": "count.allies",
+                "per": 0.06,
+                "max": 3,
+                "label": "盟友"
+              },
+              {
+                "key": "hometown",
+                "per": 0.001,
+                "max": 80,
+                "label": "名望"
+              }
+            ],
+            "from": 16,
+            "per": 0.015
+          },
+          "bonus": 0.05
+        },
+        "ok": {
+          "text": "你把每一份证据按时间排好，一句一句地念。每念一份，旁听席就安静一分。最后，法官看向宰相：“洛克伍德大人，您有何解释？”\n宰相的嘴唇动了动，没有说出话来。",
+          "fx": [
+            "flag+:trial_won",
+            "end:auto"
+          ]
+        },
+        "fail": {
+          "text": "证据太散，你的陈词被打断了好几次。洛克伍德轻描淡写地说了一句：“年轻人，凭空想象，是要负责任的。”",
+          "fx": [
+            "flag+:trial_lost",
+            "end:auto"
+          ]
+        },
+        "cond": "count.evidence>=6&&!flag:bought_off",
+        "reason": "需要证据 ≥ 6 份"
+      },
+      {
+        "label": "证据不足，只能赌一把",
+        "check": {
+          "attr": "cha",
+          "diff": 0,
+          "fateDiff": 2,
+          "memDiff": {
+            "id": "m_n_trial",
+            "diff": -2
+          },
+          "compose": {
+            "base": 0.0,
+            "add": [
+              {
+                "key": "count.evidence",
+                "per": 0.03,
+                "max": 9,
+                "label": "证据"
+              },
+              {
+                "key": "count.allies",
+                "per": 0.06,
+                "max": 3,
+                "label": "盟友"
+              },
+              {
+                "key": "hometown",
+                "per": 0.001,
+                "max": 80,
+                "label": "名望"
+              }
+            ],
+            "from": 16,
+            "per": 0.015
+          },
+          "bonus": -0.05
+        },
+        "ok": {
+          "text": "你空着手，却凭着十二年的执念说完了一切。大厅里有人站了起来，一个老书记官颤抖着走上前：“我，我当年在场。”\n局势，在这一刻翻转了。",
+          "fx": [
+            "flag+:trial_won",
+            "end:auto"
+          ]
+        },
+        "fail": {
+          "text": "你空着手，什么也说服不了。洛克伍德甚至没有开口，法官就敲下了木槌：“驳回。”",
+          "fx": [
+            "flag+:trial_lost",
+            "end:auto"
+          ]
+        },
+        "cond": "!flag:bought_off",
+        "reason": ""
+      },
+      {
+        "label": "以魔法师的身份，向宰相发起决斗",
+        "text": "你抬起手，法庭的灯光一盏一盏地暗了下去。\n“你确定？”洛克伍德站了起来，眼里第一次有了一丝波动。",
+        "fx": [
+          {
+            "type": "combat",
+            "enemy": "lockwood",
+            "noFlee": true,
+            "win": [
+              "flag+:revenge_done",
+              "end:auto"
+            ],
+            "lose": [
+              "flag+:final_lost",
+              "end:auto"
+            ]
+          }
+        ],
+        "cond": "rank>=3",
+        "reason": "需要至少是初级魔法师"
+      },
+      {
+        "label": "放下一切，转身离开法庭",
+        "text": "你在门口停住了脚步，阳光从高窗斜斜地落在你的肩头。",
+        "fx": [
+          "flag+:let_go",
+          "end:auto"
+        ]
+      }
+    ],
+    "priority": 200,
+    "scene": "court",
+    "when": {
+      "age": 28,
+      "season": "autumn"
+    },
+    "portrait": "lockwood",
+    "finale": true
+  },
+  {
+    "id": "n_vera_funeral",
+    "kind": "special",
+    "title": "母亲的葬礼",
+    "text": "葬礼很简单。只有阿尔弗、几个老仆人，和你。\n那天的雨不大，落在墓碑上，像是有人在轻轻敲门。你站了很久。",
+    "options": [
+      {
+        "label": "把母亲最爱的白玫瑰放在碑前",
+        "text": "白玫瑰是你从旧宅花园里最后一株上剪下来的。",
+        "fx": [
+          "wil_exp+4",
+          "hometown-2"
+        ]
+      },
+      {
+        "label": "在碑前立誓，一定要查清楚",
+        "text": "风吹过墓园，很安静。",
+        "fx": [
+          "wil_exp+5",
+          "exp+30"
+        ]
+      }
+    ],
+    "priority": 70,
+    "once": true,
+    "cond": "flag:vera_died",
+    "portrait": "alfred",
+    "scene": "manor_winter"
+  },
+  {
+    "id": "n_main_failed",
+    "kind": "special",
+    "title": "紧闭的大门",
+    "text": "高塔的名册上，没有你的名字。\n你在石阶上站了很久，最后把那封一直没递出去的推荐信，折好，放回了怀里。\n通往法庭的路，被切掉了一条。\n但复议日还在那里。你还有证据，还有人，还有两手空空走进去的勇气。",
+    "options": [
+      {
+        "label": "去找艾琳，换一种方式查下去",
+        "text": "艾琳听完你的话，没有劝你，只是把一把钥匙推到你面前：“档案馆后门，每晚十点。”",
+        "fx": [
+          "flag+:met_elin",
+          "rel:elin+1",
+          "wil_exp+3"
+        ]
+      },
+      {
+        "label": "回旧宅，重新开始读书",
+        "text": "你把父亲书房里的书一本一本搬下来。阿尔弗什么都没问，默默生了火。",
+        "fx": [
+          "int_exp+4",
+          "wil_exp+3",
+          "hometown+1"
+        ]
+      },
+      {
+        "label": "沉默地走回去",
+        "text": "街灯一盏盏亮起来，你的影子被拉得很长。",
+        "fx": [
+          "wil_exp+4"
+        ]
+      }
+    ],
+    "priority": 95,
+    "once": true,
+    "cond": "flag:main_failed",
+    "scene": "street",
+    "portrait": "noble"
+  },
+  {
+    "id": "n_debt_seize",
+    "kind": "special",
+    "title": "查封令",
+    "text": "债主带着两名差役站在门口，手里的文书盖着王都法院的章：“按照借据，格雷蒙特家的剩余资产，今日起查封。”\n阿尔弗挡在门前，被推到了一边。",
+    "options": [
+      {
+        "label": "变卖剩下的家产，先还一部分",
+        "text": "你看着差役们把一件件东西搬上马车。母亲的梳妆台，父亲的画像。",
+        "fx": [
+          "gold+200",
+          "count:debt-200",
+          "hometown-8",
+          "wil_exp+3"
+        ]
+      },
+      {
+        "label": "据理力争，请求宽限",
+        "check": {
+          "attr": "cha",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你把借据一条一条念出来，指出其中的几处违例。差役面面相觑，最后同意宽限三个月。",
+          "fx": [
+            "hometown-1",
+            "cha_exp+4"
+          ]
+        },
+        "fail": {
+          "text": "你的话被粗暴地打断了。差役把封条贴在了大门上。",
+          "fx": [
+            "hometown-8",
+            "gold-50"
+          ]
+        }
+      }
+    ],
+    "priority": 90,
+    "once": true,
+    "cond": "count.debt>=1500",
+    "scene": "manor_winter",
+    "portrait": "alfred"
+  },
+  {
+    "id": "n_16sp",
+    "kind": "special",
+    "title": "旧宅的清晨",
+    "text": "阿尔弗拉开窗帘，晨光落在积灰的书桌上。“少爷，早饭是昨天的面包，凑合一下。”\n你坐起来，看见桌上摊着一叠没拆的账单，最上面一张的数字，红得刺眼。\n今天，是你十六岁的第一天。",
+    "options": [
+      {
+        "label": "去父亲的书房，整理他留下的东西",
+        "text": "书架最底层有一排没人动过的册子，封面上有父亲的批注。",
+        "fx": [
+          "int_exp+3",
+          "count:arcana+1",
+          "wil_exp+1"
+        ]
+      },
+      {
+        "label": "出门，变卖一件旧物换钱",
+        "text": "你捧着父亲的银杯走进典当铺，价钱比想象的低，但够今天用了。",
+        "fx": [
+          "gold+120",
+          "count:sold+1",
+          "hometown-3"
+        ]
+      },
+      {
+        "label": "去高塔外，远远看看",
+        "text": "高塔的尖顶刺进云里。石阶下，有个金发少年也在抬头看。",
+        "fx": [
+          "rep:tower+2",
+          "cha_exp+1"
+        ]
+      }
+    ],
+    "when": {
+      "age": 16,
+      "season": "spring"
+    },
+    "priority": 40,
+    "portrait": "alfred",
+    "scene": "manor_spring"
+  },
+  {
+    "id": "n_16su",
+    "kind": "special",
+    "title": "债主上门",
+    "text": "午后，债主的管家带着两个壮汉敲响了大门：“格雷蒙特少爷，这个月的利息，该付了。”\n阿尔弗把门挡住一半，脸色铁青。",
+    "options": [
+      {
+        "label": "付 60 金币，先应付过去",
+        "text": "你把金币放进他手心。管家掂了掂，不满意，却也没再说什么。",
+        "fx": [
+          "gold-60",
+          "count:debt-60"
+        ],
+        "cond": "gold>=60",
+        "reason": "金币不足"
+      },
+      {
+        "label": "与他谈，请他宽限一个月",
+        "check": {
+          "attr": "cha",
+          "diff": 11
+        },
+        "ok": {
+          "text": "你站得笔直，用最体面的语气说完了你的计划。管家想了想，竟点了头。",
+          "fx": [
+            "cha_exp+3",
+            "hometown+1"
+          ]
+        },
+        "fail": {
+          "text": "他冷笑一声：“少爷，您的头衔值不了钱。”临走前，利息又涨了一点。",
+          "fx": [
+            "count:debt+30",
+            "hometown-3",
+            "cha_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "闭门不见，让阿尔弗回绝",
+        "text": "门外的敲门声，持续了很久。",
+        "fx": [
+          "wil_exp+2",
+          "hometown-2"
+        ]
+      }
+    ],
+    "when": {
+      "age": 16,
+      "season": "summer"
+    },
+    "priority": 40,
+    "scene": "manor_spring"
+  },
+  {
+    "id": "n_16au",
+    "kind": "special",
+    "title": "母亲的药",
+    "text": "秋天，母亲的咳嗽越来越重。大夫开了一张长长的药方，抓一服要九十金币。\n母亲靠在躺椅上，勉强笑着：“别花钱，我没事。”\n她的手在发抖。",
+    "options": [
+      {
+        "label": "变卖母亲的首饰，先抓一服药",
+        "text": "你把首饰盒里最后一对耳坠递给了典当铺老板。他看了你一眼，没有说话。",
+        "fx": [
+          "gold+90",
+          "count:sold+1",
+          "hometown-2",
+          "rel:vera+1",
+          "quest:start:vera_illness"
+        ]
+      },
+      {
+        "label": "先赊账，再慢慢还",
+        "text": "药铺老板叹了口气，把药包推过来：“记在账上。”",
+        "fx": [
+          "count:debt+80",
+          "rel:vera+1",
+          "quest:start:vera_illness"
+        ]
+      },
+      {
+        "label": "“我来想办法。”",
+        "text": "你把这句话咽了回去，只是点了点头。",
+        "fx": [
+          "wil_exp+2",
+          "quest:start:vera_illness"
+        ]
+      }
+    ],
+    "when": {
+      "age": 16,
+      "season": "autumn"
+    },
+    "priority": 40,
+    "portrait": "vera",
+    "scene": "manor_autumn"
+  },
+  {
+    "id": "n_16wi",
+    "kind": "special",
+    "title": "冬夜的书房",
+    "text": "停电、没有柴火，你只能抱着蜡烛在书房里翻书。\n你在一本旧账簿的夹层里，摸到了一封信。信封上没有字，封口的火漆是格雷蒙特家徽，一朵白玫瑰。\n里面的字，用了你不认识的暗号。",
+    "options": [
+      {
+        "label": "把信藏好，慢慢研究",
+        "text": "你把信塞进了衣服最里面的口袋，心跳得很快。",
+        "fx": [
+          "flag+:father_letter",
+          "int_exp+2",
+          "wil_exp+1"
+        ]
+      },
+      {
+        "label": "拿去给阿尔弗看",
+        "text": "阿尔弗看了很久，手有些抖：“这是老爷的笔迹。少爷，这件事别对任何人说。”",
+        "fx": [
+          "flag+:father_letter",
+          "rel:alfred+2",
+          "wil_exp+1"
+        ]
+      }
+    ],
+    "when": {
+      "age": 16,
+      "season": "winter"
+    },
+    "priority": 40,
+    "scene": "library"
+  },
+  {
+    "id": "n_17sp",
+    "kind": "special",
+    "title": "第一次踏进高塔",
+    "text": "高塔的大门敞开着，学徒们三五成群地进出，每个人的袖口都有星纹。\n你站在石阶下，攥着一张旁听申请，手心在出汗。\n一个金发少年从你身边挤过去，看了你的衣服一眼，不屑地哼了一声：“东区的？”\n他胸前别着一枚金鹰徽章。你认得：那是洛克伍德家的徽记。他是宰相的独子，瓦伦。",
+    "options": [
+      {
+        "label": "递交旁听申请",
+        "text": "门卫看了一眼你的名字，愣了一下，但还是盖了章。",
+        "fx": [
+          "rep:tower+3",
+          "cha_exp+1",
+          "flag+:met_valen"
+        ]
+      },
+      {
+        "label": "直接溜进去旁听一堂课（1 体力）",
+        "text": "你坐在教室最后一排，认真得像是在抄命。",
+        "fx": [
+          "int_exp+4",
+          "rep:tower+2",
+          "flag+:met_valen"
+        ],
+        "cost": 1
+      },
+      {
+        "label": "转身离开",
+        "text": "你走了很远，才发现手里的申请已经被攥皱了。",
+        "fx": [
+          "wil_exp+1",
+          "flag+:met_valen"
+        ]
+      }
+    ],
+    "when": {
+      "age": 17,
+      "season": "spring"
+    },
+    "priority": 40,
+    "portrait": "valen",
+    "scene": "tower"
+  },
+  {
+    "id": "n_17au",
+    "kind": "special",
+    "title": "旧书店的艾琳",
+    "text": "街角的旧书店，老板是个年轻的女子，戴着圆框眼镜，正站在梯子上整理书架。\n“要找什么？”她头也不回，“先说好，今天只有最后一本魔法入门，别抢。”",
+    "options": [
+      {
+        "label": "买下那本魔法入门（20 金币）",
+        "text": "她笑了：“看来你比我想得识货。”",
+        "fx": [
+          "gold-20",
+          "int_exp+5",
+          "count:arcana+1",
+          "flag+:met_elin"
+        ],
+        "cond": "gold>=20",
+        "reason": "金币不足"
+      },
+      {
+        "label": "帮她整理书架（1 体力）",
+        "text": "你一本一本地递，她一本一本地排。她忽然说：“你是东区的格雷蒙特？”你愣了一下。",
+        "fx": [
+          "rel:elin+1",
+          "int_exp+2",
+          "flag+:met_elin"
+        ],
+        "cost": 1
+      },
+      {
+        "label": "请教她怎么查阅王家档案",
+        "text": "她推了推眼镜，意味深长地看了你一眼：“你想查什么？”",
+        "fx": [
+          "rel:elin+1",
+          "cha_exp+1",
+          "flag+:met_elin"
+        ]
+      }
+    ],
+    "when": {
+      "age": 17,
+      "season": "autumn"
+    },
+    "priority": 40,
+    "portrait": "elin",
+    "scene": "library"
+  },
+  {
+    "id": "n_18sp",
+    "kind": "special",
+    "title": "无人赴约的生日宴",
+    "text": "十八岁生日，阿尔弗按规矩准备了家宴，发出去的请帖，只来了三位客人。\n餐桌很长，空位很多，烛光摇摇晃晃。\n母亲强撑着坐在主位，一直笑。",
+    "options": [
+      {
+        "label": "向仅有的客人敬酒，认真地致谢",
+        "text": "那三位客人对视了一眼，都站了起来。其中一位老先生说：“令尊在世时，对我有恩。”",
+        "fx": [
+          "cha_exp+3",
+          "hometown+2",
+          "rel:vera+1"
+        ]
+      },
+      {
+        "label": "提议把宴席改成慈善晚宴（40 金币）",
+        "text": "你把一半的菜送给了东区的穷人。第二天，有人在街上对你点了点头。",
+        "fx": [
+          "gold-40",
+          "hometown+4",
+          "rep:church+2"
+        ],
+        "cond": "gold>=40",
+        "reason": "金币不足"
+      },
+      {
+        "label": "独自走到书房",
+        "text": "你在黑暗里坐了很久，直到阿尔弗在门外轻轻敲了三下。",
+        "fx": [
+          "wil_exp+3",
+          "int_exp+1"
+        ]
+      }
+    ],
+    "when": {
+      "age": 18,
+      "season": "spring"
+    },
+    "priority": 40,
+    "portrait": "vera",
+    "scene": "manor_spring"
+  },
+  {
+    "id": "n_19sp",
+    "kind": "special",
+    "title": "路过的老法师",
+    "text": "高塔的石阶上，一位白胡子老法师拄着手杖慢慢地往上走，走到一半，停下来喘气。\n你正好路过，下意识地扶了他一把。\n他侧过头，眯着眼打量你，说：“你的手，不太像拿笔的人。”",
+    "options": [
+      {
+        "label": "扶他走完剩下的台阶",
+        "text": "他一路没有说话，到了塔门口，才忽然问：“你姓什么？”",
+        "fx": [
+          "rep:tower+3",
+          "rel:metis+2",
+          "flag+:met_metis"
+        ]
+      },
+      {
+        "label": "向他请教几个魔法上的疑问（1 体力）",
+        "text": "老法师耐心地回答了你三个问题，每一个，都比课上讲得深。",
+        "fx": [
+          "int_exp+5",
+          "rep:tower+3",
+          "rel:metis+1",
+          "flag+:met_metis"
+        ],
+        "cost": 1
+      }
+    ],
+    "when": {
+      "age": 19,
+      "season": "spring"
+    },
+    "priority": 40,
+    "portrait": "metis",
+    "scene": "tower"
+  },
+  {
+    "id": "n_22au",
+    "kind": "special",
+    "title": "宰相府的请柬",
+    "text": "一封烫金的请柬被送到了旧宅，落款：宰相洛克伍德。\n“邀格雷蒙特伯爵之子，赴秋季宫廷宴。”\n阿尔弗盯着那张纸，一个字也没说。",
+    "options": [
+      {
+        "label": "出席，直视他的眼睛（30 金币）",
+        "text": "宴会上，洛克伍德亲自走过来，举杯：“令尊的事，我始终很遗憾。”他的眼里一片平静。",
+        "fx": [
+          "gold-30",
+          "hometown+4",
+          "cha_exp+3",
+          "wil_exp+3"
+        ],
+        "cond": "gold>=30",
+        "reason": "金币不足"
+      },
+      {
+        "label": "婉拒，称病缺席",
+        "text": "请柬被放在了壁炉的架子上，一直没有收起来。",
+        "fx": [
+          "wil_exp+2",
+          "hometown-2"
+        ]
+      }
+    ],
+    "when": {
+      "age": 22,
+      "season": "autumn"
+    },
+    "priority": 40,
+    "portrait": "lockwood",
+    "scene": "street"
+  },
+  {
+    "id": "n_27sp",
+    "kind": "special",
+    "title": "倒计时",
+    "text": "旧宅的墙上，挂着一本手撕的日历，每天撕掉一页。今天这一页上写着：“距复议日，一年半。”\n阿尔弗站在你的书桌旁，轻轻放下一杯茶。",
+    "options": [
+      {
+        "label": "把证据和笔记再整理一遍（1 体力）",
+        "text": "每一张纸，你都读到了能背下来。",
+        "fx": [
+          "wil_exp+3",
+          "int_exp+3",
+          "exp+30"
+        ],
+        "cost": 1
+      },
+      {
+        "label": "去看看母亲",
+        "text": "母亲靠在窗边，阳光落在她的白发上。她看着你，轻声说：“你很像他。”",
+        "fx": [
+          "rel:vera+2",
+          "wil_exp+2"
+        ],
+        "cond": "flag:vera_alive",
+        "reason": "母亲已不在"
+      },
+      {
+        "label": "去高塔散步，让脑子冷静一下",
+        "text": "夜色里的高塔，像一盏巨大的灯。",
+        "fx": [
+          "rep:tower+2",
+          "wil_exp+2"
+        ]
+      }
+    ],
+    "when": {
+      "age": 27,
+      "season": "spring"
+    },
+    "priority": 40,
+    "scene": "tower"
+  },
+  {
+    "id": "n_market_vip",
+    "kind": "chain",
+    "title": "集市内间",
+    "scene": "street",
+    "text": "内间的货架上摆着一排排蒙着绒布的东西。店员语气恭敬而克制：“先生，这些货只给‘有分量’的客人看。分量，不只是钱。”\n（魅力 ≥ 10 / 14 / 18，可以买到越来越好的装备。同一栏位只取最强的一件，饰品取最强的两件。）",
+    "options": [
+      {
+        "label": "水晶法杖（武器，战力 +9，260 金币，魅力 ≥ 10）",
+        "cond": "gold>=260&&attr.cha>=10&&!flag:own_crystal_staff",
+        "reason": "需要 260 金币和魅力 ≥ 10，或已经拥有",
+        "fx": [
+          "gold-260",
+          "item:crystal_staff",
+          "flag+:own_crystal_staff"
+        ],
+        "text": "店员小心地把杖放进你手里，杖头的魔晶忽然亮了一下。"
+      },
+      {
+        "label": "丝绸法袍（护甲，战力 +8，260 金币，魅力 ≥ 10）",
+        "cond": "gold>=260&&attr.cha>=10&&!flag:own_silk_robe",
+        "reason": "需要 260 金币和魅力 ≥ 10，或已经拥有",
+        "fx": [
+          "gold-260",
+          "item:silk_robe",
+          "flag+:own_silk_robe"
+        ],
+        "text": "丝绸的触感像水，袖口的符文轻轻发热。"
+      },
+      {
+        "label": "银戒指（饰品，战力 +5，200 金币，魅力 ≥ 10）",
+        "cond": "gold>=200&&attr.cha>=10&&!flag:own_silver_ring",
+        "reason": "需要 200 金币和魅力 ≥ 10，或已经拥有",
+        "fx": [
+          "gold-200",
+          "item:silver_ring",
+          "flag+:own_silver_ring"
+        ],
+        "text": "戒指内圈刻着一句祝福。"
+      },
+      {
+        "label": "大魔导师之杖（武器，战力 +14，700 金币，魅力 ≥ 14）",
+        "cond": "gold>=700&&attr.cha>=14&&!flag:own_archmage_staff",
+        "reason": "需要 700 金币和魅力 ≥ 14，或已经拥有",
+        "fx": [
+          "gold-700",
+          "item:archmage_staff",
+          "flag+:own_archmage_staff"
+        ],
+        "text": "杖身上的符文在你的掌心缓缓流转，像是在认人。"
+      },
+      {
+        "label": "星纹法袍（护甲，战力 +13，650 金币，魅力 ≥ 14）",
+        "cond": "gold>=650&&attr.cha>=14&&!flag:own_star_robe",
+        "reason": "需要 650 金币和魅力 ≥ 14，或已经拥有",
+        "fx": [
+          "gold-650",
+          "item:star_robe",
+          "flag+:own_star_robe"
+        ],
+        "text": "袖口的星纹在暗处微微发光。"
+      },
+      {
+        "label": "狮心吊坠（饰品，战力 +9，550 金币，魅力 ≥ 14）",
+        "cond": "gold>=550&&attr.cha>=14&&!flag:own_lion_pendant",
+        "reason": "需要 550 金币和魅力 ≥ 14，或已经拥有",
+        "fx": [
+          "gold-550",
+          "item:lion_pendant",
+          "flag+:own_lion_pendant"
+        ],
+        "text": "吊坠贴在胸口，沉甸甸的。"
+      },
+      {
+        "label": "龙鳞护符（饰品，战力 +12，1400 金币，魅力 ≥ 18）",
+        "cond": "gold>=1400&&attr.cha>=18&&!flag:own_dragon_charm",
+        "reason": "需要 1400 金币和魅力 ≥ 18，或已经拥有",
+        "fx": [
+          "gold-1400",
+          "item:dragon_charm",
+          "flag+:own_dragon_charm"
+        ],
+        "text": "鳞片温温的，握在手里，像握着一颗很远的心跳。"
+      },
+      {
+        "label": "回外间",
+        "text": "店员点点头：“下次再来，货会有新的。”",
+        "fx": []
+      }
+    ]
+  },
+  {
+    "id": "n_valen_duel",
+    "kind": "chain",
+    "title": "试炼场的约定",
+    "text": "高塔的试炼场里，魔法阵一层一层地亮起。瓦伦抱着双臂靠在石柱上，看着你，像是已经等了很久。\n“输的人，请吃一个月的午餐。”他说，“别拿别的东西赌，你的东西，我不稀罕。”",
+    "options": [
+      {
+        "label": "接受挑战",
+        "text": "你握紧了法杖，试炼场的魔法阵缓缓亮起。",
+        "fx": [
+          {
+            "type": "combat",
+            "enemy": "valen_duel",
+            "noFlee": true,
+            "win": [
+              "flag+:valen_duel_won",
+              "rel:valen+2",
+              "exp+40",
+              "cha_exp+3"
+            ],
+            "lose": [
+              "rel:valen+1",
+              "wil_exp+3",
+              "hp-6",
+              "log:瓦伦把法杖插回腰间，别过脸：“下次，再来。”"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "改天再来",
+        "text": "瓦伦哼了一声：“随你。试炼场，我随时在。”",
+        "fx": []
+      }
+    ],
+    "scene": "tower",
+    "portrait": "valen"
+  },
+  {
+    "id": "n_alfred_chat",
+    "kind": "chain",
+    "title": "厨房里的闲聊",
+    "text": "厨房里弥漫着茶叶和旧木头的味道。阿尔弗在擦那几只已经亮得不能再亮的银杯，没有抬头。\n“少爷今天想聊什么？”",
+    "options": [
+      {
+        "label": "问起十二年前的那一夜",
+        "check": {
+          "attr": "cha",
+          "diff": 11
+        },
+        "ok": {
+          "text": "阿尔弗擦杯的手停了很久。“老爷那晚，让我守在书房门外，不许任何人进去。”他的声音很低，“我守了一夜，没有人来，也没有人出去。”",
+          "fx": [
+            "flag+:alfred_t1",
+            "count:alfred_tale+1",
+            "rel:alfred+1",
+            "exp+10"
+          ]
+        },
+        "fail": {
+          "text": "阿尔弗摇了摇头：“少爷，那一夜的事，我真的记不清了。”他转过身去，继续擦杯子。",
+          "fx": [
+            "rel:alfred+0",
+            "cha_exp+1"
+          ]
+        },
+        "cond": "rel.alfred>=3&&!flag:alfred_t1",
+        "reason": "阿尔弗还不愿意提那一夜（好感 ≥ 3）"
+      },
+      {
+        "label": "问起书房里的暗格",
+        "check": {
+          "attr": "wil",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你耐着性子，一句一句地问。阿尔弗终于说了：“老爷走的时候，把钥匙交给了我。他说，等少爷能自己守住秘密的时候，再打开。”",
+          "fx": [
+            "flag+:alfred_t2",
+            "count:alfred_tale+1",
+            "rel:alfred+1",
+            "exp+10"
+          ]
+        },
+        "fail": {
+          "text": "阿尔弗把银杯放在桌上，看了你一会儿：“少爷，您还不到时候。”",
+          "fx": [
+            "wil_exp+1"
+          ]
+        },
+        "cond": "flag:alfred_t1&&!flag:alfred_t2",
+        "reason": "要先问清那一夜的事"
+      },
+      {
+        "label": "把父亲的密信给他看",
+        "text": "阿尔弗读到“洛克伍德”那三个字的时候，手抖了一下。他沉默了很久，说：“……我早该告诉您的。”",
+        "fx": [
+          "flag+:alfred_t3",
+          "count:alfred_tale+1",
+          "rel:alfred+2",
+          "exp+10"
+        ],
+        "cond": "flag:letters_decoded&&!flag:alfred_t3",
+        "reason": "需要先破译父亲的密信"
+      },
+      {
+        "label": "什么也不提，陪他喝杯茶",
+        "text": "你们坐在厨房里，什么都聊，就是不聊那件事。",
+        "fx": [
+          "rel:alfred+1",
+          "hometown+1",
+          "int_exp+1"
+        ]
+      },
+      {
+        "label": "离开",
+        "text": "",
+        "fx": []
+      }
+    ],
+    "scene": "manor_spring",
+    "portrait": "alfred"
+  },
+  {
+    "id": "n_pledge",
+    "kind": "chain",
+    "title": "请求支持",
+    "text": "你把整理好的证据摊在桌上，一页一页地讲。\n你要请求的，不是帮忙，而是一个愿意在公开场合，站到你这边的人。这件事，不能强求。",
+    "options": [
+      {
+        "label": "去请墨提斯导师",
+        "check": {
+          "attr": "cha",
+          "diff": 12
+        },
+        "ok": {
+          "text": "墨提斯听完，把怀表合上：“复议日那天，我会穿上塔里的长袍，坐在你后面。”",
+          "fx": [
+            "flag+:pledge_metis",
+            "count:allies+1",
+            "rel:metis+1",
+            "rep:tower+3"
+          ]
+        },
+        "fail": {
+          "text": "墨提斯沉默了很久：“……再让我想想。”你知道，这不是拒绝。",
+          "fx": [
+            "rel:metis+0",
+            "cha_exp+1"
+          ]
+        },
+        "cond": "flag:metis_gift&&!flag:pledge_metis",
+        "reason": "需要得到墨提斯的赠礼，且尚未请求"
+      },
+      {
+        "label": "去请艾琳",
+        "check": {
+          "attr": "cha",
+          "diff": 11
+        },
+        "ok": {
+          "text": "艾琳把一本抄满了笔记的册子交给你：“复议日，我会作为档案馆的证人。”",
+          "fx": [
+            "flag+:pledge_elin",
+            "count:allies+1",
+            "rel:elin+1"
+          ]
+        },
+        "fail": {
+          "text": "艾琳红着眼睛：“我怕自己，会在法庭上，说不出话。”",
+          "fx": [
+            "cha_exp+1"
+          ]
+        },
+        "cond": "flag:ally_elin&&!flag:pledge_elin",
+        "reason": "需要艾琳站在你这一边，且尚未请求"
+      },
+      {
+        "label": "去请瓦伦",
+        "check": {
+          "attr": "cha",
+          "diff": 13,
+          "memDiff": {
+            "id": "m_n_valen",
+            "diff": -3
+          }
+        },
+        "ok": {
+          "text": "瓦伦双手插在袖子里，别过脸：“我会坐在旁听席上。别误会，只是去看戏。”",
+          "fx": [
+            "flag+:pledge_valen",
+            "count:allies+1",
+            "rel:valen+1"
+          ]
+        },
+        "fail": {
+          "text": "瓦伦没有回答，只是看了你很久：“……别逼我。”",
+          "fx": [
+            "cha_exp+1"
+          ]
+        },
+        "cond": "flag:ally_valen&&!flag:pledge_valen",
+        "reason": "需要和瓦伦有过了断，且尚未请求"
+      },
+      {
+        "label": "去请阿尔弗",
+        "text": "阿尔弗听完，把围裙解了下来，叠好放在桌上：“少爷，老仆，陪您去。”",
+        "fx": [
+          "flag+:pledge_alfred",
+          "count:allies+1",
+          "rel:alfred+1",
+          "wil_exp+2"
+        ],
+        "cond": "flag:safe_opened&&rel.alfred>=6&&!flag:pledge_alfred",
+        "reason": "需要打开过暗格，且阿尔弗好感 ≥ 6"
+      },
+      {
+        "label": "先回去，再做准备",
+        "text": "",
+        "fx": []
+      }
+    ],
+    "scene": "library"
+  },
+  {
+    "id": "n_odette",
+    "kind": "chain",
+    "title": "奥黛特夫人的信",
+    "text": "出席了几次宴会之后，一位气质端庄的夫人，把你叫到了花园的僻静处。\n“你母亲是我最好的朋友，”她说，“这封信，是她二十年前，托我保管的。”\n信里，是一个数目，和一个愿望。",
+    "options": [
+      {
+        "label": "收下她的帮助",
+        "text": "奥黛特夫人把一个小小的丝绒袋放在你手心里：“别急着谢我。有一天，你让格雷蒙特这个姓氏，再体面起来，就算还了。”",
+        "fx": [
+          "flag+:odette_helped",
+          "count:debt-150",
+          "gold+80",
+          "hometown+6",
+          "rel:vera+1"
+        ]
+      },
+      {
+        "label": "谢绝，只收下那封信",
+        "text": "奥黛特夫人把信交到你手里，很久没有说话。“你和她一样倔。”",
+        "fx": [
+          "flag+:odette_helped",
+          "hometown+4",
+          "wil_exp+3",
+          "rel:vera+2"
+        ]
+      }
+    ],
+    "scene": "manor_spring",
+    "portrait": "vera"
+  },
+  {
+    "id": "n_theft_verdict",
+    "kind": "chain",
+    "title": "书页后的真相",
+    "text": "线索一条条地拼在了一起。偷书的人，不是外面的人。\n你在塔顶的露台上，把证据摊开，对面站着三个人：失窃案的管理员，一个满脸涨红的学徒助手，和不知什么时候出现的瓦伦。",
+    "options": [
+      {
+        "label": "当众揭穿真正的偷书人",
+        "text": "学徒助手“扑通”一声跪了下来，说出了他把书卖给黑市的全过程。管理员看着你，轻轻点了点头。",
+        "fx": [
+          "flag+:theft_solved",
+          "rep:tower+8",
+          "rel:valen+2",
+          "cha_exp+3",
+          "exp+40"
+        ]
+      },
+      {
+        "label": "把嫌疑推给瓦伦",
+        "text": "你的话没有说完，瓦伦的脸已经白了。管理员叹了口气，没有说话。",
+        "fx": [
+          "flag+:theft_framed",
+          "rep:tower+3",
+          "rel:valen-4",
+          "hometown-3"
+        ],
+        "avoid": true
+      },
+      {
+        "label": "私下里劝助手自首，不让事情闹大",
+        "check": {
+          "attr": "cha",
+          "diff": 13
+        },
+        "ok": {
+          "text": "助手哭着把书交了出来，没有人被当众难堪。管理员默默地欠了你一个人情。",
+          "fx": [
+            "flag+:theft_solved",
+            "rep:tower+5",
+            "cha_exp+4",
+            "exp+30"
+          ]
+        },
+        "fail": {
+          "text": "助手一听，慌了神，夺门而逃。案子，成了悬案。",
+          "fx": [
+            "rep:tower+1"
+          ]
+        }
+      }
+    ],
+    "scene": "tower"
+  },
+  {
+    "id": "n_cellar_notes",
+    "kind": "chain",
+    "title": "父亲的实验室",
+    "text": "地窖的角落里，立着一支蒙尘的旧法杖，杖头的魔晶里还残留着一点微光。\n桌上，是父亲最后一份手稿，只写了一半。最后一句，墨迹还没有干透似的：“若有人读到此页，请替我，守住洛克伍德的那份……”",
+    "options": [
+      {
+        "label": "带走法杖和手稿",
+        "text": "杖身的重量刚刚好。你把手稿一页页抄进自己的本子里，又悄悄地放回原处。",
+        "fx": [
+          "flag+:cellar_done",
+          "item:father_staff",
+          "count:evidence+1",
+          "int_exp+5",
+          "exp+40"
+        ]
+      },
+      {
+        "label": "只带走手稿，把法杖留在原处",
+        "text": "有些东西，你想等自己配得上了，再来取。",
+        "fx": [
+          "flag+:cellar_done",
+          "count:evidence+2",
+          "wil_exp+3",
+          "exp+30"
+        ]
+      }
+    ],
+    "scene": "manor_winter",
+    "portrait": "noble"
+  },
+  {
+    "id": "n_spy_unmask",
+    "kind": "chain",
+    "title": "宅子里的眼睛",
+    "text": "你把几天来的记录，在桌上排成一行。每一次，你家的消息，都会在当天夜里，出现在宰相府的侧门。\n泄露消息的人，只可能是一个：新来的那个小厮，托马斯。",
+    "options": [
+      {
+        "label": "当面拆穿他",
+        "text": "托马斯脸色惨白，一句话也说不出来。他的母亲，被宰相府“照顾”着。他哭着说，他什么也没有说出去，只说了“家里很穷”。",
+        "fx": [
+          "flag+:spy_found",
+          "rel:alfred+1",
+          "count:evidence+1",
+          "wil_exp+3",
+          "exp+30"
+        ]
+      },
+      {
+        "label": "假装不知道，反过来喂他假消息",
+        "check": {
+          "attr": "cha",
+          "diff": 13
+        },
+        "ok": {
+          "text": "你让阿尔弗配合着，每天“无意”地漏一点假话。三个星期后，宰相府的人，来了一次“偶然的拜访”，被你们一一记在了本子上。",
+          "fx": [
+            "flag+:spy_turned",
+            "flag+:spy_found",
+            "count:evidence+2",
+            "cha_exp+4",
+            "exp+40"
+          ]
+        },
+        "fail": {
+          "text": "托马斯很快察觉了异样，一夜之间消失了。",
+          "fx": [
+            "flag+:spy_found",
+            "wil_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "把他开除，不再追究",
+        "text": "托马斯鞠了一躬，在门口停了一下，没有回头。",
+        "fx": [
+          "flag+:spy_found",
+          "hometown+1"
+        ]
+      }
+    ],
+    "scene": "manor_autumn"
+  },
+  {
+    "id": "n_metis_seal",
+    "kind": "chain",
+    "title": "墨提斯的沉默",
+    "text": "塔顶的露台上，墨提斯把你递来的那几页抄录，翻来覆去地读。\n风吹动了他的白袍。他很久没有开口，只是用手指，摩挲着那一行“魔晶，是封印的燃料”。\n“……你从哪里知道的？”他终于抬起头。",
+    "options": [
+      {
+        "label": "如实说出：在另一个人生里，一个农夫之子读到了这个答案",
+        "text": "墨提斯愣了一下，随即笑了，笑得很淡：“有些真相，换了谁来读，都是一样的。”他把那几页还给你，“收好。这东西，不该在塔里被人知道。”",
+        "fx": [
+          "flag+:seal_lore",
+          "rep:tower+6",
+          "int_exp+8",
+          "wil_exp+4",
+          "exp+80"
+        ]
+      },
+      {
+        "label": "说是在禁书库里偶然读到的",
+        "text": "墨提斯看了你一会儿，什么也没有追问。“记住，”他说，“知道得越多，越要少说。”",
+        "fx": [
+          "flag+:seal_lore",
+          "rep:tower+3",
+          "int_exp+6",
+          "exp+60"
+        ]
+      }
+    ],
+    "scene": "tower",
+    "portrait": "metis"
+  }
+]

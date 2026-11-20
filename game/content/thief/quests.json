@@ -1,0 +1,356 @@
+[
+  {
+    "id": "main_key",
+    "type": "main",
+    "name": "月蚀之夜",
+    "start": "age>=16",
+    "score": 100,
+    "onFail": [
+      "flag+:main_failed",
+      "log:月蚀之夜的准备没能赶上。那扇门，你只能凭运气去闯了。"
+    ],
+    "stages": [
+      {
+        "desc": "第一章·入门：找到灰鼠，通过影子公会的「三手试炼」，成为正式成员（行动：参加三手试炼）",
+        "done": "flag:guild_member",
+        "score": 20,
+        "deadlineAge": 20,
+        "checks": [
+          {
+            "label": "认识灰鼠",
+            "cond": "flag:met_rat"
+          },
+          {
+            "label": "敏捷 ≥ 13（试炼要求）",
+            "cond": "attr.agi>=13",
+            "cur": "attr.agi"
+          }
+        ],
+        "story": {
+          "title": "第一章 完 · 三手试炼",
+          "portrait": "rat",
+          "text": "灰鼠靠在公会大厅的柱子上，难得没有叼那根草茎。\n“从今天起，你就不是孤儿了。”他说，“是影子。”\n你想笑，却发现鼻子有点酸。\n——第二章：立足"
+        }
+      },
+      {
+        "desc": "第二章·立足：影子公会声望 ≥ 40，并找到灰鼠留下的半把钥匙",
+        "done": "flag:half_key&&rep.shadow>=40",
+        "score": 20,
+        "deadlineAge": 24,
+        "fx": [
+          "rank:3"
+        ],
+        "checks": [
+          {
+            "label": "影子公会声望 ≥ 40",
+            "cond": "rep.shadow>=40",
+            "cur": "rep.shadow"
+          },
+          {
+            "label": "找到半把钥匙",
+            "cond": "flag:half_key"
+          }
+        ],
+        "story": {
+          "title": "第二章 完 · 半把钥匙",
+          "portrait": "thief",
+          "text": "你把那截发黑的钥匙，放在掌心里翻了翻。\n灰鼠说过：钥匙只有一半是钥匙，另一半是秘密。\n你把它挂在颈间，贴着心口。\n——第三章：图纸与内线"
+        }
+      },
+      {
+        "desc": "第三章·图纸与内线：情报 ≥ 6，同伙 ≥ 3，拿到魔晶库图纸（行动：窃取魔晶库图纸 / 黑市购买）",
+        "done": "count.intel>=6&&count.crew>=3&&flag:vault_plan",
+        "score": 20,
+        "deadlineAge": 27,
+        "fx": [
+          "rank:4"
+        ],
+        "checks": [
+          {
+            "label": "情报 ≥ 6",
+            "cond": "count.intel>=6",
+            "cur": "count.intel"
+          },
+          {
+            "label": "同伙 ≥ 3",
+            "cond": "count.crew>=3",
+            "cur": "count.crew"
+          },
+          {
+            "label": "拿到魔晶库图纸",
+            "cond": "flag:vault_plan"
+          }
+        ],
+        "story": {
+          "title": "第三章 完 · 万事俱备",
+          "portrait": "lila",
+          "text": "图纸摊在桌上，每个人的手指都按在自己负责的那一格里。\n莉拉用最小的声音说：“如果我们死了呢？”\n你说：“那就死在屋顶上，比死在水沟里强。”\n——终章：月蚀之夜"
+        }
+      },
+      {
+        "desc": "第四章·月蚀之夜：27 岁的秋天，闯入王城魔晶库",
+        "done": "flag:heist_done",
+        "score": 20
+      }
+    ],
+    "doneStory": {
+      "title": "终章 · 月蚀",
+      "text": "月亮被吞没的那一刻，整座王都都安静了。\n你站在魔晶库的深处，手里是一颗从没人见过的水晶，它在你掌心里，像一颗正在跳动的心。\n而属于你的故事，才刚刚被写成。"
+    }
+  },
+  {
+    "id": "orphan_light",
+    "type": "side",
+    "name": "孤儿院的灯",
+    "start": "flag:met_lila&&age>=17",
+    "deadlineAge": 24,
+    "score": 25,
+    "intro": {
+      "portrait": "lila",
+      "title": "孤儿院的灯",
+      "text": "莉拉把你拉到孤儿院的后门，指着窗口那盏忽明忽暗的油灯：“嬷嬷说，入冬以前，再凑不够煤钱，孩子们就得睡在冷屋里。”\n你摸了摸钱袋，没吭声。"
+    },
+    "onFail": [
+      "flag+:orphan_cold",
+      "hometown-8",
+      "log:冬天，孤儿院的灯熄了。你路过的时候，没敢抬头。"
+    ],
+    "reward": [
+      "hometown+10",
+      "rel:lila+2",
+      "flag+:orphan_safe",
+      "log:孤儿院的灯一直亮到了春天。"
+    ],
+    "stages": [
+      {
+        "desc": "为孤儿院凑够煤钱和粮食（行动：接济孤儿院，共 4 次）",
+        "done": "count.donate>=4",
+        "checks": [
+          {
+            "label": "接济孤儿院 ≥ 4 次",
+            "cond": "count.donate>=4",
+            "cur": "count.donate"
+          }
+        ]
+      },
+      {
+        "desc": "红手帮想把孤儿院的地契抢走，守住它",
+        "done": "flag:orphan_defended",
+        "fx": [],
+        "checks": [
+          {
+            "label": "在事件中守住孤儿院",
+            "cond": "flag:orphan_defended"
+          }
+        ]
+      }
+    ],
+    "snag": {
+      "p": 0.25,
+      "text": "冬天来得太早，孤儿院的煤，在你凑够钱之前就烧完了。"
+    }
+  },
+  {
+    "id": "red_hand_war",
+    "type": "side",
+    "name": "红手帮的挑衅",
+    "start": "flag:red_hand_threat",
+    "deadlineAge": 26,
+    "score": 30,
+    "intro": {
+      "portrait": "cass",
+      "title": "断指的邀请",
+      "text": "红手帮在鼠街的墙上画了一只红手印。印子很新，还没干。\n你知道这是什么意思：从今天起，这条街，要交保护费了。"
+    },
+    "onFail": [
+      "flag+:red_hand_ruled",
+      "hometown-6",
+      "log:红手帮占了鼠街。这条街的人，开始绕着你走。"
+    ],
+    "reward": [
+      "rep:shadow+8",
+      "hometown+6",
+      "gold+120",
+      "log:鼠街重新属于鼠街人。"
+    ],
+    "stages": [
+      {
+        "desc": "夜探红手帮仓库区，把他们的货清空（行动：夜探红手帮仓库区，通关）",
+        "done": "flag:warehouse_cleared",
+        "checks": [
+          {
+            "label": "通关红手帮仓库区",
+            "cond": "flag:warehouse_cleared"
+          }
+        ]
+      },
+      {
+        "desc": "挑战红手帮老大「断指」（行动：挑战红手帮老大）",
+        "done": "flag:red_hand_broken"
+      }
+    ],
+    "snag": {
+      "p": 0.25,
+      "text": "红手帮换了一批新人，仓库一夜搬空，断指也不知躲到了哪里。"
+    }
+  },
+  {
+    "id": "cass_hunt",
+    "type": "side",
+    "name": "捕快队长的执念",
+    "start": "flag:met_cass",
+    "deadlineAge": 27,
+    "score": 25,
+    "intro": {
+      "portrait": "cass",
+      "title": "她不会放过你",
+      "text": "卡斯在你住的巷口留下了一枚烧焦的铜扣，那是你上次逃跑时落下的。\n她没有来抓你。她只是让你知道：她知道。"
+    },
+    "onFail": [
+      "flag+:cass_foe",
+      "log:卡斯把你的画像贴满了下城。"
+    ],
+    "reward": [
+      "flag+:cass_trust",
+      "rel:cass+2",
+      "log:卡斯在巡逻报告里写：「鼠街无此人。」"
+    ],
+    "stages": [
+      {
+        "desc": "让卡斯看到你不是她想象的那种人（卡斯好感 ≥ 5。可以协助她办案、把红手帮的罪证交给她，或在茶摊遇上她）",
+        "done": "rel.cass>=5",
+        "checks": [
+          {
+            "label": "卡斯好感 ≥ 5",
+            "cond": "rel.cass>=5",
+            "cur": "rel.cass"
+          },
+          {
+            "label": "已把红手帮的罪证交给卡斯",
+            "cond": "flag:cass_gift_red"
+          }
+        ]
+      }
+    ],
+    "snag": {
+      "p": 0.4,
+      "text": "卡斯被调去了城西的另一桩案子，你们之间的事，没了下文。"
+    }
+  },
+  {
+    "id": "lila_brother",
+    "type": "side",
+    "name": "莉拉的哥哥",
+    "start": "rel.lila>=4&&age>=19",
+    "deadlineAge": 26,
+    "score": 25,
+    "intro": {
+      "portrait": "lila",
+      "title": "莉拉的哥哥",
+      "text": "莉拉今天没笑。她说：“我哥哥被关在王城监牢里，已经三年了。”\n她停了很久，才低声问：“你能不能……”\n你已经知道她要说什么。"
+    },
+    "onFail": [
+      "flag+:brother_lost",
+      "rel:lila-2",
+      "log:莉拉再没有提过她哥哥的名字。"
+    ],
+    "reward": [
+      "count:crew+1",
+      "rel:lila+2",
+      "flag+:lila_crew",
+      "log:莉拉的哥哥出狱了，成了你的同伙，也成了她唯一的亲人。"
+    ],
+    "stages": [
+      {
+        "desc": "打探监牢的布防（情报 ≥ 3）",
+        "done": "count.intel>=3",
+        "checks": [
+          {
+            "label": "情报 ≥ 3",
+            "cond": "count.intel>=3",
+            "cur": "count.intel"
+          }
+        ]
+      },
+      {
+        "desc": "潜入王城监牢，救出莉拉的哥哥（行动：营救莉拉的哥哥）",
+        "done": "flag:brother_free"
+      }
+    ],
+    "snag": {
+      "p": 0.4,
+      "text": "王城监牢突然换了一批守卫，莉拉的哥哥被转去了别处，再没了消息。"
+    }
+  },
+  {
+    "id": "gu_list",
+    "type": "side",
+    "name": "老鬼的货单",
+    "start": "flag:gu_invited",
+    "deadlineAge": 25,
+    "score": 20,
+    "intro": {
+      "portrait": "gu",
+      "title": "老鬼的货单",
+      "text": "老鬼把一张泛黄的纸推到你面前：“三件货，取回来，我给你一样好东西。”\n纸上没有名字，只有地址。"
+    },
+    "onFail": [
+      "log:老鬼把那张货单烧了，什么也没说。"
+    ],
+    "reward": [
+      "flag+:vault_plan",
+      "item:black_pearl",
+      "log:老鬼拍了拍你的肩，递过一卷图纸和一颗黑珍珠：“别告诉别人我给的。”"
+    ],
+    "stages": [
+      {
+        "desc": "替老鬼取回三件货（行动：替老鬼取货，共 3 件。老鬼在 18 岁的秋天会主动找你）",
+        "done": "count.goods>=3",
+        "checks": [
+          {
+            "label": "取回货物 ≥ 3",
+            "cond": "count.goods>=3",
+            "cur": "count.goods"
+          }
+        ]
+      }
+    ],
+    "snag": {
+      "p": 0.45,
+      "text": "老鬼的黑市被巡逻队端了，他一夜之间消失得无影无踪。"
+    }
+  },
+  {
+    "id": "mask_truth",
+    "type": "hidden",
+    "name": "面具之下",
+    "start": [
+      "count.intel>=4&&age>=22",
+      "memory:m_t_betrayal&&count.intel>=2&&age>=19"
+    ],
+    "deadlineAge": 27,
+    "score": 40,
+    "reward": [
+      "flag+:mask_unmasked",
+      "log:你知道面具下是谁了。这个知识很沉。"
+    ],
+    "stages": [
+      {
+        "desc": "面具先生的身份，不该是谜（线索 ≥ 3）",
+        "done": "count.mask_clue>=3",
+        "checks": [
+          {
+            "label": "收集到的线索",
+            "cond": "count.mask_clue>=3",
+            "cur": "count.mask_clue"
+          }
+        ],
+        "story": {
+          "title": "面具之下",
+          "portrait": "mask",
+          "text": "三条线索，终于串在了一起：税务署的旧账、赌场的流水、王城里某个人腰间的那枚家徽。\n面具先生，不是鼠街的人。他是从王城里下来的。\n而他要的，从来不是魔晶库里的东西，而是别的什么。"
+        }
+      }
+    ]
+  }
+]

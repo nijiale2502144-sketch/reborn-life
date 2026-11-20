@@ -1,0 +1,580 @@
+[
+  {
+    "id": "pickpocket",
+    "name": "扒窃",
+    "cost": 1,
+    "group": "daily",
+    "hint": "金币·敏捷·通缉度",
+    "desc": "人多的地方，手快的人吃饭。成功率看敏捷，失败会挨揍、涨通缉度。",
+    "check": {
+      "attr": "agi",
+      "diff": 11,
+      "seasonDiff": {
+        "winter": 1
+      }
+    },
+    "ok": {
+      "text": "指尖一勾，钱袋已经换了主人。你贴着墙根慢慢走远，心跳平稳得像什么都没发生。",
+      "fx": [
+        "gold+30",
+        "agi_exp+3",
+        "count:heat+4",
+        "exp+12"
+      ]
+    },
+    "fail": {
+      "text": "手刚伸进去就被抓住了手腕。你挨了两拳，丢下一把铜币才脱身。",
+      "fx": [
+        "hp-5",
+        "agi_exp+1",
+        "count:heat+8",
+        "gold-6"
+      ]
+    }
+  },
+  {
+    "id": "burgle",
+    "name": "撬锁入室",
+    "cost": 2,
+    "group": "daily",
+    "cond": "age>=17",
+    "hint": "金币·敏捷·通缉度",
+    "desc": "挑一户没人的人家，用撬锁工具进去。来钱快，但通缉度涨得也快。",
+    "check": {
+      "attr": "agi",
+      "diff": 13
+    },
+    "ok": {
+      "text": "锁舌“咔”地一声松开。你在黑暗里摸到了抽屉，摸到了首饰盒，又摸到了窗台，然后原路退了出去。",
+      "fx": [
+        "gold+75",
+        "agi_exp+4",
+        "int_exp+1",
+        "count:heat+12",
+        "exp+24"
+      ]
+    },
+    "fail": {
+      "text": "楼板突然响了。你从后窗跳出去的时候，听见身后有人喊“抓贼”。",
+      "fx": [
+        "hp-9",
+        "agi_exp+1",
+        "count:heat+16"
+      ]
+    }
+  },
+  {
+    "id": "dock_work",
+    "name": "码头扛包",
+    "cost": 2,
+    "group": "daily",
+    "hint": "金币·体魄·降温",
+    "desc": "正经活儿，钱少，但没人盯着你。",
+    "fx": [
+      "gold+22",
+      "str_exp+3",
+      "count:heat-3",
+      "hometown+1"
+    ],
+    "texts": [
+      "船不等人，你和一群光膀子的汉子一起，把一麻袋一麻袋的货搬上跳板。",
+      "工头给你结了账，瞥了你的手一眼：“手这么细，别干这个了。”你没接话。"
+    ]
+  },
+  {
+    "id": "learn_rat",
+    "name": "向灰鼠学艺",
+    "cost": 2,
+    "group": "daily",
+    "cond": "flag:met_rat&&!flag:rat_dead",
+    "hint": "敏捷·灰鼠好感·背刺",
+    "desc": "灰鼠的手艺，是鼠街最干净的那一种。",
+    "fx": [
+      "agi_exp+4",
+      "int_exp+1",
+      "rel:rat+1",
+      "count:knife+1",
+      "exp+16"
+    ],
+    "texts": [
+      "灰鼠让你闭着眼开锁，开不了就不给饭吃。",
+      "“手要稳，心要冷，”他叼着草茎，“最后一步，脸要笑。”"
+    ]
+  },
+  {
+    "id": "scout",
+    "name": "打探消息",
+    "cost": 2,
+    "group": "social",
+    "hint": "情报·魅力",
+    "desc": "在酒馆、茶摊、赌桌旁，花点时间，听一点不该听的话。",
+    "check": {
+      "attr": "cha",
+      "diff": 11
+    },
+    "ok": {
+      "text": "一个醉醺醺的守卫把轮岗表、换班时间、哪条水渠不上锁，一股脑地倒给了你。",
+      "fx": [
+        "count:intel+1",
+        "cha_exp+3",
+        "rep:shadow+1",
+        "exp+6"
+      ]
+    },
+    "fail": {
+      "text": "你问得太直，对方警觉地看了你一眼，转身走了。",
+      "fx": [
+        "cha_exp+1",
+        "count:heat+2"
+      ]
+    }
+  },
+  {
+    "id": "recruit",
+    "name": "拉拢同伙",
+    "cost": 3,
+    "group": "social",
+    "cond": "rep.shadow>=15&&count.crew<5",
+    "hint": "同伙·魅力",
+    "desc": "一个人偷东西，两个人才能干大活。",
+    "check": {
+      "attr": "cha",
+      "diff": 12
+    },
+    "ok": {
+      "text": "你在酒馆里坐了一晚上，到天亮的时候，对方把手拍在桌上：“算我一个。”",
+      "fx": [
+        "count:crew+1",
+        "cha_exp+3",
+        "rep:shadow+2",
+        "gold-20"
+      ]
+    },
+    "fail": {
+      "text": "对方听完你的计划，笑着摇了摇头，还顺手蹭走了你的酒钱。",
+      "fx": [
+        "gold-20",
+        "cha_exp+1"
+      ]
+    }
+  },
+  {
+    "id": "lay_low",
+    "name": "避风头",
+    "cost": 2,
+    "group": "daily",
+    "cond": "count.heat>=8",
+    "hint": "降通缉度·回血",
+    "desc": "待在下水道或阁楼里，哪都不去。",
+    "fx": [
+      "count:heat-18",
+      "heal:0.3",
+      "wil_exp+1"
+    ],
+    "texts": [
+      "你在阁楼里蜷了三天，听着楼下巡逻队的脚步一次次走过。",
+      "你什么也没干，只是听水管滴水。有时候，什么也不干也是一种技术。"
+    ]
+  },
+  {
+    "id": "bribe_guard",
+    "name": "贿赂巡逻队",
+    "cost": 1,
+    "group": "social",
+    "cond": "gold>=50&&count.heat>=10",
+    "hint": "金币·降通缉度",
+    "desc": "五十个金币，让某个巡逻队长“没看见”你。",
+    "fx": [
+      "gold-50",
+      "count:heat-25",
+      "rep:shadow+1"
+    ],
+    "texts": [
+      "钱袋换了手，巡逻队长咳嗽了一声：“最近天黑得早，注意脚下。”"
+    ]
+  },
+  {
+    "id": "help_orphans",
+    "name": "接济孤儿院",
+    "cost": 1,
+    "group": "social",
+    "cond": "gold>=30",
+    "hint": "街区人望",
+    "desc": "孤儿院的老嬷嬷从不问钱从哪里来。",
+    "fx": [
+      "gold-30",
+      "hometown+4",
+      "count:donate+1",
+      "rel:lila+1",
+      {
+        "if": "memory:m_t_lila",
+        "then": [
+          "hometown+2",
+          "cha_exp+1"
+        ]
+      }
+    ],
+    "texts": [
+      "一袋面粉，一小包盐，嬷嬷接过去的时候，手抖了抖。",
+      "孩子们围过来，叫你“手哥哥”。你难得地没有躲开。"
+    ]
+  },
+  {
+    "id": "go_blackmarket",
+    "name": "去黑市逛逛",
+    "cost": 1,
+    "group": "daily",
+    "cond": "age>=17&&rep.shadow>=5",
+    "hint": "装备·配方·情报",
+    "desc": "黑市在下城最深的那条地下街，见面不问姓名。",
+    "fx": [
+      "goto:ev_black_market"
+    ]
+  },
+  {
+    "id": "go_tavern",
+    "name": "去「醉鼠」酒馆",
+    "cost": 1,
+    "group": "social",
+    "cond": "age>=17",
+    "hint": "赌局·传闻·情报",
+    "desc": "鼠街最老的酒馆，赌桌、传闻和斗殴，什么都有。",
+    "fx": [
+      "goto:ev_tavern"
+    ]
+  },
+  {
+    "id": "dg_sewer",
+    "name": "探索鼠街下水道",
+    "cost": 4,
+    "group": "adventure",
+    "tag": "adventure",
+    "cond": "flag:met_rat",
+    "hint": "战斗·宝箱",
+    "desc": "推荐等级 3–6，共 4 层。",
+    "fx": [],
+    "dungeon": "sewer",
+    "dungeonName": "鼠街下水道"
+  },
+  {
+    "id": "dg_warehouse",
+    "name": "夜探红手帮仓库区",
+    "cost": 5,
+    "group": "adventure",
+    "tag": "adventure",
+    "cond": "flag:guild_member&&level>=6",
+    "hint": "战斗·宝箱",
+    "desc": "推荐等级 6–10，共 5 层。红手帮的看门狗可不讲道理。",
+    "fx": [],
+    "dungeon": "warehouse",
+    "dungeonName": "红手帮仓库区"
+  },
+  {
+    "id": "dg_manor",
+    "name": "夜袭贵族宅邸",
+    "cost": 5,
+    "group": "adventure",
+    "tag": "adventure",
+    "cond": "flag:guild_member&&level>=10&&rep.shadow>=30",
+    "hint": "战斗·宝箱",
+    "desc": "推荐等级 10–14，共 6 层。屋顶、窗台、书房，最后是魔法守卫。",
+    "fx": [],
+    "dungeon": "manor_heist",
+    "dungeonName": "贵族宅邸"
+  },
+  {
+    "id": "dg_vault",
+    "name": "潜入王城地下水渠",
+    "cost": 6,
+    "group": "adventure",
+    "tag": "adventure",
+    "cond": "flag:half_key&&level>=15",
+    "hint": "战斗·宝箱",
+    "desc": "推荐等级 15–20，共 7 层。通往魔晶库的暗道，只有一半的钥匙。",
+    "fx": [],
+    "dungeon": "vault_outer",
+    "dungeonName": "王城地下水渠"
+  },
+  {
+    "id": "guild_trial",
+    "name": "参加三手试炼",
+    "cost": 3,
+    "group": "quest",
+    "tag": "adventure",
+    "cond": "quest.main_key==active&&qstage.main_key==0&&flag:met_rat&&!flag:trial_try3",
+    "hint": "影子公会",
+    "desc": "三手：偷到、开到、跑掉。敏捷检定，最多三次机会。",
+    "check": {
+      "attr": "agi",
+      "diff": 14,
+      "memDiff": {
+        "id": "m_t_rat",
+        "diff": -2
+      }
+    },
+    "ok": {
+      "text": "第一手，你摸走了考官腰间的钥匙；第二手，你开了那扇连他自己都打不开的门；第三手，你从他身后走过，他还在找。\n他终于笑了：“欢迎，影子。”",
+      "fx": [
+        "flag+:guild_member",
+        "rep:shadow+15",
+        "agi_exp+6",
+        "exp+40"
+      ]
+    },
+    "fail": {
+      "text": "第三手，你被抓住了衣领。考官把你扔回了街上：“回去练练。”",
+      "fx": [
+        "hp-6",
+        "agi_exp+2",
+        {
+          "if": "flag:trial_try2",
+          "then": [
+            "flag+:trial_try3"
+          ],
+          "else": [
+            {
+              "if": "flag:trial_try1",
+              "then": [
+                "flag+:trial_try2"
+              ],
+              "else": [
+                "flag+:trial_try1"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "search_hideout",
+    "name": "搜寻灰鼠的藏身处",
+    "cost": 3,
+    "group": "quest",
+    "tag": "adventure",
+    "cond": "quest.main_key==active&&qstage.main_key==1&&flag:rat_dead&&!flag:half_key&&!flag:hideout_try3",
+    "hint": "半把钥匙",
+    "desc": "灰鼠把另一半钥匙藏在鼠街的某个角落。智力检定，最多三次机会。",
+    "check": {
+      "attr": "int",
+      "diff": 13
+    },
+    "ok": {
+      "text": "你想起灰鼠常说的那句“最安全的地方，是最没人想看的地方”。你在他的旧床板下，摸到了一截发黑的钥匙。",
+      "fx": [
+        "flag+:half_key",
+        "int_exp+4",
+        "exp+30"
+      ]
+    },
+    "fail": {
+      "text": "你把阁楼翻了个底朝天，只翻出一堆灰和老鼠屎。",
+      "fx": [
+        "int_exp+2",
+        "hp-3",
+        {
+          "if": "flag:hideout_try2",
+          "then": [
+            "flag+:hideout_try3"
+          ],
+          "else": [
+            {
+              "if": "flag:hideout_try1",
+              "then": [
+                "flag+:hideout_try2"
+              ],
+              "else": [
+                "flag+:hideout_try1"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "steal_plan",
+    "name": "窃取魔晶库图纸",
+    "cost": 4,
+    "group": "quest",
+    "tag": "adventure",
+    "cond": "quest.main_key==active&&qstage.main_key==2&&!flag:vault_plan&&!flag:plan_try3",
+    "hint": "月蚀之夜",
+    "desc": "王城建造署的档案室里，有魔晶库的旧图纸。敏捷检定，最多三次机会。",
+    "check": {
+      "attr": "agi",
+      "diff": 15,
+      "memDiff": {
+        "id": "m_t_mask",
+        "diff": -2
+      }
+    },
+    "ok": {
+      "text": "档案室的锁并不难，难的是在守夜人转身的那十二息里，把三十七张图纸原样放回去。你带走了一份描摹。",
+      "fx": [
+        "flag+:vault_plan",
+        "agi_exp+5",
+        "count:heat+10",
+        "exp+40"
+      ]
+    },
+    "fail": {
+      "text": "守夜人回头的那一瞬，你正趴在书架上。你从窗口跳下去，在屋檐上摔了一跤。",
+      "fx": [
+        "hp-10",
+        "count:heat+14",
+        {
+          "if": "flag:plan_try2",
+          "then": [
+            "flag+:plan_try3"
+          ],
+          "else": [
+            {
+              "if": "flag:plan_try1",
+              "then": [
+                "flag+:plan_try2"
+              ],
+              "else": [
+                "flag+:plan_try1"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "challenge_boss",
+    "name": "挑战红手帮老大",
+    "cost": 4,
+    "group": "quest",
+    "tag": "adventure",
+    "cond": "quest.red_hand_war==active&&flag:warehouse_cleared&&!flag:red_hand_broken",
+    "hint": "红手帮",
+    "desc": "是时候让「断指」知道，鼠街不是他一个人的。",
+    "fx": [
+      "goto:t_red_boss_duel"
+    ]
+  },
+  {
+    "id": "free_lila_brother",
+    "name": "营救莉拉的哥哥",
+    "cost": 4,
+    "group": "quest",
+    "tag": "adventure",
+    "cond": "quest.lila_brother==active&&qstage.lila_brother==1&&!flag:brother_free&&!flag:brother_try3",
+    "hint": "莉拉",
+    "desc": "王城监牢的第二层。敏捷检定，最多三次机会。",
+    "check": {
+      "attr": "agi",
+      "diff": 14
+    },
+    "ok": {
+      "text": "钥匙在锁孔里转了半圈，你扶起那个瘦得脱形的人，从水牢旁边的暗门里钻了出去。",
+      "fx": [
+        "flag+:brother_free",
+        "agi_exp+4",
+        "count:heat+14",
+        "rel:lila+2",
+        "exp+30"
+      ]
+    },
+    "fail": {
+      "text": "走廊里的火把突然亮了。你们躲进了一个空牢房，在黑暗里屏息了很久，才勉强退出来。",
+      "fx": [
+        "hp-6",
+        "count:heat+8",
+        {
+          "if": "flag:brother_try2",
+          "then": [
+            "flag+:brother_try3"
+          ],
+          "else": [
+            {
+              "if": "flag:brother_try1",
+              "then": [
+                "flag+:brother_try2"
+              ],
+              "else": [
+                "flag+:brother_try1"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "fetch_goods",
+    "name": "替老鬼取货",
+    "cost": 3,
+    "group": "quest",
+    "tag": "adventure",
+    "cond": "quest.gu_list==active&&count.goods<3",
+    "hint": "老鬼的货单",
+    "desc": "老鬼的货单上有三件货，每一件都不好取。敏捷检定。",
+    "check": {
+      "attr": "agi",
+      "diff": 13
+    },
+    "ok": {
+      "text": "货在你的怀里，还带着别人家里的檀香味。老鬼验货的时候，眼睛都没眨一下。",
+      "fx": [
+        "count:goods+1",
+        "agi_exp+3",
+        "count:heat+8",
+        "gold+20"
+      ]
+    },
+    "fail": {
+      "text": "你空着手回来，身上多了两道看门犬的牙印。",
+      "fx": [
+        "hp-8",
+        "count:heat+6"
+      ]
+    }
+  },
+  {
+    "id": "help_cass",
+    "name": "协助卡斯办案",
+    "cost": 2,
+    "group": "social",
+    "cond": "flag:met_cass&&quest.cass_hunt==active&&count.cass_help<3",
+    "hint": "卡斯好感",
+    "desc": "卡斯手里有几桩悬案，需要鼠街的人才知道的消息。一共可以帮三次。",
+    "check": {
+      "attr": "cha",
+      "diff": 11
+    },
+    "ok": {
+      "text": "你把鼠街里零碎的传闻，一条一条地捋给她听。卡斯在本子上记了很久，抬头看你的眼神，不再像看一个贼。",
+      "fx": [
+        "rel:cass+2",
+        "count:cass_help+1",
+        "cha_exp+3",
+        "count:heat+2",
+        "exp+10"
+      ]
+    },
+    "fail": {
+      "text": "你说得含糊，她也听得皱眉。“你在替谁隐瞒什么？”",
+      "fx": [
+        "rel:cass+1",
+        "count:cass_help+1",
+        "count:heat+4"
+      ]
+    }
+  },
+  {
+    "id": "report_cass",
+    "name": "把红手帮的罪证交给卡斯",
+    "cost": 1,
+    "group": "social",
+    "cond": "flag:red_hand_broken&&flag:met_cass&&!flag:cass_gift_red",
+    "hint": "卡斯好感",
+    "desc": "断指的账本里，有几页，足够卡斯拿去结案。",
+    "fx": [
+      "goto:t_report_cass"
+    ]
+  }
+]

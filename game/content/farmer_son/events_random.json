@@ -1,0 +1,1850 @@
+[
+  {
+    "id": "ev_lost_calf",
+    "kind": "random",
+    "pool": "opportunity",
+    "weight": 9,
+    "cond": [
+      "season==spring",
+      "season==summer"
+    ],
+    "title": "迷路的小牛",
+    "scene": "village_spring",
+    "text": "邻居家的小牛挣脱绳子跑进了林子，主人急得直跺脚。",
+    "options": [
+      {
+        "label": "帮忙去找（1 体力）",
+        "cost": 1,
+        "check": {
+          "attr": "agi",
+          "diff": 9
+        },
+        "ok": {
+          "text": "你在溪边找到了它，邻居硬塞给你一小袋铜币。",
+          "fx": [
+            "gold+14",
+            "hometown+2",
+            "agi_exp+2"
+          ]
+        },
+        "fail": {
+          "text": "追了半天也没追上，反倒摔了一跤。",
+          "fx": [
+            "hp-4",
+            "hometown+1"
+          ]
+        }
+      },
+      {
+        "label": "告诉他往溪边找",
+        "fx": [
+          "hometown+1"
+        ],
+        "text": "邻居谢过你，拔腿就跑。"
+      }
+    ]
+  },
+  {
+    "id": "ev_herb_gatherer",
+    "kind": "random",
+    "pool": "opportunity",
+    "weight": 8,
+    "title": "采药的老妇",
+    "scene": "mountain",
+    "text": "山脚下，一位背着竹篓的老妇正在辨认草药，篓子已经压得她直不起腰。",
+    "options": [
+      {
+        "label": "帮她把篓子背回村（1 体力）",
+        "cost": 1,
+        "fx": [
+          "str_exp+2",
+          "int_exp+3",
+          "heal:0.2"
+        ],
+        "text": "路上她给你讲了哪些草能止血、哪些草碰不得，还往你手里塞了一把干草药。"
+      },
+      {
+        "label": "请教几种草药的辨认法",
+        "fx": [
+          "int_exp+4"
+        ],
+        "text": "老妇笑着捡了几种给你看：“记住它们的叶脉。”"
+      }
+    ]
+  },
+  {
+    "id": "ev_wandering_bard",
+    "kind": "random",
+    "pool": "opportunity",
+    "weight": 9,
+    "cond": [
+      "season==summer",
+      "season==autumn"
+    ],
+    "title": "吟游诗人",
+    "scene": "village_autumn",
+    "text": "一位背着旧鲁特琴的吟游诗人在村口的树下弹唱，唱的是百年前勇者与魔王的故事。",
+    "options": [
+      {
+        "label": "坐下来听完整首",
+        "fx": [
+          "cha_exp+3",
+          "wil_exp+2",
+          "rel:efna+1"
+        ],
+        "text": "最后一段唱到勇者独自走进黑暗，周围一片安静。"
+      },
+      {
+        "label": "请他讲讲圣城的见闻（5 金币）",
+        "cond": "gold>=5",
+        "reason": "金币不足",
+        "fx": [
+          "gold-5",
+          "int_exp+3",
+          "flag+:heard_holy_city"
+        ],
+        "text": "他说圣城的钟楼有九十九级台阶，登顶之后，整座城都在脚下。"
+      }
+    ]
+  },
+  {
+    "id": "ev_old_coin",
+    "kind": "random",
+    "pool": "opportunity",
+    "weight": 7,
+    "title": "犁出来的旧银币",
+    "scene": "village_spring",
+    "text": "犁头在地里碰到了硬物，是一只生了绿锈的小罐，里头装着几枚没见过的旧银币。",
+    "options": [
+      {
+        "label": "拿去集市兑换",
+        "fx": [
+          "gold+24"
+        ],
+        "text": "钱商瞥了一眼就报了价，你觉得亏了，但也没处说理。"
+      },
+      {
+        "label": "交给神父，说不定是古物",
+        "fx": [
+          "rep:church+3",
+          "rel:ambrose+1"
+        ],
+        "text": "神父仔细端详后，说是前朝的祭币，他会登记在教堂的档案里。"
+      }
+    ]
+  },
+  {
+    "id": "ev_guild_board",
+    "kind": "random",
+    "pool": "opportunity",
+    "weight": 11,
+    "cond": "flag:guild",
+    "title": "公会布告栏",
+    "scene": "village_spring",
+    "text": "公会布告栏上贴着一张新的委托：护送行商穿过北边的山路，报酬不菲。",
+    "options": [
+      {
+        "label": "接下委托（2 体力）",
+        "cost": 2,
+        "check": {
+          "attr": "agi",
+          "diff": 10
+        },
+        "ok": {
+          "text": "一路无事，行商满意地多付了小费。",
+          "fx": [
+            "gold+34",
+            "rep:guild+3",
+            "exp+12"
+          ]
+        },
+        "fail": {
+          "text": "路上遇到岔路绕了远，行商只付了半数报酬。",
+          "fx": [
+            "gold+14",
+            "rep:guild+1"
+          ]
+        }
+      },
+      {
+        "label": "看看有没有别的",
+        "fx": [
+          "exp+3"
+        ],
+        "text": "你在布告栏前站了很久，把每一张都记在了心里。"
+      }
+    ]
+  },
+  {
+    "id": "ev_market_day",
+    "kind": "random",
+    "pool": "opportunity",
+    "weight": 10,
+    "cond": [
+      "season==spring",
+      "season==autumn"
+    ],
+    "title": "集市日",
+    "scene": "village_autumn",
+    "text": "镇上的集市开张了，来自各地的货郎摆满了街道，吆喝声此起彼伏。",
+    "options": [
+      {
+        "label": "摆摊卖家里的余粮（1 体力）",
+        "cost": 1,
+        "check": {
+          "attr": "cha",
+          "diff": 9
+        },
+        "ok": {
+          "text": "你嘴皮子利索，余粮卖了个好价钱。",
+          "fx": [
+            "gold+24",
+            "cha_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "没人买账，最后贱卖了出去。",
+          "fx": [
+            "gold+8",
+            "cha_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "逛一逛，长长见识",
+        "fx": [
+          "cha_exp+2",
+          "int_exp+2"
+        ],
+        "text": "你看见了南方的香料、东方的瓷器，还有一个会算命的老头。"
+      }
+    ]
+  },
+  {
+    "id": "ev_mina_flowers",
+    "kind": "random",
+    "pool": "social",
+    "weight": 9,
+    "title": "妹妹的花环",
+    "scene": "village_spring",
+    "text": "妹妹米娜举着一只歪歪扭扭的花环跑过来，非要套在你头上。",
+    "options": [
+      {
+        "label": "低头让她戴上",
+        "fx": [
+          "rel:mina+1",
+          "hometown+1"
+        ],
+        "text": "花环有点刺，但你戴了一整天。"
+      },
+      {
+        "label": "趁机教她认几个字（1 体力）",
+        "cost": 1,
+        "fx": [
+          "rel:mina+1",
+          "int_exp+2",
+          "cha_exp+1"
+        ],
+        "text": "她学会了写自己的名字，高兴得转圈。"
+      }
+    ]
+  },
+  {
+    "id": "ev_hot_spring",
+    "kind": "random",
+    "pool": "opportunity",
+    "weight": 7,
+    "cond": "season==winter",
+    "title": "山中的温泉",
+    "scene": "mountain",
+    "text": "雪地里腾起一缕白汽——你在山坳里发现了一眼天然的温泉。",
+    "options": [
+      {
+        "label": "泡一会儿（1 体力）",
+        "cost": 1,
+        "fx": [
+          "heal:0.6",
+          "status-:fatigue",
+          "wil_exp+1"
+        ],
+        "text": "冻僵的手脚慢慢缓过来，你几乎要睡着了。"
+      },
+      {
+        "label": "记下位置，不多停留",
+        "fx": [
+          "agi_exp+1"
+        ],
+        "text": "以后受了伤，这里是个好去处。"
+      }
+    ]
+  },
+  {
+    "id": "ev_pilgrim_blessing",
+    "kind": "random",
+    "pool": "opportunity",
+    "weight": 8,
+    "cond": "rep.church>=10",
+    "title": "朝圣者的祝福",
+    "scene": "village_spring",
+    "text": "一队去圣城朝圣的信徒经过村子，领头的老人看了你一眼，伸手在你额前画了个圣印。",
+    "options": [
+      {
+        "label": "低头接受祝福",
+        "fx": [
+          "status+:blessed:3",
+          "wil_exp+2"
+        ],
+        "text": "额头上留下一点暖意，像刚晒过的石头。"
+      },
+      {
+        "label": "请他们在教堂歇歇脚（1 体力）",
+        "cost": 1,
+        "fx": [
+          "rep:church+3",
+          "hometown+1",
+          "cha_exp+2"
+        ],
+        "text": "神父很高兴，说你有教养。"
+      }
+    ]
+  },
+  {
+    "id": "ev_smith_apprentice",
+    "kind": "random",
+    "pool": "opportunity",
+    "weight": 8,
+    "once": true,
+    "cond": "attr.str>=14&&age<24",
+    "title": "铁匠的邀请",
+    "scene": "village_spring",
+    "text": "镇上的铁匠看你抡锄头的架势，笑着说：“小子，要不要来帮我拉几天风箱？”",
+    "options": [
+      {
+        "label": "去铁匠铺帮工（2 体力）",
+        "cost": 2,
+        "fx": [
+          "str_exp+5",
+          "gold+12",
+          "wil_exp+1"
+        ],
+        "text": "火花在你手背上烫出几个小点，但你学到了不少。"
+      },
+      {
+        "label": "请铁匠帮你磨一磨武器",
+        "cond": "gold>=10",
+        "reason": "金币不足",
+        "fx": [
+          "gold-10",
+          "exp+8"
+        ],
+        "text": "刀刃亮了一倍，铁匠还给你指了怎么保养。"
+      }
+    ]
+  },
+  {
+    "id": "ev_barn_fire",
+    "kind": "random",
+    "pool": "calamity",
+    "weight": 8,
+    "cond": [
+      "season==summer",
+      "season==autumn"
+    ],
+    "title": "谷仓失火",
+    "scene": "village_autumn",
+    "text": "黄昏时，村西的谷仓突然冒起浓烟，有人在大喊“救火”。",
+    "options": [
+      {
+        "label": "冲进去抢粮食（1 体力）",
+        "cost": 1,
+        "check": {
+          "attr": "wil",
+          "diff": 10
+        },
+        "ok": {
+          "text": "你屏住气，一袋一袋拖了出来，邻居们感激得说不出话。",
+          "fx": [
+            "hometown+2",
+            "wil_exp+3",
+            "hp-4"
+          ]
+        },
+        "fail": {
+          "text": "浓烟呛得你睁不开眼，被人拖了出来。",
+          "fx": [
+            "hp-9",
+            "hometown-2"
+          ]
+        }
+      },
+      {
+        "label": "组织人排队传水",
+        "check": {
+          "attr": "cha",
+          "diff": 9
+        },
+        "ok": {
+          "text": "你一声吆喝，大家排成长龙，火很快被压住了。",
+          "fx": [
+            "hometown+1",
+            "cha_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "场面一团乱，等火灭了，谷仓只剩焦黑的梁。",
+          "fx": [
+            "hometown-4"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "ev_wild_boar",
+    "kind": "random",
+    "pool": "calamity",
+    "weight": 8,
+    "cond": [
+      "season==summer",
+      "season==autumn"
+    ],
+    "title": "野猪拱田",
+    "scene": "village_autumn",
+    "text": "一头发了狂的野猪闯进了麦田，所过之处一片狼藉。",
+    "options": [
+      {
+        "label": "拿起农具迎战",
+        "fx": [
+          {
+            "type": "combat",
+            "enemy": "boar",
+            "win": [
+              "hometown+2",
+              "gold+10"
+            ],
+            "lose": [
+              "hometown-3"
+            ],
+            "flee": [
+              "hometown-3"
+            ]
+          }
+        ],
+        "text": "你抄起铁叉冲了过去。"
+      },
+      {
+        "label": "点燃火把驱赶（1 体力）",
+        "cost": 1,
+        "check": {
+          "attr": "agi",
+          "diff": 10
+        },
+        "ok": {
+          "text": "火光吓得它掉头逃了，损失很小。",
+          "fx": [
+            "hometown+1",
+            "agi_exp+2"
+          ]
+        },
+        "fail": {
+          "text": "野猪没被吓住，反而更凶了。",
+          "fx": [
+            "hometown-4",
+            "hp-6"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "ev_livestock_plague",
+    "kind": "random",
+    "pool": "calamity",
+    "weight": 7,
+    "title": "牲口瘟",
+    "scene": "village_spring",
+    "text": "村里的羊开始接连倒下，兽医说是一种叫“软蹄”的瘟病。",
+    "options": [
+      {
+        "label": "帮着隔离病羊（2 体力）",
+        "cost": 2,
+        "fx": [
+          "hometown-1",
+          "int_exp+3",
+          "wil_exp+2"
+        ],
+        "text": "你们把病羊赶到村外的棚子，没让瘟病蔓延。"
+      },
+      {
+        "label": "拿钱请兽医（30 金币）",
+        "cond": "gold>=30",
+        "reason": "金币不足",
+        "fx": [
+          "gold-30"
+        ],
+        "text": "兽医忙了三天，总算压住了。"
+      },
+      {
+        "label": "听天由命",
+        "fx": [
+          "hometown-6"
+        ],
+        "text": "年底，村里的羊少了一半。"
+      }
+    ]
+  },
+  {
+    "id": "ev_bandits_toll",
+    "kind": "random",
+    "pool": "calamity",
+    "weight": 8,
+    "cond": "gold>=40&&age>=18",
+    "title": "山道劫匪",
+    "scene": "mountain",
+    "text": "你赶路时，三个蒙面人从树后窜出，拦住了去路：“留下买路钱。”",
+    "options": [
+      {
+        "label": "交钱了事（30 金币）",
+        "cond": "gold>=30",
+        "reason": "金币不足",
+        "fx": [
+          "gold-30"
+        ],
+        "text": "他们数了数，放你过去了。"
+      },
+      {
+        "label": "拔刀迎战",
+        "fx": [
+          {
+            "type": "combat",
+            "enemy": "bandit",
+            "win": [
+              "rep:guild+2"
+            ],
+            "lose": [
+              "gold-30"
+            ],
+            "flee": [
+              "gold-15"
+            ]
+          }
+        ],
+        "text": "你握紧了武器。"
+      }
+    ]
+  },
+  {
+    "id": "ev_nightmare",
+    "kind": "random",
+    "pool": "calamity",
+    "weight": 8,
+    "cond": "age>=24",
+    "title": "噩梦",
+    "scene": "village_winter",
+    "text": "你梦见魔王的城堡，黑色的城门缓缓打开，门后有双眼睛一直在看着你。你醒来时，浑身是汗。",
+    "options": [
+      {
+        "label": "咬牙再睡",
+        "check": {
+          "attr": "wil",
+          "diff": 11
+        },
+        "ok": {
+          "text": "你强迫自己把心放平，一觉睡到天亮。",
+          "fx": [
+            "wil_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "你睁着眼睛等到鸡叫，头痛欲裂。",
+          "fx": [
+            "status+:fatigue:2"
+          ]
+        }
+      },
+      {
+        "label": "起身祈祷（1 体力）",
+        "cost": 1,
+        "fx": [
+          "wil_exp+2",
+          "rep:church+1"
+        ],
+        "text": "跪在窗前，你慢慢安静下来。"
+      }
+    ]
+  },
+  {
+    "id": "ev_broken_plow",
+    "kind": "random",
+    "pool": "calamity",
+    "weight": 9,
+    "cond": "season==spring",
+    "title": "断了的犁",
+    "scene": "village_spring",
+    "text": "春耕正忙，犁头在地里崩断了，眼看就要耽误农时。",
+    "options": [
+      {
+        "label": "自己动手修（1 体力）",
+        "cost": 1,
+        "check": {
+          "attr": "int",
+          "diff": 9
+        },
+        "ok": {
+          "text": "你用麻绳和铁片勉强把它加固了。",
+          "fx": [
+            "int_exp+2",
+            "str_exp+1"
+          ]
+        },
+        "fail": {
+          "text": "越修越糟，只好花钱请铁匠。",
+          "fx": [
+            "gold-12"
+          ]
+        }
+      },
+      {
+        "label": "直接请铁匠（12 金币）",
+        "cond": "gold>=12",
+        "reason": "金币不足",
+        "fx": [
+          "gold-12"
+        ],
+        "text": "花钱省心。"
+      }
+    ]
+  },
+  {
+    "id": "ev_spring_flood",
+    "kind": "random",
+    "pool": "calamity",
+    "weight": 8,
+    "cond": "season==spring",
+    "title": "春汛",
+    "scene": "village_spring",
+    "text": "雪水涌下山，村东的溪水漫出了河道，眼看要淹进麦田。",
+    "options": [
+      {
+        "label": "挖沟引水（2 体力）",
+        "cost": 2,
+        "fx": [
+          "str_exp+3",
+          "hometown+1"
+        ],
+        "text": "你和邻居们挖了一下午，水被引到了荒地里。"
+      },
+      {
+        "label": "垒沙袋",
+        "check": {
+          "attr": "str",
+          "diff": 12
+        },
+        "ok": {
+          "text": "沙袋垒成了一道坝，水退得很快。",
+          "fx": [
+            "str_exp+2",
+            "hometown+1"
+          ]
+        },
+        "fail": {
+          "text": "坝垒得不够高，淹了一角。",
+          "fx": [
+            "hometown-4"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "ev_bad_rumor",
+    "kind": "random",
+    "pool": "calamity",
+    "weight": 6,
+    "cond": "age>=19",
+    "title": "流言",
+    "scene": "village_spring",
+    "text": "村里不知从哪传出一种说法：你天天往外跑，是不是不想守着这片地了？",
+    "options": [
+      {
+        "label": "挨家挨户解释（1 体力）",
+        "cost": 1,
+        "check": {
+          "attr": "cha",
+          "diff": 10
+        },
+        "ok": {
+          "text": "你用勤快的事实堵住了他们的嘴。",
+          "fx": [
+            "hometown+1",
+            "cha_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "越解释越乱，反而被笑话了一阵。",
+          "fx": [
+            "hometown-2"
+          ]
+        }
+      },
+      {
+        "label": "不理，继续干活",
+        "fx": [
+          "wil_exp+2"
+        ],
+        "text": "流言传了两天，自己也就散了。"
+      }
+    ]
+  },
+  {
+    "id": "ev_rex_duel",
+    "kind": "random",
+    "pool": "social",
+    "weight": 9,
+    "once": true,
+    "cond": "age>=17&&age<=22",
+    "title": "雷克斯的挑战",
+    "scene": "village_spring",
+    "text": "村东的雷克斯又来了。这次他不拿腕力说事，直接点名要和你比一场木剑。“输的人，以后见了对方得喊哥。”",
+    "options": [
+      {
+        "label": "接受挑战",
+        "check": {
+          "attr": "agi",
+          "diff": 11
+        },
+        "ok": {
+          "text": "你一记虚晃，木剑停在他喉前。他涨红了脸，半晌憋出一句：“……哥。”之后他反倒常来找你切磋。",
+          "fx": [
+            "rel:rex+3",
+            "cha_exp+3",
+            "exp+10"
+          ]
+        },
+        "fail": {
+          "text": "你被他敲在手腕上，疼得直吸气。但他走时回头说：“下次再来。”",
+          "fx": [
+            "rel:rex+1",
+            "hp-5",
+            "agi_exp+3"
+          ]
+        }
+      },
+      {
+        "label": "笑笑拒绝",
+        "fx": [
+          "rel:rex+1",
+          "wil_exp+1"
+        ],
+        "text": "他嘟囔着走了，但没再找你麻烦。"
+      }
+    ]
+  },
+  {
+    "id": "ev_village_wedding",
+    "kind": "random",
+    "pool": "social",
+    "weight": 8,
+    "once": true,
+    "cond": "hometown>=40&&age>=18",
+    "title": "村里的婚礼",
+    "scene": "village_autumn",
+    "text": "村西的一对新人办婚礼，全村人都去了。有人起哄让你上台唱一段。",
+    "options": [
+      {
+        "label": "清清嗓子，唱一段",
+        "check": {
+          "attr": "cha",
+          "diff": 9
+        },
+        "ok": {
+          "text": "你的歌声跑了调，但大家笑成一片，气氛更热了。",
+          "fx": [
+            "cha_exp+4",
+            "hometown+2"
+          ]
+        },
+        "fail": {
+          "text": "你唱到一半忘了词，台下哄堂大笑。",
+          "fx": [
+            "cha_exp+2",
+            "hometown+1"
+          ]
+        }
+      },
+      {
+        "label": "在一旁帮着端菜",
+        "fx": [
+          "hometown+2",
+          "str_exp+1"
+        ],
+        "text": "累是累，吃到了第一口热乎的肘子。"
+      }
+    ]
+  },
+  {
+    "id": "ev_mother_worry",
+    "kind": "random",
+    "pool": "social",
+    "weight": 9,
+    "once": true,
+    "cond": "age>=18",
+    "title": "母亲的担忧",
+    "scene": "village_spring",
+    "text": "夜里，母亲在灯下补你的衣裳，忽然轻声说：“你要是哪天走了，家里就剩你爹一个人了。”",
+    "options": [
+      {
+        "label": "“我会回来，一定。”",
+        "fx": [
+          "hometown+3",
+          "wil_exp+2"
+        ],
+        "text": "母亲没说话，只是把针线放下，握了握你的手。"
+      },
+      {
+        "label": "“我还没想好。”",
+        "fx": [
+          "wil_exp+1"
+        ],
+        "text": "母亲低头继续缝，缝了很久。"
+      }
+    ]
+  },
+  {
+    "id": "ev_father_story",
+    "kind": "random",
+    "pool": "social",
+    "weight": 8,
+    "once": true,
+    "cond": "age>=20",
+    "title": "父亲的旧事",
+    "scene": "village_autumn",
+    "text": "收工的晚上，父亲难得多喝了一杯，开口讲起他年轻时给教会运过粮，在边境见过魔物的脚印。",
+    "options": [
+      {
+        "label": "认真听完",
+        "fx": [
+          "wil_exp+3",
+          "int_exp+2",
+          "rel:mina+1"
+        ],
+        "text": "原来这个沉默的男人，也曾走得很远。"
+      },
+      {
+        "label": "追问魔物长什么样",
+        "fx": [
+          "int_exp+4",
+          "exp+10"
+        ],
+        "text": "他比划了一个很大的手势，然后摇摇头：“你别去看。”"
+      }
+    ]
+  },
+  {
+    "id": "ev_lorn_first",
+    "kind": "random",
+    "pool": "social",
+    "weight": 9,
+    "once": true,
+    "title": "行商洛恩",
+    "scene": "village_spring",
+    "text": "一位自称洛恩的行商，推着满载杂货的小车停在你家门前，说他想找个熟路的向导带他走北边的山路。",
+    "options": [
+      {
+        "label": "带他走一趟（2 体力）",
+        "cost": 2,
+        "fx": [
+          "gold+24",
+          "rel:lorn+2",
+          "agi_exp+2"
+        ],
+        "text": "他一路都在说笑，临别时塞给你一张写着地址的纸条：“以后有货，先想着你。”"
+      },
+      {
+        "label": "告诉他路怎么走",
+        "fx": [
+          "rel:lorn+1",
+          "cha_exp+1"
+        ],
+        "text": "他道了谢，说有缘再会。"
+      }
+    ]
+  },
+  {
+    "id": "ev_lorn_deal",
+    "kind": "random",
+    "pool": "opportunity",
+    "weight": 8,
+    "cond": "rel.lorn>=2",
+    "title": "洛恩的生意",
+    "scene": "village_autumn",
+    "text": "洛恩又路过了村子，神神秘秘地说：“有一批货，你要是肯垫钱，转手就有赚头。”",
+    "options": [
+      {
+        "label": "投 40 金币",
+        "cond": "gold>=40",
+        "reason": "金币不足",
+        "check": {
+          "attr": "luk",
+          "diff": 10
+        },
+        "ok": {
+          "text": "那批货在王都卖出了好价钱，洛恩分给你一大份。",
+          "fx": [
+            "gold+40",
+            "rel:lorn+1"
+          ]
+        },
+        "fail": {
+          "text": "货被山贼劫了，洛恩愧疚地赔了你一部分。",
+          "fx": [
+            "gold-18"
+          ]
+        }
+      },
+      {
+        "label": "婉拒",
+        "fx": [
+          "cha_exp+1"
+        ],
+        "text": "洛恩耸耸肩：“下次再说。”"
+      }
+    ]
+  },
+  {
+    "id": "ev_story_time",
+    "kind": "random",
+    "pool": "social",
+    "weight": 9,
+    "title": "孩子们要听故事",
+    "scene": "village_spring",
+    "text": "一群村里的孩子围住你，吵着要听你讲故事。",
+    "options": [
+      {
+        "label": "讲一个勇者的故事（1 体力）",
+        "cost": 1,
+        "fx": [
+          "cha_exp+3",
+          "hometown+1"
+        ],
+        "text": "你添油加醋，孩子们听得瞪圆了眼睛。"
+      },
+      {
+        "label": "教他们一套简单的拳法（1 体力）",
+        "cost": 1,
+        "fx": [
+          "str_exp+1",
+          "cha_exp+2",
+          "hometown+1"
+        ],
+        "text": "一排小不点咿咿呀呀打了半天，场面混乱又好笑。"
+      }
+    ]
+  },
+  {
+    "id": "ev_priest_chess",
+    "kind": "random",
+    "pool": "social",
+    "weight": 8,
+    "cond": "rep.church>=8",
+    "title": "神父的棋局",
+    "scene": "village_spring",
+    "portrait": "priest",
+    "text": "神父安布罗斯摆开一副旧棋盘，笑着说：“闲着也是闲着，陪我下一局？”",
+    "options": [
+      {
+        "label": "落座对弈（1 体力）",
+        "cost": 1,
+        "check": {
+          "attr": "int",
+          "diff": 10
+        },
+        "ok": {
+          "text": "你险胜半子，神父大笑：“后生可畏。”",
+          "fx": [
+            "int_exp+4",
+            "rel:ambrose+1",
+            "rep:church+1"
+          ]
+        },
+        "fail": {
+          "text": "你被杀得片甲不留，但学到了几手。",
+          "fx": [
+            "int_exp+2",
+            "rel:ambrose+1"
+          ]
+        }
+      },
+      {
+        "label": "推辞，说还有活要干",
+        "fx": [],
+        "text": "神父点头：“年轻人，手上的活要紧。”"
+      }
+    ]
+  },
+  {
+    "id": "ev_comet",
+    "kind": "random",
+    "pool": "world",
+    "weight": 9,
+    "once": true,
+    "cond": "age>=24",
+    "title": "拖着尾巴的星",
+    "scene": "village_autumn",
+    "text": "夜里，一颗拖着长长尾巴的红色彗星划过北方的天空，持续了整整三个晚上。老人们说，这是上一次魔王苏醒前也出现过的征兆。",
+    "options": [
+      {
+        "label": "和村里人一起守夜（1 体力）",
+        "cost": 1,
+        "fx": [
+          "wil_exp+3",
+          "hometown+1"
+        ],
+        "text": "大家围着篝火，谁也没说话。"
+      },
+      {
+        "label": "记下它的方位和日期",
+        "fx": [
+          "int_exp+3",
+          "exp+10"
+        ],
+        "text": "你在本子上画下星图，打算以后拿去问学者。"
+      }
+    ]
+  },
+  {
+    "id": "ev_conscription",
+    "kind": "random",
+    "pool": "world",
+    "weight": 9,
+    "once": true,
+    "cond": "age>=20&&age<=27",
+    "title": "王国征兵",
+    "scene": "village_spring",
+    "text": "王国的征兵官带着卫兵来到村里，要从每家抽一名青壮去北边戍边。",
+    "options": [
+      {
+        "label": "主动报名（2 体力）",
+        "cost": 2,
+        "fx": [
+          "rep:kingdom+6",
+          "str_exp+3",
+          "exp+25",
+          "hometown-2"
+        ],
+        "text": "你在边境待了几周，回来时身上多了几道伤疤和一份军功文书。"
+      },
+      {
+        "label": "交钱免役（40 金币）",
+        "cond": "gold>=40",
+        "reason": "金币不足",
+        "fx": [
+          "gold-40"
+        ],
+        "text": "征兵官收了钱，在名册上划掉了你的名字。"
+      },
+      {
+        "label": "托词躲过去",
+        "check": {
+          "attr": "cha",
+          "diff": 11
+        },
+        "ok": {
+          "text": "你一脸诚恳地说家里离不开你，征兵官挥挥手走了。",
+          "fx": [
+            "cha_exp+2"
+          ]
+        },
+        "fail": {
+          "text": "被识破了，罚了一笔钱。",
+          "fx": [
+            "gold-30",
+            "rep:kingdom-2"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "ev_church_collection",
+    "kind": "random",
+    "pool": "world",
+    "weight": 8,
+    "cond": "age>=19",
+    "title": "教会募捐",
+    "scene": "village_spring",
+    "portrait": "priest",
+    "text": "神父拿着募捐箱来到你家，说教会要给北境的难民修一座避难所。",
+    "options": [
+      {
+        "label": "捐 15 金币",
+        "cond": "gold>=15",
+        "reason": "金币不足",
+        "fx": [
+          "gold-15",
+          "rep:church+3"
+        ],
+        "text": "神父在你的名字后面画了一个小十字。"
+      },
+      {
+        "label": "出力帮着搬砖（2 体力）",
+        "cost": 2,
+        "fx": [
+          "str_exp+3",
+          "rep:church+3",
+          "hometown+1"
+        ],
+        "text": "你干了一整天，神父给你留了一碗热汤。"
+      },
+      {
+        "label": "婉拒",
+        "fx": [],
+        "text": "神父没说什么，转身去了下一家。"
+      }
+    ]
+  },
+  {
+    "id": "ev_trade_route_cut",
+    "kind": "random",
+    "pool": "world",
+    "weight": 9,
+    "once": true,
+    "cond": "age>=25",
+    "title": "北方商路中断",
+    "scene": "village_winter",
+    "text": "行商们带来消息：北边的商路被魔物截断，粮价和铁价都在涨。",
+    "options": [
+      {
+        "label": "囤些粮食以防万一（30 金币）",
+        "cond": "gold>=30",
+        "reason": "金币不足",
+        "fx": [
+          "gold-30",
+          "hometown+3"
+        ],
+        "text": "仓房里多了几袋粮，心里踏实了些。"
+      },
+      {
+        "label": "照常过日子",
+        "fx": [
+          "wil_exp+1"
+        ],
+        "text": "该来的总会来，该做的事一样要做。"
+      }
+    ]
+  },
+  {
+    "id": "ev_knight_passing",
+    "kind": "random",
+    "pool": "world",
+    "weight": 8,
+    "cond": "age>=19",
+    "title": "过路的骑士",
+    "scene": "village_spring",
+    "text": "一队王国骑士路过村子，披风上沾满了尘土。领头的骑士下马喝水，目光在你身上停了一下。",
+    "options": [
+      {
+        "label": "上前请教几招（1 体力）",
+        "cost": 1,
+        "check": {
+          "attr": "cha",
+          "diff": 10
+        },
+        "ok": {
+          "text": "他看你诚恳，随手教了你一个格挡的窍门。",
+          "fx": [
+            "str_exp+3",
+            "agi_exp+2",
+            "rep:kingdom+2"
+          ]
+        },
+        "fail": {
+          "text": "他礼貌地摇了摇头，翻身上马走了。",
+          "fx": [
+            "cha_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "递上水囊",
+        "fx": [
+          "rep:kingdom+1",
+          "cha_exp+1"
+        ],
+        "text": "骑士点点头：“多谢。”"
+      }
+    ]
+  },
+  {
+    "id": "ev_church_inspection",
+    "kind": "random",
+    "pool": "world",
+    "weight": 7,
+    "cond": "rep.church>=20&&age>=21",
+    "title": "教会巡查",
+    "scene": "village_spring",
+    "portrait": "priest",
+    "text": "教会的巡查官来到村里检查教堂账目，神父紧张得一晚没睡好。",
+    "options": [
+      {
+        "label": "帮神父整理账目（1 体力）",
+        "cost": 1,
+        "fx": [
+          "int_exp+3",
+          "rep:church+3",
+          "rel:ambrose+1"
+        ],
+        "text": "账目没出问题，神父长出了一口气。"
+      },
+      {
+        "label": "带巡查官参观村子",
+        "check": {
+          "attr": "cha",
+          "diff": 10
+        },
+        "ok": {
+          "text": "巡查官对村里的秩序很满意。",
+          "fx": [
+            "rep:church+4",
+            "hometown+1"
+          ]
+        },
+        "fail": {
+          "text": "你讲得磕磕绊绊，巡查官皱了皱眉。",
+          "fx": [
+            "cha_exp+2"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "ev_war_news",
+    "kind": "random",
+    "pool": "world",
+    "weight": 8,
+    "once": true,
+    "cond": "age>=27",
+    "title": "前线战报",
+    "scene": "village_winter",
+    "text": "邮差带来了前线的消息：魔物攻陷了两座边境据点，王国正在紧急调兵。",
+    "options": [
+      {
+        "label": "立刻整理行装，加紧练习（2 体力）",
+        "cost": 2,
+        "fx": [
+          "str_exp+3",
+          "wil_exp+3",
+          "exp+20"
+        ],
+        "text": "时间不多了，你把剩下的每一天都排得很满。"
+      },
+      {
+        "label": "按兵不动，守好家里",
+        "fx": [
+          "hometown+1"
+        ],
+        "text": "你在村口加了两个岗哨。"
+      }
+    ]
+  },
+  {
+    "id": "ev_old_scar",
+    "kind": "random",
+    "pool": "social",
+    "weight": 7,
+    "once": true,
+    "cond": "flag:met_glen&&rel.glen>=2",
+    "title": "格伦的伤疤",
+    "scene": "village_autumn",
+    "portrait": "glen",
+    "text": "格伦在窝棚前擦拭一把旧剑，衣袖滑落，露出一道从肩到肘的长疤。他发现你在看，没遮。",
+    "options": [
+      {
+        "label": "“那是怎么来的？”",
+        "fx": [
+          "rel:glen+1",
+          "wil_exp+2"
+        ],
+        "text": "“一次不该打的仗。”他说，然后再没说话。"
+      },
+      {
+        "label": "默默递上一杯水",
+        "fx": [
+          "rel:glen+1"
+        ],
+        "text": "他接过去，点了点头。"
+      }
+    ]
+  },
+  {
+    "id": "ev_harvest_dispute",
+    "kind": "random",
+    "pool": "social",
+    "weight": 7,
+    "cond": "season==autumn",
+    "title": "田埂之争",
+    "scene": "village_autumn",
+    "text": "两户邻居为了一道田埂吵了起来，眼看就要动手，村里人都围过来看热闹。",
+    "options": [
+      {
+        "label": "站出来调解",
+        "check": {
+          "attr": "cha",
+          "diff": 10
+        },
+        "ok": {
+          "text": "你一人一句，把他们说得面红耳赤，各让了三寸。",
+          "fx": [
+            "cha_exp+4",
+            "hometown+2"
+          ]
+        },
+        "fail": {
+          "text": "两家人一起骂你多管闲事。",
+          "fx": [
+            "cha_exp+2",
+            "hometown-1"
+          ]
+        }
+      },
+      {
+        "label": "拉开他们（1 体力）",
+        "cost": 1,
+        "fx": [
+          "str_exp+2",
+          "hometown+1"
+        ],
+        "text": "你硬生生把两人分开，各自的鼻子都挂了彩。"
+      }
+    ]
+  },
+  {
+    "id": "ev_wandering_mage",
+    "kind": "random",
+    "pool": "opportunity",
+    "weight": 12,
+    "once": true,
+    "cond": "age>=18&&age<=27",
+    "title": "路过的老法师",
+    "scene": "village_autumn",
+    "text": "一位披着旧斗篷的老法师在村口歇脚，行囊里露出半截书脊。他打量你的手：“种田的手，有意思。”",
+    "options": [
+      {
+        "label": "请他讲讲魔法是怎么回事（1 体力）",
+        "cost": 1,
+        "fx": [
+          "int_exp+4",
+          "exp+10",
+          "flag+:magic_tome"
+        ],
+        "text": "他笑着从行囊里抽出一本磨破角的小册子：“拿去看，别的我没有。能不能入门，看你自己。”"
+      },
+      {
+        "label": "帮他把行李搬到客栈",
+        "fx": [
+          "str_exp+2",
+          "cha_exp+1",
+          "gold+8"
+        ],
+        "text": "他道了谢，给了你几个铜板，没提魔法的事。"
+      }
+    ]
+  },
+  {
+    "id": "ev_old_spellbook",
+    "kind": "random",
+    "pool": "opportunity",
+    "weight": 8,
+    "once": true,
+    "cond": "attr.int>=8&&age<=28",
+    "title": "一本旧法术书",
+    "scene": "village_spring",
+    "text": "集市的旧书摊上，你翻到一本封面烫金的残本，书页上全是奇怪的符号，摊主说是前朝学院的遗物。",
+    "options": [
+      {
+        "label": "花 30 金币买下",
+        "cond": "gold>=30",
+        "reason": "金币不足",
+        "fx": [
+          "gold-30",
+          "flag+:magic_tome",
+          "int_exp+3"
+        ],
+        "text": "你抱着它跑回家，翻开第一页就舍不得放下。"
+      },
+      {
+        "label": "翻看几页，记下几条咒文",
+        "fx": [
+          "int_exp+4"
+        ],
+        "text": "摊主瞪了你一眼：“看够了就买。”"
+      }
+    ]
+  },
+  {
+    "id": "ev_wise_riddle",
+    "kind": "random",
+    "pool": "opportunity",
+    "weight": 9,
+    "title": "拦路的谜题",
+    "scene": "village_autumn",
+    "text": "一位拄着竹杖的游方智者拦在路中间，笑眯眯地说：“年轻人，答对我一个题，这几个铜板就归你。”他出的是：“有一物，越用越多，越藏越少，是什么？”",
+    "options": [
+      {
+        "label": "仔细想一想",
+        "check": {
+          "attr": "int",
+          "diff": 11
+        },
+        "ok": {
+          "text": "你想到了“知识”，智者拊掌大笑，把钱袋塞给了你。",
+          "fx": [
+            "gold+35",
+            "int_exp+4"
+          ]
+        },
+        "fail": {
+          "text": "你绞尽脑汁，智者摇着头给了你一个提示，没收钱。",
+          "fx": [
+            "int_exp+2"
+          ]
+        }
+      },
+      {
+        "label": "笑笑，不参与",
+        "fx": [],
+        "text": "智者也不勉强，拄着竹杖慢悠悠走远了。"
+      }
+    ]
+  },
+  {
+    "id": "ev_ancient_marker",
+    "kind": "random",
+    "pool": "opportunity",
+    "weight": 8,
+    "once": true,
+    "cond": "age>=20",
+    "title": "古老的界碑",
+    "scene": "mountain",
+    "text": "田边挖沟时，铲子磕到了一块刻着符文的石碑，上面的字比教会用的任何一种文字都古老。",
+    "options": [
+      {
+        "label": "拓下纹路，慢慢辨认（1 体力）",
+        "cost": 1,
+        "check": {
+          "attr": "int",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你认出了其中几个词根，隐约摸到了一套符文的规律。",
+          "fx": [
+            "int_exp+6",
+            "exp+30",
+            "count:arcana+1"
+          ]
+        },
+        "fail": {
+          "text": "线条太繁复，你只看得头晕。",
+          "fx": [
+            "int_exp+2"
+          ]
+        }
+      },
+      {
+        "label": "让它继续埋着",
+        "fx": [
+          "wil_exp+1"
+        ],
+        "text": "有些东西，不碰也好。"
+      }
+    ]
+  },
+  {
+    "id": "ev_scholar_debate",
+    "kind": "random",
+    "pool": "social",
+    "weight": 8,
+    "cond": "age>=19",
+    "title": "学者的辩论",
+    "scene": "village_spring",
+    "text": "巡回的学者在教堂前摆开辩论席，说谁能驳倒他关于“魔王是否有意志”的论点，就赠书一本。围观者你看我、我看你。",
+    "options": [
+      {
+        "label": "上台辩一场",
+        "check": {
+          "attr": "int",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你抓住他论证里的一个漏洞，逼得他沉默了很久。台下一片叫好，学者笑着送你一本旧册。",
+          "fx": [
+            "int_exp+6",
+            "cha_exp+3",
+            "rep:church+2",
+            "exp+25"
+          ]
+        },
+        "fail": {
+          "text": "几个回合就被他驳得哑口无言，但你记住了他的几个论点。",
+          "fx": [
+            "int_exp+3",
+            "cha_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "站在人群里听",
+        "fx": [
+          "int_exp+2"
+        ],
+        "text": "听明白了一半，另一半留着回去想。"
+      }
+    ]
+  },
+  {
+    "id": "ev_forged_deed",
+    "kind": "random",
+    "pool": "calamity",
+    "weight": 8,
+    "cond": "age>=20&&hometown>=30",
+    "title": "可疑的地契",
+    "scene": "village_winter",
+    "text": "一位衣着体面的外乡人拿着一份地契来到村里，声称村东的一片荒地归他所有。村长看不出破绽，一脸为难。",
+    "options": [
+      {
+        "label": "仔细查验那份文书",
+        "check": {
+          "attr": "int",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你发现印章的纹路和领主府的旧例对不上，当场戳穿了他。",
+          "fx": [
+            "hometown+3",
+            "int_exp+4",
+            "gold+20"
+          ]
+        },
+        "fail": {
+          "text": "你看不出破绽，眼睁睁看着村里让出了半块地。",
+          "fx": [
+            "hometown-3",
+            "int_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "建议去领主府核实",
+        "fx": [
+          "hometown+1",
+          "cha_exp+1"
+        ],
+        "text": "外乡人脸色变了变，说改日再来，从此没了踪影。"
+      }
+    ]
+  },
+  {
+    "id": "ev_poisoned_well",
+    "kind": "random",
+    "pool": "calamity",
+    "weight": 8,
+    "title": "发臭的水井",
+    "scene": "village_spring",
+    "text": "村里的水井忽然发出一股怪味，好几个人喝了水就上吐下泻。有人说是魔物下的毒，人心惶惶。",
+    "options": [
+      {
+        "label": "查明原因",
+        "check": {
+          "attr": "int",
+          "diff": 11
+        },
+        "ok": {
+          "text": "你顺着水脉找到井下的死鼠，清理后又煮了三天水，村里渐渐安稳。",
+          "fx": [
+            "hometown+3",
+            "int_exp+4"
+          ]
+        },
+        "fail": {
+          "text": "你没找到根源，大家只好改去溪边挑水。",
+          "fx": [
+            "hometown-3",
+            "hp-4"
+          ]
+        }
+      },
+      {
+        "label": "让神父来做祈福",
+        "fx": [
+          "rep:church+1"
+        ],
+        "text": "祈福不能治病，但至少让大家安了心。"
+      }
+    ]
+  },
+  {
+    "id": "ev_haunted_barn",
+    "kind": "random",
+    "pool": "calamity",
+    "weight": 7,
+    "title": "闹鬼的谷仓",
+    "scene": "village_winter",
+    "text": "夜里，村西废弃的谷仓传来哭声和拖拽锁链的声响，几个孩子吓得不敢回家。",
+    "options": [
+      {
+        "label": "提着灯去看看",
+        "check": {
+          "attr": "wil",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你推开门，里面只有一只被困的老驴和一堆乱晃的铁链。你笑着把它牵了出来。",
+          "fx": [
+            "wil_exp+4",
+            "hometown+2"
+          ]
+        },
+        "fail": {
+          "text": "黑暗里什么东西碰了你一下，你拔腿就跑，一夜没睡。",
+          "fx": [
+            "wil_exp+1",
+            "status+:fatigue:1"
+          ]
+        }
+      },
+      {
+        "label": "让大人们天亮再看",
+        "fx": [
+          "hometown-1"
+        ],
+        "text": "孩子们都说你胆小。"
+      }
+    ]
+  },
+  {
+    "id": "ev_gold_temptation",
+    "kind": "random",
+    "pool": "social",
+    "weight": 8,
+    "cond": "gold>=30&&age>=19",
+    "title": "诱人的买卖",
+    "scene": "village_autumn",
+    "text": "一个笑容和善的陌生人悄悄拉住你：“有一桩买卖，稳赚不赔，就是得瞒着教会。”他搓了搓手指，意思是金币。",
+    "options": [
+      {
+        "label": "摇头，拒绝",
+        "check": {
+          "attr": "wil",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你把他的手拨开，转身就走。回头想想，后背都是汗。",
+          "fx": [
+            "wil_exp+4",
+            "rep:church+2"
+          ]
+        },
+        "fail": {
+          "text": "你犹豫了很久才拒绝，那几晚你都睡不好。",
+          "fx": [
+            "wil_exp+2"
+          ]
+        }
+      },
+      {
+        "label": "先听听条件",
+        "fx": [
+          "gold+55",
+          "rep:church-3",
+          "cha_exp+1"
+        ],
+        "text": "买卖不算太脏，但你知道神父不会高兴。"
+      }
+    ]
+  },
+  {
+    "id": "ev_siege_night",
+    "kind": "random",
+    "pool": "world",
+    "weight": 9,
+    "cond": "age>=26",
+    "title": "漫长的守夜",
+    "scene": "village_winter",
+    "text": "北边传来号角声，村里组织青壮守夜。整整一夜，远处的火光忽明忽暗，每个人都握紧了手里的武器。",
+    "options": [
+      {
+        "label": "站在最前面的岗哨（2 体力）",
+        "cost": 2,
+        "check": {
+          "attr": "wil",
+          "diff": 13
+        },
+        "ok": {
+          "text": "黑暗里的影子试探了几次，都被你冷静地逼退了。天亮时，大家都看着你。",
+          "fx": [
+            "wil_exp+5",
+            "hometown+3",
+            "exp+30"
+          ]
+        },
+        "fail": {
+          "text": "你死撑着没动，但手一直在抖。天亮时，你的腿几乎站不稳。",
+          "fx": [
+            "wil_exp+2",
+            "status+:fatigue:2"
+          ]
+        }
+      },
+      {
+        "label": "留在后方照顾伤员",
+        "fx": [
+          "hometown+1",
+          "wil_exp+2",
+          "rep:church+1"
+        ],
+        "text": "你给每一个被碎石划伤的人包好了伤口。"
+      }
+    ]
+  },
+  {
+    "id": "ev_mage_trial",
+    "kind": "random",
+    "pool": "opportunity",
+    "weight": 10,
+    "once": true,
+    "cond": "flag:magic_tome&&attr.int>=10",
+    "title": "魔法师的小测试",
+    "scene": "village_autumn",
+    "text": "路过的一位魔法师看你手里那本旧册子，挑了挑眉：“读到第几页了？来，我考你一个咒文的结构。”",
+    "options": [
+      {
+        "label": "接受考校",
+        "check": {
+          "attr": "int",
+          "diff": 13
+        },
+        "ok": {
+          "text": "你一气说出了咒文的三个层次，他点点头，随手指点了你几句要领。",
+          "fx": [
+            "int_exp+7",
+            "count:arcana+3",
+            "exp+30"
+          ]
+        },
+        "fail": {
+          "text": "答到一半就卡壳了。他没有责备，只是在你书里夹了一张便条。",
+          "fx": [
+            "int_exp+3",
+            "count:arcana+1"
+          ]
+        }
+      },
+      {
+        "label": "婉拒，说还没读熟",
+        "fx": [
+          "int_exp+2"
+        ],
+        "text": "他耸耸肩：“好学生不怕考。”"
+      }
+    ]
+  },
+  {
+    "id": "ev_church_exam",
+    "kind": "random",
+    "pool": "social",
+    "weight": 8,
+    "cond": "rep.church>=15",
+    "portrait": "priest",
+    "title": "经义考核",
+    "scene": "village_spring",
+    "text": "教会每年会对来侍奉的信众做一次经义考核。神父递给你一张写满问答的羊皮纸：“不必紧张，答得出多少算多少。”",
+    "options": [
+      {
+        "label": "凭理解作答",
+        "check": {
+          "attr": "int",
+          "diff": 11
+        },
+        "ok": {
+          "text": "你答得条理清楚，神父连连点头，批了一个“优”。",
+          "fx": [
+            "rep:church+5",
+            "int_exp+4",
+            "rel:ambrose+1"
+          ]
+        },
+        "fail": {
+          "text": "几处条文你记混了，神父叹了口气，批了一个“中”。",
+          "fx": [
+            "rep:church+2",
+            "int_exp+2"
+          ]
+        }
+      },
+      {
+        "label": "凭信仰作答",
+        "check": {
+          "attr": "wil",
+          "diff": 11
+        },
+        "ok": {
+          "text": "你写得不多，但每一句都带着一股执着的劲，神父沉默了很久，在末尾画了个圣印。",
+          "fx": [
+            "rep:church+5",
+            "wil_exp+4",
+            "rel:ambrose+1"
+          ]
+        },
+        "fail": {
+          "text": "写到一半，你对自己的答案产生了怀疑。",
+          "fx": [
+            "rep:church+2",
+            "wil_exp+2"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "ev_cursed_trinket",
+    "kind": "random",
+    "pool": "calamity",
+    "weight": 7,
+    "cond": "age>=21",
+    "title": "诅咒的饰品",
+    "scene": "village_autumn",
+    "text": "行商贱卖一枚镶着黑石的戒指，说是从坟里挖的。你戴上它的一瞬间，手指像被冰针扎了一下。",
+    "options": [
+      {
+        "label": "凝神抵抗，把它摘下来",
+        "check": {
+          "attr": "wil",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你咬着牙摘下戒指，一转手卖给了收旧货的，居然还赚了点。",
+          "fx": [
+            "wil_exp+4",
+            "gold+40"
+          ]
+        },
+        "fail": {
+          "text": "你摘了很久才摘下来，手指上留下一圈青黑的印子。",
+          "fx": [
+            "hp-8",
+            "status+:fatigue:2"
+          ]
+        }
+      },
+      {
+        "label": "请神父来净化",
+        "fx": [
+          "rep:church+2",
+          "rel:ambrose+1"
+        ],
+        "text": "神父在戒指上洒了圣水，黑石裂成了两半。"
+      }
+    ]
+  }
+]

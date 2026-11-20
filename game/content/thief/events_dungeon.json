@@ -1,0 +1,262 @@
+[
+  {
+    "id": "t_de_sewer_light",
+    "kind": "dungeon",
+    "title": "下水道里的光",
+    "text": "下水道的尽头有一束光，来自头顶一个缺了盖的井口。\n光里，站着一个人，蹲着，在翻一堆什么东西。",
+    "options": [
+      {
+        "label": "悄悄靠近，看他在做什么",
+        "check": {
+          "attr": "agi",
+          "diff": 11
+        },
+        "ok": {
+          "text": "那人是个拾荒的老头，他在翻一具冻僵的老鼠。他看你的眼神，没有恶意。老头递给你一枚从泥里捡来的金戒指。",
+          "fx": [
+            "gold+30",
+            "agi_exp+2"
+          ]
+        },
+        "fail": {
+          "text": "你一脚踩在了湿滑的石头上，哗啦一声。老头吓得跳了起来。",
+          "fx": [
+            "hp-5"
+          ]
+        }
+      }
+    ],
+    "dungeons": [
+      "sewer"
+    ],
+    "weight": 8
+  },
+  {
+    "id": "t_de_sewer_rats",
+    "kind": "dungeon",
+    "title": "鼠群",
+    "text": "黑暗里，一阵细碎的声音由远及近，像成千上万的小脚在爬行。\n不是一只，是一整群。",
+    "options": [
+      {
+        "label": "点燃火把，逼退它们",
+        "check": {
+          "attr": "wil",
+          "diff": 11
+        },
+        "ok": {
+          "text": "火光里，鼠群骚动着退了回去。你从它们让出的缝隙里，发现了一个被啃坏的小箱子。",
+          "fx": [
+            "gold+25",
+            "wil_exp+2"
+          ]
+        },
+        "fail": {
+          "text": "火把被撞灭了，你被咬了好几口。",
+          "fx": [
+            "hp-10",
+            "wil_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "躲进一条侧道",
+        "text": "你躲在一个狭窄的管道里，听着鼠群从身边涌过。",
+        "fx": [
+          "agi_exp+2"
+        ]
+      }
+    ],
+    "dungeons": [
+      "sewer"
+    ],
+    "weight": 8
+  },
+  {
+    "id": "t_de_ware_dog",
+    "kind": "dungeon",
+    "title": "看家的恶犬",
+    "text": "仓库的角落里，拴着一条黑色的大狗，眼睛是红的。它没有叫，只是低低地看着你。",
+    "options": [
+      {
+        "label": "给它丢一块带药的肉",
+        "check": {
+          "attr": "int",
+          "diff": 12
+        },
+        "ok": {
+          "text": "狗吃了肉，慢慢卧下。你在它的窝旁，发现了一小袋被藏起来的钱。",
+          "fx": [
+            "gold+35",
+            "int_exp+2"
+          ]
+        },
+        "fail": {
+          "text": "狗没有上当，扑了上来。",
+          "fx": [
+            "hp-12"
+          ]
+        },
+        "cond": "gold>=10"
+      },
+      {
+        "label": "绕开它，走另一条路",
+        "text": "你屏息从它的视线边缘滑了过去。",
+        "fx": [
+          "agi_exp+3"
+        ]
+      }
+    ],
+    "dungeons": [
+      "warehouse"
+    ],
+    "weight": 8
+  },
+  {
+    "id": "t_de_ware_ledger",
+    "kind": "dungeon",
+    "title": "红手帮的账本",
+    "text": "仓库的一个木箱里，放着一本厚厚的账本，上面记着许多名字和数字。其中有几个名字，你很熟悉。",
+    "options": [
+      {
+        "label": "撕下几页，带走",
+        "text": "这几页纸，足以让一些人睡不着觉。",
+        "fx": [
+          "count:intel+1",
+          "int_exp+2",
+          "rep:shadow+2"
+        ]
+      },
+      {
+        "label": "一页不动，原样放回",
+        "text": "账本放回原位。你什么也没看见。",
+        "fx": [
+          "wil_exp+1"
+        ]
+      }
+    ],
+    "dungeons": [
+      "warehouse"
+    ],
+    "weight": 8
+  },
+  {
+    "id": "t_de_manor_study",
+    "kind": "dungeon",
+    "title": "书房的暗门",
+    "text": "贵族宅邸的书房里，一排书架的后面，有一道缝，吹出凉凉的风。",
+    "options": [
+      {
+        "label": "推开暗门，进去看看",
+        "check": {
+          "attr": "int",
+          "diff": 13
+        },
+        "ok": {
+          "text": "暗门后是一间小小的密室，里面堆着几只上了锁的箱子。你撬开其中一只，是一小袋宝石。",
+          "fx": [
+            "gold+60",
+            "int_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "暗门上的机关被你触发，一支弩箭擦着你的肩膀飞过。",
+          "fx": [
+            "hp-12"
+          ]
+        }
+      },
+      {
+        "label": "不动，继续往前走",
+        "text": "",
+        "fx": []
+      }
+    ],
+    "dungeons": [
+      "manor_heist"
+    ],
+    "weight": 8
+  },
+  {
+    "id": "t_de_manor_lady",
+    "kind": "dungeon",
+    "title": "阳台上的小姐",
+    "text": "你从二楼的阳台翻进去，迎面是一位穿着睡袍的年轻小姐。她看着你，没喊，也没躲。\n“你是来偷东西的吗？”她轻声问，“那你能带我走吗？”",
+    "options": [
+      {
+        "label": "告诉她：这不是你该走的路",
+        "text": "她低下头，轻轻点了点。你从阳台翻出去的时候，听见她在身后说：“……谢谢。”",
+        "fx": [
+          "cha_exp+2",
+          "wil_exp+2"
+        ]
+      },
+      {
+        "label": "把她手里的首饰接过来，转身就走",
+        "text": "你拿了首饰，没敢回头。",
+        "fx": [
+          "gold+55",
+          "count:heat+6",
+          "hometown-2"
+        ]
+      }
+    ],
+    "dungeons": [
+      "manor_heist"
+    ],
+    "weight": 8
+  },
+  {
+    "id": "t_de_vault_pipe",
+    "kind": "dungeon",
+    "title": "水渠里的回声",
+    "text": "水渠深处，传来一阵有节奏的敲击声，一下一下，像是有人在用锤子敲击什么。",
+    "options": [
+      {
+        "label": "循着声音摸过去",
+        "check": {
+          "attr": "agi",
+          "diff": 14
+        },
+        "ok": {
+          "text": "你在转角处停下，看见两个王室暗哨，一边巡逻，一边在墙上敲着暗号。你悄悄记下了他们的节奏。",
+          "fx": [
+            "count:intel+1",
+            "agi_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "你一脚踢到了一块松动的石头，暗哨猛地回头。",
+          "fx": [
+            "hp-12",
+            "count:heat+6"
+          ]
+        }
+      }
+    ],
+    "dungeons": [
+      "vault_outer"
+    ],
+    "weight": 8
+  },
+  {
+    "id": "t_de_vault_graffiti",
+    "kind": "dungeon",
+    "title": "墙上的涂鸦",
+    "text": "水渠的墙上，有一行用刀刻的小字。字迹很旧，像是几十年前的：\n“后来者，别信面具。”",
+    "options": [
+      {
+        "label": "用手摸着那些刻痕，沉思片刻",
+        "text": "你的指尖沿着那些凹槽，慢慢走了很久。",
+        "fx": [
+          "count:mask_clue+1",
+          "int_exp+3",
+          "wil_exp+1"
+        ]
+      }
+    ],
+    "dungeons": [
+      "vault_outer"
+    ],
+    "weight": 8
+  }
+]

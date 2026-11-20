@@ -1,0 +1,274 @@
+[
+  {
+    "id": "n_de_corridor",
+    "kind": "dungeon",
+    "weight": 8,
+    "title": "魔法回廊",
+    "text": "走廊两侧的石壁上，浮动着一串串缓缓旋转的符文，你每走一步，它们就换一个形状。",
+    "options": [
+      {
+        "label": "读出符文的规律，顺着走",
+        "check": {
+          "attr": "int",
+          "diff": 12
+        },
+        "ok": {
+          "text": "符文逐一熄灭，前方的石门缓缓打开。你没有受伤，反而对魔法的结构多了一点理解。",
+          "fx": [
+            "int_exp+4",
+            "count:arcana+1"
+          ]
+        },
+        "fail": {
+          "text": "符文突然全亮了，一道光鞭甩在你的背上。",
+          "fx": [
+            "hp-9",
+            "int_exp+1"
+          ]
+        }
+      }
+    ],
+    "dungeons": [
+      "cave",
+      "mine"
+    ]
+  },
+  {
+    "id": "n_de_golem",
+    "kind": "dungeon",
+    "weight": 8,
+    "title": "沉睡的傀儡",
+    "text": "通道中央蹲着一尊石傀儡，它的双眼是两粒暗淡的魔晶。你屏住呼吸，从旁边绕过。",
+    "options": [
+      {
+        "label": "悄悄绕过",
+        "check": {
+          "attr": "agi",
+          "diff": 11
+        },
+        "ok": {
+          "text": "傀儡没有动，你从它的影子里擦了过去。",
+          "fx": [
+            "agi_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "你的靴子踩碎了一块小石子，傀儡的眼睛骤然亮起。你被迫狼狈逃出。",
+          "fx": [
+            "hp-10",
+            "agi_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "尝试用魔法唤醒它，看看会发生什么",
+        "text": "你向它注入了一点魔力，傀儡缓缓站起，朝你鞠了一躬，然后退回了墙边。",
+        "fx": [
+          "int_exp+4",
+          "exp+20"
+        ],
+        "cond": "count.arcana>=5",
+        "reason": "魔法知识不足"
+      }
+    ],
+    "dungeons": [
+      "cave",
+      "mine",
+      "grave"
+    ]
+  },
+  {
+    "id": "n_de_rune_stone",
+    "kind": "dungeon",
+    "weight": 8,
+    "title": "失落的符文石",
+    "text": "墙缝里嵌着半块发光的石头，上面刻着看不懂的纹路。你认出了其中一个符号，在父亲的书里见过。",
+    "options": [
+      {
+        "label": "用魔力小心地取下它",
+        "text": "石头在掌心发热，一段残缺的咒文顺着你的魔力流进了意识里。",
+        "fx": [
+          "int_exp+5",
+          "count:arcana+2",
+          "mpheal:0.3"
+        ],
+        "cond": "count.arcana>=3",
+        "reason": "魔法知识不足"
+      },
+      {
+        "label": "只拓下纹路，把石头留下",
+        "text": "你用一张纸，把纹路一笔一画地描了下来。",
+        "fx": [
+          "int_exp+3",
+          "count:arcana+1"
+        ]
+      }
+    ],
+    "dungeons": [
+      "mine",
+      "grave",
+      "fortress"
+    ],
+    "once": true
+  },
+  {
+    "id": "n_de_apprentice_bones",
+    "kind": "dungeon",
+    "weight": 8,
+    "title": "学徒的遗骨",
+    "text": "石室角落，一具穿着旧学徒袍的骸骨倚墙而坐，手里还攥着一枚褪色的星纹徽章。",
+    "options": [
+      {
+        "label": "取下徽章，替他保管",
+        "text": "徽章背面刻着三个字：“对不起。”你不知道它是写给谁的。",
+        "fx": [
+          "wil_exp+2",
+          "rep:tower+3",
+          "exp+15"
+        ]
+      },
+      {
+        "label": "默默行礼，离开",
+        "text": "你在他面前站了一会儿，轻声说了声“打扰了”。",
+        "fx": [
+          "wil_exp+3"
+        ]
+      }
+    ],
+    "dungeons": [
+      "cave",
+      "grave"
+    ],
+    "once": true
+  },
+  {
+    "id": "n_de_resonance",
+    "kind": "dungeon",
+    "weight": 8,
+    "title": "魔晶共鸣",
+    "text": "你体内的魔力忽然和墙上的魔晶共振起来，一阵眩晕涌上来，又一阵温暖随即覆盖。",
+    "options": [
+      {
+        "label": "稳住意识，引导共鸣",
+        "check": {
+          "attr": "wil",
+          "diff": 12
+        },
+        "ok": {
+          "text": "共鸣平息时，你觉得自己的魔力池比刚才宽了一圈。",
+          "fx": [
+            "mpheal:0.8",
+            "wil_exp+4"
+          ]
+        },
+        "fail": {
+          "text": "你被冲得跪倒在地，魔力一时紊乱。",
+          "fx": [
+            "mp-6",
+            "hp-5",
+            "wil_exp+1"
+          ]
+        }
+      }
+    ],
+    "dungeons": [
+      "mine",
+      "fortress"
+    ]
+  },
+  {
+    "id": "n_de_forbidden_page",
+    "kind": "dungeon",
+    "weight": 8,
+    "title": "禁书残页",
+    "text": "一堆腐烂的书页里，夹着一张边缘焦黑的残页，上面用红墨水写着一段关于“契约魔法”的警告。",
+    "options": [
+      {
+        "label": "读完它",
+        "check": {
+          "attr": "int",
+          "diff": 13
+        },
+        "ok": {
+          "text": "你读懂了最后一句：“凡以意志为代价者，必以意志偿还。”你把这句话记在心里。",
+          "fx": [
+            "int_exp+6",
+            "wil_exp+2",
+            "exp+30"
+          ]
+        },
+        "fail": {
+          "text": "字迹太淡，你只读出了开头的两行。",
+          "fx": [
+            "int_exp+2"
+          ]
+        }
+      }
+    ],
+    "dungeons": [
+      "grave",
+      "fortress"
+    ],
+    "once": true
+  },
+  {
+    "id": "n_de_murals",
+    "kind": "dungeon",
+    "weight": 8,
+    "title": "王陵壁画",
+    "text": "墓道两侧的壁画描绘着一位王与他的御用法师。你认出了其中一幅，法师的手势和你在书里学到的一模一样。",
+    "options": [
+      {
+        "label": "仔细比对，照着做一遍",
+        "text": "你尝试着做出那个手势，指尖凝出一粒微弱的光点。",
+        "fx": [
+          "int_exp+4",
+          "count:arcana+1",
+          "wil_exp+1"
+        ],
+        "cond": "count.arcana>=4",
+        "reason": "魔法知识不足"
+      },
+      {
+        "label": "拓下壁画",
+        "text": "你用炭笔拓了半个时辰。",
+        "fx": [
+          "int_exp+2",
+          "exp+10"
+        ]
+      }
+    ],
+    "dungeons": [
+      "grave"
+    ]
+  },
+  {
+    "id": "n_de_oath_wall",
+    "kind": "dungeon",
+    "weight": 8,
+    "title": "要塞的誓言墙",
+    "text": "要塞的走廊里，一整面墙刻满了名字。每一个名字后面都带着一行小字：“愿以此身，换后来者的一个明天。”",
+    "options": [
+      {
+        "label": "找到你认识的名字",
+        "text": "第三排的一个名字，是你在高塔的旧同学。你把手按在上面，很久没动。",
+        "fx": [
+          "wil_exp+4",
+          "exp+30"
+        ]
+      },
+      {
+        "label": "在墙上刻下自己的名字",
+        "text": "你没有留下全名，只留了两个字：“再来”。",
+        "fx": [
+          "wil_exp+3",
+          "hometown+1"
+        ]
+      }
+    ],
+    "dungeons": [
+      "fortress"
+    ],
+    "once": true
+  }
+]

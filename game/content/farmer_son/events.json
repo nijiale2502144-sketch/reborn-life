@@ -1,0 +1,683 @@
+[
+  {
+    "id": "ev_coming_of_age",
+    "kind": "special",
+    "when": {
+      "age": 16,
+      "season": "spring"
+    },
+    "priority": 100,
+    "title": "成年礼",
+    "portrait": "efna",
+    "scene": "village_spring",
+    "text": "十六岁的春天，成年礼的钟声刚响过，村子北边的天空就红了——魔潮的前哨烧毁了半片麦田。人们在田埂上哭喊，只有你攥着镰刀，一动不动地站着。\n艾芙娜拉着你的衣角，小声问：“你……在想什么？”",
+    "options": [
+      {
+        "label": "“我要变强，保护这个家。”",
+        "fx": [
+          "str_exp+5",
+          "hometown+3"
+        ],
+        "text": "你的声音很轻，却没有一丝犹豫。"
+      },
+      {
+        "label": "“我要成为教会的圣骑士。”",
+        "fx": [
+          "wil_exp+5",
+          "rep:church+3"
+        ],
+        "text": "艾芙娜愣了一下，然后笑了：“那你一定要做到。”"
+      },
+      {
+        "label": "“我想去外面看看。”",
+        "fx": [
+          "agi_exp+5",
+          "cha_exp+3"
+        ],
+        "text": "你望着北边的天空，那里有从没见过的东西。"
+      }
+    ]
+  },
+  {
+    "id": "ev_meet_glen",
+    "kind": "special",
+    "when": {
+      "age": 17,
+      "season": "summer"
+    },
+    "priority": 50,
+    "title": "村口的老兵",
+    "portrait": "glen",
+    "scene": "village_spring",
+    "text": "夏天，村口来了个拄着拐杖的灰胡子老兵，在榆树下搭了个窝棚住下。有人说他年轻时是教会的圣骑士，后来不知犯了什么事被赶了出来。",
+    "options": [
+      {
+        "label": "上前搭话，递上一壶水",
+        "fx": [
+          "flag+:met_glen",
+          "rel:glen+2"
+        ],
+        "text": "他瞥了你一眼：“小子，手上有茧，不错。”"
+      },
+      {
+        "label": "远远看着，没有上前",
+        "fx": [
+          "flag+:met_glen",
+          "rel:glen+1"
+        ],
+        "text": "他似乎察觉到了你的目光，微微点了点头。"
+      }
+    ]
+  },
+  {
+    "id": "ev_efna_start",
+    "kind": "special",
+    "when": {
+      "age": 19,
+      "season": "autumn"
+    },
+    "priority": 60,
+    "title": "艾芙娜的心事",
+    "portrait": "efna",
+    "scene": "village_autumn",
+    "text": "秋天的黄昏，艾芙娜坐在田埂上，手里握着一只枯萎的草环。\n“我想去一次圣城。”她说，“听说那里的钟声，能让人忘记所有难过。”\n她没有说下去，只是看着你。",
+    "options": [
+      {
+        "label": "“我会帮你，不管要多久。”",
+        "fx": [
+          "quest:start:efna_wish",
+          "rel:efna+1",
+          "flag+:efna_promise"
+        ],
+        "text": "她咬住嘴唇，用力点了点头。"
+      },
+      {
+        "label": "“我自己的事还没着落……”",
+        "fx": [
+          "rel:efna-1",
+          "flag+:efna_declined"
+        ],
+        "text": "她笑了笑：“嗯，我知道。”笑得有一点勉强。"
+      }
+    ]
+  },
+  {
+    "id": "ev_efna_illness",
+    "kind": "chain",
+    "title": "她的秘密",
+    "portrait": "efna",
+    "scene": "village_autumn",
+    "text": "艾芙娜终于对你说出了实话：她得了“魔力枯竭症”，药师说，撑不过几年了。\n“只有圣城的神殿，或者传说中的月华草，才有办法。”她小声说，“我不是想要你为我做什么……我只是，不想一个人去。”",
+    "options": [
+      {
+        "label": "“我一定会找到月华草。”",
+        "fx": [
+          "rel:efna+1"
+        ],
+        "text": "你握紧了拳头。接下来的日子，每一天都要算数。"
+      }
+    ]
+  },
+  {
+    "id": "ev_holy_city",
+    "kind": "chain",
+    "title": "圣城的钟声",
+    "portrait": "efna",
+    "scene": "village_spring",
+    "text": "圣城的钟声一下一下，沉沉地敲在胸口。艾芙娜站在神殿的台阶前，把月华草紧紧抱在怀里。\n神殿的祭司看了她一眼，摇了摇头：“药引已经有了，但治疗需要供奉……或者，一个愿意担保她的人。”",
+    "options": [
+      {
+        "label": "拿出积蓄供奉神殿（100 金币）",
+        "cond": "gold>=100",
+        "reason": "金币不足 100",
+        "fx": [
+          "gold-100",
+          "flag+:efna_cured",
+          "flag+:efna_resolved",
+          "rel:efna+2",
+          "rep:church+5"
+        ],
+        "text": "月华草在圣火里化作一缕青烟。艾芙娜的脸上，慢慢有了血色。"
+      },
+      {
+        "label": "以你的名义担保，请教会收她为见习神官",
+        "cond": "rep.church>=30&&attr.wil>=14",
+        "reason": "需要教会声望 30、意志 14",
+        "fx": [
+          "flag+:efna_priest",
+          "flag+:efna_resolved",
+          "rep:church+3",
+          "rel:efna+1"
+        ],
+        "text": "祭司看着你坚定的眼神，终于答应了。艾芙娜成了神殿里最年轻的见习神官。"
+      },
+      {
+        "label": "什么也做不了，只是陪她看完圣城的星空",
+        "fx": [
+          "flag+:efna_resolved",
+          "flag+:efna_lost",
+          "rel:efna+1"
+        ],
+        "text": "她靠在你肩上，说这是她一生里最亮的一晚。你们都没有再提治病的事。"
+      }
+    ]
+  },
+  {
+    "id": "ev_glen_past",
+    "kind": "chain",
+    "title": "格伦的往事",
+    "portrait": "glen",
+    "scene": "village_autumn",
+    "text": "炉火边，格伦第一次说起了他被逐出教会的缘由：多年前的一场败仗，他被推出来顶了罪。\n“我不求翻案。”他灌了一口酒，“只是想让死去的兄弟们，名字不被写成逃兵。”",
+    "options": [
+      {
+        "label": "“我去教会档案处试试。”",
+        "fx": [
+          "rel:glen+1"
+        ],
+        "text": "格伦没有说话，只是用力拍了拍你的肩。"
+      }
+    ]
+  },
+  {
+    "id": "ev_village_raid",
+    "kind": "special",
+    "when": {
+      "age": 21,
+      "season": "winter"
+    },
+    "priority": 90,
+    "title": "兽人袭村",
+    "scene": "village_winter",
+    "enter": [
+      "quest:start:village_defense"
+    ],
+    "text": "深冬的夜里，村里的钟声乱成一片——一队兽人劫掠者越过了北面的山口，火把已经逼近村口的篱笆。",
+    "options": [
+      {
+        "label": "拿起武器，迎战",
+        "fx": [
+          {
+            "type": "combat",
+            "enemy": "orc_raid",
+            "noFlee": true,
+            "win": [
+              "hometown+8",
+              "flag+:village_saved",
+              "rep:church+2",
+              "exp+50"
+            ],
+            "lose": [
+              "hometown-15",
+              "flag+:village_hurt"
+            ]
+          }
+        ],
+        "text": "你抓起武器，冲进了雪地。"
+      },
+      {
+        "label": "护送家人撤离（1 体力）",
+        "cost": 1,
+        "fx": [
+          "hometown-6",
+          "agi_exp+4"
+        ],
+        "text": "你带着家人躲进了山洞，天亮时，村口的篱笆只剩了几根黑木桩。"
+      }
+    ]
+  },
+  {
+    "id": "ev_envoy",
+    "kind": "special",
+    "priority": 80,
+    "title": "巡游使者",
+    "portrait": "priest",
+    "scene": "village_spring",
+    "cond": [
+      "level>=3&&attr.str>=15&&!flag:recommend_letter&&!flag:main_failed",
+      "level>=3&&attr.wil>=15&&!flag:recommend_letter&&!flag:main_failed"
+    ],
+    "text": "一位身披白袍的教会使者路过麦穗村。他看着你在田里干活，忽然停下脚步：“年轻人，你身上有股稳劲儿。”\n他从袖中取出一封印着圣徽的信。“如果你有志于侍奉圣光，带着它去王都的见习骑士团。”",
+    "options": [
+      {
+        "label": "双手接过推荐信",
+        "fx": [
+          "flag+:recommend_letter",
+          "rep:church+5",
+          "exp+30"
+        ],
+        "text": "信纸很轻，却像一块烙铁一样烫手。"
+      }
+    ]
+  },
+  {
+    "id": "ev_join_order",
+    "kind": "special",
+    "priority": 80,
+    "title": "王都见习",
+    "portrait": "priest",
+    "scene": "village_spring",
+    "cond": [
+      "level>=6&&rep.church>=20&&flag:recommend_letter&&!flag:order_member&&!flag:main_failed",
+      "level>=6&&rep.church>=20&&rep.guild>=20&&!flag:order_member&&!flag:main_failed"
+    ],
+    "text": "王都的教会骑士团大门高耸，石阶上站着一排披着银甲的骑士。教官打量着你：“能走进这扇门的人，要么有信，要么有名。你是哪一种？”",
+    "options": [
+      {
+        "label": "宣誓加入见习骑士团",
+        "fx": [
+          "flag+:order_member",
+          "rank:2",
+          "rep:church+5",
+          "rep:kingdom+5",
+          "exp+60"
+        ],
+        "text": "你右手按胸，念出誓词。从今天起，你不再只是村里的农夫之子。"
+      }
+    ]
+  },
+  {
+    "id": "ev_holy_trial",
+    "kind": "special",
+    "once": false,
+    "cooldown": 3,
+    "priority": 80,
+    "title": "圣剑试炼",
+    "portrait": "priest",
+    "scene": "village_spring",
+    "cond": "level>=15&&rep.church>=60&&flag:order_member&&!flag:paladin&&!flag:main_failed",
+    "text": "教会的钟敲了十二下。大圣堂里，神官举起了一把古老的圣剑：“通过圣剑的试炼，你才配得上‘圣骑士’的名号。”\n圣剑会拷问你的内心。",
+    "options": [
+      {
+        "label": "接受试炼",
+        "check": {
+          "attr": "wil",
+          "diff": 14
+        },
+        "ok": {
+          "text": "圣剑里传来无数低语，你一个字一个字地回应。光芒落在你肩头时，神官低下了头。",
+          "fx": [
+            "flag+:paladin",
+            "rank:3",
+            "rep:church+10",
+            "exp+120"
+          ]
+        },
+        "fail": {
+          "text": "低语压得你喘不过气，你在最后一刻放弃了。神官说：“再准备一阵吧。”",
+          "fx": [
+            "hp-12",
+            "wil_exp+4"
+          ]
+        }
+      },
+      {
+        "label": "再准备一阵",
+        "text": "神官点了点头：“圣剑不会跑。” "
+      }
+    ]
+  },
+  {
+    "id": "ev_demon_awakens",
+    "kind": "special",
+    "when": {
+      "age": 30,
+      "season": "autumn"
+    },
+    "priority": 200,
+    "title": "魔王苏醒",
+    "scene": "mountain",
+    "enter": [
+      "flag+:demon_awake"
+    ],
+    "text": "三十岁的秋天，大地在夜里震了一下。北边的天空像被撕开一道口子，血红色的光一直映到你的窗台。\n所有人都知道，那个等了百年的名字，醒了。",
+    "options": [
+      {
+        "label": "整理行装，前往魔王城（须在 4 回合内）",
+        "cond": "flag:paladin&&!flag:main_failed",
+        "reason": "需要圣骑士身份（主线未失败）",
+        "fx": [
+          "log:你把剑磨亮，装好行囊。"
+        ],
+        "text": "你站在村口，回头看了一眼麦田。"
+      },
+      {
+        "label": "留在故乡，守护家人",
+        "fx": [
+          "flag+:stay_home",
+          {
+            "if": "hometown>=80",
+            "then": [
+              "end:auto"
+            ],
+            "else": [
+              "flag+:overrun",
+              "end:auto"
+            ]
+          }
+        ],
+        "text": "你放下了剑，转身走回屋里。"
+      }
+    ],
+    "finale": true
+  },
+  {
+    "id": "ev_final_march",
+    "kind": "chain",
+    "title": "魔王城",
+    "scene": "mountain",
+    "text": "魔王城的黑色城门在你身后合拢。长长的走廊两侧，无数双红色的眼睛静静地看着你。\n尽头，魔王的近卫提着巨斧，挡住了去路。",
+    "options": [
+      {
+        "label": "踏入大殿",
+        "fx": [
+          {
+            "type": "combat",
+            "enemy": "demon_guard",
+            "noFlee": true,
+            "win": [
+              "flag+:demon_wounded",
+              "log:近卫倒下，大殿的门缓缓打开。",
+              "goto:ev_final_hall"
+            ],
+            "lose": [
+              "flag+:final_lost",
+              "end:auto"
+            ]
+          }
+        ],
+        "text": "你握紧了剑。"
+      }
+    ]
+  },
+  {
+    "id": "ev_wolves",
+    "kind": "random",
+    "pool": "calamity",
+    "weight": 8,
+    "cond": "season==winter",
+    "title": "雪夜狼嚎",
+    "scene": "village_winter",
+    "text": "雪夜里，一群饿狼摸到了村边的羊圈，绿幽幽的眼睛在黑暗里闪烁。",
+    "options": [
+      {
+        "label": "迎上去驱赶",
+        "fx": [
+          {
+            "type": "combat",
+            "enemy": "wolves",
+            "win": [
+              "hometown+2"
+            ],
+            "lose": [
+              "hometown-2"
+            ],
+            "flee": [
+              "hometown-3"
+            ]
+          }
+        ],
+        "text": "你抄起火把冲了出去。"
+      },
+      {
+        "label": "任由它们叼走几只羊",
+        "fx": [
+          "hometown-3"
+        ],
+        "text": "天亮时，羊圈里空了一半。"
+      }
+    ]
+  },
+  {
+    "id": "ev_orchard",
+    "kind": "random",
+    "pool": "opportunity",
+    "weight": 8,
+    "cond": "season==summer",
+    "title": "野果林",
+    "scene": "mountain",
+    "text": "你在山脚下发现一片野果林，枝头挂满了红透的果子，鸟儿正啄得欢。",
+    "options": [
+      {
+        "label": "摘一筐拿去集市卖（1 体力）",
+        "cost": 1,
+        "fx": [
+          "gold+18",
+          "agi_exp+2"
+        ],
+        "text": "小贩一口气全收了。"
+      },
+      {
+        "label": "带些回家给艾芙娜",
+        "cond": "!flag:efna_resolved&&!flag:efna_lost",
+        "reason": "艾芙娜不在村里",
+        "fx": [
+          "rel:efna+1"
+        ],
+        "text": "她吃了一口，说是她这辈子吃过最甜的。"
+      }
+    ]
+  },
+  {
+    "id": "ev_mountain_trap",
+    "kind": "derived",
+    "parent": "hunt",
+    "weight": 10,
+    "title": "山中的陷阱",
+    "scene": "mountain",
+    "text": "你发现一个猛兽夹的陷阱里夹着一名受伤的旅人，他脸色惨白，嘴唇发抖。",
+    "options": [
+      {
+        "label": "救人（1 体力）",
+        "cost": 1,
+        "check": {
+          "attr": "agi",
+          "diff": 10
+        },
+        "ok": {
+          "text": "你小心撬开夹子，把他背回村里。他醒来后塞给你一枚旧护符：“好人会有好报。”",
+          "fx": [
+            "flag+:saved_traveler",
+            "status+:blessed:3",
+            "cha_exp+3",
+            "exp+15"
+          ]
+        },
+        "fail": {
+          "text": "夹子猛地弹回，划伤了你的手。旅人总算被救出来了，但你也流了不少血。",
+          "fx": [
+            "hp-8",
+            "exp+8"
+          ]
+        }
+      },
+      {
+        "label": "搜刮财物离开",
+        "fx": [
+          "gold+30",
+          "rep:church-1"
+        ],
+        "text": "钱袋沉甸甸的，你却一路没回头。"
+      },
+      {
+        "label": "假装没看见",
+        "text": "你默默绕开了。夜里想起那双眼睛，睡得不太踏实。"
+      }
+    ]
+  },
+  {
+    "id": "ev_goblin_scout",
+    "kind": "derived",
+    "parent": "patrol",
+    "weight": 10,
+    "title": "哥布林斥候",
+    "scene": "village_spring",
+    "text": "巡逻时，你在篱笆外发现一只正在探头探脑的哥布林斥候。",
+    "options": [
+      {
+        "label": "冲上去",
+        "fx": [
+          {
+            "type": "combat",
+            "enemy": "goblin",
+            "win": [
+              "hometown+2"
+            ],
+            "lose": [
+              "hometown-1"
+            ],
+            "flee": []
+          }
+        ],
+        "text": "你猛地翻过篱笆。"
+      },
+      {
+        "label": "放它走，回头报告神父",
+        "fx": [
+          "rep:church+1"
+        ],
+        "text": "哥布林尖叫着钻回了林子。"
+      }
+    ]
+  },
+  {
+    "id": "ev_priest_vision",
+    "kind": "derived",
+    "parent": "church_help",
+    "weight": 10,
+    "title": "神父的教诲",
+    "portrait": "priest",
+    "scene": "village_spring",
+    "text": "擦完圣像，神父叫住你，给你讲了一个关于“守护”的故事：真正的守护，不是冲在最前面，而是站在最后面。",
+    "options": [
+      {
+        "label": "认真听完",
+        "fx": [
+          "wil_exp+4",
+          "rep:church+1"
+        ],
+        "text": "你若有所思地走出了教堂。"
+      }
+    ]
+  },
+  {
+    "id": "ev_final_hall",
+    "kind": "chain",
+    "title": "空旷的大殿",
+    "scene": "mountain",
+    "text": "大殿比你想象中安静。没有咆哮，没有魔物，只有一排排熄灭的烛台，和尽头的王座。\n王座上的魔王缓缓抬起头。它的铠甲下，隐约露出一枚褪了色的圣徽。",
+    "options": [
+      {
+        "label": "拔剑迎战",
+        "fx": [
+          {
+            "type": "combat",
+            "enemy": "demon_king",
+            "noFlee": true,
+            "win": [
+              "flag+:demon_slain",
+              "end:auto"
+            ],
+            "lose": [
+              "flag+:final_lost",
+              "end:auto"
+            ]
+          }
+        ],
+        "text": "你握紧了剑。"
+      },
+      {
+        "label": "“我知道你是谁。”（教会的阴影）",
+        "cond": "flag:shadow_known",
+        "reason": "你还不知道这里的真相",
+        "fx": [
+          "goto:ev_final_truth"
+        ],
+        "text": "魔王的动作停住了。"
+      },
+      {
+        "label": "【前世记忆】在门边调整呼吸",
+        "cond": "memory:m_final&&!flag:final_rested",
+        "reason": "前世记忆：魔王并不急着动手",
+        "fx": [
+          "heal:1",
+          "mpheal:1",
+          "flag+:final_rested",
+          "goto:ev_final_hall"
+        ],
+        "text": "你想起上一世倒下前的那一刻，魔王其实等了你很久。这一次，你先把呼吸理顺。"
+      }
+    ]
+  },
+  {
+    "id": "ev_final_truth",
+    "kind": "chain",
+    "title": "锁与钥匙",
+    "scene": "mountain",
+    "text": "魔王沉默了很久。\n“……百年了。”它的声音沙哑，像是很久没有对人说话，“终于有人，不是来杀我的。”\n它抬起一只手，王座旁的石阶上，放着一枚黑色的王冠，也放着一座空着的剑座。\n“我撑不住了。要么，把锁重新扣上；要么，换你来坐这里。”",
+    "options": [
+      {
+        "label": "“把封印交给我，我会重铸它。”",
+        "check": {
+          "attr": "wil",
+          "diff": 16
+        },
+        "ok": {
+          "text": "你把圣剑插回剑座，光顺着石缝一层层亮起来。你感到什么东西从心里被抽走了一点，很轻，很凉。\n魔王靠回王座，像是终于可以睡了。",
+          "fx": [
+            "flag+:resealed",
+            "end:auto"
+          ]
+        },
+        "fail": {
+          "text": "封印的力量顺着剑身反噬回来，你被掀翻在石阶上。\n魔王低声说：“……抱歉。”它站了起来。",
+          "fx": [
+            "hp-10",
+            {
+              "type": "combat",
+              "enemy": "demon_king",
+              "noFlee": true,
+              "win": [
+                "flag+:demon_slain",
+                "end:auto"
+              ],
+              "lose": [
+                "flag+:final_lost",
+                "end:auto"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "label": "“王冠……我接过来。”",
+        "cond": "memories>=5",
+        "reason": "前世的记忆还不够多（需要 5 枚记忆碎片）",
+        "fx": [
+          "flag+:throne",
+          "end:auto"
+        ],
+        "text": "你伸出手，王冠比你想象中轻。"
+      },
+      {
+        "label": "“不管怎样，我必须杀了你。”",
+        "fx": [
+          {
+            "type": "combat",
+            "enemy": "demon_king",
+            "noFlee": true,
+            "win": [
+              "flag+:demon_slain",
+              "end:auto"
+            ],
+            "lose": [
+              "flag+:final_lost",
+              "end:auto"
+            ]
+          }
+        ],
+        "text": "魔王点了点头，像是早就知道你会这么说。"
+      }
+    ]
+  }
+]

@@ -1,0 +1,688 @@
+[
+  {
+    "id": "study_arcana",
+    "name": "研读奥术",
+    "cost": 2,
+    "group": "daily",
+    "tag": "study",
+    "cond": "flag:library_open",
+    "hint": "魔法·智力",
+    "desc": "父亲书房里的藏书，大部分你都还没读懂。",
+    "fx": [
+      "int_exp+5",
+      "wil_exp+1",
+      "count:arcana+1"
+    ],
+    "texts": [
+      "你对着咒文图解比划了一整个下午，指尖偶尔蹿出一点火星。",
+      "符文的笔画总在关键处差一点，你一遍遍重画，直到眼睛发酸。",
+      "你找到了书页边缘的批注，是父亲年轻时的字迹，潦草，却很有用。"
+    ]
+  },
+  {
+    "id": "tower_lecture",
+    "name": "旁听高塔讲座",
+    "cost": 2,
+    "group": "daily",
+    "cond": "age>=17",
+    "hint": "高塔声望·智力",
+    "desc": "高塔的公开课对所有人开放，座位最后几排属于旁听生。",
+    "fx": [
+      "int_exp+3",
+      "rep:tower+2",
+      "count:arcana+1",
+      "cha_exp+1"
+    ],
+    "texts": [
+      "讲师在黑板上画了一个你从没见过的图形，满教室的人都在低头记笔记。",
+      "你坐在最后一排，认真得像是在抄命。",
+      "课后你拦住讲师问了一个问题，他看了你一眼，回答得很认真。"
+    ]
+  },
+  {
+    "id": "tutoring",
+    "name": "给商人之子做家教",
+    "cost": 2,
+    "group": "daily",
+    "hint": "金币",
+    "desc": "旧贵族的头衔，在商人眼里还是值点钱。",
+    "fx": [
+      "gold+34",
+      "cha_exp+2",
+      "int_exp+1"
+    ],
+    "texts": [
+      "富商的儿子心不在焉，你一遍遍耐心地讲，换来了一小袋金币。",
+      "孩子的母亲在门口偷偷看你，说：“格雷蒙特家的人，到底不一样。”"
+    ]
+  },
+  {
+    "id": "copywork",
+    "name": "为抄书铺誊写",
+    "cost": 2,
+    "group": "daily",
+    "hint": "金币·智力",
+    "desc": "字写得漂亮的人，不愁没有活干。",
+    "fx": [
+      "gold+26",
+      "int_exp+3",
+      "wil_exp+1"
+    ],
+    "texts": [
+      "你抄了一整天的契约和祈祷文，手腕酸得抬不起来。",
+      "抄书铺的老板看着你的字，啧啧称奇：“少爷，这手字可惜了。”"
+    ]
+  },
+  {
+    "id": "banquet",
+    "name": "出席贵族宴会（30 金币）",
+    "cost": 2,
+    "group": "social",
+    "cond": "gold>=30",
+    "hint": "家族名望·魅力",
+    "desc": "体面的衣服，得体的微笑，一张哪怕不被欢迎的请帖。",
+    "fx": [
+      "gold-30",
+      "hometown+3",
+      "cha_exp+4",
+      {
+        "if": "quest.vera_friend==active",
+        "then": [
+          "count:odette+1"
+        ]
+      }
+    ],
+    "texts": [
+      "宴会厅里金碧辉煌，你端着酒杯，把每个人的脸都记在了心里。",
+      "有人认出了你，神色微妙，却还是举杯点了点头。"
+    ]
+  },
+  {
+    "id": "salon",
+    "name": "参加沙龙",
+    "cost": 1,
+    "group": "social",
+    "hint": "魅力",
+    "desc": "一杯清茶，几个自视甚高的年轻人。",
+    "fx": [
+      "cha_exp+3",
+      "hometown+1",
+      "int_exp+1"
+    ],
+    "texts": [
+      "沙龙里在争论魔法与诗歌谁更接近真理，你一句话没说，听了两个钟头。",
+      "有人好奇地问你家的玫瑰园还在不在，你说：“在，只是没人浇水了。”"
+    ]
+  },
+  {
+    "id": "repay_debt",
+    "name": "偿还债务（100 金币）",
+    "cost": 0,
+    "group": "daily",
+    "cond": "gold>=100&&count.debt>0",
+    "hint": "债务 -100",
+    "desc": "每还一笔，肩上就轻一分。",
+    "fx": [
+      "gold-100",
+      "count:debt-100"
+    ],
+    "texts": [
+      "你把一小袋金币推到债主面前，他数了两遍，在账本上划掉了一行字。"
+    ]
+  },
+  {
+    "id": "visit_vera",
+    "name": "陪母亲说话",
+    "cost": 1,
+    "group": "social",
+    "cond": "flag:vera_alive",
+    "hint": "母亲好感",
+    "desc": "她靠在窗边的躺椅上，朝你招了招手。",
+    "fx": [
+      "rel:vera+1",
+      "cha_exp+1",
+      "wil_exp+1"
+    ],
+    "texts": [
+      "母亲给你讲了她和父亲第一次见面的事，讲到一半，笑着咳了起来。",
+      "你读了一首诗给她听，她闭着眼，嘴角一直带着一点笑。",
+      "她把你的手握在掌心，什么也没说。"
+    ]
+  },
+  {
+    "id": "chat_alfred",
+    "name": "与老管家聊聊",
+    "cost": 1,
+    "group": "social",
+    "hint": "阿尔弗好感·往事",
+    "desc": "他总是在厨房里擦那几个银杯。每一次闲聊，都可能多一点往事。",
+    "fx": [
+      "goto:n_alfred_chat"
+    ]
+  },
+  {
+    "id": "buy_medicine",
+    "name": "购买药材（90 金币）",
+    "cost": 1,
+    "group": "quest",
+    "cond": "quest.vera_illness==active&&qstage.vera_illness==0&&gold>=90",
+    "hint": "母亲的药",
+    "desc": "药铺老板认得你，每次都多抓一小包。",
+    "fx": [
+      "gold-90",
+      "count:medicine+1",
+      "rel:vera+1"
+    ],
+    "texts": [
+      "你抱着一包药材走回旧宅，雨点打在油纸上，很响。"
+    ]
+  },
+  {
+    "id": "investigate_archive",
+    "name": "调查旧案档案",
+    "cost": 3,
+    "group": "quest",
+    "tag": "adventure",
+    "scene": "library",
+    "cond": [
+      "age>=17&&count.archive<4&&flag:ch3_open",
+      "age>=17&&count.archive<4&&age>=24"
+    ],
+    "hint": "证据（第三章或 24 岁起才能调查）",
+    "desc": "王家档案馆的深处，存放着十二年前的卷宗。智力检定。（最多成功 4 次）",
+    "check": {
+      "attr": "int",
+      "diff": 12,
+      "fateDiff": 1,
+      "memDiff": {
+        "id": "m_n_witness",
+        "diff": -3
+      }
+    },
+    "great": {
+      "text": "你在一堆错乱的卷宗里，发现了一张被人换过日期的审讯记录，笔迹和判词上的不是同一个人。",
+      "fx": [
+        "count:evidence+2",
+        "count:archive+1",
+        "int_exp+5",
+        "exp+20"
+      ]
+    },
+    "ok": {
+      "text": "你一页一页地翻，终于在一份会审记录的边缘，找到了被人刻意抹去的一行字。",
+      "fx": [
+        "count:evidence+1",
+        "count:archive+1",
+        "int_exp+4",
+        "exp+10"
+      ]
+    },
+    "fail": {
+      "text": "你在档案馆里待了一整夜，什么也没找到，还被巡夜的守卫盘问了半天。",
+      "fx": [
+        "int_exp+2",
+        "hp-4"
+      ]
+    }
+  },
+  {
+    "id": "bribe_clerk",
+    "name": "买通书记官（80 金币）",
+    "cost": 2,
+    "group": "quest",
+    "cond": [
+      "gold>=80&&count.bribe<2&&age>=18&&flag:ch3_open",
+      "gold>=80&&count.bribe<2&&age>=18&&age>=24"
+    ],
+    "hint": "证据（第三章或 24 岁起才能调查）",
+    "desc": "当年经手卷宗的书记官，如今在宰相府外围当差。魅力检定。",
+    "check": {
+      "attr": "cha",
+      "diff": 11,
+      "fateDiff": 1
+    },
+    "ok": {
+      "text": "书记官把一只信封推到你面前，低声说：“你没来过。”信封里是一份当年的会审名单。",
+      "fx": [
+        "gold-80",
+        "count:evidence+1",
+        "count:bribe+1",
+        "cha_exp+3"
+      ]
+    },
+    "fail": {
+      "text": "他收下了钱，却什么也没说，转身走进了宰相府的侧门。",
+      "fx": [
+        "gold-80",
+        "count:bribe+1",
+        "cha_exp+1",
+        "hometown-2"
+      ]
+    }
+  },
+  {
+    "id": "decode_letters",
+    "name": "破译父亲的密信",
+    "cost": 3,
+    "group": "quest",
+    "cond": [
+      "flag:father_letter&&!flag:letters_decoded&&flag:ch3_open",
+      "flag:father_letter&&!flag:letters_decoded&&age>=24"
+    ],
+    "hint": "证据（第三章或 24 岁起才能调查）",
+    "desc": "信里的字，每一句都像是另一种意思。智力检定。",
+    "check": {
+      "attr": "int",
+      "diff": 14,
+      "fateDiff": 1,
+      "memDiff": {
+        "id": "m_n_letter",
+        "diff": -3
+      }
+    },
+    "ok": {
+      "text": "你发现信里每隔七个字，就藏着一个名字：洛克伍德。\n你把这封信读了一遍又一遍，直到眼睛发酸。",
+      "fx": [
+        "count:evidence+1",
+        "flag+:letters_decoded",
+        "int_exp+6",
+        "exp+30"
+      ]
+    },
+    "fail": {
+      "text": "字里行间似乎有规律，可你怎么也抓不住它。",
+      "fx": [
+        "int_exp+3",
+        "wil_exp+1"
+      ]
+    }
+  },
+  {
+    "id": "metis_trial",
+    "name": "墨提斯的试炼",
+    "cost": 3,
+    "group": "quest",
+    "tag": "adventure",
+    "scene": "tower",
+    "cond": "quest.metis_trials==active&&qstage.metis_trials==0&&rep.tower>=15",
+    "hint": "墨提斯的三道题",
+    "desc": "老法师出的题，从来没有标准答案。智力检定。",
+    "check": {
+      "attr": "int",
+      "diff": 13
+    },
+    "ok": {
+      "text": "墨提斯听完你的回答，沉默了很久，在羊皮纸上写下了两个字：“继续。”",
+      "fx": [
+        "count:metis+1",
+        "int_exp+5",
+        "rep:tower+3",
+        "exp+25"
+      ]
+    },
+    "fail": {
+      "text": "你的答案绕了一个很大的圈，墨提斯摇头：“再想想。”",
+      "fx": [
+        "int_exp+2",
+        "hp-3"
+      ]
+    }
+  },
+  {
+    "id": "guild_register",
+    "name": "冒险者公会登记",
+    "cost": 1,
+    "group": "adventure",
+    "cond": "age>=18&&!flag:guild",
+    "hint": "解锁地下城",
+    "desc": "魔法师也需要实战，高塔的学徒，常去那里接委托。",
+    "fx": [
+      "flag+:guild",
+      "rep:guild+5",
+      "exp+20"
+    ],
+    "texts": [
+      "接待员瞥了一眼你的家徽戒指，没有多问：“从最低阶开始，别死在半路上。”"
+    ]
+  },
+  {
+    "id": "go_market",
+    "name": "逛王都集市",
+    "cost": 1,
+    "group": "daily",
+    "cond": "age>=17",
+    "hint": "法杖、法袍、药剂、书籍",
+    "desc": "魔法商人和旧书摊挤在同一条街上。",
+    "fx": [
+      "goto:n_market"
+    ]
+  },
+  {
+    "id": "go_teahouse",
+    "name": "去茶馆坐坐",
+    "cost": 1,
+    "group": "social",
+    "cond": "age>=18",
+    "hint": "回复、打听消息",
+    "desc": "茶馆里人人都在聊别人的事。",
+    "fx": [
+      "goto:n_teahouse"
+    ]
+  },
+  {
+    "id": "dg_cave",
+    "name": "高塔地窖试炼",
+    "cost": 4,
+    "group": "adventure",
+    "tag": "adventure",
+    "cond": "flag:tower_admitted",
+    "hint": "战斗·宝箱",
+    "desc": "推荐等级 3–6，共 4 层。",
+    "dungeon": "cave",
+    "dungeonName": "高塔地窖"
+  },
+  {
+    "id": "dg_mine",
+    "name": "废弃魔晶矿坑",
+    "cost": 5,
+    "group": "adventure",
+    "tag": "adventure",
+    "cond": "flag:tower_admitted&&level>=6",
+    "hint": "装备·金币",
+    "desc": "推荐等级 8–12，共 5 层。",
+    "dungeon": "mine",
+    "dungeonName": "废弃魔晶矿坑"
+  },
+  {
+    "id": "dg_grave",
+    "name": "旧王陵",
+    "cost": 5,
+    "group": "adventure",
+    "tag": "adventure",
+    "cond": "flag:tower_admitted&&level>=10",
+    "hint": "圣物·古籍",
+    "desc": "推荐等级 12–18，共 6 层。",
+    "dungeon": "grave",
+    "dungeonName": "旧王陵"
+  },
+  {
+    "id": "dg_fortress",
+    "name": "远征北境要塞",
+    "cost": 6,
+    "group": "adventure",
+    "tag": "adventure",
+    "cond": "rank>=3&&level>=16",
+    "hint": "顶级装备",
+    "desc": "推荐等级 18–25，共 7 层。",
+    "dungeon": "fortress",
+    "dungeonName": "北境要塞"
+  },
+  {
+    "id": "hire_hand",
+    "name": "雇一个誊写员（60 金币）",
+    "cost": 0,
+    "group": "daily",
+    "cond": "gold>=60&&!flag:t_hired&&count.hires==0",
+    "hint": "本回合体力 +1，同一年内越雇越贵",
+    "desc": "花钱买时间，每回合最多一次，每年年底价格重置。",
+    "fx": [
+      "gold-60",
+      "stamina+1",
+      "flag+:t_hired",
+      "count:hires+1"
+    ],
+    "texts": [
+      "你把一堆杂事交给了誊写员，自己腾出了半天。"
+    ]
+  },
+  {
+    "id": "hire_hand_2",
+    "name": "雇一个誊写员（80 金币）",
+    "cost": 0,
+    "group": "daily",
+    "cond": "gold>=80&&!flag:t_hired&&count.hires==1",
+    "hint": "本回合体力 +1，同一年内越雇越贵",
+    "desc": "花钱买时间，每回合最多一次，每年年底价格重置。",
+    "fx": [
+      "gold-80",
+      "stamina+1",
+      "flag+:t_hired",
+      "count:hires+1"
+    ],
+    "texts": [
+      "你把一堆杂事交给了誊写员，自己腾出了半天。"
+    ]
+  },
+  {
+    "id": "hire_hand_3",
+    "name": "雇一个誊写员（110 金币）",
+    "cost": 0,
+    "group": "daily",
+    "cond": "gold>=110&&!flag:t_hired&&count.hires==2",
+    "hint": "本回合体力 +1，同一年内越雇越贵",
+    "desc": "花钱买时间，每回合最多一次，每年年底价格重置。",
+    "fx": [
+      "gold-110",
+      "stamina+1",
+      "flag+:t_hired",
+      "count:hires+1"
+    ],
+    "texts": [
+      "你把一堆杂事交给了誊写员，自己腾出了半天。"
+    ]
+  },
+  {
+    "id": "hire_hand_4",
+    "name": "雇一个誊写员（150 金币）",
+    "cost": 0,
+    "group": "daily",
+    "cond": "gold>=150&&!flag:t_hired&&count.hires>=3",
+    "hint": "本回合体力 +1，同一年内越雇越贵",
+    "desc": "花钱买时间，每回合最多一次，每年年底价格重置。",
+    "fx": [
+      "gold-150",
+      "stamina+1",
+      "flag+:t_hired",
+      "count:hires+1"
+    ],
+    "texts": [
+      "你把一堆杂事交给了誊写员，自己腾出了半天。"
+    ]
+  },
+  {
+    "id": "ask_support",
+    "name": "请求支持",
+    "cost": 2,
+    "group": "quest",
+    "cond": [
+      "quest.main_revenge==active&&qstage.main_revenge==3&&count.allies<3",
+      "flag:main_failed&&age>=25&&count.allies<3"
+    ],
+    "hint": "复议日前夜",
+    "desc": "把你的处境和证据摊开，请他们在复议日站到你这边。",
+    "fx": [
+      "goto:n_pledge"
+    ],
+    "scene": "library"
+  },
+  {
+    "id": "challenge_valen",
+    "name": "向瓦伦下战书",
+    "cost": 2,
+    "group": "quest",
+    "cond": [
+      "quest.valen_rivalry==active&&!flag:valen_duel_won&&count.valen_clash>=2",
+      "quest.valen_rivalry==active&&!flag:valen_duel_won&&age>=24"
+    ],
+    "hint": "宿敌瓦伦",
+    "desc": "你们的几次交锋，总要有个了断。输了可以再来。",
+    "fx": [
+      "goto:n_valen_duel"
+    ],
+    "scene": "tower"
+  },
+  {
+    "id": "open_safe",
+    "name": "开启书房暗格",
+    "cost": 2,
+    "group": "quest",
+    "cond": "quest.alfred_secret==active&&qstage.alfred_secret==1&&!flag:safe_opened",
+    "hint": "老管家的秘密",
+    "desc": "暗格的锁是一道魔法与机括的双重谜题。智力检定，可以多次尝试。",
+    "check": {
+      "attr": "int",
+      "diff": 13,
+      "flagDiff": {
+        "id": "letters_decoded",
+        "diff": -2
+      },
+      "memDiff": {
+        "id": "m_n_alfred",
+        "diff": -3
+      }
+    },
+    "ok": {
+      "text": "你把家徽戒指按进锁孔，同时念出了那一行咒文。机括一层层退开，暗格里是一叠被油纸裹得严实的信件和一本账簿。阿尔弗站在你身后，轻轻地闭上了眼。",
+      "fx": [
+        "flag+:safe_opened",
+        "goto:n_alfred_safe"
+      ]
+    },
+    "fail": {
+      "text": "锁没有动。咒文念错了一个音节，机括反而咬得更紧。阿尔弗在一旁攥着衣角，什么也没说。",
+      "fx": [
+        "int_exp+2",
+        "hp-3"
+      ]
+    }
+  },
+  {
+    "id": "investigate_theft",
+    "name": "调查塔中失窃案",
+    "cost": 2,
+    "group": "quest",
+    "tag": "adventure",
+    "cond": "quest.tower_theft==active&&qstage.tower_theft==0",
+    "hint": "高塔声望·智力",
+    "desc": "高塔的藏书室丢了一卷书，所有人都在互相怀疑。智力检定。",
+    "check": {
+      "attr": "int",
+      "diff": 12
+    },
+    "ok": {
+      "text": "你在书架后发现了一枚被踩过的蜡印，又从管理员口中套出了当晚的轮值表。线索，一点点地拼了起来。",
+      "fx": [
+        "count:theft_clue+1",
+        "int_exp+3",
+        "rep:tower+1",
+        "exp+14"
+      ]
+    },
+    "fail": {
+      "text": "你问了一圈，所有人都在撇清关系，只换来几道不太友好的目光。",
+      "fx": [
+        "int_exp+1",
+        "rep:tower-1"
+      ]
+    },
+    "scene": "tower"
+  },
+  {
+    "id": "explore_cellar",
+    "name": "探索旧宅的地窖",
+    "cost": 3,
+    "group": "quest",
+    "tag": "adventure",
+    "cond": "quest.cellar_lab==active&&qstage.cellar_lab==0",
+    "hint": "智力·父亲的实验室",
+    "desc": "旧宅地窖的暗门，一直被家具堵着。智力检定。",
+    "check": {
+      "attr": "int",
+      "diff": 12,
+      "memDiff": {
+        "id": "m_n_cellar",
+        "diff": -3
+      }
+    },
+    "ok": {
+      "text": "你推开了被蛛网封死的暗门，石阶的尽头，是一间摆满瓶瓶罐罐的小实验室。父亲的手稿还摊在桌上。",
+      "fx": [
+        "count:cellar+1",
+        "int_exp+4",
+        "exp+16"
+      ]
+    },
+    "fail": {
+      "text": "石阶下面全是积水，什么也看不清。你摔了一跤，爬回了一楼。",
+      "fx": [
+        "hp-4",
+        "int_exp+1"
+      ]
+    },
+    "scene": "manor_winter"
+  },
+  {
+    "id": "watch_manor",
+    "name": "盯梢宰相府的出入",
+    "cost": 2,
+    "group": "quest",
+    "tag": "adventure",
+    "cond": "quest.lockwood_spy==active&&qstage.lockwood_spy==0",
+    "hint": "敏捷·宰相的耳目",
+    "desc": "夜里蹲在宰相府对面，看谁进，谁出。敏捷检定。",
+    "check": {
+      "attr": "agi",
+      "diff": 12,
+      "memDiff": {
+        "id": "m_n_spy",
+        "diff": -3
+      }
+    },
+    "ok": {
+      "text": "你在一堵矮墙后蹲了两个钟头，看见一个熟悉的背影，从宰相府的侧门里出来，往你家的方向走去。",
+      "fx": [
+        "count:spy_clue+1",
+        "agi_exp+3",
+        "exp+14"
+      ]
+    },
+    "fail": {
+      "text": "你被巡夜的家丁盯上，只好绕了一大圈才甩掉。",
+      "fx": [
+        "agi_exp+1",
+        "hp-3"
+      ]
+    },
+    "scene": "street"
+  },
+  {
+    "id": "read_forbidden",
+    "name": "查阅高塔禁书库",
+    "cost": 3,
+    "group": "quest",
+    "tag": "study",
+    "cond": "quest.forbidden_tome==active&&qstage.forbidden_tome==0",
+    "hint": "智力·封印学",
+    "desc": "禁书库只对学徒的导师开放，你得想办法。智力检定。",
+    "check": {
+      "attr": "int",
+      "diff": 14
+    },
+    "ok": {
+      "text": "书页发脆，字是古魔导文。你用一晚上，读出了一整段关于“封印与魔晶”的记载：魔晶，是封印的燃料。",
+      "fx": [
+        "count:seal_pages+1",
+        "int_exp+5",
+        "exp+22",
+        "count:arcana+1"
+      ]
+    },
+    "fail": {
+      "text": "古魔导文太艰深了，你只看懂了几个单词，眼睛却被烛烟熏得流泪。",
+      "fx": [
+        "int_exp+2"
+      ]
+    },
+    "scene": "library"
+  }
+]

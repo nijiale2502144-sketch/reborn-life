@@ -1,0 +1,1766 @@
+[
+  {
+    "id": "n_patron",
+    "kind": "random",
+    "pool": "opportunity",
+    "weight": 9,
+    "title": "匿名的资助人",
+    "text": "你在高塔的公告栏上看到一则启事：某位匿名贵族愿资助“有才华的家道中落者”，条件只有一个，得通过一次小小的面试。",
+    "options": [
+      {
+        "label": "参加面试",
+        "check": {
+          "attr": "cha",
+          "diff": 11
+        },
+        "ok": {
+          "text": "面试官只问了三个问题，你都答得滴水不漏。一周后，一袋金币被送到了旧宅门口，没有署名。",
+          "fx": [
+            "gold+70",
+            "cha_exp+3",
+            "hometown+2"
+          ]
+        },
+        "fail": {
+          "text": "你的回答太防备，面试官皱了皱眉：“年轻人，你在紧张什么？”",
+          "fx": [
+            "cha_exp+2"
+          ]
+        }
+      },
+      {
+        "label": "不去，不想欠人情",
+        "text": "你把公告撕下来，叠好，放进抽屉。",
+        "fx": [
+          "wil_exp+1"
+        ]
+      }
+    ],
+    "cond": "age>=18",
+    "scene": "tower"
+  },
+  {
+    "id": "n_guest_lecture",
+    "kind": "random",
+    "pool": "opportunity",
+    "weight": 9,
+    "title": "名师客座讲座",
+    "text": "高塔请来了一位远道而来的名师，讲题是“符文与意志”。座位早被抢光，只有门口还能站人。",
+    "options": [
+      {
+        "label": "站在门口，全神贯注地听",
+        "check": {
+          "attr": "int",
+          "diff": 12
+        },
+        "ok": {
+          "text": "他讲到最后一个例子时，你脑子里忽然有一根线接上了。散场时，你的笔记密得看不清字。",
+          "fx": [
+            "int_exp+7",
+            "rep:tower+3",
+            "count:arcana+1"
+          ]
+        },
+        "fail": {
+          "text": "你只听懂了开头，后面像在听外语。",
+          "fx": [
+            "int_exp+2"
+          ]
+        }
+      },
+      {
+        "label": "早点回去，看书比听讲更有效",
+        "text": "你抱着书，一个人在安静的书房里读到了半夜。",
+        "fx": [
+          "int_exp+3"
+        ]
+      }
+    ],
+    "cond": "age>=17",
+    "scene": "tower"
+  },
+  {
+    "id": "n_old_book",
+    "kind": "random",
+    "pool": "opportunity",
+    "weight": 8,
+    "title": "旧书商的降价",
+    "text": "旧书摊的老板抱着一摞蒙尘的魔导书，正在大声吆喝：“清仓大甩卖！”",
+    "options": [
+      {
+        "label": "买下最厚的那本（40 金币）",
+        "text": "你翻开扉页，上面写着一个熟悉的名字：格雷蒙特。",
+        "fx": [
+          "gold-40",
+          "int_exp+8",
+          "count:arcana+1"
+        ],
+        "cond": "gold>=40",
+        "reason": "金币不足"
+      },
+      {
+        "label": "翻看几页，记下几条咒文",
+        "text": "老板瞪了你一眼：“看够了就买！”",
+        "fx": [
+          "int_exp+3"
+        ]
+      }
+    ],
+    "scene": "street"
+  },
+  {
+    "id": "n_hidden_coins",
+    "kind": "random",
+    "pool": "opportunity",
+    "weight": 7,
+    "title": "夹层里的古币",
+    "text": "整理旧宅的壁橱时，你发现墙板后面藏着一个小布袋，里面是几枚前朝的金币。",
+    "options": [
+      {
+        "label": "留着，补贴家用",
+        "text": "你把布袋压在了账本的最底下。",
+        "fx": [
+          "gold+60"
+        ]
+      },
+      {
+        "label": "拿去给阿尔弗，让他入账",
+        "text": "阿尔弗翻看了一会儿，没说话，眼眶红了：“老爷当年，真是个周到的人。”",
+        "fx": [
+          "rel:alfred+1",
+          "hometown+1",
+          "gold+30"
+        ]
+      }
+    ],
+    "once": true,
+    "scene": "manor_autumn"
+  },
+  {
+    "id": "n_scholarship",
+    "kind": "random",
+    "pool": "opportunity",
+    "weight": 10,
+    "title": "高塔奖学金",
+    "text": "高塔每年都会评选几位成绩出色的学徒，授予奖学金。名单贴出来的那天，你的名字在第三行。",
+    "options": [
+      {
+        "label": "领取奖学金",
+        "text": "金额不多，但够你交一学期的讲义费。",
+        "fx": [
+          "gold+80",
+          "rep:tower+3",
+          "int_exp+2"
+        ]
+      }
+    ],
+    "cond": "rank>=2",
+    "once": true,
+    "scene": "tower"
+  },
+  {
+    "id": "n_old_friend",
+    "kind": "random",
+    "pool": "opportunity",
+    "weight": 9,
+    "title": "父亲的旧友",
+    "text": "一位白发的老先生敲开旧宅的门，自称是令尊在军队里的旧部。“当年没能帮上忙，我一直很愧疚。”",
+    "options": [
+      {
+        "label": "请他进来喝杯茶",
+        "text": "老先生坐了很久，把父亲当年的几件事讲给你听。临走前，他留下一小袋金币和一个地址。",
+        "fx": [
+          "gold+60",
+          "hometown+3",
+          "rel:alfred+1",
+          "exp+20"
+        ]
+      },
+      {
+        "label": "婉拒，称家中不便",
+        "text": "老先生默默点了点头，把地址留在了门口的信箱里。",
+        "fx": [
+          "wil_exp+1"
+        ]
+      }
+    ],
+    "cond": "age>=18",
+    "once": true,
+    "scene": "manor_autumn"
+  },
+  {
+    "id": "n_charity_ball",
+    "kind": "random",
+    "pool": "opportunity",
+    "weight": 8,
+    "title": "慈善舞会",
+    "text": "教会主办的慈善舞会发来了一份请柬，要求出席者至少捐一份善款。",
+    "options": [
+      {
+        "label": "出席并捐 40 金币",
+        "text": "你在舞会上被几位熟面孔点头致意，有人悄悄说：“格雷蒙特家的孩子，没有变。”",
+        "fx": [
+          "gold-40",
+          "hometown+4",
+          "cha_exp+3",
+          "rep:church+3"
+        ],
+        "cond": "gold>=40",
+        "reason": "金币不足"
+      },
+      {
+        "label": "推辞，称有课",
+        "text": "你在高塔的教室里度过了一个安静的夜晚。",
+        "fx": [
+          "int_exp+2"
+        ]
+      }
+    ],
+    "cond": "age>=19",
+    "scene": "street"
+  },
+  {
+    "id": "n_debt_collectors",
+    "kind": "random",
+    "pool": "calamity",
+    "weight": 10,
+    "title": "债主的打手",
+    "text": "半夜，旧宅的大门被撞得砰砰响。几个壮汉站在门外，其中一人晃着棍子：“少爷，您的账，今天得有个说法。”",
+    "options": [
+      {
+        "label": "迎出去，动手",
+        "text": "你握紧了法杖。",
+        "fx": [
+          {
+            "type": "combat",
+            "enemy": "thug",
+            "win": [
+              "hometown+2",
+              "cha_exp+2"
+            ],
+            "lose": [
+              "gold-30",
+              "hometown-2"
+            ],
+            "flee": [
+              "gold-15"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "付 80 金币了事",
+        "text": "他们数完钱，嘟囔着走了。",
+        "fx": [
+          "gold-80",
+          "count:debt-80"
+        ],
+        "cond": "gold>=80",
+        "reason": "金币不足"
+      }
+    ],
+    "cond": "count.debt>=600&&age>=17",
+    "scene": "manor_winter"
+  },
+  {
+    "id": "n_theft",
+    "kind": "random",
+    "pool": "calamity",
+    "weight": 7,
+    "title": "手脚不干净的人",
+    "text": "早上起来，阿尔弗气喘吁吁地告诉你：库房里少了一只银烛台。",
+    "options": [
+      {
+        "label": "追查线索",
+        "check": {
+          "attr": "int",
+          "diff": 11
+        },
+        "ok": {
+          "text": "你顺着蛛丝马迹，在当铺里找到了烛台，把它赎了回来。",
+          "fx": [
+            "int_exp+3",
+            "hometown+1"
+          ]
+        },
+        "fail": {
+          "text": "线索断了，银烛台没了踪影。",
+          "fx": [
+            "hometown-2",
+            "gold-20"
+          ]
+        }
+      },
+      {
+        "label": "算了，认栽",
+        "text": "阿尔弗低着头：“是老仆没看好……”",
+        "fx": [
+          "hometown-1"
+        ]
+      }
+    ],
+    "cond": "age>=17",
+    "scene": "manor_autumn"
+  },
+  {
+    "id": "n_cold_snap",
+    "kind": "random",
+    "pool": "calamity",
+    "weight": 8,
+    "title": "断了柴火",
+    "text": "寒潮提前来了，旧宅的炉子里烧完了最后一块木头。母亲咳得更厉害，阿尔弗在客厅里转来转去，手搓得通红。",
+    "options": [
+      {
+        "label": "去市场买柴（30 金币）",
+        "text": "你背着一捆湿柴回家，路上滑倒了一次。",
+        "fx": [
+          "gold-30",
+          "rel:vera+1"
+        ],
+        "cond": "gold>=30",
+        "reason": "金币不足"
+      },
+      {
+        "label": "拆掉一件旧家具当柴烧",
+        "text": "那是父亲年轻时坐过的椅子。你一斧子下去，没有说话。",
+        "fx": [
+          "hometown-2",
+          "wil_exp+2",
+          "rel:vera+1"
+        ]
+      }
+    ],
+    "cond": "season==winter",
+    "scene": "manor_winter"
+  },
+  {
+    "id": "n_slander",
+    "kind": "random",
+    "pool": "calamity",
+    "weight": 8,
+    "title": "流言",
+    "text": "街头巷尾开始流传一个说法：格雷蒙特家的少爷其实早就在暗中联络魔族，高塔学徒的身份，是掩护。",
+    "options": [
+      {
+        "label": "当众澄清",
+        "check": {
+          "attr": "cha",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你在高塔食堂里，当着所有人的面，把每一件事讲清楚。有人开始点头。",
+          "fx": [
+            "cha_exp+4",
+            "hometown+1"
+          ]
+        },
+        "fail": {
+          "text": "你说得越多，别人看你的眼神越奇怪。",
+          "fx": [
+            "hometown-4",
+            "cha_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "不理，继续做自己的事",
+        "text": "一个月后，另一桩新的流言，把这一桩盖了过去。",
+        "fx": [
+          "wil_exp+3",
+          "hometown-1"
+        ]
+      }
+    ],
+    "cond": "age>=19",
+    "scene": "street"
+  },
+  {
+    "id": "n_spell_accident",
+    "kind": "random",
+    "pool": "calamity",
+    "weight": 9,
+    "title": "失控的实验",
+    "text": "你在书房里试一个新咒文，魔力忽然失控，书桌被炸出了一个黑洞。阿尔弗拎着水桶冲进来。",
+    "options": [
+      {
+        "label": "稳住魔力",
+        "check": {
+          "attr": "wil",
+          "diff": 11
+        },
+        "ok": {
+          "text": "你咬牙把魔力压回掌心，手背上被灼出一条红印。",
+          "fx": [
+            "wil_exp+3",
+            "hp-4",
+            "int_exp+2"
+          ]
+        },
+        "fail": {
+          "text": "魔力反噬，你被掀翻在地。",
+          "fx": [
+            "hp-12",
+            "status+:fatigue:2"
+          ]
+        }
+      },
+      {
+        "label": "立刻切断咒语",
+        "text": "烟散了，书桌少了一个角。",
+        "fx": [
+          "int_exp+1",
+          "hp-3"
+        ]
+      }
+    ],
+    "cond": "flag:library_open&&count.arcana>=3",
+    "scene": "library"
+  },
+  {
+    "id": "n_assassin",
+    "kind": "random",
+    "pool": "calamity",
+    "weight": 8,
+    "title": "黑衣人",
+    "text": "夜里，你察觉到有人在跟踪你。回头时，巷口的暗处立着一个黑衣人，一动不动。",
+    "options": [
+      {
+        "label": "转身迎战",
+        "text": "黑衣人拔出了短刃。",
+        "fx": [
+          {
+            "type": "combat",
+            "enemy": "assassin",
+            "win": [
+              "exp+30",
+              "wil_exp+3",
+              "flag+:assassin_survived"
+            ],
+            "lose": [
+              "wil_exp+1"
+            ],
+            "flee": []
+          }
+        ]
+      },
+      {
+        "label": "甩掉他",
+        "check": {
+          "attr": "agi",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你绕过三条街，翻进了阿尔弗留的后门。身后的脚步声，在巷尾消失了。",
+          "fx": [
+            "agi_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "他一直跟到旧宅门口，才转身消失。你一夜没睡。",
+          "fx": [
+            "wil_exp+1",
+            "status+:fatigue:1"
+          ]
+        }
+      }
+    ],
+    "cond": "age>=22&&flag:father_letter",
+    "scene": "street"
+  },
+  {
+    "id": "n_vera_memory",
+    "kind": "random",
+    "pool": "social",
+    "weight": 10,
+    "title": "母亲的回忆",
+    "text": "母亲今天精神特别好，非要你推她去花园。她指着一丛干枯的玫瑰：“这是我和你父亲一起种的。”",
+    "options": [
+      {
+        "label": "陪她坐一会儿，听她讲",
+        "text": "她讲了半个下午，讲到最后，轻轻握了握你的手：“不管发生什么，别让自己变成他们。”",
+        "fx": [
+          "rel:vera+2",
+          "wil_exp+3",
+          "hometown+1"
+        ],
+        "cond": "flag:vera_alive"
+      },
+      {
+        "label": "替她剪下一枝，放在窗前",
+        "text": "她看着那枝花，没有说话，眼里有光。",
+        "fx": [
+          "rel:vera+1",
+          "hometown+1"
+        ],
+        "cond": "flag:vera_alive"
+      }
+    ],
+    "cond": "flag:vera_alive&&age>=18",
+    "once": true,
+    "scene": "manor_spring",
+    "portrait": "vera"
+  },
+  {
+    "id": "n_alfred_story",
+    "kind": "random",
+    "pool": "social",
+    "weight": 9,
+    "title": "阿尔弗的往事",
+    "text": "夜里，阿尔弗坐在厨房里擦着那几只仅剩的银杯，忽然开口：“少爷，您知道老爷最爱吃什么吗？”",
+    "options": [
+      {
+        "label": "洗耳恭听",
+        "text": "他讲了一个半小时，从老爷小时候讲到老爷第一次骑马摔进泥里，笑着笑着，眼眶红了。",
+        "fx": [
+          "rel:alfred+2",
+          "hometown+1",
+          "wil_exp+1"
+        ]
+      },
+      {
+        "label": "请他讲讲当年的案子",
+        "text": "阿尔弗沉默了很久，只说了一句：“那天，老爷没有挣扎。”",
+        "fx": [
+          "rel:alfred+1",
+          "wil_exp+2",
+          "exp+10"
+        ]
+      }
+    ],
+    "scene": "manor_winter",
+    "portrait": "alfred"
+  },
+  {
+    "id": "n_salon_invite",
+    "kind": "random",
+    "pool": "social",
+    "weight": 8,
+    "title": "沙龙的邀请",
+    "text": "一位自称“爱好者”的贵妇人递来一张请柬，说是要办一场魔法与诗歌的沙龙，缺一位“有故事的年轻人”。",
+    "options": [
+      {
+        "label": "出席并发表一段见解",
+        "check": {
+          "attr": "cha",
+          "diff": 11
+        },
+        "ok": {
+          "text": "你谈到了魔法与记忆之间的关系，满座的人沉默了一阵，然后热烈地鼓起了掌。",
+          "fx": [
+            "cha_exp+4",
+            "hometown+3",
+            "rep:tower+2"
+          ]
+        },
+        "fail": {
+          "text": "你说得太谨慎，没留下什么印象。",
+          "fx": [
+            "cha_exp+2"
+          ]
+        }
+      },
+      {
+        "label": "婉拒",
+        "text": "贵妇人遗憾地点了点头。",
+        "fx": []
+      }
+    ],
+    "cond": "age>=18",
+    "scene": "street"
+  },
+  {
+    "id": "n_elin_gift",
+    "kind": "random",
+    "pool": "social",
+    "weight": 14,
+    "title": "艾琳送来的书",
+    "text": "艾琳敲开了旧宅的门，把一个油纸包塞进你怀里：“我在店里翻到的，感觉你会喜欢。”说完，转身就走。",
+    "options": [
+      {
+        "label": "拆开看看",
+        "text": "是一本边角磨破的魔法理论，扉页上写着一行小字：“送给想不明白的人。”",
+        "fx": [
+          "int_exp+6",
+          "count:arcana+1",
+          "rel:elin+1"
+        ]
+      }
+    ],
+    "cond": "rel.elin>=2",
+    "once": true,
+    "scene": "manor_spring",
+    "portrait": "elin"
+  },
+  {
+    "id": "n_study_group",
+    "kind": "random",
+    "pool": "social",
+    "weight": 8,
+    "title": "同学的读书会",
+    "text": "几位高塔的同学约你组一个读书会，每周在图书馆集合一次，讨论上周的疑难。",
+    "options": [
+      {
+        "label": "积极参与",
+        "check": {
+          "attr": "int",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你提出的一个观点引起了一场激烈的讨论，散会后有人追着你问细节。",
+          "fx": [
+            "int_exp+6",
+            "rep:tower+3",
+            "cha_exp+2"
+          ]
+        },
+        "fail": {
+          "text": "你听得多，说得少，倒是收获了几页满满当当的笔记。",
+          "fx": [
+            "int_exp+3"
+          ]
+        }
+      },
+      {
+        "label": "只当旁听生",
+        "text": "你坐在最后一排，一晚上只翻了三次笔记。",
+        "fx": [
+          "int_exp+2"
+        ]
+      }
+    ],
+    "cond": "rank>=2",
+    "scene": "library"
+  },
+  {
+    "id": "n_royal_review",
+    "kind": "random",
+    "pool": "world",
+    "weight": 8,
+    "title": "王室的巡视",
+    "text": "王室的巡视官员来到东区，挨家挨户地检查登记。旧宅的大门前，官员停了很久。",
+    "options": [
+      {
+        "label": "从容应对",
+        "check": {
+          "attr": "cha",
+          "diff": 11
+        },
+        "ok": {
+          "text": "你把登记簿、税单、地契一一奉上，滴水不漏。官员记下几笔，转身走了。",
+          "fx": [
+            "hometown+3",
+            "cha_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "你有一张税单找不到了，官员的眉头皱成了一条线。",
+          "fx": [
+            "hometown-3",
+            "gold-30"
+          ]
+        }
+      },
+      {
+        "label": "让阿尔弗出面",
+        "text": "阿尔弗毕恭毕敬，几乎是把旧宅里每一件东西都解释了一遍。",
+        "fx": [
+          "hometown+1",
+          "rel:alfred+1"
+        ]
+      }
+    ],
+    "cond": "age>=18",
+    "scene": "manor_spring"
+  },
+  {
+    "id": "n_plague_rumor",
+    "kind": "random",
+    "pool": "world",
+    "weight": 7,
+    "title": "瘟疫的传闻",
+    "text": "王都的西区爆发了一种怪病，街上到处是戴着药草面具的人。高塔宣布暂停公开讲座。",
+    "options": [
+      {
+        "label": "留在家里，读书（2 体力）",
+        "text": "你一个人把书房里没读完的那几本啃完了。",
+        "fx": [
+          "int_exp+5",
+          "wil_exp+2"
+        ],
+        "cost": 2
+      },
+      {
+        "label": "去教会的救济所帮忙（2 体力）",
+        "text": "你戴着面罩，帮忙分发药草和粥，直到手指被冻僵。",
+        "fx": [
+          "rep:church+4",
+          "hometown+2",
+          "wil_exp+3"
+        ],
+        "cost": 2
+      }
+    ],
+    "cond": "age>=18",
+    "scene": "street"
+  },
+  {
+    "id": "n_war_news",
+    "kind": "random",
+    "pool": "world",
+    "weight": 10,
+    "title": "前线的战报",
+    "text": "茶馆里，有人拍着桌子读报纸：魔物攻陷了两座边境据点，王国正在紧急调兵。",
+    "options": [
+      {
+        "label": "听完，默默记下",
+        "text": "你把这个消息和计划里的时间对了一遍。时间，并不宽裕。",
+        "fx": [
+          "wil_exp+2",
+          "int_exp+2"
+        ]
+      },
+      {
+        "label": "加紧练习（2 体力）",
+        "text": "你在书房里一遍遍练着那几个咒语，直到手指发麻。",
+        "fx": [
+          "int_exp+4",
+          "wil_exp+3",
+          "exp+20"
+        ],
+        "cost": 2
+      }
+    ],
+    "cond": "age>=24",
+    "once": true,
+    "scene": "street"
+  },
+  {
+    "id": "n_comet",
+    "kind": "random",
+    "pool": "world",
+    "weight": 9,
+    "title": "拖着尾巴的星",
+    "text": "夜里，一颗拖着长长尾巴的红色彗星划过北方的天空，持续了整整三个晚上。高塔的天文学家说，这是上一次魔王苏醒前也出现过的征兆。",
+    "options": [
+      {
+        "label": "爬上旧宅的屋顶看",
+        "text": "你和阿尔弗并肩坐在屋脊上，谁也没说话。",
+        "fx": [
+          "wil_exp+3",
+          "rel:alfred+1"
+        ]
+      },
+      {
+        "label": "记下它的方位和日期",
+        "text": "你在本子上画下星图，打算去问墨提斯。",
+        "fx": [
+          "int_exp+3",
+          "exp+10"
+        ]
+      }
+    ],
+    "cond": "age>=24",
+    "once": true,
+    "scene": "manor_autumn"
+  },
+  {
+    "id": "n_carriage",
+    "kind": "random",
+    "pool": "opportunity",
+    "weight": 9,
+    "title": "翻倒的马车",
+    "text": "街角，一辆华丽的马车翻倒在路中央，车夫满头是血，车里隐约有人在喊救命。",
+    "options": [
+      {
+        "label": "冲上去把车厢抬正",
+        "check": {
+          "attr": "str",
+          "diff": 9
+        },
+        "ok": {
+          "text": "你和几个路人一起，把车厢抬起来。车里走出一位惊魂未定的老太太，一定要留下你的名字。",
+          "fx": [
+            "hometown+4",
+            "gold+30",
+            "cha_exp+2"
+          ]
+        },
+        "fail": {
+          "text": "车厢太沉，你只拉出了受伤的车夫。",
+          "fx": [
+            "hometown+1",
+            "hp-4"
+          ]
+        }
+      },
+      {
+        "label": "去叫巡逻的卫兵",
+        "text": "你跑了两条街，带回了卫兵。事情总算有人接手。",
+        "fx": [
+          "hometown+1",
+          "agi_exp+2"
+        ]
+      }
+    ],
+    "cond": "age>=17",
+    "scene": "street"
+  },
+  {
+    "id": "n_poem_rose",
+    "kind": "random",
+    "pool": "social",
+    "weight": 9,
+    "title": "一首关于白玫瑰的诗",
+    "text": "茶馆里，有位卖诗的年轻人把一首新作念给每个客人听，开头一句是：“荆棘里的白玫瑰，不肯凋谢。”",
+    "options": [
+      {
+        "label": "买一张诗笺（5 金币）",
+        "text": "你把诗笺折好，放进口袋，没有对任何人说为什么。",
+        "fx": [
+          "gold-5",
+          "hometown+2",
+          "wil_exp+2"
+        ],
+        "cond": "gold>=5",
+        "reason": "金币不足"
+      },
+      {
+        "label": "听完，什么也不说",
+        "text": "他念完最后一句，抬头看了你一眼，像是认出了什么。",
+        "fx": [
+          "wil_exp+1",
+          "hometown+1"
+        ]
+      }
+    ],
+    "cond": "age>=18",
+    "once": true,
+    "scene": "street"
+  },
+  {
+    "id": "n_tower_prank",
+    "kind": "random",
+    "pool": "social",
+    "weight": 8,
+    "title": "学徒的恶作剧",
+    "text": "你回到座位时，发现自己的讲义被人泼了一整瓶墨水。后排传来压低的窃笑。",
+    "options": [
+      {
+        "label": "不动声色，当场重新誊一份",
+        "check": {
+          "attr": "wil",
+          "diff": 11
+        },
+        "ok": {
+          "text": "你把污掉的讲义放在一边，从包里抽出一份昨晚备份的，平静地翻开。后排的笑声慢慢安静了。",
+          "fx": [
+            "wil_exp+4",
+            "rep:tower+2"
+          ]
+        },
+        "fail": {
+          "text": "你的手有点抖，笔在纸上划出了一道歪线。",
+          "fx": [
+            "wil_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "当众询问是谁干的",
+        "text": "没有人承认。但教室里的气氛，明显变了。",
+        "fx": [
+          "cha_exp+2",
+          "rep:tower-1"
+        ]
+      }
+    ],
+    "cond": "rank>=2",
+    "scene": "tower"
+  },
+  {
+    "id": "n_locked_library",
+    "kind": "random",
+    "pool": "opportunity",
+    "weight": 8,
+    "title": "被锁在图书馆里",
+    "text": "你读书读得太入神，等回过神，图书馆已经闭馆，大门被从外面锁上了。烛光下，一整面墙的藏书在向你招手。",
+    "options": [
+      {
+        "label": "干脆读通宵（1 体力）",
+        "text": "天亮时，守门的老头发现了你，满脸诧异，却什么也没说。",
+        "fx": [
+          "int_exp+8",
+          "count:arcana+1",
+          "status+:fatigue:1"
+        ],
+        "cost": 1
+      },
+      {
+        "label": "找出口，趁天黑溜走",
+        "check": {
+          "attr": "agi",
+          "diff": 10
+        },
+        "ok": {
+          "text": "你从通风窗里爬了出去，掸了掸身上的灰。",
+          "fx": [
+            "agi_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "窗户太小，你卡在了中间，被早起的清洁工发现了。",
+          "fx": [
+            "hometown-1",
+            "cha_exp+1"
+          ]
+        }
+      }
+    ],
+    "cond": "flag:library_open",
+    "scene": "library"
+  },
+  {
+    "id": "n_church_alms",
+    "kind": "random",
+    "pool": "world",
+    "weight": 8,
+    "title": "教会的施粥",
+    "text": "冬天，教会在街口支起了大锅，施粥给穷人。队伍从街头排到了街尾，神父的眼圈发黑。",
+    "options": [
+      {
+        "label": "帮忙分粥（1 体力）",
+        "text": "你站在锅边，一勺一勺地分，直到手腕发酸。",
+        "fx": [
+          "rep:church+4",
+          "hometown+1",
+          "wil_exp+2"
+        ],
+        "cost": 1
+      },
+      {
+        "label": "捐一些钱（15 金币）",
+        "text": "神父向你点头致意，在簿子上写了几笔。",
+        "fx": [
+          "gold-15",
+          "rep:church+3",
+          "hometown+1"
+        ],
+        "cond": "gold>=15",
+        "reason": "金币不足"
+      }
+    ],
+    "cond": "season==winter",
+    "scene": "street"
+  },
+  {
+    "id": "n_merchant_loan",
+    "kind": "random",
+    "pool": "opportunity",
+    "weight": 8,
+    "title": "商人的借款",
+    "text": "一位衣着光鲜的商人找到你：“听说少爷最近缺钱？我这儿正好有一笔低息的借款，一年内还清就行。”",
+    "options": [
+      {
+        "label": "仔细看借据，再决定",
+        "check": {
+          "attr": "int",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你在最后一页发现了一条隐蔽的附加条款：逾期按双倍计息。你把借据推了回去。商人脸上的笑，僵住了。",
+          "fx": [
+            "int_exp+4",
+            "cha_exp+2"
+          ]
+        },
+        "fail": {
+          "text": "你没注意到那条小字。借据签下去，你才发现数字不太对。",
+          "fx": [
+            "gold+150",
+            "count:debt+260",
+            "hometown-2"
+          ]
+        }
+      },
+      {
+        "label": "直接签字",
+        "text": "钱很快就到了账。但账本上，多了一行不太好看的数字。",
+        "fx": [
+          "gold+150",
+          "count:debt+240"
+        ]
+      },
+      {
+        "label": "拒绝",
+        "text": "商人耸耸肩，把借据收了回去。",
+        "fx": [
+          "wil_exp+1"
+        ]
+      }
+    ],
+    "cond": "age>=18&&count.debt>=300",
+    "scene": "street"
+  },
+  {
+    "id": "n_lights_festival",
+    "kind": "random",
+    "pool": "social",
+    "weight": 14,
+    "title": "灯节",
+    "text": "王都一年一度的灯节。街上挂满了纸灯，人们提着灯笼三三两两地走过石桥。艾琳站在桥头，朝你挥手。",
+    "options": [
+      {
+        "label": "陪她放一盏灯（1 体力）",
+        "text": "她在灯上写了一行字，没让你看。灯顺着河水慢慢漂远了。",
+        "fx": [
+          "rel:elin+2",
+          "hometown+1",
+          "wil_exp+1"
+        ],
+        "cost": 1
+      },
+      {
+        "label": "隔着桥，点点头就走",
+        "text": "桥上的人潮挤过去，你们的视线很快被淹没了。",
+        "fx": [
+          "rel:elin+1"
+        ]
+      }
+    ],
+    "cond": "flag:met_elin&&season==autumn",
+    "once": true,
+    "scene": "street",
+    "portrait": "elin"
+  },
+  {
+    "id": "n_tower_ranking",
+    "kind": "random",
+    "pool": "opportunity",
+    "weight": 8,
+    "title": "塔中排名考",
+    "text": "高塔每半年一次排名考，前十名可以得到进入内塔藏书室的资格。",
+    "options": [
+      {
+        "label": "参加排名考",
+        "check": {
+          "attr": "int",
+          "diff": 13
+        },
+        "ok": {
+          "text": "考卷最后一题你写得极其流畅，贴榜那天，你的名字在第五行。",
+          "fx": [
+            "rep:tower+5",
+            "int_exp+5",
+            "exp+30"
+          ]
+        },
+        "fail": {
+          "text": "你卡在倒数第二题，最后只排在了中游。",
+          "fx": [
+            "rep:tower+1",
+            "int_exp+2"
+          ]
+        }
+      },
+      {
+        "label": "放弃，专心准备别的事",
+        "text": "你把精力全放在了另一件事上。",
+        "fx": [
+          "wil_exp+1"
+        ]
+      }
+    ],
+    "cond": "rank>=2",
+    "scene": "tower"
+  },
+  {
+    "id": "n_dream_father",
+    "kind": "random",
+    "pool": "social",
+    "weight": 9,
+    "title": "梦里的父亲",
+    "text": "你梦见父亲坐在书房的窗边，侧着脸，手里捧着那本旧册子。你想喊他，可怎么也发不出声音。",
+    "options": [
+      {
+        "label": "醒来后，把梦写在本子上",
+        "text": "你写了很久，写到天亮。",
+        "fx": [
+          "wil_exp+3",
+          "int_exp+1"
+        ]
+      },
+      {
+        "label": "翻个身，继续睡",
+        "text": "梦里的那扇窗，慢慢地暗了下去。",
+        "fx": [
+          "wil_exp+1"
+        ]
+      }
+    ],
+    "cond": "age>=20",
+    "once": true,
+    "scene": "manor_winter"
+  },
+  {
+    "id": "n_old_witness",
+    "kind": "random",
+    "pool": "opportunity",
+    "weight": 10,
+    "title": "认出你的人",
+    "text": "旁听席上，有人一直盯着你看。散场后，一位头发花白的老书记官追上来，压低声音：“你是格雷蒙特伯爵的儿子吧？有些话，我憋了很多年。”",
+    "options": [
+      {
+        "label": "请他到僻静处详谈",
+        "check": {
+          "attr": "cha",
+          "diff": 12
+        },
+        "ok": {
+          "text": "他犹豫了很久，终于说出了当年会审那晚，自己亲眼看到的一件事。你把每一句话，都牢牢记下。",
+          "fx": [
+            "count:evidence+1",
+            "cha_exp+3",
+            "flag+:old_witness"
+          ]
+        },
+        "fail": {
+          "text": "他看了看四周，摇头：“不行，我不能说。”转身消失在人群里。",
+          "fx": [
+            "cha_exp+1",
+            "wil_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "先留个地址，让他想好了再来",
+        "text": "他接过纸条，攥得很紧。",
+        "fx": [
+          "rel:alfred+0",
+          "wil_exp+1"
+        ]
+      }
+    ],
+    "cond": "age>=22",
+    "once": true,
+    "scene": "street"
+  },
+  {
+    "id": "n_street_music",
+    "kind": "random",
+    "pool": "opportunity",
+    "weight": 8,
+    "title": "街头的乐师",
+    "text": "街角的老乐师拉着一支你熟悉的曲子，是母亲从前在花园里哼过的调子。",
+    "options": [
+      {
+        "label": "站着听完，放一枚铜币",
+        "text": "琴声停下时，你的眼眶有点发热。",
+        "fx": [
+          "gold-2",
+          "wil_exp+2",
+          "hometown+1"
+        ]
+      },
+      {
+        "label": "上前问他从哪里学的",
+        "text": "老乐师想了想：“很多年前，有位伯爵夫人教我的。”",
+        "fx": [
+          "exp+15",
+          "cha_exp+2"
+        ]
+      }
+    ],
+    "cond": "flag:vera_alive",
+    "once": true,
+    "scene": "street"
+  },
+  {
+    "id": "n_alchemist",
+    "kind": "random",
+    "pool": "opportunity",
+    "weight": 7,
+    "title": "深夜的炼金师",
+    "text": "夜里，你被一阵怪味吵醒。隔壁新搬来的炼金师在试验一种新药剂，黄烟从窗缝里一股股地冒出来。",
+    "options": [
+      {
+        "label": "敲门，请教他的配方",
+        "check": {
+          "attr": "int",
+          "diff": 12
+        },
+        "ok": {
+          "text": "炼金师正愁没人交流，拉着你聊了整个晚上，还送你两瓶试验品。",
+          "fx": [
+            "int_exp+5",
+            "mpheal:1",
+            "exp+20"
+          ]
+        },
+        "fail": {
+          "text": "他把你关在了门外：“商业机密！”",
+          "fx": [
+            "cha_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "捂着鼻子，翻个身继续睡",
+        "text": "第二天，屋里的蜡烛都发黄了。",
+        "fx": [
+          "status+:fatigue:1"
+        ]
+      }
+    ],
+    "cond": "age>=18",
+    "scene": "street"
+  },
+  {
+    "id": "n_apprentice_ball",
+    "kind": "random",
+    "pool": "social",
+    "weight": 8,
+    "title": "学徒舞会",
+    "text": "高塔一年一度的学徒舞会，你在请柬上看到了自己的名字。管家把你压箱底的礼服熨得笔挺，眼神里带着点骄傲。",
+    "options": [
+      {
+        "label": "放松地去跳舞",
+        "check": {
+          "attr": "cha",
+          "diff": 11
+        },
+        "ok": {
+          "text": "你牵着一位同学转了一圈又一圈，笑声在大厅里回荡。散场时，有人说：“你和传闻中的不太一样。”",
+          "fx": [
+            "cha_exp+4",
+            "hometown+3",
+            "rep:tower+2"
+          ]
+        },
+        "fail": {
+          "text": "你踩了舞伴三次脚，红着脸跑到阳台去透气。",
+          "fx": [
+            "cha_exp+2"
+          ]
+        }
+      },
+      {
+        "label": "婉拒，留在书房读书",
+        "text": "你把窗子推开一条缝，远处的音乐隐隐约约地飘进来。",
+        "fx": [
+          "int_exp+3"
+        ]
+      }
+    ],
+    "cond": "rank>=2",
+    "scene": "tower"
+  },
+  {
+    "id": "n_stolen_notes",
+    "kind": "random",
+    "pool": "calamity",
+    "weight": 7,
+    "title": "被偷的笔记",
+    "text": "你从高塔回来，发现旧宅的书房被翻过，别的东西都没动，只少了你最近三个月的研究笔记。",
+    "options": [
+      {
+        "label": "凭记忆重新整理",
+        "check": {
+          "attr": "int",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你熬了两个夜，把核心的内容全默了出来，比原来的更凝练。",
+          "fx": [
+            "int_exp+5",
+            "wil_exp+2"
+          ]
+        },
+        "fail": {
+          "text": "漏了几处关键的推导，你对着空白的纸页发了很久的呆。",
+          "fx": [
+            "int_exp+2",
+            "hometown-1"
+          ]
+        }
+      },
+      {
+        "label": "去高塔举报",
+        "text": "管事人记了笔录，但谁也不太当真。",
+        "fx": [
+          "rep:tower+1",
+          "wil_exp+1"
+        ]
+      }
+    ],
+    "cond": "rank>=2&&count.arcana>=6",
+    "once": true,
+    "scene": "library"
+  },
+  {
+    "id": "n_old_tutor",
+    "kind": "random",
+    "pool": "social",
+    "weight": 9,
+    "title": "旧日的家庭教师",
+    "text": "一位白发的老先生敲开了旧宅的门，自称是你童年的家庭教师：“少爷小时候，最爱问‘为什么’。”",
+    "options": [
+      {
+        "label": "请他进来，听他讲小时候的事",
+        "text": "他讲了你三岁时拆了一台座钟的事，笑得连连咳嗽。",
+        "fx": [
+          "rel:alfred+1",
+          "wil_exp+1",
+          "cha_exp+2",
+          "hometown+1"
+        ]
+      },
+      {
+        "label": "请教他一个至今没解开的问题",
+        "text": "老先生想了想，在纸上写下一个只有三行的推导，递给了你。",
+        "fx": [
+          "int_exp+6",
+          "exp+20"
+        ]
+      }
+    ],
+    "cond": "age>=19",
+    "once": true,
+    "scene": "manor_autumn"
+  },
+  {
+    "id": "n_bank_notice",
+    "kind": "random",
+    "pool": "calamity",
+    "weight": 8,
+    "title": "银行的通知",
+    "text": "信封上盖着王都商业银行的钢印。里面是一份措辞客气的通知：您的债务利率，将于下季度上调一成。",
+    "options": [
+      {
+        "label": "上门谈判",
+        "check": {
+          "attr": "cha",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你在经理室里坐了一个下午，把过去几年的每一次按时还款记录摊在桌上。最后，经理同意延后一个季度调整。",
+          "fx": [
+            "cha_exp+4",
+            "hometown+1"
+          ]
+        },
+        "fail": {
+          "text": "经理礼貌而冷淡：“规定就是规定。”",
+          "fx": [
+            "count:debt+60",
+            "cha_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "认下，加紧还款",
+        "text": "你合上信，在日历上画了一个圈。",
+        "fx": [
+          "wil_exp+2"
+        ]
+      }
+    ],
+    "cond": "count.debt>=500&&age>=18",
+    "scene": "street"
+  },
+  {
+    "id": "n_anon_letter",
+    "kind": "random",
+    "pool": "opportunity",
+    "weight": 10,
+    "title": "匿名的来信",
+    "text": "信箱里多了一封没有署名的信，信纸上只有一行字：“十二年前的会审名单，在西城区第三条巷的第五户。”",
+    "options": [
+      {
+        "label": "按图索骥",
+        "check": {
+          "attr": "int",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你找到了那间破败的小屋，老妇人看了你很久，递给你一个布包。里面是一份被反复翻阅的名单。",
+          "fx": [
+            "count:evidence+1",
+            "int_exp+3",
+            "exp+20"
+          ]
+        },
+        "fail": {
+          "text": "那间屋子早就空了，窗上落满了灰。",
+          "fx": [
+            "int_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "记下地址，暂不行动",
+        "text": "你把这行字抄进了日记的最后一页。",
+        "fx": [
+          "wil_exp+1"
+        ]
+      }
+    ],
+    "cond": "age>=21",
+    "once": true,
+    "scene": "street"
+  },
+  {
+    "id": "n_manor_leak",
+    "kind": "random",
+    "pool": "calamity",
+    "weight": 7,
+    "title": "旧宅漏雨",
+    "text": "暴雨夜，旧宅三楼的天花板开始渗水，一滴滴落在父亲的书架上。阿尔弗拎着水桶满屋子跑。",
+    "options": [
+      {
+        "label": "亲自爬上屋顶修补（1 体力）",
+        "text": "你和阿尔弗一人扶梯，一人递瓦片，在雨里忙了一整夜。",
+        "fx": [
+          "rel:alfred+1",
+          "wil_exp+2",
+          "hometown+1"
+        ],
+        "cost": 1
+      },
+      {
+        "label": "请工匠来修（40 金币）",
+        "text": "工匠冒雨赶来，天亮时，屋顶总算不漏了。",
+        "fx": [
+          "gold-40"
+        ],
+        "cond": "gold>=40",
+        "reason": "金币不足"
+      }
+    ],
+    "scene": "manor_winter"
+  },
+  {
+    "id": "n_rival_gossip",
+    "kind": "random",
+    "pool": "social",
+    "weight": 8,
+    "title": "同学的闲话",
+    "text": "午餐时，隔壁桌的几个学徒压低声音说：“听说格雷蒙特家的人，今年又在偷偷联络谁。”",
+    "options": [
+      {
+        "label": "冷静地走过去，反问",
+        "check": {
+          "attr": "cha",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你把手里的杯子放在他们桌上：“谁说的？请把名字也写在账上。”几个人面面相觑。",
+          "fx": [
+            "cha_exp+4",
+            "hometown+2",
+            "rep:tower+1"
+          ]
+        },
+        "fail": {
+          "text": "你说得太急，反而显得心虚。",
+          "fx": [
+            "cha_exp+1",
+            "hometown-2"
+          ]
+        }
+      },
+      {
+        "label": "装作没听见，吃完走人",
+        "text": "你把盘子洗得格外干净。",
+        "fx": [
+          "wil_exp+2"
+        ]
+      }
+    ],
+    "cond": "rank>=2",
+    "scene": "tower"
+  },
+  {
+    "id": "n_street_beggar",
+    "kind": "random",
+    "pool": "social",
+    "weight": 7,
+    "title": "街角的乞丐",
+    "text": "你在桥头遇见一个蜷缩的乞丐，他抬头看你的那一眼，让你想起了狱里传出的那些消息。",
+    "options": [
+      {
+        "label": "给他一枚金币和一块面包（5 金币）",
+        "text": "他愣了愣，低声说了一句：“好人有好报。”",
+        "fx": [
+          "gold-5",
+          "hometown+1",
+          "rep:church+1"
+        ],
+        "cond": "gold>=5",
+        "reason": "金币不足"
+      },
+      {
+        "label": "和他聊聊，问他见过什么",
+        "text": "他认识你家的旧管家，絮絮叨叨讲了很多零碎的事。",
+        "fx": [
+          "exp+15",
+          "cha_exp+2"
+        ]
+      }
+    ],
+    "once": true,
+    "scene": "street"
+  },
+  {
+    "id": "n_valen_taunt",
+    "kind": "random",
+    "title": "走廊里的挑衅",
+    "text": "高塔的回廊里，瓦伦带着两个跟班，把你堵在了拐角：“听说你在抄书铺打工？洛克伍德家的藏书室，倒是缺个擦书架的。”\n他的声音不大，周围却一下子安静了下来。",
+    "options": [
+      {
+        "label": "不卑不亢地回应",
+        "check": {
+          "attr": "cha",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你一字一句地回了他：“我父亲当年，就是在那间藏书室里给人讲课的。”几个路过的学徒，没忍住，笑了出来。瓦伦的脸，一阵红一阵白。",
+          "fx": [
+            "cha_exp+3",
+            "rel:valen+1",
+            "count:valen_clash+1"
+          ]
+        },
+        "fail": {
+          "text": "你憋出一句话，却被他轻轻一笑带了过去。跟班们哄笑起来。",
+          "fx": [
+            "cha_exp+1",
+            "count:valen_clash+1"
+          ]
+        }
+      },
+      {
+        "label": "一言不发，绕过去",
+        "text": "你从他身边走了过去。身后传来一声不屑的鼻音。",
+        "fx": [
+          "wil_exp+2",
+          "count:valen_clash+1"
+        ]
+      }
+    ],
+    "pool": "social",
+    "weight": 12,
+    "cond": "flag:met_valen&&rank>=2",
+    "once": true,
+    "scene": "tower",
+    "portrait": "valen"
+  },
+  {
+    "id": "n_valen_library",
+    "kind": "random",
+    "title": "同一本书",
+    "text": "藏书室里，你要借的那本《元素共鸣》，只剩最后一册。你伸手去拿的时候，另一只手，同时按在了书脊上。\n是瓦伦。",
+    "options": [
+      {
+        "label": "让给他，改天再借",
+        "text": "他愣了一下，接过书，没说话。你转身离开时，听见他在背后很轻地说了一句：“……谢谢。”",
+        "fx": [
+          "rel:valen+1",
+          "wil_exp+2",
+          "count:valen_clash+1"
+        ]
+      },
+      {
+        "label": "提议轮流看：你先看三天",
+        "check": {
+          "attr": "cha",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你们各看三天，互相不说话，也互相不让对方多拿一天。有一晚，你在书页里发现了一张他留下的字条：“第四章有一处错的。”",
+          "fx": [
+            "rel:valen+1",
+            "int_exp+3",
+            "count:valen_clash+1"
+          ]
+        },
+        "fail": {
+          "text": "他冷哼一声，把书夺了过去。你空手而归。",
+          "fx": [
+            "count:valen_clash+1"
+          ]
+        }
+      },
+      {
+        "label": "争到底",
+        "text": "你们在藏书室里僵持了很久，直到管理员咳嗽了一声。书最后被你们一起放回了架子上。",
+        "fx": [
+          "wil_exp+2",
+          "cha_exp+1",
+          "count:valen_clash+1"
+        ]
+      }
+    ],
+    "pool": "social",
+    "weight": 12,
+    "cond": "flag:met_valen&&rank>=2",
+    "once": true,
+    "scene": "library",
+    "portrait": "valen"
+  },
+  {
+    "id": "n_sell_cup",
+    "kind": "random",
+    "title": "债主的催款",
+    "text": "债主的管家站在门口，不卑不亢地递来一张催款单：“伯爵夫人（他还是习惯这么叫），这个月，该有个说法了。”\n你翻了翻抽屉，里面只剩一只被擦得发亮的银杯，是父亲当年的获奖纪念。",
+    "options": [
+      {
+        "label": "把银杯送去典当铺",
+        "text": "典当铺老板掂了掂，报了一个价。你没有还价，只把杯底的刻字，用拇指摩挲了很久。",
+        "fx": [
+          "gold+110",
+          "count:sold+1",
+          "hometown-3"
+        ]
+      },
+      {
+        "label": "跟管家好好谈谈，请他宽限",
+        "check": {
+          "attr": "cha",
+          "diff": 12
+        },
+        "ok": {
+          "text": "你一句一句地讲，讲到最后，管家叹了口气：“……下个月，我再来。”",
+          "fx": [
+            "cha_exp+3",
+            "hometown+1"
+          ]
+        },
+        "fail": {
+          "text": "管家依旧客气，却一寸不让：“这是规矩。”",
+          "fx": [
+            "count:debt+30",
+            "hometown-2",
+            "cha_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "什么也不做，任由他在账本上添一笔",
+        "text": "管家鞠了一躬，走了。账本上，又多了一行数字。",
+        "fx": [
+          "count:debt+40",
+          "hometown-2"
+        ]
+      }
+    ],
+    "pool": "calamity",
+    "weight": 9,
+    "cond": "count.debt>0&&gold<150&&count.sold<2&&age>=17",
+    "once": true,
+    "scene": "manor_spring"
+  },
+  {
+    "id": "n_sell_books",
+    "kind": "random",
+    "title": "书商的出价",
+    "text": "旧书商站在书房门口，手里拿着一本从你的书架上抽出的古籍：“伯爵少爷，这本《符文大全》，我出一个好价钱。”\n你知道这是父亲当年最喜欢的一本，扉页上还有他的批注。",
+    "options": [
+      {
+        "label": "卖给他",
+        "text": "书商满意地把书夹在腋下。扉页上，父亲的批注，你抄了一份，才放他走。",
+        "fx": [
+          "gold+120",
+          "count:sold+1",
+          "hometown-3",
+          "int_exp+1"
+        ]
+      },
+      {
+        "label": "婉拒，再另想办法",
+        "text": "书商耸耸肩：“你会回来的。”",
+        "fx": [
+          "wil_exp+2"
+        ]
+      },
+      {
+        "label": "请他把批注抄一份给你，再成交",
+        "check": {
+          "attr": "cha",
+          "diff": 13
+        },
+        "ok": {
+          "text": "书商叹了口气，用一个下午抄完了批注，又多给了你一点钱。",
+          "fx": [
+            "gold+135",
+            "count:sold+1",
+            "hometown-3",
+            "int_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "他不耐烦地摇头：“要卖就卖，不卖我走了。”",
+          "fx": [
+            "wil_exp+1"
+          ]
+        }
+      }
+    ],
+    "pool": "calamity",
+    "weight": 9,
+    "cond": "count.debt>0&&gold<200&&count.sold<3&&age>=18&&flag:library_open",
+    "once": true,
+    "scene": "library"
+  },
+  {
+    "id": "n_sell_clock",
+    "kind": "random",
+    "title": "落灰的座钟",
+    "text": "客厅里，有一座父亲从东方带回来的座钟。你一直没舍得卖，但这个月，煤和面包的钱，都没了着落。\n钟摆还在走，咔哒、咔哒。",
+    "options": [
+      {
+        "label": "卖掉座钟",
+        "text": "座钟被搬走的时候，整座旧宅都安静了一下。你忽然发现，家里，原来这么空。",
+        "fx": [
+          "gold+130",
+          "count:sold+1",
+          "hometown-4"
+        ]
+      },
+      {
+        "label": "留着，宁愿饿一顿",
+        "text": "你把钟上了弦。夜里，咔哒声，陪着你睡。",
+        "fx": [
+          "wil_exp+2",
+          "hp-4"
+        ]
+      },
+      {
+        "label": "把座钟送去修，请钟表匠看看它值多少",
+        "check": {
+          "attr": "int",
+          "diff": 12
+        },
+        "ok": {
+          "text": "钟表匠看了一眼，说这钟的机芯是失传的东方工艺，出价比你想的高得多。你把它换成了一笔钱，还换到了一个愿意长期来往的老师傅。",
+          "fx": [
+            "gold+170",
+            "count:sold+1",
+            "hometown-3",
+            "int_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "钟表匠摇头：“只是个旧钟。”",
+          "fx": [
+            "gold-10"
+          ]
+        }
+      }
+    ],
+    "pool": "calamity",
+    "weight": 9,
+    "cond": "count.debt>0&&gold<150&&count.sold<4&&age>=19",
+    "once": true,
+    "scene": "manor_autumn"
+  }
+]

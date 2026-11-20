@@ -1,0 +1,344 @@
+{
+  "sickle": {
+    "name": "带锯齿的旧镰刀",
+    "power": 1,
+    "desc": "家里传下来的旧镰刀，割麦用，勉强也能当武器。",
+    "slot": "weapon"
+  },
+  "iron_sword": {
+    "name": "铁剑",
+    "power": 4,
+    "desc": "行商卖的铁剑，剑身有点歪，但磨得很利。",
+    "slot": "weapon"
+  },
+  "leather_armor": {
+    "name": "皮甲",
+    "power": 3,
+    "desc": "洞穴里捡到的皮甲，缝线有些松，但很结实。",
+    "slot": "armor"
+  },
+  "holy_amulet": {
+    "name": "圣徽护符",
+    "power": 4,
+    "desc": "神父年轻时戴过的护符，背面刻着一行小字。",
+    "slot": "trinket"
+  },
+  "miner_pick": {
+    "name": "矿工战镐",
+    "power": 5,
+    "desc": "矿工们留下的战镐，又重又趁手。",
+    "slot": "weapon"
+  },
+  "knight_armor": {
+    "name": "骑士铠甲",
+    "power": 7,
+    "desc": "前线要塞里找到的骑士铠甲，肩甲上还有王国的纹章。",
+    "slot": "armor"
+  },
+  "hunter_bow": {
+    "name": "猎弓",
+    "power": 3,
+    "desc": "洛恩送的猎弓，弓梢刻着一枚小小的车轮。",
+    "slot": "weapon"
+  },
+  "wolf_cloak": {
+    "name": "狼皮斗篷",
+    "power": 3,
+    "desc": "棕熊或行商给的狼皮斗篷，裹上就不冷了。",
+    "slot": "trinket"
+  },
+  "old_shield": {
+    "name": "格伦的旧盾",
+    "power": 4,
+    "desc": "格伦的旧圆盾，盾面刻着十二个名字。",
+    "slot": "shield"
+  },
+  "round_shield": {
+    "name": "圆盾",
+    "power": 3,
+    "desc": "集市上买的普通圆盾，边缘有点掉漆，但够结实。",
+    "slot": "shield"
+  },
+  "oak_staff": {
+    "name": "橡木法杖",
+    "power": 4,
+    "desc": "高塔学徒人手一根的橡木法杖，杖头嵌着一粒不值钱的蓝晶。",
+    "slot": "weapon"
+  },
+  "mage_robe": {
+    "name": "学徒法袍",
+    "power": 3,
+    "desc": "深蓝色的学徒法袍，袖口绣着高塔的星纹。",
+    "slot": "armor"
+  },
+  "signet_ring": {
+    "name": "格雷蒙特家徽戒指",
+    "power": 2,
+    "desc": "父亲留下的家徽戒指，指环内侧刻着一行小字。",
+    "slot": "trinket"
+  },
+  "tower_cloak": {
+    "name": "高塔斗篷",
+    "power": 2,
+    "desc": "高塔的旧斗篷，边缘磨得发白，但很暖和。",
+    "slot": "trinket"
+  },
+  "ancestral_sickle": {
+    "name": "先祖的镰刀",
+    "power": 3,
+    "desc": "麦穗村格伦家传的老镰刀，刃口磨得薄如纸，据说它割过百年前的第一茬麦。",
+    "slot": "trinket"
+  },
+  "steel_sword": {
+    "name": "精钢长剑",
+    "slot": "weapon",
+    "power": 8,
+    "desc": "集市内间的老匠人用精钢锻的长剑，剑脊上有一行细小的铭文。"
+  },
+  "silver_blade": {
+    "name": "银纹长剑",
+    "slot": "weapon",
+    "power": 12,
+    "desc": "剑身镶着银丝的纹路，据说对邪物格外有效。"
+  },
+  "mithril_edge": {
+    "name": "秘银细剑",
+    "slot": "weapon",
+    "power": 16,
+    "desc": "轻得像一片叶子，却能斩开铁甲。只有真正懂行的人，才拿得到。"
+  },
+  "crystal_staff": {
+    "name": "水晶法杖",
+    "slot": "weapon",
+    "power": 9,
+    "desc": "杖头是一整块未经打磨的魔晶，握着它，魔力像水一样顺着手臂走。"
+  },
+  "archmage_staff": {
+    "name": "大魔导师之杖",
+    "slot": "weapon",
+    "power": 14,
+    "desc": "传说是某位已故大魔导师用过的杖，杖身上布满了细密的符文。"
+  },
+  "chain_mail": {
+    "name": "锁子甲",
+    "slot": "armor",
+    "power": 8,
+    "desc": "一环扣一环的铁甲，沉，但足够可靠。"
+  },
+  "plate_armor": {
+    "name": "板甲",
+    "slot": "armor",
+    "power": 12,
+    "desc": "王都工坊打造的全身板甲，抛光得能照出人影。"
+  },
+  "mithril_mail": {
+    "name": "秘银锁甲",
+    "slot": "armor",
+    "power": 16,
+    "desc": "贴身穿着几乎感觉不到重量，却能挡住大部分的刀剑。"
+  },
+  "silk_robe": {
+    "name": "丝绸法袍",
+    "slot": "armor",
+    "power": 8,
+    "desc": "南方丝绸织就的法袍，导魔的纹路细腻得像水波。"
+  },
+  "star_robe": {
+    "name": "星纹法袍",
+    "slot": "armor",
+    "power": 13,
+    "desc": "袖口和下摆缀着细小的星纹，在暗处会微微发光。"
+  },
+  "tower_shield": {
+    "name": "塔盾",
+    "slot": "shield",
+    "power": 8,
+    "desc": "几乎有半个人那么高的方盾，躲在后面，什么都不用怕。"
+  },
+  "holy_aegis": {
+    "name": "神盾",
+    "slot": "shield",
+    "power": 12,
+    "desc": "教会工匠为圣骑士打造的盾，盾心镶着一枚发光的圣徽。"
+  },
+  "silver_ring": {
+    "name": "银戒指",
+    "slot": "trinket",
+    "power": 5,
+    "desc": "素净的银戒指，内圈刻着一句祝福。"
+  },
+  "lion_pendant": {
+    "name": "狮心吊坠",
+    "slot": "trinket",
+    "power": 9,
+    "desc": "狮头形的金吊坠，据说戴着它的人，不会在关键的时候犹豫。"
+  },
+  "dragon_charm": {
+    "name": "龙鳞护符",
+    "slot": "trinket",
+    "power": 12,
+    "desc": "一片比手掌还大的暗红色鳞片，边缘磨得圆润，握在手里是温的。"
+  },
+  "thief_knife": {
+    "name": "旧匕首",
+    "slot": "weapon",
+    "power": 2,
+    "desc": "刃口卷了边，但握柄被磨得很顺手。"
+  },
+  "stiletto": {
+    "name": "细长匕首",
+    "slot": "weapon",
+    "power": 6,
+    "desc": "黑市上最常见的好东西，薄得能从门缝里插进去。"
+  },
+  "shadow_dagger": {
+    "name": "影刃",
+    "slot": "weapon",
+    "power": 10,
+    "desc": "刀身涂了一层吸光的黑漆，在夜里几乎看不见。"
+  },
+  "venom_fang": {
+    "name": "毒牙短剑",
+    "slot": "weapon",
+    "power": 14,
+    "desc": "剑脊上有一道细细的凹槽，据说原本是用来存毒的。"
+  },
+  "night_edge": {
+    "name": "夜行者之刃",
+    "slot": "weapon",
+    "power": 17,
+    "desc": "传说中某位大盗的佩刃，轻得像一片影子。"
+  },
+  "patched_vest": {
+    "name": "打补丁的皮背心",
+    "slot": "armor",
+    "power": 2,
+    "desc": "补丁摞补丁，但足够挡住夜风。"
+  },
+  "shadow_leathers": {
+    "name": "暗纹软甲",
+    "slot": "armor",
+    "power": 8,
+    "desc": "贴身，无声，针脚里缝着细细的软钢丝。"
+  },
+  "phantom_cloak": {
+    "name": "幻影斗篷",
+    "slot": "armor",
+    "power": 13,
+    "desc": "披上之后，巡逻的人总会多看你两眼，却不知道自己在看什么。"
+  },
+  "lockpicks": {
+    "name": "撬锁工具",
+    "slot": "trinket",
+    "power": 2,
+    "desc": "一套磨得发亮的细钩，是灰鼠留给你的。"
+  },
+  "black_pearl": {
+    "name": "黑珍珠",
+    "slot": "trinket",
+    "power": 6,
+    "desc": "黑市掮客压箱底的小玩意，据说能带来好运。"
+  },
+  "fortune_coin": {
+    "name": "幸运金币",
+    "slot": "trinket",
+    "power": 9,
+    "desc": "两面都是同一个头像的旧金币，抛出去总是你想要的那面。"
+  },
+  "mask_charm": {
+    "name": "面具符咒",
+    "slot": "trinket",
+    "power": 12,
+    "desc": "刻着一张没有五官的脸，戴着它，别人更容易忘记你。"
+  },
+  "rusty_cutlass": {
+    "name": "生锈的短弯刀",
+    "slot": "weapon",
+    "power": 2,
+    "desc": "老船长送你的第一把刀，刃口全是盐渍。"
+  },
+  "cutlass": {
+    "name": "海军弯刀",
+    "slot": "weapon",
+    "power": 6,
+    "desc": "军港旧货摊上淘来的，护手上还留着号码。"
+  },
+  "boarding_axe": {
+    "name": "登船斧",
+    "slot": "weapon",
+    "power": 10,
+    "desc": "一斧劈断缆绳，一斧劈开舱门，跳帮战的老伙计。"
+  },
+  "tidal_trident": {
+    "name": "潮汐三叉戟",
+    "slot": "weapon",
+    "power": 14,
+    "desc": "人鱼族打造的短叉，握着它，脚下的甲板仿佛也有了潮汐。"
+  },
+  "storm_blade": {
+    "name": "风暴之刃",
+    "slot": "weapon",
+    "power": 17,
+    "desc": "据说是从风暴里捞出来的，剑身上永远带着一层水汽。"
+  },
+  "sailor_vest": {
+    "name": "水手帆布衫",
+    "slot": "armor",
+    "power": 2,
+    "desc": "被海风吹得发硬，但很耐磨。"
+  },
+  "sealskin_coat": {
+    "name": "海豹皮大衣",
+    "slot": "armor",
+    "power": 8,
+    "desc": "港口老裁缝缝的，下雨天也不透水。"
+  },
+  "coral_mail": {
+    "name": "珊瑚鳞甲",
+    "slot": "armor",
+    "power": 13,
+    "desc": "人鱼的赠礼，一片片珊瑚薄得像鱼鳞，却比钢硬。"
+  },
+  "brass_compass": {
+    "name": "黄铜罗盘",
+    "slot": "trinket",
+    "power": 3,
+    "desc": "老船长的旧罗盘，指针总是微微向北偏。"
+  },
+  "sea_charm": {
+    "name": "海女神护符",
+    "slot": "trinket",
+    "power": 6,
+    "desc": "港口的老妇人说，戴着它，海浪会客气一点。"
+  },
+  "pearl_amulet": {
+    "name": "珍珠护身符",
+    "slot": "trinket",
+    "power": 9,
+    "desc": "一颗大得不像话的珍珠，在黑暗里微微发光。"
+  },
+  "kraken_tooth": {
+    "name": "海妖之牙",
+    "slot": "trinket",
+    "power": 12,
+    "desc": "从海妖巢穴里带出来的，一直有点凉。"
+  },
+  "ship_shield": {
+    "name": "船板盾",
+    "slot": "shield",
+    "power": 5,
+    "desc": "用旧船板钉成，挡箭挡浪都行。"
+  },
+  "turtle_shield": {
+    "name": "海龟盾",
+    "slot": "shield",
+    "power": 11,
+    "desc": "巨龟的甲壳打磨而成，沉得像一块礁石。"
+  },
+  "father_staff": {
+    "name": "父亲的旧法杖",
+    "slot": "weapon",
+    "power": 8,
+    "desc": "杖身被岁月磨得发亮，杖头的魔晶里还残留着一点微光。"
+  }
+}

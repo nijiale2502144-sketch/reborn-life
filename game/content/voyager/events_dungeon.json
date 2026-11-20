@@ -1,0 +1,283 @@
+[
+  {
+    "id": "v_de_reef_light",
+    "kind": "dungeon",
+    "title": "礁石上的灯",
+    "text": "雾里，一座礁石上，亮着一盏灯。\n灯下，有一个人影，一动不动。",
+    "options": [
+      {
+        "label": "靠近，看看是谁",
+        "check": {
+          "attr": "wil",
+          "diff": 11
+        },
+        "ok": {
+          "text": "那是一具被海水泡白的尸体，手里还攥着一个小小的铜铃。你合上了他的眼睛，把铜铃带走了。",
+          "fx": [
+            "gold+25",
+            "wil_exp+2"
+          ]
+        },
+        "fail": {
+          "text": "你靠得太近，一只躲在礁石后的海蛇扑了出来。",
+          "fx": [
+            "hp-8"
+          ]
+        }
+      },
+      {
+        "label": "绕开，不理会",
+        "text": "你把船头转了个方向，没有回头。",
+        "fx": [
+          "agi_exp+2"
+        ]
+      }
+    ],
+    "dungeons": [
+      "reef"
+    ],
+    "weight": 8
+  },
+  {
+    "id": "v_de_reef_pirates",
+    "kind": "dungeon",
+    "title": "藏在雾里的小艇",
+    "text": "雾里，一艘挂着黑帆的小艇，一动不动地泊在礁石的阴影里。艇上，有人在擦刀。",
+    "options": [
+      {
+        "label": "从背后偷袭",
+        "check": {
+          "attr": "agi",
+          "diff": 11
+        },
+        "ok": {
+          "text": "你们悄悄靠了过去，一次登船，三个海盗，全都被绑在了桅杆上。",
+          "fx": [
+            "gold+45",
+            "agi_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "你们刚靠近，对方的瞭望手就叫了起来。",
+          "fx": [
+            "hp-8",
+            "gold-10"
+          ]
+        }
+      },
+      {
+        "label": "绕路，避开他们",
+        "text": "",
+        "fx": []
+      }
+    ],
+    "dungeons": [
+      "reef"
+    ],
+    "weight": 8
+  },
+  {
+    "id": "v_de_wreck_hold",
+    "kind": "dungeon",
+    "title": "沉船的货舱",
+    "text": "沉船的货舱里，木箱一层摞着一层，其中有几只，被珊瑚紧紧地裹住了。",
+    "options": [
+      {
+        "label": "用撬棍撬开其中一只",
+        "check": {
+          "attr": "str",
+          "diff": 12
+        },
+        "ok": {
+          "text": "箱子里是一整箱沉在水里多年的银币，还带着海水的腥味。",
+          "fx": [
+            "gold+55",
+            "str_exp+2"
+          ]
+        },
+        "fail": {
+          "text": "撬棍滑了，你的手腕被划了一道口子。",
+          "fx": [
+            "hp-8",
+            "str_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "不碰，转身走",
+        "text": "",
+        "fx": []
+      }
+    ],
+    "dungeons": [
+      "wreck"
+    ],
+    "weight": 8
+  },
+  {
+    "id": "v_de_wreck_ghost",
+    "kind": "dungeon",
+    "title": "船魂的低语",
+    "text": "船舱里，一个穿着旧式制服的幽灵，坐在船长椅上，一动不动。\n你走近的时候，他缓缓地抬起头：“你……也是来找那个门的吗？”",
+    "options": [
+      {
+        "label": "问他：什么门？",
+        "text": "幽灵没有回答，只是指了指舱壁上的一行小字：“深渊……会唱歌。”",
+        "fx": [
+          "count:abyss_clue+1",
+          "wil_exp+2"
+        ]
+      },
+      {
+        "label": "不回答，快步离开",
+        "text": "你没有回头，但身后，那句话一直在回荡。",
+        "fx": [
+          "wil_exp+1"
+        ]
+      }
+    ],
+    "dungeons": [
+      "wreck"
+    ],
+    "weight": 8
+  },
+  {
+    "id": "v_de_kraken_pearl",
+    "kind": "dungeon",
+    "title": "发光的珍珠",
+    "text": "海妖巢穴的角落里，一颗拳头大的珍珠，在黑暗里发着淡淡的光。\n旁边的海藻里，缠着几具白骨。",
+    "options": [
+      {
+        "label": "小心地取走珍珠",
+        "check": {
+          "attr": "agi",
+          "diff": 13
+        },
+        "ok": {
+          "text": "你屏住呼吸，一点点把珍珠从海藻里抠了出来，连一根藤蔓都没有惊动。",
+          "fx": [
+            "gold+70",
+            "agi_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "海藻忽然缠紧了你的脚踝。",
+          "fx": [
+            "hp-12"
+          ]
+        }
+      },
+      {
+        "label": "不动它，转身走",
+        "text": "",
+        "fx": []
+      }
+    ],
+    "dungeons": [
+      "kraken_den"
+    ],
+    "weight": 8
+  },
+  {
+    "id": "v_de_kraken_nerea",
+    "kind": "dungeon",
+    "title": "被困的海豚",
+    "text": "巢穴的暗处，一只被渔网缠住的海豚，在挣扎。\n它的眼睛看着你，像是在求救。",
+    "options": [
+      {
+        "label": "割开渔网，放它走",
+        "text": "海豚低低地叫了一声，游走了。你的心里，轻了一些。",
+        "fx": [
+          "hometown+1",
+          "wil_exp+2",
+          "rep:sea+1"
+        ]
+      }
+    ],
+    "dungeons": [
+      "kraken_den"
+    ],
+    "weight": 8
+  },
+  {
+    "id": "v_de_abyss_voice",
+    "kind": "dungeon",
+    "title": "深渊的声音",
+    "text": "深渊的边缘，有什么东西，在轻轻地叫你的名字。\n声音像潮水，一遍一遍，漫过你的脚踝。",
+    "options": [
+      {
+        "label": "捂住耳朵，往前走",
+        "check": {
+          "attr": "wil",
+          "diff": 15
+        },
+        "ok": {
+          "text": "你咬紧牙，一步一步地向前。声音渐渐地，被你抛在了身后。",
+          "fx": [
+            "wil_exp+5",
+            "exp+30"
+          ]
+        },
+        "fail": {
+          "text": "你听了太久，眼前一阵发黑。醒来时，你已经站在了原地，浑身冷汗。",
+          "fx": [
+            "hp-14",
+            "wil_exp+2"
+          ]
+        }
+      },
+      {
+        "label": "停下，回应它",
+        "text": "你张开口，说出了自己的名字。深渊，安静了一瞬。",
+        "fx": [
+          "count:abyss_clue+1",
+          "wil_exp+3",
+          "hp-6"
+        ]
+      }
+    ],
+    "dungeons": [
+      "abyss_gate"
+    ],
+    "weight": 8
+  },
+  {
+    "id": "v_de_abyss_door",
+    "kind": "dungeon",
+    "title": "刻着字的石门",
+    "text": "深渊的尽头，一座半沉的石门，门上刻满了古老的字。\n你伸手去摸，指尖忽然被什么东西烫了一下。",
+    "options": [
+      {
+        "label": "用手拓下那些字",
+        "check": {
+          "attr": "int",
+          "diff": 15
+        },
+        "ok": {
+          "text": "你拓了整整一页。后来，薇尔告诉你，这是一种已经失传的、只有人鱼族才会写的文字。",
+          "fx": [
+            "count:abyss_clue+1",
+            "int_exp+5",
+            "exp+30"
+          ]
+        },
+        "fail": {
+          "text": "字太深了，你什么也拓不下来，只被烫伤了手指。",
+          "fx": [
+            "hp-6",
+            "int_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "不碰，转身离开",
+        "text": "",
+        "fx": []
+      }
+    ],
+    "dungeons": [
+      "abyss_gate"
+    ],
+    "weight": 8
+  }
+]

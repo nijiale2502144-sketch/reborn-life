@@ -1,0 +1,200 @@
+[
+  {
+    "id": "slash",
+    "name": "破绽斩",
+    "route": "martial",
+    "mp": 0,
+    "win": 0.08,
+    "desc": "抓住对手的破绽，一击制敌。",
+    "learn": "向格伦学艺 2 次，格伦好感 ≥ 2",
+    "cd": 0
+  },
+  {
+    "id": "parry",
+    "name": "格挡反击",
+    "route": "martial",
+    "mp": 0,
+    "win": 0.02,
+    "injure": 0.4,
+    "desc": "以守为攻，落败时也能卸掉大半力道。",
+    "learn": "向格伦学艺 5 次，格伦好感 ≥ 4",
+    "cd": 0
+  },
+  {
+    "id": "sword_master",
+    "name": "老兵绝技",
+    "route": "martial",
+    "mp": 0,
+    "win": 0.14,
+    "desc": "格伦压箱底的剑技，毫无花哨，只求一击。",
+    "learn": "为格伦洗清冤屈",
+    "cd": 2
+  },
+  {
+    "id": "heal_light",
+    "name": "治愈之光",
+    "route": "holy",
+    "mp": 6,
+    "win": 0,
+    "heal": 0.25,
+    "injure": 0.7,
+    "desc": "掌心浮起温暖的光，伤口慢慢合拢。",
+    "learn": "帮神父打杂 3 次，教会声望 ≥ 15",
+    "cd": 1
+  },
+  {
+    "id": "smite",
+    "name": "圣光斩",
+    "route": "holy",
+    "mp": 8,
+    "win": 0.1,
+    "vs": {
+      "undead": 0.15,
+      "demon": 0.15
+    },
+    "desc": "以圣光灌注剑锋，对亡灵和魔族格外有效。",
+    "learn": "帮神父打杂 10 次，教会声望 ≥ 40",
+    "cd": 1
+  },
+  {
+    "id": "holy_shield",
+    "name": "圣盾",
+    "route": "holy",
+    "mp": 10,
+    "win": 0.05,
+    "injure": 0.2,
+    "desc": "一面看不见的光盾挡在身前。",
+    "learn": "成为修士，教会声望 ≥ 60",
+    "cd": 2
+  },
+  {
+    "id": "spark",
+    "name": "魔法飞弹",
+    "route": "magic",
+    "mp": 5,
+    "win": 0.14,
+    "desc": "最基础的攻击魔法，百发百中。",
+    "learn": "研读奥术 3 次",
+    "cd": 0
+  },
+  {
+    "id": "fireball",
+    "name": "火球术",
+    "route": "magic",
+    "mp": 10,
+    "win": 0.26,
+    "desc": "一团炽热的火焰，威力大，耗魔也大。",
+    "learn": "研读奥术 8 次，智力 ≥ 12",
+    "cd": 2
+  },
+  {
+    "id": "mana_shield",
+    "name": "魔力护盾",
+    "route": "magic",
+    "mp": 8,
+    "win": 0.06,
+    "injure": 0.25,
+    "desc": "以魔力在身周织出护盾。",
+    "learn": "研读奥术 14 次，意志 ≥ 14",
+    "cd": 1
+  },
+  {
+    "id": "ice_lance",
+    "name": "冰锥术",
+    "route": "magic",
+    "mp": 8,
+    "win": 0.18,
+    "cd": 0,
+    "desc": "凝结空气中的水汽，射出一根尖锐的冰锥。",
+    "learn": "研读奥术 5 次，智力 ≥ 14"
+  },
+  {
+    "id": "arcane_burst",
+    "name": "奥术洪流",
+    "route": "magic",
+    "mp": 16,
+    "win": 0.34,
+    "cd": 2,
+    "desc": "把魔力不加修饰地倾泻出去，威力惊人。",
+    "learn": "研读奥术 18 次，智力 ≥ 22"
+  },
+  {
+    "id": "time_slow",
+    "name": "时缓术",
+    "route": "magic",
+    "mp": 14,
+    "win": 0.1,
+    "injure": 0.1,
+    "cd": 2,
+    "desc": "让周围的时间短暂地慢了下来，对手的攻势变得迟缓。",
+    "learn": "完成墨提斯的三道试炼"
+  },
+  {
+    "id": "backstab",
+    "name": "背刺",
+    "route": "shadow",
+    "mp": 0,
+    "win": 0.08,
+    "desc": "从对手看不见的角度出手，对人类尤其有效。",
+    "learn": "向灰鼠学艺 2 次",
+    "cd": 0,
+    "vs": {
+      "human": 0.06
+    }
+  },
+  {
+    "id": "smoke_bomb",
+    "name": "烟雾弹",
+    "route": "shadow",
+    "mp": 0,
+    "win": 0.02,
+    "desc": "一颗烟雾弹，换一次全身而退。",
+    "learn": "在黑市买到配方，或向灰鼠学艺 4 次",
+    "cd": 0,
+    "injure": 0.4
+  },
+  {
+    "id": "shadow_step",
+    "name": "影步",
+    "route": "shadow",
+    "mp": 0,
+    "win": 0.14,
+    "desc": "脚步没有声音，影子比人先到。",
+    "learn": "通过三手试炼，敏捷 ≥ 18",
+    "cd": 2
+  },
+  {
+    "id": "board",
+    "name": "跳帮战",
+    "route": "tide",
+    "mp": 0,
+    "win": 0.08,
+    "desc": "抓住缆绳荡过去，抢在对方列阵之前。",
+    "learn": "在船上跑满 3 趟航线",
+    "cd": 0,
+    "vs": {
+      "human": 0.05
+    }
+  },
+  {
+    "id": "storm_ward",
+    "name": "风暴庇护",
+    "route": "tide",
+    "mp": 0,
+    "win": 0.02,
+    "desc": "站稳甲板，借浪卸力。",
+    "learn": "一次风暴中守住了船",
+    "cd": 0,
+    "injure": 0.4
+  },
+  {
+    "id": "tide_surge",
+    "name": "借潮之势",
+    "route": "tide",
+    "mp": 0,
+    "win": 0.14,
+    "desc": "把整片海的力量借到手里。",
+    "learn": "得到人鱼的认可",
+    "cd": 2
+  }
+]

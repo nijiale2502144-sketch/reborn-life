@@ -1,0 +1,1461 @@
+[
+  {
+    "id": "dv_train_strain",
+    "kind": "derived",
+    "parent": "train",
+    "weight": 8,
+    "title": "拉伤",
+    "text": "你练得太猛，腰侧忽然传来一阵撕裂般的疼。",
+    "options": [
+      {
+        "label": "咬牙继续",
+        "check": {
+          "attr": "wil",
+          "diff": 10
+        },
+        "ok": {
+          "text": "你硬是撑过去了，疼痛反而让你更清醒。",
+          "fx": [
+            "wil_exp+3",
+            "str_exp+2"
+          ]
+        },
+        "fail": {
+          "text": "你一下子软倒在地，缓了好一阵。",
+          "fx": [
+            "hp-7",
+            "str_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "立刻停下，揉开淤血",
+        "fx": [
+          "heal:0.1"
+        ],
+        "text": "稳妥的选择。"
+      }
+    ]
+  },
+  {
+    "id": "dv_train_rex",
+    "kind": "derived",
+    "parent": "train",
+    "weight": 8,
+    "cond": "age<24",
+    "title": "雷克斯来蹭练",
+    "text": "雷克斯不知什么时候靠在篱笆上，一边啃着苹果一边看你练：“你这姿势不对。”",
+    "options": [
+      {
+        "label": "“那你来示范一下。”",
+        "fx": [
+          "rel:rex+1",
+          "agi_exp+3",
+          "str_exp+2"
+        ],
+        "text": "他放下苹果，两人你来我往地比划了半天。"
+      },
+      {
+        "label": "不理他",
+        "fx": [
+          "wil_exp+2"
+        ],
+        "text": "他嘟囔着自己走了。"
+      }
+    ]
+  },
+  {
+    "id": "dv_train_dawn",
+    "kind": "derived",
+    "parent": "train",
+    "weight": 10,
+    "title": "日出",
+    "text": "天边泛出鱼肚白，整片麦田被染成了金色。你停下喘气，一时看呆了。",
+    "options": [
+      {
+        "label": "站着看完",
+        "fx": [
+          "wil_exp+3"
+        ],
+        "text": "这一刻你什么都没想，却觉得有力气。"
+      }
+    ]
+  },
+  {
+    "id": "dv_train_mina",
+    "kind": "derived",
+    "parent": "train",
+    "weight": 9,
+    "title": "妹妹来看",
+    "text": "米娜趴在院墙上，用树枝学着你的样子乱挥。“哥，你教我嘛！”",
+    "options": [
+      {
+        "label": "教她站桩（1 体力）",
+        "cost": 1,
+        "fx": [
+          "rel:mina+1",
+          "str_exp+1",
+          "hometown+1"
+        ],
+        "text": "她歪歪扭扭站了半刻钟，就趴下喊累。"
+      },
+      {
+        "label": "“去去去，别捣乱。”",
+        "fx": [
+          "rel:mina-1"
+        ],
+        "text": "她噘着嘴跑了。"
+      }
+    ]
+  },
+  {
+    "id": "dv_study_ink",
+    "kind": "derived",
+    "parent": "study",
+    "weight": 8,
+    "title": "打翻的墨水",
+    "text": "你正抄到关键处，一抖手，墨水泼了半页。",
+    "options": [
+      {
+        "label": "重新抄一遍（1 体力）",
+        "cost": 1,
+        "fx": [
+          "int_exp+4",
+          "wil_exp+1"
+        ],
+        "text": "这一次你抄得格外认真。"
+      },
+      {
+        "label": "拿袖子擦掉，继续",
+        "fx": [
+          "int_exp+1"
+        ],
+        "text": "这一页算是废了。"
+      }
+    ]
+  },
+  {
+    "id": "dv_study_priest",
+    "kind": "derived",
+    "parent": "study",
+    "weight": 9,
+    "cond": "rep.church>=5",
+    "portrait": "priest",
+    "title": "神父借书",
+    "text": "神父路过你家门口，看见你在读书，从袖里掏出一本旧册子：“这本讲圣光的，借你看看。”",
+    "options": [
+      {
+        "label": "双手接过",
+        "fx": [
+          "int_exp+4",
+          "wil_exp+2",
+          "rep:church+1",
+          "rel:ambrose+1"
+        ],
+        "text": "册子里夹着神父的笔记，字迹工整。"
+      },
+      {
+        "label": "婉拒，说自己还没看完手上这本",
+        "fx": [
+          "int_exp+1"
+        ],
+        "text": "神父笑笑：“不急。”"
+      }
+    ]
+  },
+  {
+    "id": "dv_study_star",
+    "kind": "derived",
+    "parent": "study",
+    "weight": 8,
+    "cond": "attr.int>=10",
+    "title": "夜里的星图",
+    "text": "书上画着一张星图，你抬头对照，发现窗外的星位和书上完全对不上。",
+    "options": [
+      {
+        "label": "推演一下，到底哪里错了（1 体力）",
+        "cost": 1,
+        "check": {
+          "attr": "int",
+          "diff": 11
+        },
+        "ok": {
+          "text": "你发现是书上的年份写错了，推算后，星位完全吻合。",
+          "fx": [
+            "int_exp+6",
+            "exp+10"
+          ]
+        },
+        "fail": {
+          "text": "算了一整晚，一团乱麻。",
+          "fx": [
+            "int_exp+2"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "dv_study_efna",
+    "kind": "derived",
+    "parent": "study",
+    "weight": 9,
+    "cond": "!flag:efna_resolved&&!flag:efna_lost",
+    "portrait": "efna",
+    "title": "艾芙娜来陪读",
+    "text": "艾芙娜抱着一只小凳坐到你旁边，翻开了另一本书：“我也看书，不打扰你。”",
+    "options": [
+      {
+        "label": "一起读",
+        "fx": [
+          "rel:efna+1",
+          "int_exp+3"
+        ],
+        "text": "屋里只有翻页的声音，很安静。"
+      },
+      {
+        "label": "趁机给她讲一个看到的有趣段落",
+        "fx": [
+          "rel:efna+1",
+          "cha_exp+2",
+          "int_exp+1"
+        ],
+        "text": "她被逗笑了，咳嗽了两声，摆摆手说没事。"
+      }
+    ]
+  },
+  {
+    "id": "dv_rest_dream",
+    "kind": "derived",
+    "parent": "rest",
+    "weight": 9,
+    "cond": "age>=22",
+    "title": "一个梦",
+    "text": "你睡着了，梦见一座黑色的城，城门上写着你认不得的字。醒来时，窗外的鸡刚叫。",
+    "options": [
+      {
+        "label": "记下梦里的细节",
+        "fx": [
+          "int_exp+3",
+          "wil_exp+1"
+        ],
+        "text": "你在纸上画了半天，却始终拼不出那几个字。"
+      },
+      {
+        "label": "不去想它",
+        "fx": [
+          "wil_exp+1"
+        ],
+        "text": "总归是梦。"
+      }
+    ]
+  },
+  {
+    "id": "dv_rest_mother",
+    "kind": "derived",
+    "parent": "rest",
+    "weight": 10,
+    "title": "母亲的汤",
+    "text": "你刚闭上眼，母亲端着一碗热汤推门进来：“喝了再睡。”",
+    "options": [
+      {
+        "label": "一口气喝完",
+        "fx": [
+          "heal:0.2",
+          "hometown+1"
+        ],
+        "text": "汤里放了姜，从喉咙一路暖到肚子。"
+      }
+    ]
+  },
+  {
+    "id": "dv_social_gossip",
+    "kind": "derived",
+    "parent": "socialize",
+    "weight": 10,
+    "title": "新鲜的闲话",
+    "text": "酒馆里，有人压低声音说：“听说北边的矿坑又塌了，公会正在找人。”",
+    "options": [
+      {
+        "label": "追问细节",
+        "fx": [
+          "int_exp+2",
+          "exp+8"
+        ],
+        "text": "你把听到的消息一条条记在心里。"
+      },
+      {
+        "label": "一笑置之",
+        "fx": [
+          "cha_exp+1"
+        ],
+        "text": "闲话听听就算了。"
+      }
+    ]
+  },
+  {
+    "id": "dv_social_lorn",
+    "kind": "derived",
+    "parent": "socialize",
+    "weight": 8,
+    "cond": "rel.lorn>=1",
+    "title": "洛恩的小道消息",
+    "text": "洛恩在酒馆里朝你招手：“来来来，我这儿有桩好买卖，只告诉你一个人。”",
+    "options": [
+      {
+        "label": "听他讲（1 体力）",
+        "cost": 1,
+        "fx": [
+          "cha_exp+2",
+          "rel:lorn+1",
+          "gold+10"
+        ],
+        "text": "他的“好买卖”只赚了几个铜板，但也不亏。"
+      },
+      {
+        "label": "笑着说改天",
+        "fx": [
+          "cha_exp+1"
+        ],
+        "text": "他拍拍你肩膀，去找别人了。"
+      }
+    ]
+  },
+  {
+    "id": "dv_social_drink",
+    "kind": "derived",
+    "parent": "socialize",
+    "weight": 9,
+    "cond": "age>=18",
+    "title": "斗酒",
+    "text": "有人拍着桌子喊：“谁敢和我比谁先喝倒？”满桌的目光都落在你身上。",
+    "options": [
+      {
+        "label": "接下这一局",
+        "check": {
+          "attr": "str",
+          "diff": 11
+        },
+        "ok": {
+          "text": "你一口气喝完三碗，对手趴桌子上了。全场喝彩。",
+          "fx": [
+            "cha_exp+4",
+            "gold+8"
+          ]
+        },
+        "fail": {
+          "text": "你喝到第二碗就眼前发花，被人抬回了家。",
+          "fx": [
+            "status+:fatigue:2",
+            "cha_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "借口还有活干，溜了",
+        "fx": [
+          "wil_exp+1"
+        ],
+        "text": "身后传来一阵嘘声。"
+      }
+    ]
+  },
+  {
+    "id": "dv_social_matchmaker",
+    "kind": "derived",
+    "parent": "socialize",
+    "weight": 6,
+    "cond": "age>=20",
+    "title": "媒婆上门",
+    "text": "村里的媒婆拉着你的手，不容分说：“西村有个姑娘，勤快、手巧，我看和你般配！”",
+    "options": [
+      {
+        "label": "礼貌推辞",
+        "check": {
+          "attr": "cha",
+          "diff": 9
+        },
+        "ok": {
+          "text": "你三言两语把她哄走了，还落了一包糖。",
+          "fx": [
+            "cha_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "媒婆缠了你一个下午，你脸都笑僵了。",
+          "fx": [
+            "cha_exp+1",
+            "status+:fatigue:1"
+          ]
+        }
+      },
+      {
+        "label": "装作没听懂",
+        "fx": [
+          "wil_exp+1"
+        ],
+        "text": "媒婆摇摇头走了。"
+      }
+    ]
+  },
+  {
+    "id": "dv_spring_seed",
+    "kind": "derived",
+    "parent": "farm_spring",
+    "weight": 9,
+    "title": "好种子",
+    "text": "你整理种子时，发现里面混着一小袋颗粒饱满的好种，不知是谁偷偷放的。",
+    "options": [
+      {
+        "label": "单独种在向阳那一垄",
+        "fx": [
+          "hometown+2",
+          "gold+6"
+        ],
+        "text": "秋天它会给你惊喜的。"
+      },
+      {
+        "label": "拿去给邻居",
+        "fx": [
+          "hometown+3",
+          "cha_exp+1"
+        ],
+        "text": "邻居高兴坏了，非要给你一篮鸡蛋。"
+      }
+    ]
+  },
+  {
+    "id": "dv_spring_ox",
+    "kind": "derived",
+    "parent": "farm_spring",
+    "weight": 8,
+    "title": "牛闹脾气",
+    "text": "耕牛忽然停下来，说什么也不肯往前走了。",
+    "options": [
+      {
+        "label": "耐心哄它",
+        "check": {
+          "attr": "cha",
+          "diff": 8
+        },
+        "ok": {
+          "text": "你给它挠了挠下巴，它不情不愿地迈开了步。",
+          "fx": [
+            "cha_exp+2"
+          ]
+        },
+        "fail": {
+          "text": "它越倔越凶，你被甩了一身泥。",
+          "fx": [
+            "hp-3"
+          ]
+        }
+      },
+      {
+        "label": "自己拉犁",
+        "fx": [
+          "str_exp+4",
+          "hp-3"
+        ],
+        "text": "你咬着牙，拉完了半亩地。"
+      }
+    ]
+  },
+  {
+    "id": "dv_summer_storm",
+    "kind": "derived",
+    "parent": "farm_summer",
+    "weight": 9,
+    "title": "骤雨",
+    "text": "天色忽然暗了下来，一阵暴雨泼了下来。田边的小水渠眼看就要漫了。",
+    "options": [
+      {
+        "label": "趁机把水渠挖深（1 体力）",
+        "cost": 1,
+        "fx": [
+          "str_exp+3",
+          "hometown+1"
+        ],
+        "text": "你浑身湿透，但水顺着新渠流走了。"
+      },
+      {
+        "label": "躲进窝棚",
+        "fx": [
+          "wil_exp+1"
+        ],
+        "text": "雨一停，水就退了，运气不坏。"
+      }
+    ]
+  },
+  {
+    "id": "dv_summer_swim",
+    "kind": "derived",
+    "parent": "farm_summer",
+    "weight": 8,
+    "cond": "!flag:efna_resolved&&!flag:efna_lost",
+    "portrait": "efna",
+    "title": "河边",
+    "text": "干完活，艾芙娜在河边朝你招手：“来洗把脸，水可凉了！”",
+    "options": [
+      {
+        "label": "过去坐坐（1 体力）",
+        "cost": 1,
+        "fx": [
+          "rel:efna+1",
+          "heal:0.15"
+        ],
+        "text": "你们把脚泡在水里，谁也没说话，只听见蝉叫。"
+      },
+      {
+        "label": "挥挥手，说还有活",
+        "fx": [
+          "wil_exp+1"
+        ],
+        "text": "她笑着点点头。"
+      }
+    ]
+  },
+  {
+    "id": "dv_autumn_bumper",
+    "kind": "derived",
+    "parent": "farm_autumn",
+    "weight": 9,
+    "title": "意外的好收成",
+    "text": "这一垄的麦子长得出奇地好，一穗比一穗沉。",
+    "options": [
+      {
+        "label": "多割一些",
+        "fx": [
+          "gold+10",
+          "hometown+1",
+          "str_exp+1"
+        ],
+        "text": "打谷场上，你的麦堆比别人高出一截。"
+      }
+    ]
+  },
+  {
+    "id": "dv_autumn_rats",
+    "kind": "derived",
+    "parent": "farm_autumn",
+    "weight": 8,
+    "title": "田鼠",
+    "text": "麦捆底下窜出一群田鼠，啃得到处都是缺口。",
+    "options": [
+      {
+        "label": "追着打（1 体力）",
+        "cost": 1,
+        "check": {
+          "attr": "agi",
+          "diff": 9
+        },
+        "ok": {
+          "text": "你一气打死十几只，捡回不少粮食。",
+          "fx": [
+            "agi_exp+2",
+            "gold+6"
+          ]
+        },
+        "fail": {
+          "text": "它们钻进洞里没了踪影，只留下一地碎麦。",
+          "fx": [
+            "hometown-1"
+          ]
+        }
+      },
+      {
+        "label": "撒些草木灰驱赶",
+        "fx": [
+          "int_exp+1"
+        ],
+        "text": "效果一般，但不费力。"
+      }
+    ]
+  },
+  {
+    "id": "dv_winter_roof",
+    "kind": "derived",
+    "parent": "farm_winter",
+    "weight": 9,
+    "title": "屋顶塌了一角",
+    "text": "你刚爬上屋顶，脚下的茅草忽然塌陷，你整个人悬在半空。",
+    "options": [
+      {
+        "label": "抓住椽子，翻上来",
+        "check": {
+          "attr": "str",
+          "diff": 10
+        },
+        "ok": {
+          "text": "你手臂一撑，翻了回来。顺手把这块也补好了。",
+          "fx": [
+            "str_exp+3",
+            "hometown+1"
+          ]
+        },
+        "fail": {
+          "text": "你摔了下来，摔得不轻。",
+          "fx": [
+            "hp-8",
+            "hometown+1"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "dv_winter_snow",
+    "kind": "derived",
+    "parent": "farm_winter",
+    "weight": 8,
+    "title": "雪地里的脚印",
+    "text": "你扫雪时，在院墙外发现一串不属于人也不属于野兽的脚印。",
+    "options": [
+      {
+        "label": "顺着脚印追去看看（1 体力）",
+        "cost": 1,
+        "check": {
+          "attr": "agi",
+          "diff": 10
+        },
+        "ok": {
+          "text": "脚印在林子里消失了，但你捡到了一枚锋利的骨刺。",
+          "fx": [
+            "agi_exp+3",
+            "exp+14"
+          ]
+        },
+        "fail": {
+          "text": "追到半路你觉得不对，退了回来。",
+          "fx": [
+            "wil_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "装作没看见",
+        "fx": [],
+        "text": "第二天，脚印被新雪盖住了。"
+      }
+    ]
+  },
+  {
+    "id": "dv_hunt_bear",
+    "kind": "derived",
+    "parent": "hunt",
+    "weight": 7,
+    "cond": "age>=18",
+    "title": "棕熊",
+    "scene": "mountain",
+    "text": "灌木丛里传来低沉的呼噜声——一头刚醒的棕熊正盯着你。",
+    "options": [
+      {
+        "label": "拔刀迎战",
+        "fx": [
+          {
+            "type": "combat",
+            "enemy": "bear",
+            "win": [
+              "gold+30",
+              "item:wolf_cloak"
+            ],
+            "lose": [
+              "status+:fatigue:2"
+            ],
+            "flee": []
+          }
+        ],
+        "text": "你握紧刀柄，一步步后撤到一棵大树下。"
+      },
+      {
+        "label": "慢慢后退",
+        "check": {
+          "attr": "agi",
+          "diff": 10
+        },
+        "ok": {
+          "text": "你一步一步退出了它的视线。",
+          "fx": [
+            "agi_exp+3"
+          ]
+        },
+        "fail": {
+          "text": "枯枝在脚下断裂，熊吼了一声扑来，你狼狈逃了回来。",
+          "fx": [
+            "hp-10"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "dv_hunt_hermit",
+    "kind": "derived",
+    "parent": "hunt",
+    "weight": 8,
+    "scene": "mountain",
+    "title": "山中隐士",
+    "text": "你在山洞口遇见一位白胡子老人，正在烤鱼。他招手：“年轻人，坐。”",
+    "options": [
+      {
+        "label": "坐下聊聊（1 体力）",
+        "cost": 1,
+        "fx": [
+          "int_exp+4",
+          "wil_exp+3",
+          "exp+15"
+        ],
+        "text": "老人只说了几句话，但每一句都让你想了很久。"
+      },
+      {
+        "label": "礼貌地谢绝",
+        "fx": [
+          "wil_exp+1"
+        ],
+        "text": "老人也不勉强，继续翻他的鱼。"
+      }
+    ]
+  },
+  {
+    "id": "dv_hunt_fox",
+    "kind": "derived",
+    "parent": "hunt",
+    "weight": 8,
+    "scene": "mountain",
+    "title": "银狐",
+    "text": "雪地里，一只银色的狐狸静静地坐着，歪头看你，似乎并不怕人。",
+    "options": [
+      {
+        "label": "悄悄靠近",
+        "check": {
+          "attr": "luk",
+          "diff": 10
+        },
+        "ok": {
+          "text": "它让你摸了摸头，然后转身消失了。你觉得今天会有好事。",
+          "fx": [
+            "status+:blessed:3",
+            "wil_exp+2"
+          ]
+        },
+        "fail": {
+          "text": "它一溜烟跑没了。",
+          "fx": [
+            "agi_exp+1"
+          ]
+        }
+      },
+      {
+        "label": "举起弓",
+        "fx": [
+          "gold+25",
+          "rep:church-1"
+        ],
+        "text": "狐皮卖了好价钱，但你心里不太舒服。"
+      }
+    ]
+  },
+  {
+    "id": "dv_hunt_ruins",
+    "kind": "derived",
+    "parent": "hunt",
+    "weight": 6,
+    "once": true,
+    "scene": "mountain",
+    "title": "藤蔓下的石门",
+    "text": "你拨开一片藤蔓，发现山壁上嵌着一扇半掩的石门，门楣上刻着褪色的神徽。",
+    "options": [
+      {
+        "label": "进去看看（2 体力）",
+        "cost": 2,
+        "check": {
+          "attr": "int",
+          "diff": 11
+        },
+        "ok": {
+          "text": "门后是一间小石室，墙上刻着一段祷文，下面压着一袋旧金币。",
+          "fx": [
+            "gold+40",
+            "int_exp+4",
+            "flag+:found_ruins"
+          ]
+        },
+        "fail": {
+          "text": "石室里空空荡荡，你只摸了一手灰。",
+          "fx": [
+            "int_exp+2"
+          ]
+        }
+      },
+      {
+        "label": "记下位置，改天再来",
+        "fx": [
+          "int_exp+1",
+          "flag+:found_ruins"
+        ],
+        "text": "你在石门旁做了个记号。"
+      }
+    ]
+  },
+  {
+    "id": "dv_patrol_drunk",
+    "kind": "derived",
+    "parent": "patrol",
+    "weight": 9,
+    "title": "醉汉",
+    "text": "夜里巡逻，你在村口撞见一个醉醺醺的汉子，嘴里嘟囔着要“打魔王”。",
+    "options": [
+      {
+        "label": "扶他回家（1 体力）",
+        "cost": 1,
+        "fx": [
+          "hometown+1",
+          "cha_exp+2"
+        ],
+        "text": "他一路讲着年轻时的事，到家时已经睡着了。"
+      },
+      {
+        "label": "拿水泼醒他",
+        "fx": [
+          "cha_exp+1"
+        ],
+        "text": "他骂骂咧咧地跑远了。"
+      }
+    ]
+  },
+  {
+    "id": "dv_patrol_orphan",
+    "kind": "derived",
+    "parent": "patrol",
+    "weight": 7,
+    "once": true,
+    "cond": "age>=19",
+    "title": "躲在草垛里的孩子",
+    "text": "你在草垛后听到抽泣声。一个衣衫褴褛的孩子蜷在那里，说他从北边逃来，走丢了爹娘。",
+    "options": [
+      {
+        "label": "带他回家，让母亲照看（1 体力）",
+        "cost": 1,
+        "fx": [
+          "hometown+3",
+          "rep:church+2",
+          "wil_exp+2",
+          "flag+:took_orphan"
+        ],
+        "text": "母亲什么也没问，盛了一碗热粥。"
+      },
+      {
+        "label": "送他去教堂",
+        "fx": [
+          "rep:church+3",
+          "rel:ambrose+1"
+        ],
+        "text": "神父接过孩子，轻轻点了点头。"
+      }
+    ]
+  },
+  {
+    "id": "dv_glen_drink",
+    "kind": "derived",
+    "parent": "learn_sword",
+    "weight": 9,
+    "portrait": "glen",
+    "title": "格伦的酒",
+    "text": "学完一轮，格伦从窝棚里摸出半壶酒，自己喝一口，又把壶递给你：“别告诉你娘。”",
+    "options": [
+      {
+        "label": "接过来抿一口",
+        "fx": [
+          "rel:glen+1",
+          "wil_exp+2"
+        ],
+        "text": "酒辣得你直咳嗽，格伦哈哈大笑。"
+      },
+      {
+        "label": "摆摆手谢绝",
+        "fx": [
+          "rel:glen+1",
+          "wil_exp+1"
+        ],
+        "text": "格伦点头：“嗯，有分寸。”"
+      }
+    ]
+  },
+  {
+    "id": "dv_glen_test",
+    "kind": "derived",
+    "parent": "learn_sword",
+    "weight": 9,
+    "portrait": "glen",
+    "title": "格伦的考校",
+    "text": "格伦忽然把木棍往你手里一扔，自己抱臂站定：“来，打我三下，打中一下就算你过。”",
+    "options": [
+      {
+        "label": "全力出手",
+        "check": {
+          "attr": "agi",
+          "diff": 11
+        },
+        "ok": {
+          "text": "你找到一个破绽，木棍扫到了他的肩膀。他揉着肩笑：“不错。”",
+          "fx": [
+            "agi_exp+4",
+            "str_exp+3",
+            "rel:glen+1",
+            "exp+14"
+          ]
+        },
+        "fail": {
+          "text": "三招全被他轻描淡写地拨开，还被敲了一下脑门。",
+          "fx": [
+            "agi_exp+2",
+            "hp-3"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "dv_church_confess",
+    "kind": "derived",
+    "parent": "church_help",
+    "weight": 8,
+    "portrait": "priest",
+    "title": "听告解",
+    "text": "神父有事离开，让你在告解室外看着。有人推门进去，隔着木板低声念着自己的罪。",
+    "options": [
+      {
+        "label": "认真听，不插话",
+        "fx": [
+          "wil_exp+3",
+          "int_exp+1"
+        ],
+        "text": "你听完了一个陌生人的忏悔，什么也没说，但心里沉甸甸的。"
+      },
+      {
+        "label": "悄悄离开岗位",
+        "fx": [
+          "rep:church-1"
+        ],
+        "text": "你心虚了一下午。"
+      }
+    ]
+  },
+  {
+    "id": "dv_church_letter",
+    "kind": "derived",
+    "parent": "church_help",
+    "weight": 6,
+    "once": true,
+    "portrait": "priest",
+    "title": "圣物箱里的旧信",
+    "text": "擦拭圣物箱时，你发现底层压着一封泛黄的信，封口上盖着已不通用的教会印章。",
+    "options": [
+      {
+        "label": "悄悄放回去",
+        "fx": [
+          "wil_exp+2"
+        ],
+        "text": "有些东西，不属于你看。"
+      },
+      {
+        "label": "告诉神父",
+        "fx": [
+          "rel:ambrose+2",
+          "rep:church+2"
+        ],
+        "text": "神父沉默了很久，说：“……有些事，只能由时间决定。”"
+      },
+      {
+        "label": "打开读一读",
+        "check": {
+          "attr": "int",
+          "diff": 11
+        },
+        "ok": {
+          "text": "信里提到“北境圣骑士团曾在百年前封印过一件东西”，后面的字被虫蛀了。",
+          "fx": [
+            "int_exp+4",
+            "flag+:church_clue_1"
+          ]
+        },
+        "fail": {
+          "text": "字迹太模糊，你什么也没看出来。",
+          "fx": [
+            "int_exp+1"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "dv_efna_gift",
+    "kind": "derived",
+    "parent": "accompany_efna",
+    "weight": 10,
+    "portrait": "efna",
+    "title": "小礼物",
+    "text": "艾芙娜背着手走过来，神神秘秘地问：“猜猜我给你带了什么？”",
+    "options": [
+      {
+        "label": "“野果？”",
+        "fx": [
+          "rel:efna+1",
+          "heal:0.1"
+        ],
+        "text": "她摊开手心——是几颗酸得眯眼的山莓。你们笑成一团。"
+      },
+      {
+        "label": "“你亲手编的什么？”",
+        "fx": [
+          "rel:efna+1",
+          "cha_exp+2"
+        ],
+        "text": "她递过来一只草编的小马，“不许嫌丑。”"
+      }
+    ]
+  },
+  {
+    "id": "dv_efna_cough",
+    "kind": "derived",
+    "parent": "accompany_efna",
+    "weight": 9,
+    "portrait": "efna",
+    "title": "她的咳嗽",
+    "text": "艾芙娜忽然捂住嘴，肩膀一阵颤抖。你扶住她，才发现她指缝里有淡淡的血色。",
+    "options": [
+      {
+        "label": "扶她回家，守着她（1 体力）",
+        "cost": 1,
+        "fx": [
+          "rel:efna+2",
+          "wil_exp+2"
+        ],
+        "text": "她很快缓了过来，却一直抓着你的袖口没放。"
+      },
+      {
+        "label": "“你没事吧？”（她摆了摆手）",
+        "fx": [
+          "rel:efna+1"
+        ],
+        "text": "“没事，老毛病。”她笑得很勉强。"
+      }
+    ]
+  },
+  {
+    "id": "dv_efna_stars",
+    "kind": "derived",
+    "parent": "accompany_efna",
+    "weight": 9,
+    "portrait": "efna",
+    "title": "数星星",
+    "text": "夜里，你们躺在麦垛上。艾芙娜指着天空：“看，那颗最亮的，像不像圣城钟楼上的灯？”",
+    "options": [
+      {
+        "label": "“像。以后我带你去看。”",
+        "fx": [
+          "rel:efna+2",
+          "wil_exp+1"
+        ],
+        "text": "她没有回答，只是把头靠在了你肩上。"
+      },
+      {
+        "label": "“那是北极星。”",
+        "fx": [
+          "rel:efna+1",
+          "int_exp+2"
+        ],
+        "text": "“你真扫兴。”她笑着捶了你一下。"
+      }
+    ]
+  },
+  {
+    "id": "dv_hunt_net",
+    "kind": "derived",
+    "parent": "hunt",
+    "weight": 8,
+    "scene": "mountain",
+    "title": "别人的陷阱",
+    "text": "你踩到一根绊索，头顶一张网猛地罩了下来——是另一个猎人布下的。",
+    "options": [
+      {
+        "label": "用刀割开",
+        "check": {
+          "attr": "agi",
+          "diff": 9
+        },
+        "ok": {
+          "text": "你三两下割断绳子，还顺手摘了网里的野鸡。",
+          "fx": [
+            "gold+10",
+            "agi_exp+2"
+          ]
+        },
+        "fail": {
+          "text": "网越挣越紧，你在原地吊了半个下午。",
+          "fx": [
+            "status+:fatigue:1",
+            "wil_exp+2"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "dv_train_wolf_cloak",
+    "kind": "derived",
+    "parent": "patrol",
+    "weight": 6,
+    "once": true,
+    "cond": "season==winter",
+    "title": "雪夜的哨岗",
+    "text": "大雪封了村口，你裹着破毯子守夜，冻得牙齿打战。路过的行商看不过去，从车上抽出一件旧斗篷递给你。",
+    "options": [
+      {
+        "label": "道谢，收下",
+        "fx": [
+          "item:wolf_cloak",
+          "rel:lorn+1",
+          "cha_exp+1"
+        ],
+        "text": "斗篷里衬着厚厚的毛，一裹上就不冷了。"
+      },
+      {
+        "label": "婉拒，说自己扛得住",
+        "fx": [
+          "wil_exp+3"
+        ],
+        "text": "行商摇摇头，把斗篷收了回去。"
+      }
+    ]
+  },
+  {
+    "id": "dv_social_news_capital",
+    "kind": "derived",
+    "parent": "socialize",
+    "weight": 7,
+    "cond": "age>=22",
+    "title": "王都来的信使",
+    "text": "酒馆里坐着一位刚从王都回来的信使，正大声谈论着王都的新鲜事。",
+    "options": [
+      {
+        "label": "凑过去听",
+        "fx": [
+          "cha_exp+2",
+          "int_exp+2",
+          "exp+8"
+        ],
+        "text": "他讲得绘声绘色：学院、骑士团、贵族的宴会，你听得入了神。"
+      },
+      {
+        "label": "请他喝一杯，打听骑士团招人的事（5 金币）",
+        "cond": "gold>=5",
+        "reason": "金币不足",
+        "fx": [
+          "gold-5",
+          "rep:church+1",
+          "exp+8"
+        ],
+        "text": "他挤了挤眼：“有路子的话，不难。”"
+      }
+    ]
+  },
+  {
+    "id": "dv_study_calendar",
+    "kind": "derived",
+    "parent": "study",
+    "weight": 8,
+    "cond": "age>=24",
+    "title": "年历的空白",
+    "text": "你翻到一本旧年历，上面每一页都画着一个小小的月亮，只有那一年秋天的那一页，画着一个黑圈。",
+    "options": [
+      {
+        "label": "盯着那个黑圈看了很久",
+        "fx": [
+          "wil_exp+3",
+          "int_exp+2"
+        ],
+        "text": "你合上书，手有些凉。"
+      },
+      {
+        "label": "合上书，继续往下读",
+        "fx": [
+          "int_exp+2"
+        ],
+        "text": "该做的事不会因为害怕而变少。"
+      }
+    ]
+  },
+  {
+    "id": "dv_study_tome",
+    "kind": "derived",
+    "parent": "study",
+    "weight": 7,
+    "once": true,
+    "cond": "attr.int>=9&&!flag:magic_tome",
+    "title": "夹层里的册子",
+    "text": "你翻旧书时发现书脊夹层里藏着一本更小的册子，封面画着一个六芒星，里面是密密麻麻的咒文图解。",
+    "options": [
+      {
+        "label": "带回去仔细研读",
+        "fx": [
+          "flag+:magic_tome",
+          "int_exp+4",
+          "exp+10"
+        ],
+        "text": "这不是普通的书。"
+      }
+    ]
+  },
+  {
+    "id": "dv_arcana_spark",
+    "kind": "derived",
+    "parent": "study_arcana",
+    "weight": 10,
+    "title": "指尖的火星",
+    "text": "你按照图解默念咒文，指尖忽然亮起一点橙红色的火星，随即熄灭。",
+    "options": [
+      {
+        "label": "再试一次",
+        "fx": [
+          "int_exp+4",
+          "wil_exp+2"
+        ],
+        "text": "这一次，火星停留了半个呼吸。"
+      }
+    ]
+  },
+  {
+    "id": "dv_arcana_backfire",
+    "kind": "derived",
+    "parent": "study_arcana",
+    "weight": 8,
+    "title": "失控的咒文",
+    "text": "你念错了一个音节，面前的蜡烛突然窜起半人高的火苗，把桌上的纸烧着了。",
+    "options": [
+      {
+        "label": "赶紧扑灭",
+        "check": {
+          "attr": "agi",
+          "diff": 9
+        },
+        "ok": {
+          "text": "你一把按住火苗，只烧焦了一角。",
+          "fx": [
+            "agi_exp+2",
+            "int_exp+2"
+          ]
+        },
+        "fail": {
+          "text": "火苗燎到了你的袖子，疼得你直叫。",
+          "fx": [
+            "hp-6",
+            "int_exp+1"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "dv_prayer_light",
+    "kind": "derived",
+    "parent": "church_help",
+    "weight": 8,
+    "portrait": "priest",
+    "title": "掌心的暖意",
+    "text": "你擦拭圣像时，神父握住你的手，口中念着短短的祷词。你的掌心泛起一点柔和的光。",
+    "options": [
+      {
+        "label": "闭上眼，记住这种感觉",
+        "fx": [
+          "wil_exp+3",
+          "mpheal:0.5"
+        ],
+        "text": "神父说：“圣光不是力量，是回应。”"
+      }
+    ]
+  },
+  {
+    "id": "dv_glen_form",
+    "kind": "derived",
+    "parent": "learn_sword",
+    "weight": 8,
+    "portrait": "glen",
+    "title": "格伦的架势",
+    "text": "格伦握着你的手腕，纠正你的起手式：“剑不是抡出去的，是送出去的。”",
+    "options": [
+      {
+        "label": "照他说的练一百遍",
+        "fx": [
+          "str_exp+3",
+          "agi_exp+3",
+          "count:sword+1"
+        ],
+        "text": "练到最后，你的手腕像是换了一只。"
+      }
+    ]
+  },
+  {
+    "id": "dv_study_riddle",
+    "kind": "derived",
+    "parent": "study",
+    "weight": 8,
+    "title": "书里的谜题",
+    "text": "书页空白处，有前一位读者留下了一道算题，旁边写着：“能解出来的，才算真的读懂了这一章。”",
+    "options": [
+      {
+        "label": "试着解一解",
+        "check": {
+          "attr": "int",
+          "diff": 11
+        },
+        "ok": {
+          "text": "你写满了半页草稿，终于推出了那个数字。",
+          "fx": [
+            "int_exp+6",
+            "exp+10"
+          ]
+        },
+        "fail": {
+          "text": "你绕进了死胡同，只好先放下。",
+          "fx": [
+            "int_exp+2"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "dv_church_doubt",
+    "kind": "derived",
+    "parent": "church_help",
+    "weight": 8,
+    "portrait": "priest",
+    "title": "一瞬的怀疑",
+    "text": "擦着圣像，你忽然想：如果神真的存在，为什么魔王还会醒来？这个念头让你的手停住了。",
+    "options": [
+      {
+        "label": "把疑问压在心里，继续擦",
+        "check": {
+          "attr": "wil",
+          "diff": 11
+        },
+        "ok": {
+          "text": "疑问没有消失，但你学会了和它共处。",
+          "fx": [
+            "wil_exp+5",
+            "rep:church+1"
+          ]
+        },
+        "fail": {
+          "text": "整个下午你都心神不宁。",
+          "fx": [
+            "wil_exp+2"
+          ]
+        }
+      },
+      {
+        "label": "去问神父",
+        "fx": [
+          "wil_exp+2",
+          "rel:ambrose+1",
+          "int_exp+2"
+        ],
+        "text": "神父沉吟了很久：“我也没有答案，但我选择相信。”"
+      }
+    ]
+  },
+  {
+    "id": "dv_arcana_flow",
+    "kind": "derived",
+    "parent": "study_arcana",
+    "weight": 9,
+    "title": "魔力的流动",
+    "text": "读到某一页时，你忽然感觉到一股细细的暖流顺着指尖流进了书页，咒文的笔画微微发亮。",
+    "options": [
+      {
+        "label": "屏息凝神，顺着它引导",
+        "check": {
+          "attr": "int",
+          "diff": 11
+        },
+        "ok": {
+          "text": "那股暖流听从了你的引导，在掌心转了一圈又回到身体里。你觉得精神一振。",
+          "fx": [
+            "int_exp+5",
+            "count:arcana+1",
+            "mpheal:0.5"
+          ]
+        },
+        "fail": {
+          "text": "你一分神，暖流就散了。",
+          "fx": [
+            "int_exp+2"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "dv_train_meditate",
+    "kind": "derived",
+    "parent": "train",
+    "weight": 7,
+    "title": "练后的静坐",
+    "text": "练完之后，你坐在田埂上，呼吸还没完全平复。远处的钟声一下一下传来，你忽然想试试让心安静下来。",
+    "options": [
+      {
+        "label": "闭眼数息",
+        "check": {
+          "attr": "wil",
+          "diff": 10
+        },
+        "ok": {
+          "text": "心跳慢慢和钟声合上了拍，你睁开眼时，觉得比练之前还轻。",
+          "fx": [
+            "wil_exp+4",
+            "heal:0.15",
+            "mpheal:0.3"
+          ]
+        },
+        "fail": {
+          "text": "杂念一个接一个冒出来，你只好放弃。",
+          "fx": [
+            "wil_exp+1"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "dv_patrol_fear",
+    "kind": "derived",
+    "parent": "patrol",
+    "weight": 7,
+    "cond": "age>=22",
+    "title": "夜巡的恐惧",
+    "text": "夜巡走到村口的老橡树下，树影里似乎有什么东西正盯着你。你的手心一阵发凉。",
+    "options": [
+      {
+        "label": "提灯走过去看",
+        "check": {
+          "attr": "wil",
+          "diff": 12
+        },
+        "ok": {
+          "text": "树后只是一只受惊的夜枭，你松了口气，心里却涌起一股难得的踏实。",
+          "fx": [
+            "wil_exp+4",
+            "hometown+1"
+          ]
+        },
+        "fail": {
+          "text": "你走到一半就退了回来，一晚上没再靠近那棵树。",
+          "fx": [
+            "wil_exp+1"
+          ]
+        }
+      }
+    ]
+  }
+]

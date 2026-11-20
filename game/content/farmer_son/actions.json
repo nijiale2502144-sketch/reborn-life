@@ -1,0 +1,679 @@
+[
+  {
+    "id": "farm_spring",
+    "name": "春耕播种",
+    "cost": 2,
+    "group": "daily",
+    "cond": "season==spring",
+    "hint": "金币·故乡值",
+    "desc": "不做的话，秋天会颗粒无收。",
+    "fx": [
+      "gold+10",
+      "hometown+3",
+      "str_exp+2",
+      "flag+:y_farm_spring"
+    ],
+    "texts": [
+      "你牵着牛一垄一垄地翻地，泥土的味道又湿又腥。",
+      "种子一把一把撒下去，父亲在地头抽烟看着你。"
+    ]
+  },
+  {
+    "id": "farm_summer",
+    "name": "夏日除草",
+    "cost": 2,
+    "group": "daily",
+    "cond": "season==summer",
+    "hint": "金币·故乡值",
+    "desc": "杂草长得比麦子还快。",
+    "fx": [
+      "gold+10",
+      "hometown+2",
+      "str_exp+2"
+    ],
+    "texts": [
+      "日头毒辣，汗水滴进眼睛里，你一刻也不敢停。"
+    ]
+  },
+  {
+    "id": "farm_autumn",
+    "name": "秋收",
+    "cost": 2,
+    "group": "daily",
+    "cond": "season==autumn",
+    "hint": "金币·故乡值",
+    "desc": "一年里最重要的几天。",
+    "fx": [
+      "gold+25",
+      "hometown+5",
+      "str_exp+2",
+      "flag+:y_farm_autumn"
+    ],
+    "texts": [
+      "金黄的麦浪在镰刀下倒伏，打谷场上堆起了小山。",
+      "你挥了一整天镰刀，晚上腰都直不起来，但粮仓是满的。"
+    ]
+  },
+  {
+    "id": "farm_winter",
+    "name": "冬季修缮",
+    "cost": 2,
+    "group": "daily",
+    "cond": "season==winter",
+    "hint": "故乡值",
+    "desc": "补屋顶、修篱笆，等着开春。",
+    "fx": [
+      "gold+5",
+      "hometown+2",
+      "str_exp+1"
+    ],
+    "texts": [
+      "你爬上屋顶换了几片茅草，寒风吹得脸发麻。"
+    ]
+  },
+  {
+    "id": "hunt",
+    "name": "进山打猎",
+    "cost": 2,
+    "group": "adventure",
+    "tag": "adventure",
+    "scene": "mountain",
+    "hint": "金币·敏捷",
+    "desc": "冬天的山里更危险。",
+    "check": {
+      "attr": "agi",
+      "diff": 10,
+      "seasonDiff": {
+        "winter": 3
+      }
+    },
+    "great": {
+      "text": "你在林子里撞见一头肥硕的野鹿，一箭正中。",
+      "fx": [
+        "gold+35",
+        "agi_exp+5",
+        "exp+14"
+      ]
+    },
+    "ok": {
+      "text": "忙活了半天，总算带回了几只野兔。",
+      "fx": [
+        "gold+18",
+        "agi_exp+4",
+        "exp+8"
+      ]
+    },
+    "fail": {
+      "text": "转了一天，什么也没打到，还被荆棘划了几道口子。",
+      "fx": [
+        "gold+3",
+        "hp-6",
+        "agi_exp+1"
+      ]
+    }
+  },
+  {
+    "id": "patrol",
+    "name": "村口巡逻",
+    "cost": 1,
+    "group": "daily",
+    "hint": "体魄·意志·故乡值",
+    "desc": "你扛起一根木棍站在村口。",
+    "fx": [
+      "str_exp+1",
+      "wil_exp+2",
+      "exp+4",
+      "hometown+1"
+    ],
+    "texts": [
+      "夜里的村口很安静，你握着木棍，听着虫鸣一直站到天亮。",
+      "有行商问你在做什么，你说：“守着。”"
+    ]
+  },
+  {
+    "id": "learn_sword",
+    "name": "向老兵学艺",
+    "cost": 2,
+    "group": "daily",
+    "cond": "flag:met_glen&&!flag:glen_left",
+    "hint": "武技·格伦好感",
+    "desc": "格伦的剑法粗粝，但实用。",
+    "fx": [
+      "str_exp+2",
+      "agi_exp+3",
+      "exp+10",
+      "rel:glen+1",
+      "count:sword+1",
+      {
+        "if": "memory:m_glen",
+        "then": [
+          "agi_exp+2",
+          "str_exp+1"
+        ]
+      }
+    ],
+    "texts": [
+      "格伦用木棍敲了你的手肘：“再来。”",
+      "他一边骂你笨，一边又示范了一遍。"
+    ]
+  },
+  {
+    "id": "church_help",
+    "name": "帮神父打杂",
+    "cost": 1,
+    "group": "daily",
+    "hint": "意志·教会声望",
+    "desc": "擦圣像、扫地、抄经文。",
+    "fx": [
+      "wil_exp+3",
+      "rep:church+2",
+      "cha_exp+1",
+      "count:prayer+1"
+    ],
+    "texts": [
+      "你把长椅一条条擦过去，神父在祭坛前轻声吟诵。",
+      "神父让你抄了三遍祷文，字迹歪歪扭扭，但他没有批评你。"
+    ]
+  },
+  {
+    "id": "study_arcana",
+    "name": "研读奥术",
+    "cost": 2,
+    "group": "daily",
+    "tag": "study",
+    "cond": [
+      "flag:magic_tome",
+      "flag:found_ruins"
+    ],
+    "hint": "魔法·智力",
+    "desc": "那本旧法术书越读越有意思，但每一页都要反复啃。",
+    "fx": [
+      "int_exp+5",
+      "wil_exp+1",
+      "count:arcana+1"
+    ],
+    "texts": [
+      "你对着咒文图解比划了一整个下午，指尖偶尔蹿出一点火星。",
+      "符文的笔画总在关键处差一点，你一遍遍重画，直到眼睛发酸。",
+      "你找到了书页边缘的批注，是前一位读者留下的，字迹潦草却很有用。"
+    ]
+  },
+  {
+    "id": "accompany_efna",
+    "name": "陪艾芙娜",
+    "cost": 1,
+    "group": "social",
+    "cond": "!flag:efna_resolved&&!flag:efna_lost",
+    "hint": "艾芙娜好感",
+    "desc": "她坐在田埂上，朝你招了招手。",
+    "fx": [
+      "rel:efna+1",
+      "cha_exp+2"
+    ],
+    "texts": [
+      "艾芙娜教你编草戒指，你编了三次都散了。",
+      "你们并排坐着，数天上的云。她说那朵像一座城堡。",
+      "她给你讲了一个她自己编的故事，结尾是你俩都没想到的。"
+    ]
+  },
+  {
+    "id": "guild_register",
+    "name": "冒险者公会登记",
+    "cost": 1,
+    "group": "adventure",
+    "cond": "age>=18&&!flag:guild",
+    "hint": "解锁地下城与委托",
+    "desc": "镇上的公会愿意收下你这样的新人。",
+    "fx": [
+      "flag+:guild",
+      "rep:guild+5",
+      "exp+20"
+    ],
+    "texts": [
+      "接待员递给你一块木牌：“从最低阶开始，别死就行。”"
+    ]
+  },
+  {
+    "id": "dg_cave",
+    "name": "探索后山洞穴",
+    "cost": 4,
+    "group": "adventure",
+    "tag": "adventure",
+    "cond": "flag:guild",
+    "hint": "战斗·宝箱",
+    "desc": "推荐等级 3–6，共 4 层。",
+    "dungeon": "cave"
+  },
+  {
+    "id": "dg_mine",
+    "name": "探索废弃矿坑",
+    "cost": 5,
+    "group": "adventure",
+    "tag": "adventure",
+    "cond": "flag:guild&&level>=6",
+    "hint": "装备·金币",
+    "desc": "推荐等级 8–12，共 5 层。",
+    "dungeon": "mine"
+  },
+  {
+    "id": "dg_grave",
+    "name": "探索亡灵墓地",
+    "cost": 5,
+    "group": "adventure",
+    "tag": "adventure",
+    "cond": "flag:guild&&level>=10",
+    "hint": "圣物·教会线索",
+    "desc": "推荐等级 12–18，共 6 层。",
+    "dungeon": "grave"
+  },
+  {
+    "id": "dg_fortress",
+    "name": "远征魔潮前线要塞",
+    "cost": 6,
+    "group": "adventure",
+    "tag": "adventure",
+    "cond": "flag:order_member&&level>=16",
+    "hint": "顶级装备",
+    "desc": "推荐等级 18–25，共 7 层。",
+    "dungeon": "fortress"
+  },
+  {
+    "id": "find_moon_herb",
+    "name": "寻找月华草",
+    "cost": 4,
+    "group": "quest",
+    "tag": "adventure",
+    "scene": "mountain",
+    "cond": [
+      "quest.efna_wish==active&&qstage.efna_wish==1&&!flag:has_moon_herb&&season==summer&&!flag:herb_try3",
+      "quest.efna_wish==active&&qstage.efna_wish==1&&!flag:has_moon_herb&&season==autumn&&!flag:herb_try3"
+    ],
+    "hint": "艾芙娜的心愿",
+    "desc": "月华草只在夏、秋两季的月夜里开花。你最多有三次机会。（听过月华草的传闻会更容易）",
+    "check": {
+      "attr": "int",
+      "diff": 13,
+      "memDiff": {
+        "id": "m_efna",
+        "diff": -3
+      },
+      "flagDiff": {
+        "id": "herb_hint",
+        "diff": -2
+      }
+    },
+    "ok": {
+      "text": "你想起书上写过：月华草喜阴，开在背阴崖缝里。你在月光下找到了它。",
+      "fx": [
+        "flag+:has_moon_herb",
+        "exp+30"
+      ]
+    },
+    "fail": {
+      "text": "你在山里转了一夜，什么都没找到，还崴了脚。",
+      "fx": [
+        "hp-5",
+        "int_exp+2",
+        {
+          "if": "flag:herb_try2",
+          "then": [
+            "flag+:herb_try3"
+          ],
+          "else": [
+            {
+              "if": "flag:herb_try1",
+              "then": [
+                "flag+:herb_try2"
+              ],
+              "else": [
+                "flag+:herb_try1"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "take_efna_city",
+    "name": "带艾芙娜前往圣城",
+    "cost": 4,
+    "group": "quest",
+    "cond": "flag:has_moon_herb&&quest.efna_wish==active&&!flag:efna_resolved",
+    "hint": "艾芙娜的心愿",
+    "desc": "月华草已在手，该启程了。",
+    "fx": [
+      "goto:ev_holy_city"
+    ]
+  },
+  {
+    "id": "clear_glen_name",
+    "name": "为格伦翻案",
+    "cost": 3,
+    "group": "quest",
+    "cond": "quest.glen_regret==active&&qstage.glen_regret==1&&!flag:glen_fail2",
+    "hint": "格伦的遗憾",
+    "desc": "到教会档案处争取一次重审。你最多有两次机会。",
+    "check": {
+      "attr": "cha",
+      "diff": 13
+    },
+    "ok": {
+      "text": "你把格伦告诉你的细节一条条列出来，档案官沉默了很久，终于点了头。",
+      "fx": [
+        "flag+:glen_cleared",
+        "rep:church+8"
+      ]
+    },
+    "fail": {
+      "text": "档案官不耐烦地把你轰了出去。你得想办法多练练口才。",
+      "fx": [
+        "rep:church-2",
+        "cha_exp+2",
+        {
+          "if": "flag:glen_fail1",
+          "then": [
+            "flag+:glen_fail2"
+          ],
+          "else": [
+            "flag+:glen_fail1"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "march_demon",
+    "name": "讨伐魔王",
+    "cost": 4,
+    "group": "quest",
+    "cond": [
+      "flag:demon_awake&&flag:paladin&&!flag:demon_slain&&!flag:stay_home&&!flag:main_failed",
+      "flag:demon_awake&&flag:adventurer_star&&!flag:demon_slain&&!flag:stay_home"
+    ],
+    "hint": "终战",
+    "desc": "没有退路了。",
+    "fx": [
+      "goto:ev_final_march"
+    ]
+  },
+  {
+    "id": "go_market",
+    "name": "去集市逛逛",
+    "cost": 1,
+    "group": "daily",
+    "cond": "age>=17",
+    "hint": "买装备、药水、书籍",
+    "desc": "镇上的集市，三教九流都有。",
+    "fx": [
+      "goto:ev_market"
+    ]
+  },
+  {
+    "id": "go_tavern",
+    "name": "去酒馆坐坐",
+    "cost": 1,
+    "group": "social",
+    "cond": "age>=18",
+    "hint": "回血回魔、打听消息",
+    "desc": "一杯热酒，一桌闲话。",
+    "fx": [
+      "goto:ev_tavern"
+    ]
+  },
+  {
+    "id": "escort_caravan",
+    "name": "护送商队",
+    "cost": 3,
+    "group": "quest",
+    "tag": "adventure",
+    "scene": "mountain",
+    "cond": "quest.lorn_caravan==active&&qstage.lorn_caravan==0",
+    "hint": "洛恩的商队",
+    "desc": "押一趟货往返王都，路上不太平。",
+    "check": {
+      "attr": "agi",
+      "diff": 10
+    },
+    "ok": {
+      "text": "一路有惊无险。洛恩数着钱，笑得眯起了眼睛：“你办事，我放心。”",
+      "fx": [
+        "gold+45",
+        "rel:lorn+1",
+        "count:escort+1",
+        "exp+15"
+      ]
+    },
+    "fail": {
+      "text": "路上遇到岔路和一小队盗匪，货丢了一半。洛恩没有责怪你，只是叹了口气。",
+      "fx": [
+        "hp-8",
+        "exp+6"
+      ]
+    }
+  },
+  {
+    "id": "look_after_orphan",
+    "name": "照看孩子",
+    "cost": 1,
+    "group": "social",
+    "cond": "flag:took_orphan&&!flag:orphan_home",
+    "hint": "草垛里的孩子",
+    "desc": "他还不太说话，总是躲在你身后。",
+    "fx": [
+      "count:orphan+1",
+      "hometown+1",
+      "wil_exp+1",
+      "cha_exp+1"
+    ],
+    "texts": [
+      "你教他认了几个字，他在地上用树枝画了一朵麦穗。",
+      "他第一次主动牵起了你的手。",
+      "他夜里做噩梦，你坐在床边，直到他睡着。"
+    ]
+  },
+  {
+    "id": "explore_ruins",
+    "name": "探索遗迹",
+    "cost": 3,
+    "group": "quest",
+    "tag": "adventure",
+    "scene": "mountain",
+    "cond": "quest.ruins_secret==active&&!flag:ruins_open&&!flag:ruins_try3",
+    "hint": "石门后的遗迹",
+    "desc": "石室里的符文，需要智力检定。你最多有三次机会。",
+    "check": {
+      "attr": "int",
+      "diff": 12,
+      "memDiff": {
+        "id": "m_ruins",
+        "diff": -3
+      }
+    },
+    "ok": {
+      "text": "符文在你的目光下一层层亮起，像被唤醒的星星。石室中央的石台缓缓升起。",
+      "fx": [
+        "flag+:ruins_open",
+        "int_exp+5"
+      ]
+    },
+    "fail": {
+      "text": "符文的顺序你怎么也理不清，头痛欲裂。石室里的气息更重了。",
+      "fx": [
+        "hp-5",
+        "int_exp+2",
+        {
+          "if": "flag:ruins_try2",
+          "then": [
+            "flag+:ruins_try3"
+          ],
+          "else": [
+            {
+              "if": "flag:ruins_try1",
+              "then": [
+                "flag+:ruins_try2"
+              ],
+              "else": [
+                "flag+:ruins_try1"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "repair_mill",
+    "name": "修缮水车（60 金币）",
+    "cost": 2,
+    "group": "quest",
+    "cond": "quest.mill_repair==active&&gold>=60",
+    "hint": "村长的委托",
+    "desc": "请木匠、买木料，你自己也得出力。",
+    "fx": [
+      "gold-60",
+      "count:mill+1",
+      "str_exp+2",
+      "hometown+2"
+    ],
+    "texts": [
+      "你和木匠爬上水车，把朽掉的叶片一片一片换下来。",
+      "河水冰凉，你的手冻得通红，但水车终于多转了半圈。"
+    ]
+  },
+  {
+    "id": "hire_hand",
+    "name": "雇一个短工（60 金币）",
+    "cost": 0,
+    "group": "daily",
+    "cond": "gold>=60&&!flag:t_hired&&count.hires==0",
+    "hint": "本回合体力 +1，同一年内越雇越贵",
+    "desc": "花钱买时间，每回合最多一次，每年年底价格重置。",
+    "fx": [
+      "gold-60",
+      "stamina+1",
+      "flag+:t_hired",
+      "count:hires+1"
+    ],
+    "texts": [
+      "你把一半的活儿托给了村东的短工，自己腾出了半天。"
+    ]
+  },
+  {
+    "id": "hire_hand_2",
+    "name": "雇一个短工（80 金币）",
+    "cost": 0,
+    "group": "daily",
+    "cond": "gold>=80&&!flag:t_hired&&count.hires==1",
+    "hint": "本回合体力 +1，同一年内越雇越贵",
+    "desc": "花钱买时间，每回合最多一次，每年年底价格重置。",
+    "fx": [
+      "gold-80",
+      "stamina+1",
+      "flag+:t_hired",
+      "count:hires+1"
+    ],
+    "texts": [
+      "你把一半的活儿托给了村东的短工，自己腾出了半天。"
+    ]
+  },
+  {
+    "id": "hire_hand_3",
+    "name": "雇一个短工（110 金币）",
+    "cost": 0,
+    "group": "daily",
+    "cond": "gold>=110&&!flag:t_hired&&count.hires==2",
+    "hint": "本回合体力 +1，同一年内越雇越贵",
+    "desc": "花钱买时间，每回合最多一次，每年年底价格重置。",
+    "fx": [
+      "gold-110",
+      "stamina+1",
+      "flag+:t_hired",
+      "count:hires+1"
+    ],
+    "texts": [
+      "你把一半的活儿托给了村东的短工，自己腾出了半天。"
+    ]
+  },
+  {
+    "id": "hire_hand_4",
+    "name": "雇一个短工（150 金币）",
+    "cost": 0,
+    "group": "daily",
+    "cond": "gold>=150&&!flag:t_hired&&count.hires>=3",
+    "hint": "本回合体力 +1，同一年内越雇越贵",
+    "desc": "花钱买时间，每回合最多一次，每年年底价格重置。",
+    "fx": [
+      "gold-150",
+      "stamina+1",
+      "flag+:t_hired",
+      "count:hires+1"
+    ],
+    "texts": [
+      "你把一半的活儿托给了村东的短工，自己腾出了半天。"
+    ]
+  },
+  {
+    "id": "confront_ambrose",
+    "name": "向神父求证",
+    "cost": 1,
+    "group": "quest",
+    "scene": "village_autumn",
+    "portrait": "priest",
+    "cond": "quest.church_shadow==active&&qstage.church_shadow==0",
+    "hint": "教会的阴影",
+    "desc": "把你看到的封印记录，摆在神父面前。",
+    "fx": [
+      "goto:ev_shadow_ambrose"
+    ]
+  },
+  {
+    "id": "infiltrate_vault",
+    "name": "潜入王都圣库",
+    "cost": 3,
+    "group": "quest",
+    "tag": "adventure",
+    "scene": "mountain",
+    "cond": "quest.church_shadow==active&&qstage.church_shadow==1&&flag:order_member&&!flag:vault_try3",
+    "hint": "教会的阴影",
+    "desc": "圣库第三层，只有持钥匙的人进得去。需要智力检定，最多三次机会，失败会被执事记住。",
+    "check": {
+      "attr": "int",
+      "diff": 13,
+      "memDiff": {
+        "id": "m_truth",
+        "diff": -3
+      }
+    },
+    "ok": {
+      "text": "钥匙转动的声音很轻。你在最深处的石架上，找到了那本没有标题的册子。",
+      "fx": [
+        "goto:ev_shadow_vault"
+      ]
+    },
+    "fail": {
+      "text": "巡夜的执事提着灯从走廊尽头走来，你不得不退了出去。他看了你一眼，什么也没说，却把你的脸记住了。",
+      "fx": [
+        "rep:church-2",
+        "int_exp+2",
+        {
+          "if": "flag:vault_try2",
+          "then": [
+            "flag+:vault_try3"
+          ],
+          "else": [
+            {
+              "if": "flag:vault_try1",
+              "then": [
+                "flag+:vault_try2"
+              ],
+              "else": [
+                "flag+:vault_try1"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

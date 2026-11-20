@@ -1,0 +1,522 @@
+[
+  {
+    "id": "main_oath",
+    "type": "main",
+    "name": "圣剑与誓言",
+    "start": "age>=16",
+    "score": 100,
+    "onFail": [
+      "flag+:main_failed",
+      "log:通往圣骑士的路断了。魔王苏醒时，你只能面对现实。"
+    ],
+    "stages": [
+      {
+        "desc": "第一章·麦田之誓：达到等级 3，且体魄或意志达到 15（教会使者会来找你）",
+        "done": "flag:recommend_letter",
+        "score": 20,
+        "deadlineAge": 22,
+        "checks": [
+          {
+            "label": "等级 ≥ 3",
+            "cond": "level>=3"
+          },
+          {
+            "label": "体魄或意志 ≥ 15",
+            "cond": [
+              "attr.str>=15",
+              "attr.wil>=15"
+            ]
+          }
+        ],
+        "story": {
+          "title": "第一章 完 · 麦田之誓",
+          "portrait": "hero",
+          "text": "信纸很轻，却像一块烙铁。你站在麦田边上，第一次认真地想：如果我走了，这片田谁来种？\n可你也知道，有些路，不走，就永远不知道通到哪里。\n——第二章：王都见习"
+        }
+      },
+      {
+        "desc": "第二章·王都见习：取得推荐信或公会声望 20，教会声望 20，等级 6，加入见习骑士团",
+        "done": "flag:order_member",
+        "score": 20,
+        "deadlineAge": 26,
+        "checks": [
+          {
+            "label": "等级 ≥ 6",
+            "cond": "level>=6"
+          },
+          {
+            "label": "教会声望 ≥ 20",
+            "cond": "rep.church>=20"
+          },
+          {
+            "label": "持有推荐信，或公会声望 ≥ 20",
+            "cond": [
+              "flag:recommend_letter",
+              "rep.guild>=20"
+            ]
+          }
+        ],
+        "story": {
+          "title": "第二章 完 · 王都见习",
+          "text": "银甲冰凉，誓词还在耳边。你第一次觉得，自己不再只是田里的一个人。\n王都的夜很吵，你却反而睡得安稳。教官说，真正的考验在北边，在每一场你想逃的仗里。\n——第三章：魔潮前夜"
+        }
+      },
+      {
+        "desc": "第三章·魔潮前夜：等级 15、教会声望 60，通过圣剑试炼成为圣骑士",
+        "done": "flag:paladin",
+        "score": 20,
+        "deadlineAge": 29,
+        "checks": [
+          {
+            "label": "等级 ≥ 15",
+            "cond": "level>=15"
+          },
+          {
+            "label": "教会声望 ≥ 60",
+            "cond": "rep.church>=60"
+          },
+          {
+            "label": "已加入见习骑士团",
+            "cond": "flag:order_member"
+          }
+        ],
+        "story": {
+          "title": "第三章 完 · 圣剑的回应",
+          "portrait": "priest",
+          "text": "圣剑落在肩上的那一刻，你什么也没想，只想起那个春天，田埂上，艾芙娜问你的那句话：“你想成为什么？”\n现在，你有了一个答案。\n——第四章：苏醒前的集结"
+        }
+      },
+      {
+        "desc": "第四章·苏醒前的集结：继续变强，魔王将在 30 岁的秋天苏醒",
+        "done": "flag:demon_awake",
+        "score": 20,
+        "story": {
+          "title": "第四章 完 · 红色的天空",
+          "text": "时间到了。\n北方的天空像被撕开一道口子，所有人都停下了手里的活。你站在村口，手握着剑柄，心里出奇地平静。\n该去了。\n——终章：魔王"
+        }
+      },
+      {
+        "desc": "第五章·终战：魔王苏醒后，前往讨伐魔王（行动：讨伐魔王）",
+        "done": "flag:demon_slain",
+        "score": 20
+      }
+    ],
+    "doneStory": {
+      "title": "终章 · 誓言",
+      "text": "魔王的身体化作灰烬散去的时候，你听见远方的钟声一下一下响起，像是整个世界都在呼吸。\n你活了下来。\n而属于你的故事，才刚刚被写成。"
+    }
+  },
+  {
+    "id": "doom",
+    "type": "main",
+    "name": "魔潮将至",
+    "start": "flag:demon_awake",
+    "score": 0,
+    "stages": [
+      {
+        "desc": "魔王已经苏醒，必须在限期内讨伐，否则魔潮会吞没北境",
+        "done": "flag:demon_slain",
+        "deadlineTurns": 3,
+        "onMiss": [
+          "flag+:overrun",
+          "log:魔潮越过了北境的山脊。",
+          "end:auto"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "efna_wish",
+    "type": "side",
+    "name": "艾芙娜的心愿",
+    "deadlineAge": 23,
+    "score": 30,
+    "onFail": [
+      "flag+:efna_lost",
+      "log:艾芙娜没有等到那一天。她的家空了，窗台上还放着一小束干花。"
+    ],
+    "reward": [
+      "log:艾芙娜的故事，暂时告一段落。"
+    ],
+    "stages": [
+      {
+        "desc": "多陪陪艾芙娜，让她愿意说出心里的事（好感 ≥ 4）",
+        "done": "rel.efna>=4",
+        "fx": [
+          "goto:ev_efna_illness"
+        ],
+        "checks": [
+          {
+            "label": "艾芙娜好感 ≥ 4（多去陪她）",
+            "cond": "rel.efna>=4"
+          }
+        ]
+      },
+      {
+        "desc": "找到月华草（行动：寻找月华草）",
+        "done": "flag:has_moon_herb",
+        "checks": [
+          {
+            "label": "夏、秋两季使用「寻找月华草」",
+            "cond": [
+              "season==summer",
+              "season==autumn"
+            ]
+          }
+        ]
+      },
+      {
+        "desc": "带艾芙娜前往圣城（行动：带艾芙娜前往圣城）",
+        "done": "flag:efna_resolved"
+      }
+    ]
+  },
+  {
+    "id": "glen_regret",
+    "type": "side",
+    "name": "老兵格伦的遗憾",
+    "start": "flag:met_glen",
+    "deadlineAge": 22,
+    "score": 25,
+    "onFail": [
+      "flag+:glen_left",
+      "log:格伦在一个清晨不辞而别，只留下一把空了的剑鞘。"
+    ],
+    "reward": [
+      "flag+:glen_secret",
+      "rep:church+5",
+      "exp+80",
+      "log:格伦把压箱底的剑技全教给了你。",
+      "log:格伦把压箱底的剑技全教给了你。"
+    ],
+    "stages": [
+      {
+        "desc": "和格伦熟络起来（好感 ≥ 3，行动：向老兵学艺）",
+        "done": "rel.glen>=3",
+        "fx": [
+          "goto:ev_glen_past"
+        ],
+        "checks": [
+          {
+            "label": "格伦好感 ≥ 3（向老兵学艺）",
+            "cond": "rel.glen>=3"
+          }
+        ]
+      },
+      {
+        "desc": "为格伦洗清冤屈（行动：为格伦翻案）",
+        "done": "flag:glen_cleared"
+      }
+    ],
+    "snag": {
+      "p": 0.3,
+      "text": "格伦的旧伤在一个雨夜复发，他躺了半个月，醒来时，不愿再提那些往事。"
+    }
+  },
+  {
+    "id": "village_defense",
+    "type": "side",
+    "name": "守卫麦穗村",
+    "score": 20,
+    "stages": [
+      {
+        "desc": "击退来犯的兽人",
+        "done": "flag:village_saved",
+        "deadlineTurns": 2
+      }
+    ],
+    "snag": {
+      "p": 0.25,
+      "text": "村长去了镇上开会，一去就是一个月。守卫的事，被搁置得没了下文。"
+    }
+  },
+  {
+    "id": "guild_novice",
+    "type": "side",
+    "name": "公会新人试炼",
+    "start": "flag:guild",
+    "score": 15,
+    "reward": [
+      "exp+40"
+    ],
+    "stages": [
+      {
+        "desc": "首次通关后山洞穴",
+        "done": "flag:clear_cave"
+      }
+    ],
+    "snag": {
+      "p": 0.3,
+      "text": "公会换了新的登记规矩，原来的新人试炼被取消了。"
+    }
+  },
+  {
+    "id": "guild_star",
+    "type": "main",
+    "name": "冒险者之路",
+    "start": "flag:main_failed",
+    "score": 40,
+    "intro": {
+      "title": "另一条路",
+      "text": "没有教会的推荐，成不了圣骑士，但魔王不会因此少来一天。\n公会布告栏上有一行褪色的大字：“不问出身，只看战绩。”\n也许有些人，生来就是要用自己的剑，在世上挣一个名字。"
+    },
+    "doneStory": {
+      "title": "冒险者之星",
+      "text": "你的名字被刻进了公会大厅的石碑，旁边是许多你没见过、也不会再见到的前辈。\n会长拍了拍你的肩：“没有教会的授勋，你也有资格站到魔王面前。”\n你点点头。刀锋上的光，就是你的凭证。"
+    },
+    "reward": [
+      "log:你已经有资格站在魔王面前了。"
+    ],
+    "stages": [
+      {
+        "desc": "到镇上的冒险者公会登记（18 岁后）",
+        "done": "flag:guild",
+        "score": 10,
+        "checks": [
+          {
+            "label": "年满 18 岁并登记",
+            "cond": "flag:guild"
+          }
+        ]
+      },
+      {
+        "desc": "公会声望 ≥ 30，并通关废弃矿坑",
+        "done": "rep.guild>=30&&flag:clear_mine",
+        "score": 15,
+        "checks": [
+          {
+            "label": "公会声望 ≥ 30",
+            "cond": "rep.guild>=30"
+          },
+          {
+            "label": "通关废弃矿坑",
+            "cond": "flag:clear_mine"
+          }
+        ]
+      },
+      {
+        "desc": "通关亡灵墓地，且等级 ≥ 16，成为公会认可的“冒险者之星”",
+        "done": "flag:clear_grave&&level>=16",
+        "score": 15,
+        "deadlineAge": 31,
+        "checks": [
+          {
+            "label": "通关亡灵墓地",
+            "cond": "flag:clear_grave"
+          },
+          {
+            "label": "等级 ≥ 16",
+            "cond": "level>=16"
+          }
+        ],
+        "fx": [
+          "flag+:adventurer_star"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lorn_caravan",
+    "type": "side",
+    "name": "洛恩的商队",
+    "start": "rel.lorn>=2&&age>=19",
+    "deadlineAge": 27,
+    "score": 15,
+    "intro": {
+      "title": "洛恩的请求",
+      "text": "洛恩搓着手，难得没说笑：“有两趟货要送往王都，路上不太平。你信得过的话，替我押一趟？”\n他的车轮上，刻着一朵小小的麦穗。"
+    },
+    "reward": [
+      "log:洛恩的商队，从此有了你这个朋友。"
+    ],
+    "stages": [
+      {
+        "desc": "护送商队往返王都两次（行动：护送商队）",
+        "done": "count.escort>=2",
+        "fx": [
+          "goto:ev_lorn_offer"
+        ],
+        "checks": [
+          {
+            "label": "护送成功 2 次",
+            "cond": "count.escort>=2"
+          }
+        ]
+      },
+      {
+        "desc": "回应洛恩的邀请",
+        "done": [
+          "flag:lorn_partner",
+          "flag:lorn_decline"
+        ]
+      }
+    ],
+    "snag": {
+      "p": 0.3,
+      "text": "洛恩的商队临时改了路线，等你赶到，已经走远了。"
+    }
+  },
+  {
+    "id": "orphan_care",
+    "type": "side",
+    "name": "草垛里的孩子",
+    "start": "flag:took_orphan",
+    "deadlineAge": 27,
+    "score": 10,
+    "reward": [
+      "hometown+3",
+      "log:那个孩子偶尔还会在村口，朝北边望很久。"
+    ],
+    "stages": [
+      {
+        "desc": "照看孩子，让他适应村子的生活（行动：照看孩子 3 次）",
+        "done": "count.orphan>=3",
+        "fx": [
+          "goto:ev_orphan_future"
+        ],
+        "checks": [
+          {
+            "label": "照看孩子 3 次",
+            "cond": "count.orphan>=3"
+          }
+        ]
+      },
+      {
+        "desc": "为他找一个归处",
+        "done": "flag:orphan_home"
+      }
+    ],
+    "snag": {
+      "p": 0.3,
+      "text": "孩子的远房亲戚从镇上赶来，把他接走了。"
+    }
+  },
+  {
+    "id": "ruins_secret",
+    "type": "side",
+    "name": "石门后的遗迹",
+    "start": "flag:found_ruins",
+    "deadlineAge": 28,
+    "score": 30,
+    "intro": {
+      "title": "藤蔓下的石门",
+      "text": "你一直没忘记那扇半掩的石门，门楣上褪色的神徽，像在对你眨眼。\n山里的路你已经熟了。也许，该再去一趟了。"
+    },
+    "reward": [
+      "count:arcana+3",
+      "log:遗迹里的知识，你一辈子都会记得。"
+    ],
+    "stages": [
+      {
+        "desc": "再次进入石门，解读石室里的符文（行动：探索遗迹）",
+        "done": "flag:ruins_open",
+        "fx": [
+          "goto:ev_ruins_vault"
+        ],
+        "checks": [
+          {
+            "label": "用智力检定解开符文",
+            "cond": "flag:ruins_open"
+          }
+        ]
+      },
+      {
+        "desc": "决定如何处置遗迹里的发现",
+        "done": "flag:ruins_told"
+      }
+    ],
+    "snag": {
+      "p": 0.3,
+      "text": "一场山体滑坡，把石门前的小路埋了个严实。"
+    }
+  },
+  {
+    "id": "mill_repair",
+    "type": "side",
+    "name": "村磨坊的水车",
+    "start": "age>=19&&hometown>=30",
+    "deadlineAge": 25,
+    "score": 10,
+    "intro": {
+      "title": "村长的委托",
+      "text": "村长拄着拐杖来你家，指了指河边那座歪斜的水车：“它转不动了，冬天碾不了粮，家家都得跑去镇上。能凑钱修一修吗？”\n他没有说“拜托”，只是看着你。\n村长补了一句：“水车修好了，村里的日子能稳当不少。”"
+    },
+    "doneStory": {
+      "title": "水车转起来了",
+      "text": "水车吱吱呀呀地转起来的那天，全村人都聚到了河边。孩子们追着水花跑，老人们坐在石头上抽烟。\n村长把拐杖往地上一磕：“这个冬天，不愁了。”"
+    },
+    "reward": [
+      "hometown+5",
+      "rep:church+2",
+      "flag+:mill_fixed",
+      "log:水车修好以后，村里每年的故乡值衰减从 5 点降到了 3 点。"
+    ],
+    "stages": [
+      {
+        "desc": "凑钱出力，修缮水车（行动：修缮水车，两次；完成后每年的故乡值衰减 -5 → -3）",
+        "done": "count.mill>=2",
+        "checks": [
+          {
+            "label": "修缮水车 2 次（每次 60 金币，完成后年年少掉 2 点故乡值）",
+            "cond": "count.mill>=2"
+          }
+        ]
+      }
+    ],
+    "snag": {
+      "p": 0.4,
+      "text": "一场山洪冲垮了水车的基座，工匠们收拾东西，回镇上去了。"
+    }
+  },
+  {
+    "id": "church_shadow",
+    "type": "hidden",
+    "name": "教会的阴影",
+    "start": [
+      "flag:church_clue_2",
+      "flag:church_clue_1&&memory:m_seal",
+      "age>=22&&memory:m_truth"
+    ],
+    "deadlineAge": 30,
+    "score": 40,
+    "reward": [
+      "int_exp+8",
+      "wil_exp+8",
+      "exp+120",
+      "rep:church-3",
+      "flag+:church_truth",
+      "log:你知道了一些本不该知道的事。从今以后，圣光在你眼里不再只是光。"
+    ],
+    "stages": [
+      {
+        "desc": "封印的记录不该只是一本旧册。去找神父安布罗斯，问问他知道多少（行动：向神父求证）",
+        "done": "flag:shadow_ambrose",
+        "checks": [
+          {
+            "label": "神父好感 ≥ 3，或用口才说服他",
+            "cond": "flag:shadow_ambrose"
+          }
+        ]
+      },
+      {
+        "desc": "神父给了你一把旧钥匙。潜入王都圣库，核对圣剑的真正来历（行动：潜入圣库，需要见习骑士团成员）",
+        "done": "flag:shadow_known",
+        "checks": [
+          {
+            "label": "已加入见习骑士团",
+            "cond": "flag:order_member"
+          },
+          {
+            "label": "用智力检定读懂封印记录",
+            "cond": "flag:shadow_known"
+          }
+        ],
+        "story": {
+          "title": "教会的阴影",
+          "portrait": "priest",
+          "text": "你合上那本册子的时候，圣库里的烛火晃了一下。\n圣剑不是杀死魔王的剑，它是锁。每一代圣骑士在宣誓的夜里，都被取走了一点“不肯低头的东西”，用来给这把锁续命。\n魔王的苏醒，只是锁已经磨到了尽头。\n你想起了试炼那天，圣剑落在肩上的光。那光很暖。\n暖得让人不愿意去想，它是从哪里来的。"
+        }
+      }
+    ]
+  }
+]
